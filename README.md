@@ -18,7 +18,7 @@ Hii guys, this is my firts repository of my own "megathread" of the best sites o
 
 ## 🖼️ Preview
 
-!
+
 ![SCREENSHOT WEBSITE](https://github.com/user-attachments/assets/14696a6b-379d-4b64-ac5c-c82592108f0e)
 
 ---
