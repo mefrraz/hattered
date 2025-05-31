@@ -1,4 +1,6 @@
 # The Pirate Bay Classic 
+
+## 🇬🇧 🇺🇸 English
 Hii guys, this is my firts repository of my own "megathread" of the best sites of my opinion
 
 ---
@@ -35,6 +37,9 @@ Hii guys, this is my firts repository of my own "megathread" of the best sites o
 
 This project is for educational purposes only. No illegal content is hosted or distributed. Use at your own risk and always respect your country's laws.
 
+---
+
+## 🇵🇹 🇧🇷 Português
 Hey pessoal/malta, este é o meu primeiro projeto com html e usei também AI para alguns CSS, este é um projeto que pretendo continuar e aumentar e só faço mesmo por puro hobby, espero que gostem.
 
 ---
@@ -70,3 +75,6 @@ Hey pessoal/malta, este é o meu primeiro projeto com html e usei também AI par
 Este projeto é apenas para **fins educativos**.  
 Nenhum conteúdo ilegal é hospedado ou partilhado.  
 Usa por tua conta e risco e respeita sempre as leis do teu país.
+
+Feito com ❤️ por frraz
+🇵🇹 feito em Portugal
