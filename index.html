@@ -1,0 +1,2667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <title>Hattered</title>
+    <!-- ADICIONE O FAVICON AQUI ↓ -->
+<link rel="icon" href="hattered_logo.svg" type="image/svg+xml">
+
+    <style>
+        /* ESTILO BASE - SIMPLES E ANTIGO */
+        body {
+            font-family: Arial, Verdana, sans-serif;
+            background: #fff;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        /* CONTAINER PRINCIPAL */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            min-height: 100vh;
+        }
+        
+        /* CABEÇALHO */
+        .header {
+            background: #f8f8f8;
+            padding: 10px 20px;
+            border-bottom: 3px solid #c33;
+            text-align: center;
+            max-width: 1200px;
+        }
+        
+        .logo {
+            font-family: 'Times New Roman', serif;
+            font-size: 36px;
+            color: hsl(0, 60%, 50%);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        /* MENU DE NAVEGAÇÃO */
+        .nav {
+            background: #333;
+            padding: 8px 0;
+            text-align: center;
+            position: relative;
+            width: 1200px; /* ou outro valor */
+        }
+        
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .nav a:hover {
+            color: #cc3333;
+            background: #555;
+        }
+        
+        /* MENU DROPDOWN */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 250px;
+            max-height: 500px;
+            overflow-y: auto;
+            box-shadow: 0px 8px 16px 0px #00000033;
+            z-index: 1;
+            left: 0;
+            text-align: left;
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            margin: 0;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* CONTEÚDO PRINCIPAL */
+        .content {
+            display: flex;
+            padding: 15px;
+        }
+        
+        /* BARRA LATERAL */
+        .sidebar {
+            width: 200px;
+            padding-right: 15px;
+        }
+        
+        .sidebar-box {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            background: #f5f5f5;
+        }
+        
+        .sidebar-title {
+            background: #c33;
+            color: #fff;
+            padding: 8px;
+            font-weight: bold;
+        }
+        
+        .sidebar-content {
+            padding: 10px;
+        }
+        
+        /* ÁREA PRINCIPAL */
+        .main-content {
+            flex: 1;
+        }
+        
+        .site-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .site-table th {
+            background: #333;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .site-table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .site-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .site-name {
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        .site-name:hover {
+            text-decoration: underline;
+        }
+        
+        .visits {
+            color: #090;
+            font-weight: bold;
+        }
+        
+        /* RODAPÉ */
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 3px solid #c33;
+        }
+        
+        /* ELEMENTOS ESPECIAIS */
+        .ad-banner {
+            background: #ffc;
+            border: 1px dashed #c90;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .counter {
+            font-family: monospace;
+            font-size: 16px;
+            color: #c33;
+        }
+        
+        /* BOTÕES */
+        .btn-main {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #c33;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .btn-main:hover {
+            background: #900;
+        }
+        
+        .btn-mirror {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #fff;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        
+        .btn-mirror:hover {
+            background: #f5f5f5;
+        }
+        
+        /* SEÇÃO DE MIRRORS */
+        .mirrors {
+            display: none;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        
+        .mirrors h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .mirrors ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .mirrors a {
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        .mirrors a:hover {
+            text-decoration: underline;
+        }
+        
+        /* TOP SITES */
+        .top-sites {
+            margin-bottom: 30px;
+        }
+        
+        .top-sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .top-site-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        
+        .top-site-card a {
+            color: #06c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .top-site-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .top-site-visits {
+            color: #666;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* PÁGINAS DE CATEGORIA (OCULTAS POR PADRÃO) */
+        .site-section {
+            display: none;
+        }
+        
+        .site-section.active {
+            display: block;
+        }
+        
+        /* Estilo para subtítulos de categorias */
+        .category-title {
+            color: #c33;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #c33;
+        }
+        
+        /* Ícone de Engrenagem */
+        .gear-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97 0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1 0 .33.03.65.07.97l-2.11 1.66c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+.news-container {
+  margin: 25px 0;
+  margin-bottom: 0; /* Remove margem inferior que pode criar espaçamento */
+  padding-bottom: 0;
+  position: relative;
+}
+
+a.news-title {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.4;
+  text-decoration: none; /* remove sublinhado */
+  transition: color 0.3s ease;
+}
+
+a.news-title:hover {
+  color: #c33;
+  text-decoration: none; /* remove sublinhado no hover também */
+}
+
+#refresh-news-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+#refresh-news-btn svg {
+  fill: #333333;
+  transition: transform 0.3s ease;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  min-height: 90px; /* pode ajustar ou remover se quiseres */
+}
+
+.news-card {
+  background: #f8f8f8;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 18px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.news-card.large {
+  grid-column: span 2; /* ocupa 2 colunas */
+  min-height: 160px;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #c33;
+}
+
+.news-card:hover .news-title {
+  color: #c33;
+}
+
+.news-date {
+  color: #777;
+  font-size: 12px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.news-excerpt {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+  flex-grow: 1;
+  margin-bottom: 8px;
+}
+
+.news-source {
+  font-size: 11px;
+  color: #999;
+  background: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+}
+
+.loading-news {
+  text-align: center;
+  padding: 30px 0 0 0;
+  color: #666;
+}
+.next-section {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+
+.most-visited-block {
+  width: 100%;
+  clear: both;
+  margin-bottom: 30px;
+}
+
+.most-visited-title {
+  color: #333333;
+  font-size: 20px; /* Título com 20px */
+  font-weight: bold;
+  border-bottom: 2px solid #c33;
+  padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.most-visited-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.most-visited-card {
+  background: #f8f8f8;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 70px;     /* diminui min-height */
+  max-height: 95px;    /* diminui max-height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* conteúdo no topo */
+  gap: 4px;
+  overflow: hidden;
+}
+
+.most-visited-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #c33;
+}
+
+.most-visited-card:hover a {
+  color: #c33;
+  text-decoration: none;
+}
+
+/* Organiza verticalmente os textos com espaçamento */
+.most-visited-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;   /* Espaçamento legal entre os textos */
+}
+
+.most-visited-card a {
+  color: #333333;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.most-visited-card a:hover {
+  color: #c33;
+  text-decoration: none;
+}
+
+.most-visited-visits,
+.most-visited-type {
+  color: #666;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.2;
+}
+/*tutorial pagina inical*/
+
+.tutorial-box h3 {
+    font-size: 20px;
+    color: #333333;
+    font-weight: bold;
+    border-bottom: 2px solid #c33; /* aumenta a espessura da linha */
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+.tutorial-box a {
+    color: #c33;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.tutorial-box a:hover {
+    color: #900; /* tom mais escuro de vermelho no hover */
+    text-decoration: underline;
+}
+.tutorial-section {
+    margin-bottom: 30px; /* spacing below the tutorial block */
+}
+.tutorial-subtitle.bold-underline {
+  font-size: 16px;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #c33; /* mesma linha vermelha das outras seções */
+}
+/*magent parte semear*/
+.tutorial-box h3 {
+  font-size: 20px;
+  color: #333333;
+  font-weight: bold;
+  border-bottom: 2px solid #c33; /* aumenta a espessura da linha */
+  padding-bottom: 5px;
+  margin-top: 0;
+}
+
+.tutorial-box a {
+  color: #c33;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.tutorial-box a:hover {
+  color: #900; /* tom mais escuro de vermelho no hover */
+  text-decoration: underline;
+}
+
+.tutorial-section {
+  margin-bottom: 30px; /* spacing below the tutorial block */
+}
+
+.tutorial-subtitle.bold-underline {
+  font-size: 16px;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #c33; /* mesma linha vermelha das outras seções */
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #c33;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+  margin-top: 10px;
+  text-decoration: underline;
+  font-size: 14px;
+}
+/* CSS dos magnets */
+.ms-sidebar-box {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  border-radius: 0; /* Sem cantos arredondados */
+}
+
+.ms-sidebar-title {
+  background: #c33;
+  color: #fff;
+  padding: 10px 12px; /* Ajustado para mesma altura dos outros títulos */
+  font-weight: bold;
+  font-size: 14px; /* Mesma fonte do Top collaborators / Getting Started */
+  border-radius: 0; /* Sem cantos arredondados */
+  line-height: 1.2;
+}
+
+.ms-sidebar-content {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ms-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px; /* Nome menor que antes */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease;
+}
+
+.ms-link:hover {
+  color: #900;
+  text-decoration: underline;
+  cursor: pointer;
+}
+/* CSS do Calendário Sidebar */
+.calendar-container {
+  width: 210px;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+.calendar-title {
+  font-size: 14px;
+  text-align: left;
+  padding-left: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #bf1f1f;
+  color: white;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 30px);
+  background-color: #f5f5f5;
+}
+
+.calendar-weekday {
+  background-color: #e0e0e0; /* cinza claro (mais claro que #bfbfbf) */
+  font-size: 11px;
+  color: #262626;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+}
+
+.calendar-day {
+  background-color: #f5f5f5;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar-day.today {
+  background-color: #bf1f1f;
+  color: white;
+  font-weight: bold;
+}
+
+/* Remover bordas extras do último dia da semana e da última linha do mês */
+.calendar-day:last-child,
+.calendar-weekday:last-child {
+  border-right: none;
+}
+
+.calendar-day:nth-last-child(-n+7) {
+  border-bottom: none;
+}
+
+/*pirataria hubs e foruns reddits ...*/
+.forum-block {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.forum-title {
+  color: #333333;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid #c33;
+  padding-bottom: 5px;
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.forum-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+
+.forum-card {
+  background: #f8f8f8;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 12px 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 70px;
+  max-height: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.forum-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #c33;
+}
+
+.forum-card a.full-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.forum-card a.full-link:hover {
+  color: #c33;
+  text-decoration: none;
+}
+
+.forum-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forum-title-text {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.forum-subtitle {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  line-height: 1.2;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+
+.logo span {
+    margin-left: 4px; /* um espacinho bem pequeno entre logo e texto */
+    font-weight: lighter;
+}
+
+</style>
+
+
+
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src="hattered_logo1.svg" alt="Hattered Logo" />
+        <span>Hattered</span>
+      </div>
+      <div class="counter"></div>
+    </div>
+
+<div class="nav">
+  <a href="#" onclick="showMainPage()">Home</a>
+
+  <div class="dropdown">
+    <a href="#">Categories</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="showCategory('movies')">Movies & Series</a>
+      <a href="#" onclick="showCategory('music')">Music</a>
+      <a href="#" onclick="showCategory('games')">Games</a>
+      <a href="#" onclick="showCategory('education')">Education</a>
+      <a href="#" onclick="showCategory('software')">Software</a>
+      <a href="#" onclick="showCategory('graphic')">Graphic</a>
+      <a href="#" onclick="showCategory('livetv')">LiveTV</a>
+      <a href="#" onclick="showCategory('activation')">Activation</a>
+    </div>
+
+
+  <div class="dropdown">
+
+    <div class="dropdown-content">
+      <!-- Outros links aqui, se precisar -->
+    </div>
+
+
+  <a href="guides/guides.html">Guides</a>
+</div>
+
+      </div>
+
+
+            
+
+        </div>
+        
+        <div class="content">
+            <div class="sidebar">
+                <div class="sidebar-box">
+                    <div class="sidebar-title">Top colaborators</div>
+                    <div class="sidebar-content">
+                        <div style="margin-bottom: 5px;">m0druks</div>
+                        <div style="margin-bottom: 5px;">mkj45</div>
+                        <div style="margin-bottom: 5px;">xZeta</div>
+                        <div style="margin-bottom: 5px;">darkn3t</div>
+                        <div style="margin-bottom: 5px;">byteStorm</div>
+                        <div style="margin-bottom: 5px;">cyberwolf</div>
+                        <div style="margin-bottom: 5px;">l33tghost</div>
+                        <div style="margin-bottom: 5px;">hexr0ot</div>
+                        <div style="margin-bottom: 5px;">ph4nt0m</div>
+                        <div style="margin-bottom: 5px;">cr4ckz</div>
+                        <div style="margin-bottom: 5px;">NullByte</div>
+                        <div style="margin-bottom: 5px;">r3v3ng3</div>
+                        <div style="margin-bottom: 5px;">anonDrop</div>
+                        <div style="margin-bottom: 5px;">skidxor</div>
+                        <div style="margin-bottom: 5px;">v1rus</div>
+                    </div>
+                </div>
+                
+
+
+
+<!-- HTML -->
+<div class="ms-sidebar-box">
+  <div class="ms-sidebar-title">Magnet Seeding</div>
+  <div class="ms-sidebar-content">
+    <a href="https://annas-archive.org" target="_blank" rel="noopener noreferrer" class="ms-link">Anna’s Archive</a>
+    <a href="https://academictorrents.com" target="_blank" rel="noopener noreferrer" class="ms-link">Academic Torrents</a>
+    <a href="https://linuxtracker.org" target="_blank" rel="noopener noreferrer" class="ms-link">LinuxTracker</a>
+    <a href="http://www.publicdomaintorrents.info" target="_blank" rel="noopener noreferrer" class="ms-link">Public Domain Torrents</a>
+    <a href="https://thepiratebay.org" target="_blank" rel="noopener noreferrer" class="ms-link">The Pirate Bay</a>
+    <a href="https://1337x.to" target="_blank" rel="noopener noreferrer" class="ms-link">1337x</a>
+    <a href="https://rarbg.to" target="_blank" rel="noopener noreferrer" class="ms-link">RARBG</a>
+    <a href="https://www.limetorrents.info" target="_blank" rel="noopener noreferrer" class="ms-link">LimeTorrents</a>
+    <a href="https://torrentgalaxy.to" target="_blank" rel="noopener noreferrer" class="ms-link">TorrentGalaxy</a>
+  </div>
+</div>
+
+<!-- Calendário Simples Sidebar -->
+<div class="sidebar-calendar">
+  <div class="calendar-grid" id="calendar-grid"></div>
+</div>
+
+<script>
+  const calendarGrid = document.getElementById('calendar-grid');
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const todayDate = now.getDate();
+
+  const months = ["January", "February", "March", "April", "May", "June",
+                  "July", "August", "September", "October", "November", "December"];
+
+  const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  calendarGrid.innerHTML = '';
+
+  // 1st row - title, span 7 columns
+  const titleCell = document.createElement('div');
+  titleCell.textContent = months[month] + " " + year;
+  titleCell.classList.add('calendar-title');
+  titleCell.style.gridColumn = '1 / span 7';
+  calendarGrid.appendChild(titleCell);
+
+  // 2nd row - weekdays
+  for(let i=0; i<7; i++) {
+    const weekdayCell = document.createElement('div');
+    weekdayCell.textContent = weekdays[i];
+    weekdayCell.classList.add('calendar-weekday');
+    calendarGrid.appendChild(weekdayCell);
+  }
+
+  // 5 rows for days = 35 cells
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+  let dayNum = 1;
+
+  for(let i=0; i<35; i++) {
+    const dayCell = document.createElement('div');
+    dayCell.classList.add('calendar-day');
+
+    if(i >= firstDay && dayNum <= daysInMonth) {
+      dayCell.textContent = dayNum;
+
+      if(dayNum === todayDate) {
+        dayCell.classList.add('today');
+      }
+      dayNum++;
+    } else {
+      dayCell.textContent = '';
+    }
+
+    calendarGrid.appendChild(dayCell);
+  }
+</script>
+
+
+                <div class="ad-banner">
+                    Your Ad Here<br>
+                    Contact me.frraz@gmail.com
+                </div>
+
+            </div>
+            
+            <div class="main-content">
+                <!-- PÁGINA INICIAL -->
+                <div id="main-page" class="site-section active">    
+                    
+<div class="tutorial-section sidebar-box">
+  <div class="sidebar-title">Getting Started</div>
+  <div class="sidebar-content tutorial-box">
+    <h4 class="tutorial-subtitle bold-underline">Before You Start, Follow These Steps:</h4>
+    <ul class="tutorial-steps">
+      <li><strong>Essential Tools:</strong>  
+        <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener noreferrer">Firefox browser</a>.  
+        Extensions: <a href="https://ublockorigin.com/" target="_blank" rel="noopener noreferrer">uBlock Origin</a> + <a href="https://violentmonkey.github.io/" target="_blank" rel="noopener noreferrer">Violentmonkey</a> along with the <a href="https://codeberg.org/Amm0ni4/bypass-all-shortlinks-debloated" target="_blank" rel="noopener noreferrer">script</a>.
+      </li>
+      <li><strong>Reliable Torrent Client:</strong>  
+        Recommended: <a href="https://www.qbittorrent.org/" target="_blank" rel="noopener noreferrer">qBittorrent</a> with kill switch enabled and search plugins.
+      </li>
+      <li><strong>Consider Using a VPN (optional):</strong>  
+        Trusted examples:  
+        <a href="https://protonvpn.com/" target="_blank" rel="noopener noreferrer">ProtonVPN</a> (port-forwarding, P2P),  
+        <a href="https://airvpn.org/" target="_blank" rel="noopener noreferrer">AirVPN</a> (port-forwarding, P2P),  
+        <a href="https://www.ivpn.net/" target="_blank" rel="noopener noreferrer">IVPN</a>,  
+        <a href="https://mullvad.net/en/" target="_blank" rel="noopener noreferrer">Mullvad</a>.  
+        Configure to hide your online identity.
+      </li>
+      <li><strong>(Optional):</strong> Integrate your torrent client with your VPN for extra security.</li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+<div class="most-visited-block">
+  <h2 class="most-visited-title">Most Visited Torrent Sites</h2>
+  <div class="most-visited-grid">
+    <div class="most-visited-card">
+      <div class="most-visited-texts">
+        <a href="https://thepiratebay.org/" target="_blank" rel="noopener noreferrer">The Pirate Bay</a>
+        <div class="most-visited-visits">23.3M monthly visits</div>
+        <div class="most-visited-type">Software / Movies</div>
+      </div>
+    </div>
+    <div class="most-visited-card">
+      <div class="most-visited-texts">
+        <a href="https://yts.mx/" target="_blank" rel="noopener noreferrer">YTS YIFY</a>
+        <div class="most-visited-visits">56M monthly visits</div>
+        <div class="most-visited-type">Movies</div>
+      </div>
+    </div>
+    <div class="most-visited-card">
+      <div class="most-visited-texts">
+        <a href="https://fitgirl-repacks.site/" target="_blank" rel="noopener noreferrer">FitGirl Repacks</a>
+        <div class="most-visited-visits">12.5M monthly visits</div>
+        <div class="most-visited-type">Games / Software</div>
+      </div>
+    </div>
+    <div class="most-visited-card">
+      <div class="most-visited-texts">
+        <a href="https://rarbg.to/" target="_blank" rel="noopener noreferrer">RARBG</a>
+        <div class="most-visited-visits">4.6M monthly visits</div>
+        <div class="most-visited-type">Movies / TV Shows</div>
+      </div>
+    </div>
+    <div class="most-visited-card">
+      <div class="most-visited-texts">
+        <a href="https://torrentgalaxy.to/" target="_blank" rel="noopener noreferrer">TorrentGalaxy</a>
+        <div class="most-visited-visits">21.7M monthly visits</div>
+        <div class="most-visited-type">Movies / Software</div>
+      </div>
+    </div>
+    <div class="most-visited-card">
+      <div class="most-visited-texts">
+        <a href="https://www.1377x.is/" target="_blank" rel="noopener noreferrer">1377x</a>
+        <div class="most-visited-visits">12.9M monthly visits</div>
+        <div class="most-visited-type">Software / Movies / TV Shows</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+            
+                <!-- HTML da Seção de Notícias -->
+<!-- News Section HTML -->
+<div class="news-container" style="position: relative;">
+  <h2 class="category-title" style="color: #333; border-bottom: 2px solid rgb(204, 51, 51); padding-bottom: 5px; display: flex; align-items: center; gap: 10px;">
+    Latest News
+    <button id="refresh-news-btn" title="Update news" style="background: none; border: none; cursor: pointer; padding: 0;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#c33" xmlns="http://www.w3.org/2000/svg" style="transition: transform 0.3s ease;">
+        <path d="M12 4V1L8 5l4 4V6a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/>
+      </svg>
+    </button>
+  </h2>
+  <div id="news-rss">
+    <div class="loading-news" style="display: flex; align-items: center; color: #c33;">
+      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px; vertical-align: middle;">
+        <circle cx="12" cy="12" r="10" stroke="#c33" stroke-width="2" fill="none" stroke-dasharray="15" stroke-dashoffset="0">
+          <animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="1s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      Loading news...
+    </div>
+  </div>
+</div>
+
+<script>
+  const newsFeeds = [
+    'https://torrentfreak.com/feed',
+    'https://torrentfreak.com/category/piracy/feed',
+    'https://torrentfreak.com/category/research/feed',
+    'https://torrentfreak.com/category/technology/feed',
+    'https://torrentfreak.com/category/anti-piracy/feed',
+    'https://torrentfreak.com/category/lawsuits/feed',
+    'https://torrentfreak.com/category/law-politics/feed',
+    'https://thepiratebay.einnews.com/all_rss',
+    'https://rapidseedbox.com/tag/utorrent/feed',
+    'https://blog.utorrent.com/feed',
+    'https://techspree.net/category/torrent/feed',
+  ];
+
+  const sourceMap = {
+    'torrentfreak': 'TorrentFreak',
+    'thepiratebay': 'The Pirate Bay',
+    'rapidseedbox': 'RapidSeedbox',
+    'utorrent': 'uTorrent Blog',
+    'techspree': 'TechSpree',
+    'pirates-privateers': 'Pirates & Privateers',
+    'wired': 'Wired',
+    'arstechnica': 'Ars Technica',
+    'torrentnews': 'Torrent News',
+  };
+
+  function detectSource(url) {
+    for (const key in sourceMap) {
+      if (url.includes(key)) {
+        return sourceMap[key];
+      }
+    }
+    return 'Source';
+  }
+
+  let allNews = [];
+  let currentBatchIndex = 0;
+  const batchSize = 2; // number of news per batch (matches original logic)
+
+  function renderBatch() {
+    const container = document.getElementById('news-rss');
+
+    const start = currentBatchIndex * batchSize;
+    let newsBatch = allNews.slice(start, start + batchSize);
+
+    if (newsBatch.length < batchSize) {
+      currentBatchIndex = 0;
+      newsBatch = allNews.slice(0, batchSize);
+    }
+
+    let html = '<div class="news-grid">';
+
+    newsBatch.forEach((item, i) => {
+      // excerpt length: longer for cards 0 & 2, shorter for 1 & 3 (like original)
+      const excerptLength = (i === 0 || i === 2) ? 600 : 120;
+
+      const excerptRaw = item.description || item.content || '';
+      const excerptClean = excerptRaw.replace(/<[^>]*>/g, '').trim();
+
+      const excerpt = excerptClean.length > excerptLength
+        ? excerptClean.substring(0, excerptLength) + '...'
+        : excerptClean || 'Click to read the full story';
+
+      const source = detectSource(item.link);
+
+      const sizeClass = (i === 0 || i === 2) ? 'news-card large' : 'news-card';
+
+      html += `
+        <div class="${sizeClass}">
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="news-title">${item.title}</a>
+          <span class="news-date">${new Date(item.pubDate).toLocaleDateString('en-US')}</span>
+          <p class="news-excerpt">${excerpt}</p>
+          <span class="news-source">${source}</span>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+
+    container.innerHTML = html;
+  }
+
+  async function loadNews() {
+    let success = false;
+    allNews = [];
+
+    for (const feedUrl of newsFeeds) {
+      try {
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
+        if (!response.ok) continue;
+
+        const data = await response.json();
+        if (!data.items || data.items.length === 0) continue;
+
+        allNews = allNews.concat(data.items);
+        success = true;
+      } catch (error) {
+        console.error(`Feed error ${feedUrl}:`, error);
+      }
+    }
+
+    if (success) {
+      allNews = allNews.sort(() => Math.random() - 0.5);
+      currentBatchIndex = 0;
+      renderBatch();
+    } else {
+      document.getElementById('news-rss').innerHTML = `
+        <div style="text-align: center; padding: 20px; color: #666;">
+          <p>Unable to load news at the moment.</p>
+          <a href="https://torrentfreak.com" target="_blank" style="color: #c33;">Visit TorrentFreak</a>
+        </div>
+      `;
+    }
+  }
+
+  document.getElementById('refresh-news-btn').addEventListener('click', () => {
+    const icon = document.querySelector('#refresh-news-btn svg');
+    icon.style.transform = 'rotate(360deg)';
+    setTimeout(() => {
+      icon.style.transform = '';
+    }, 600);
+
+    currentBatchIndex++;
+    renderBatch();
+  });
+
+  loadNews();
+  setInterval(loadNews, 30000);
+</script>
+
+
+<!-- pirataria hub now -->
+
+<div class="forum-block">
+  <h2 class="forum-title">Best Forums & Reddits</h2>
+  <div class="forum-grid">
+    <div class="forum-card">
+      <a href="https://reddit.com/r/torrents" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">r/torrents</span>
+          <p class="forum-subtitle">Reddit torrent discussions</p>
+          <p class="forum-subtitle">Login with Reddit</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://reddit.com/r/Piracy" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">r/Piracy</span>
+          <p class="forum-subtitle">Piracy news & help</p>
+          <p class="forum-subtitle">Login with Reddit</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://www.torrentinvites.org/forum" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">TorrentInvites.org</span>
+          <p class="forum-subtitle">Invite-only torrent forum</p>
+          <p class="forum-subtitle">Registration required</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://onehack.us/" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">One Hack</span>
+          <p class="forum-subtitle">General piracy and hack discussions</p>
+          <p class="forum-subtitle">No login required</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://www.reddit.com/r/DataHoarder" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">r/DataHoarder</span>
+          <p class="forum-subtitle">Data storage & torrents</p>
+          <p class="forum-subtitle">Login with Reddit</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://reddit.com/r/trackers" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">r/trackers</span>
+          <p class="forum-subtitle">Tracker discussions</p>
+          <p class="forum-subtitle">Login with Reddit</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://www.reddit.com/r/pirataria" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">r/pirataria</span>
+          <p class="forum-subtitle">Piracy community</p>
+          <p class="forum-subtitle">Login with Reddit</p>
+        </div>
+      </a>
+    </div>
+    <div class="forum-card">
+      <a href="https://hacksnation.com/" target="_blank" rel="noopener noreferrer" class="full-link">
+        <div class="forum-texts">
+          <span class="forum-title-text">HacksNation</span>
+          <p class="forum-subtitle"> Hack discussion</p>
+          <p class="forum-subtitle">Registration required</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+                </div>
+
+                
+                <!-- PÁGINA DE FILMES & SÉRIES -->
+                <div id="movies-page" class="site-section">
+                    <h2>Movies & Series</h2>
+
+                    <h3 class="category-title">Download</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://piratebayproxy.info/" class="site-name" target="_blank">The Pirate Bay</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://piratebayproxy.info/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://yts.mx/" class="site-name" target="_blank">YTS</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://yts.mx/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://watchsomuch.to/" class="site-name" target="_blank">WatchSoMuch</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://watchsomuch.to/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://eztv.re/" class="site-name" target="_blank">EZTV</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://eztv.re/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td><a href="https://rarbg.unblockninja.com/" class="site-name" target="_blank">RARBG</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rarbg.unblockninja.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://torrentgalaxy.hair/trending" class="site-name" target="_blank">TorrentGalaxy</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://torrentgalaxy.hair/trending" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.speedtorrent.com/" class="site-name" target="_blank">SpeedTorrent</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.speedtorrent.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://btdig.com/" class="site-name" target="_blank">BTDigg</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://btdig.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://olamovies.help/" class="site-name" target="_blank">Ola Movies</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://olamovies.help/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://ddlbase.com/" class="site-name" target="_blank">DDL Base</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://ddlbase.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="category-title">Streaming</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://tv.cross.moe/" class="site-name" target="_blank">crosstv</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://tv.cross.moe/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://nunflix.org/" class="site-name" target="_blank">Nunflix</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://nunflix.org/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://bingewatch.to/home" class="site-name" target="_blank">Binge Watch</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://bingewatch.to/home" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://catflix.su/home/" class="site-name" target="_blank">catflix</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://catflix.su/home/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://nepu.to/" class="site-name" target="_blank">NEPU Stream</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://nepu.to/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="category-title">Documentaries</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://ihavenotv.com/" class="site-name" target="_blank">IHaveNoTV</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://ihavenotv.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.docplus.com/" class="site-name" target="_blank">DOC+</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.docplus.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.documentaryarea.com/" class="site-name" target="_blank">DocuMania</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.documentaryarea.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://worklizard.com/groups/documentaries/" class="site-name" target="_blank">WorkLizard</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://worklizard.com/groups/documentaries/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://watchdocumentaries.com/" class="site-name" target="_blank">Watch Documentaries</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://watchdocumentaries.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- PÁGINA DE MÚSICA -->
+                <div id="music-page" class="site-section">
+                   <h2>Music</h2>
+                    
+                    <h3 class="category-title">Online Radios</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://fmstream.org/index.php?c=FT" class="site-name" target="_blank">FMStream</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://fmstream.org/index.php?c=FT" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.radio-browser.info/" class="site-name" target="_blank">Radio Browser</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.radio-browser.info/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://radio.garden/" class="site-name" target="_blank">Radio Garden</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://radio.garden/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://drivenlisten.com/city/?typ=Dr" class="site-name" target="_blank">Drive Listen</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://drivenlisten.com/city/?typ=Dr" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="category-title">Music Download Sites</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://dab.yeet.su/" class="site-name" target="_blank">DAB Yeet</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://dab.yeet.su/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://doubledouble.top/" class="site-name" target="_blank">Double Double</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://doubledouble.top/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://cobalt.tools/" class="site-name" target="_blank">Cobalt Tools</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://cobalt.tools/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- PÁGINA DE JOGOS -->
+                <div id="games-page" class="site-section">
+                    <h2>Games</h2>
+                    
+                    <h3 class="category-title">Repacks (Compressed Installers)</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://fitgirl-repacks.site/" class="site-name" target="_blank">FitFirl Repacks</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://fitgirl-repacks.site/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rentry.co/FMHYBase64#dodi" class="site-name" target="_blank">DODI Repacks (Info)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rentry.co/FMHYBase64#dodi" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rentry.co/FMHYBase64#gnarly_repacks" class="site-name" target="_blank">Gnarly Repacks</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rentry.co/FMHYBase64#gnarly_repacks" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://byxatab.com/" class="site-name" target="_blank">Xatab Repacks</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://byxatab.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://elamigos.site/" class="site-name" target="_blank">ElAmigos</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://elamigos.site/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.tiny-repacks.win/" class="site-name" target="_blank">Tiny-Repacks</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.tiny-repacks.win/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://m4ckd0ge-repacks.site/" class="site-name" target="_blank">M4CKD0GE Repacks</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://m4ckd0ge-repacks.site/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.kaoskrew.org/" class="site-name" target="_blank">KaOsKrew Repacks</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.kaoskrew.org/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://discord.com/invite/HP5sQ6c" class="site-name" target="_blank">Masquerade Repacks (Discord)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://discord.com/invite/HP5sQ6c" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://discord.gg/xe3Fys8Upy" class="site-name" target="_blank">ScOOt3r Repacks (Discord)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://discord.gg/xe3Fys8Upy" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 class="category-title">Game Download Sites (with or without DRM)</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://gog-games.to/" class="site-name" target="_blank">GOG Games</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://gog-games.to/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://online-fix.me/" class="site-name" target="_blank">Online Fix</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://online-fix.me/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.ovagames.com/" class="site-name" target="_blank">Ova Games</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.ovagames.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://gamebounty.world/" class="site-name" target="_blank">GameBounty</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://gamebounty.world/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://worldofpcgames.com/" class="site-name" target="_blank">World of PC Games</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://worldofpcgames.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://games4u.org/" class="site-name" target="_blank">Games4U</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://games4u.org/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.cg-gamespc.com/" class="site-name" target="_blank">CG Games</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.cg-gamespc.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://gamepcfull.com/" class="site-name" target="_blank">GamePCFull</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://gamepcfull.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://freegogpcgames.com/" class="site-name" target="_blank">FreeGOGPCGames</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://freegogpcgames.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://www.leechinghell.pw/" class="site-name" target="_blank">Leeching Hell</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="http://www.leechinghell.pw/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://getfreegames.net/" class="site-name" target="_blank">GetFreeGames</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://getfreegames.net/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://atopgames.com/" class="site-name" target="_blank">AtopGames</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://atopgames.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rexagames.com/" class="site-name" target="_blank">Rexa Games</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rexagames.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://triahgames.com/" class="site-name" target="_blank">TriahGames</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://triahgames.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://reloadedsteam.com/" class="site-name" target="_blank">Reloaded Steam</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://reloadedsteam.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://ankergames.net/" class="site-name" target="_blank">AnkerGames</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://ankergames.net/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://union-crax.xyz/" class="site-name" target="_blank">UnionCrax</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://union-crax.xyz/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://appnetica.com/" class="site-name" target="_blank">Appnetica</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://appnetica.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://sites.google.com/view/iwannaplay/%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B8%D0%B3%D1%80" class="site-name" target="_blank">IWannaPlay</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://sites.google.com/view/iwannaplay/%D1%81%D0%BF%D0%B8%D1%81%D0%BE%D0%BA-%D0%B8%D0%B3%D1%80" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://g4u.to/" class="site-name" target="_blank">g4u</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://g4u.to/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://gload.to/" class="site-name" target="_blank">GLoad</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://gload.to/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 class="category-title">Game Search Engines</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://cse.google.com/cse?cx=006516753008110874046:cbjowp5sdqg" class="site-name" target="_blank">Game Download CSE</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://cse.google.com/cse?cx=006516753008110874046:cbjowp5sdqg" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://cse.google.com/cse?cx=006516753008110874046:pobnsujblyx" class="site-name" target="_blank">Game Torrent CSE</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://cse.google.com/cse?cx=006516753008110874046:pobnsujblyx" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://cse.google.com/cse?cx=20c2a3e5f702049aa" class="site-name" target="_blank">/r/PiratedGames CSE</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://cse.google.com/cse?cx=20c2a3e5f702049aa" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rezi.one/" class="site-name" target="_blank">Rezi Search</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rezi.one/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://idleendeavor.github.io/gamesearch/" class="site-name" target="_blank">Rave Search (GitHub)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://idleendeavor.github.io/gamesearch/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://ravegamesearch.pages.dev/" class="site-name" target="_blank">Rave Search (Pages)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://ravegamesearch.pages.dev/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3 class="category-title">Tools and Resources</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://fmhy.net/internet-tools#redirect-bypass" class="site-name" target="_blank">Redirect Bypass (FMHY)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://fmhy.net/internet-tools#redirect-bypass" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rentry.co/lootlink" class="site-name" target="_blank">Lootlink Bypass</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rentry.co/lootlink" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rentry.co/FMHYBase64#csf" class="site-name" target="_blank">ROM Heaven CSF (em FMHY)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rentry.co/FMHYBase64#csf" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://fmhy.net/miscguide#free-stuff" class="site-name" target="_blank">FMHY Misc Free Stuff (Trackers)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://fmhy.net/miscguide#free-stuff" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://csrinstaff.writeas.com/" class="site-name" target="_blank">CS.RIN Status Page</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://csrinstaff.writeas.com/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod" class="site-name" target="_blank">CS.RIN Enhanced Mod</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/Altansar69/CS.RIN.RU-Enhanced-external" class="site-name" target="_blank">CS.RIN Steam Buttons Mod</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://github.com/Altansar69/CS.RIN.RU-Enhanced-external" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/CarrotRub/Fit-Launcher/" class="site-name" target="_blank">FitGirl Launcher (GitHub)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://github.com/CarrotRub/Fit-Launcher/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://github.com/KaladinDMP/AGBrowser" class="site-name" target="_blank">ARMGDDN Browser</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://github.com/KaladinDMP/AGBrowser" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://websites.umich.edu/~archive/" class="site-name" target="_blank">U-M Software Archives</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://websites.umich.edu/~archive/" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://redd.it/x804wg" class="site-name" target="_blank">IRC Games Post</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://redd.it/x804wg" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://rentry.org/ikc3x8bt" class="site-name" target="_blank">Site Info (FMHY Link)</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://rentry.org/ikc3x8bt" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593" class="site-name" target="_blank">CS.RIN Steam Fix Tutorial</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593" class="btn-main" target="_blank">Main</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- PÁGINA DE EDUCATION -->
+                <div id="education-page" class="site-section">
+                   <h2>Education</h2>
+                    
+                    <h3 class="category-title">Courses & Tutorials</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://hacksnation.com/" class="site-name" target="_blank">HackNation</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://hacksnation.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://onehack.us/" class="site-name" target="_blank">One Hack</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://onehack.us/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://1337x.to/sub/34/0/" class="site-name" target="_blank">1337x Tutorials</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://1337x.to/sub/34/0/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://freecoursesite.com/" class="site-name" target="_blank">Free Course Site</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://freecoursesite.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://downloadfreecourse.com/" class="site-name" target="_blank">Download Free Courses</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://downloadfreecourse.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://tutflix.org/" class="site-name" target="_blank">TutFlix</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://tutflix.org/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://sanet.st/full/" class="site-name" target="_blank">SoftArchive</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://sanet.st/full/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="category-title">E-Books</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://libgen.is/" class="site-name" target="_blank">LibGen</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://libgen.is/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://forum.mobilism.me/index.php" class="site-name" target="_blank">Mobilism</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://forum.mobilism.me/index.php" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://annas-archive.org/" class="site-name" target="_blank">Annas Archive</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://annas-archive.org/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- PÁGINA DE SOFTWARE -->
+                <div id="software-page" class="site-section">
+                    <h2>Software</h2>
+    
+                    <h3 class="category-title">Windows</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://appnee.com/" class="site-name" target="_blank">AppNee</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://appnee.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://cracksurl.com/" class="site-name" target="_blank">CRACKSurl</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://cracksurl.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://sanet.st/software/" class="site-name" target="_blank">SoftArchive</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://sanet.st/software/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="category-title">MacOS</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://appstorrent.ru/" class="site-name" target="_blank">Apps Torrent</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://appstorrent.ru/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://allmacworlds.com/" class="site-name" target="_blank">All Mac Worlds</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://allmacworlds.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://haxmac.cc/" class="site-name" target="_blank">HaxMac</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://haxmac.cc/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://insmac.org/" class="site-name" target="_blank">InsMac</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://insmac.org/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.macbed.com/" class="site-name" target="_blank">MacBed</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.macbed.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- PÁGINA DE GRAPHIC -->
+                <div id="graphic-page" class="site-section">
+                    <h2>Graphic</h2>
+
+                    <h3 class="category-title">Cracks</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://w16.monkrus.ws/" class="site-name" target="_blank">Monkrus</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://w16.monkrus.ws/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://getintopc.com/" class="site-name" target="_blank">GetIntoPC</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://getintopc.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="category-title">Packs</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://aeriver.com/" class="site-name" target="_blank">AERiver</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://aeriver.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://psdkeys.com" class="site-name" target="_blank">PSD Keys</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://psdkeys.com" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.downloadpirate.com/" class="site-name" target="_blank">Download Pirate</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.downloadpirate.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://graphicex.com/" class="site-name" target="_blank">GraphicEx</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://graphicex.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://gfx-hub.co/" class="site-name" target="_blank">GFX Hub</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://gfx-hub.co/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://psdkeys.com" class="site-name" target="_blank">PSD Keys</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://psdkeys.com" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <h3 class="category-title">Fonts</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://www.1001freefonts.com/" class="site-name" target="_blank">1001 Free Fonts</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.1001freefonts.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.fontsquirrel.com/" class="site-name" target="_blank">FontSquirrel</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://www.fontsquirrel.com/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://fontshub.pro/" class="site-name" target="_blank">Font Hub</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://fontshub.pro/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://fontspace.io/" class="site-name" target="_blank">Font Space</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://fontspace.io/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PÁGINA DE LIVETV -->
+                <div id="livetv-page" class="site-section">
+                   <h2>Music</h2>
+                    
+                    <h3 class="category-title">Live TV</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://daddylive.dad/24-7-channels.php" class="site-name" target="_blank">DaddyLive</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://daddylive.dad/24-7-channels.php" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://tv.garden/" class="site-name" target="_blank">TV Garden</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://tv.garden/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://iptv-web.app/" class="site-name" target="_blank">IPTV Web</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://iptv-web.app/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://worldstvmobile.com/category/sports" class="site-name" target="_blank">Worlds TV</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://worldstvmobile.com/category/sports" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="category-title">Live Sports</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://daddylive.dad/" class="site-name" target="_blank">DaddyLive</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://daddylive.dad/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://freestreams-live.fi/" class="site-name" target="_blank">Free Streams Live</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://freestreams-live.fi/" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://the.streameast.app/v90" class="site-name" target="_blank">StreamEast</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://the.streameast.app/v90" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+                <!-- PÁGINA DE ACTIVATION -->
+                <div id="activation-page" class="site-section">
+                    <h2>Activation</h2>
+                
+                    <h3 class="category-title">Windows</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://massgrave.dev/genuine-installation-media" class="site-name" target="_blank">MAS</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://massgrave.dev/genuine-installation-media" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://os.click/en" class="site-name" target="_blank">OS Click</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://os.click/en" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5" class="site-name" target="_blank">All OS</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://files.rg-adguard.net/version/f0bd8307-d897-ef77-dbd6-216fefbe94c5" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3 class="category-title">Office</h3>
+                    <table class="site-table">
+                        <thead>
+                            <tr>
+                                <th width="50%">Site</th>
+                                <th>Status</th>
+                                <th>Blocked</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="https://massgrave.dev/genuine-installation-media" class="site-name" target="_blank">MAS</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://massgrave.dev/genuine-installation-media" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://files.rg-adguard.net/version/5f2ad9c6-e111-76e8-06d1-56d44c136bae" class="site-name" target="_blank">All Office</a></td>
+                                <td>Online</td>
+                                <td class="visits">Unlocked</td>
+                                <td>
+                                    <a href="https://files.rg-adguard.net/version/5f2ad9c6-e111-76e8-06d1-56d44c136bae" class="btn-main" target="_blank">Main</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Hattered  2005-2025 | All content provided by third parties
+        </div>
+    </div>
+
+    <script>
+        // Função para mostrar a página principal
+        function showMainPage() {
+            event.preventDefault();
+            document.querySelectorAll('.site-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById('main-page').classList.add('active');
+        }
+
+        // Função para mostrar uma categoria
+        function showCategory(category) {
+            event.preventDefault();
+            document.querySelectorAll('.site-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(`${category}-page`).classList.add('active');
+        }
+
+        // Função para mostrar/esconder mirrors
+        function toggleMirrors(mirrorId) {
+            event.preventDefault();
+            var mirrors = document.querySelectorAll('.mirrors');
+            mirrors.forEach(function(mirror) {
+                if (mirror.id !== mirrorId) {
+                    mirror.style.display = 'none';
+                }
+            });
+            
+            var selectedMirror = document.getElementById(mirrorId);
+            if (selectedMirror) {
+                selectedMirror.style.display = selectedMirror.style.display === 'block' ? 'none' : 'block';
+            }
+        }
+
+        // Inicializa a página principal
+        document.addEventListener('DOMContentLoaded', function() {
+            showMainPage();
+        });
+    </script>
+</body>
+</html>

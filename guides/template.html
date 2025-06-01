@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guides - Pirate Bay Classic</title>
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzMzIiBkPSJNMjU2IDhDMTE5IDggOCAxMTkgOCAyNTZzMTExIDI0OCAyNDggMjQ4IDI0OC0xMTEgMjQ4LTI0OFMzOTMgOCAyNTYgOHptMCA0NDhjLTExMC41IDAtMjAwLTg5LjUtMjAwLTIwMFMxNDUuNSA1NiAyNTYgNTZzMjAwIDg5LjUgMjAwIDIwMC04OS41IDIwMC0yMDAgMjAwWm0xMDEuOC0yNjEuN2wtODQuOS02MS43Yy0zLjEtMi4yLTcuMi0yLjItMTAuMyAwbC04NC45IDYxLjdjLTMuOSAyLjgtNC4xIDguMi0uNCAxMS4ybDQwLjQgMjkuNGMtMS45IDEzLjctNS40IDI3LjEtMTAuMiAzOS43bC0zNi4zIDguNGMtMy43IDEtNS40IDUuMi0zLjQgOC43bDI0NyA0Mi40YzMuMSA1LjMgMTAuOCA1LjMgMTMuOSAwbDI0LjctNDIuNGMyLTMuNS4zLTcuNy0zLjQtOC43bC0zNi4zLTguNGMtNC44LTEyLjYtOC4yLTI2LTEwLjItMzkuN2w0MC40LTI5LjRjMy43LTMgMy41LTguNC0uNC0xMS4yWm0tMTYxLjcgMjMuNGw0OS41IDM1LjktMS42LTEzLjljLTQuMy0yNy41LTgtNDA4bC01NS4xLTEyLjhjLTMuNy0uOS01LjgtNC43LTQuNC04LjNsMjcuOS00OC4yYzIuNS00LjQgOC40LTQuOCAxMS4yLS43bDI3LjkgNDguMmMxLjMgMi4zIDEuMyA1LjIgMCA3LjVsLTI3LjkgNDguMmMtMi44IDQuMS04LjcgMy43LTExLjItLjdabTE2MS43IDIzLjRsLTQ9LjUgMzUuOWMxLjYgMTMuOSA0LjMgMjcuNSA4IDQwOGw1NS4xIDEyLjhjMy43LjkgNS44IDQuNyA0LjQgOC4zbC0yNy45IDQ4LjJjLTIuNSA0LjQtOC40IDQuOC0xMS4yLjdsLTI3LjktNDguMmMtMS4zLTIuMy0xLjMtNS4yIDAtNy41bDI3LjktNDguMmMyLjgtNC4xIDguNy0zLjcgMTEuMi43WiIgLz48L3N2Zz4=" type="image/svg+xml" />
+  <link rel="stylesheet" href="guides.css" />
+  <style>
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #000;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #000;
+    }
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      border-bottom: 2px solid #c33;
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      margin-top: 30px;
+      color: #333;
+    }
+    .main-content p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    .back-button {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo" style="display:flex; align-items:center;">
+      </div>
+      <div class="counter"></div>
+    </div>
+
+    <div class="language-switcher">
+      <button id="btn-pt">Português</button>
+      <button id="btn-en">English</button>
+    </div>
+
+    <div class="content"> 
+      <div class="main-content">
+
+        <a href="../guides.html" class="back-button" id="back-button">← Back to Guides</a>
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const btnPt = document.getElementById('btn-pt');
+    const btnEn = document.getElementById('btn-en');
+    const contentPt = document.getElementById('content-pt');
+    const contentEn = document.getElementById('content-en');
+    const backButton = document.getElementById('back-button');
+
+    btnPt.addEventListener('click', () => {
+      contentPt.classList.add('active');
+      contentEn.classList.remove('active');
+      backButton.textContent = '← Voltar para os Guias';
+    });
+
+    btnEn.addEventListener('click', () => {
+      contentEn.classList.add('active');
+      contentPt.classList.remove('active');
+      backButton.textContent = '← Back to Guides';
+    });
+  </script>
+</body>
+</html>

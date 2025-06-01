@@ -1,0 +1,390 @@
+/* ============================= */
+/* ESTILO BASE - SIMPLES E ANTIGO */
+/* ============================= */
+body {
+    font-family: Arial, Verdana, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ============================= */
+/* CONTAINER PRINCIPAL */
+/* ============================= */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    min-height: 100vh;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+/* ============================= */
+/* CABEÇALHO */
+/* ============================= */
+.header {
+    background: #f8f8f8;
+    padding: 10px 20px;
+    border-bottom: 3px solid #c33; /* Barra vermelha */
+    text-align: center;
+    max-width: 1200px; /* /* MODIFICADO: limite largura */
+    margin: 0 auto; /* /* MODIFICADO: centralizar */
+    box-sizing: border-box; /* /* MODIFICADO: incluir padding no tamanho */
+}
+
+.logo {
+    font-family: 'Times New Roman', serif;
+    font-size: 36px;
+    color: hsl(0, 60%, 50%);
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 15px;
+}
+
+/* ============================= */
+/* MENU DE NAVEGAÇÃO */
+/* ============================= */
+.nav {
+    background: #333;
+    padding: 8px 0;
+    text-align: left;
+    position: relative;
+    max-width: 1200px; /* /* MODIFICADO: largura fixa */
+    width: 100%;
+    margin: 0 auto; /* /* MODIFICADO: centralizar */
+    box-sizing: border-box; /* /* MODIFICADO: garantir padding */
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.nav a:hover {
+    color: #cc3333;
+    background: #555;
+}
+
+/* ============================= */
+/* MENU DROPDOWN */
+/* ============================= */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 250px;
+    max-height: 500px;
+    overflow-y: auto;
+    box-shadow: 0px 8px 16px 0px #00000033;
+    z-index: 1;
+    left: 0;
+    text-align: left;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ============================= */
+/* CONTEÚDO PRINCIPAL */
+/* ============================= */
+.content {
+    display: flex;
+    padding: 15px 0;
+}
+
+/* ============================= */
+/* BARRA LATERAL */
+/* ============================= */
+.sidebar {
+    width: 300px; /* /* MODIFICADO: aumentada */
+    padding-right: 15px;
+    box-sizing: border-box; /* /* MODIFICADO: evitar overflow */
+}
+
+.sidebar-box {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+}
+
+.sidebar-title {
+    background: #c33;
+    color: #fff;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* Ajusta o conteúdo para FAQ com links */
+.sidebar-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar-content a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.sidebar-content a:hover {
+    color: #c33;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sidebar-content a.faq-question {
+  display: block;
+  color: #333333;
+  text-decoration: none;
+  margin-bottom: 12px;
+  font-weight: normal; /* tira o bold */
+  font-size: 14px;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.sidebar-content a.faq-question:hover {
+  color: #c33;
+  text-decoration: underline;
+}
+
+.faq-translation {
+  font-size: 12px;
+  color: #666666;
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+  margin-top: 3px;
+}
+
+/* ============================= */
+/* ÁREA PRINCIPAL - tutoriais */
+/* ============================= */
+.main-content {
+    flex: 1;
+    max-width: calc(1200px - 300px - 30px); /* /* MODIFICADO: ajusta largura do conteúdo principal */
+    box-sizing: border-box;
+}
+
+.tutorials-block {
+  width: 100%;
+  background: #f8f8f8;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 15px 20px; /* /* MODIFICADO: padding menor */
+  margin-bottom: 20px; /* /* MODIFICADO: margin menor */
+  box-sizing: border-box;
+  transition: box-shadow 0.3s ease;
+}
+
+.tutorials-block:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #c33;
+}
+
+.tutorials-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  border-bottom: 2px solid #c33;
+  padding-bottom: 5px;
+  margin: 0 0 15px 0;
+  display: inline-block;
+}
+
+.tutorials-description {
+  font-size: 14px;
+  color: #333333;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.subtopics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.subtopic-link {
+  background: #f8f8f8;
+  border-left: 4px solid transparent;
+  padding: 10px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  line-height: 1.4;
+}
+
+.subtopic-link em {
+  font-size: 13px;
+  font-style: italic;
+  color: #666;
+  font-weight: 400;
+}
+
+.subtopic-link:hover {
+  border-left: 4px solid #c33;
+  background-color: #fff1f1;
+  transform: translateX(4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================= */
+/* RODAPÉ */
+/* ============================= */
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+    border-top: 3px solid #c33;
+}
+
+/* ============================= */
+/* FAQ SECTION */
+/* ============================= */
+.faq-section {
+  margin-top: 40px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+.faq-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.faq-list li {
+  margin-bottom: 10px;
+}
+
+.faq-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.faq-link:hover {
+  color: #c33;
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* CALENDAR */
+/* ============================= */
+.calendar-container {
+  width: 210px;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+.calendar-title {
+  font-size: 14px;
+  text-align: left;
+  padding-left: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #bf1f1f;
+  color: white;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 30px);
+  background-color: #f5f5f5;
+}
+
+.calendar-weekday {
+  background-color: #e0e0e0;
+  font-size: 11px;
+  color: #262626;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+}
+
+.calendar-day {
+  background-color: #f5f5f5;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.calendar-day.today {
+  background-color: #bf1f1f;
+  color: white;
+  font-weight: bold;
+}
+
+/* Remover bordas extras do último dia da semana e da última linha do mês */
+.calendar-day:last-child,
+.calendar-weekday:last-child {
+  border-right: none;
+}
+
+.calendar-day:nth-last-child(-n+7) {
+  border-bottom: none;
+}
