@@ -1,37 +1,38 @@
-# The Pirate Bay Classic 
+# 🇬🇧 🇺🇸 Hattered
 
-## 🇬🇧 🇺🇸 English
-Hii guys, this is my firts repository of my own "megathread" of the best sites of my opinion
+Hi guys! Welcome to **Hattered: The Pirate Bay Classic**, my first repository featuring a **megathread** with my favorite torrent and piracy-related sites, guides, and tools.
 
 ---
 
 ## 🚀 Features
 
-- 🧭 Quick access to popular torrent and piracy platforms
-- 📰 Latest news and updates from the piracy world
-- 📅 Built-in calendar with current day highlight
-- 🧠 Useful guides and tutorials (coming soon)
-- 🧩 Clean sidebar with categorized links
-- 📂 Community links: Reddit, forums, GitHub collections
-
----
-
-## 🖼️ Preview
-
-
-![SCREENSHOT WEBSITE](https://github.com/user-attachments/assets/14696a6b-379d-4b64-ac5c-c82592108f0e)
+- 🧭 Quick access to popular torrent and piracy platforms  
+- 📰 Latest news and updates from the piracy world  
+- 📅 Built-in calendar with current day highlight  
+- 🧠 Useful bilingual guides and tutorials with language toggle button  
+- ❓ FAQ section in guides to answer common questions  
+- 🧩 Clean sidebar with categorized links  
+- 🛠️ Useful online tools planned: magnet/torrent converter, hash checker, speed calculator, tracker monitor, and more (coming soon)  
+- 🚫 Planned blacklist of suspicious or unsafe sites (coming soon)  
+- 📂 Community links: Reddit, forums, GitHub collections  
 
 ---
 
 ## 🛠️ Tech Stack
 
-- HTML + CSS + JavaScript (Vanilla)
-- Responsive and lightweight
-- No dependencies or frameworks
-- Easily customizable
+- HTML + CSS + JavaScript (Vanilla)  
+- Responsive and lightweight  
+- No dependencies or frameworks  
+- Easily customizable  
 
 ---
 
+## 🤝 Contributing
+
+Feel free to open issues and pull requests!  
+If you want to help with translations, add guides, or implement new tools, you are very welcome!
+
+---
 
 ## 📣 Disclaimer
 
@@ -39,8 +40,17 @@ This project is for educational purposes only. No illegal content is hosted or d
 
 ---
 
-## 🇵🇹 🇧🇷 Português
-Hey pessoal/malta, este é o meu primeiro projeto com html e usei também AI para alguns CSS, este é um projeto que pretendo continuar e aumentar e só faço mesmo por puro hobby, espero que gostem.
+## 📞 Contact
+
+Made with ❤️ by frraz 🇵🇹  
+Feel free to reach out: your.email@example.com  
+Follow me on GitHub: [github.com/frraz](https://github.com/frraz)
+
+---
+
+# 🇵🇹 🇧🇷 Hattered: The Pirate Bay Classic
+
+Olá pessoal! Bem-vindos ao **Hattered: The Pirate Bay Classic**, meu primeiro repositório com um **megathread** dos meus sites favoritos relacionados a torrents, pirataria, guias e ferramentas.
 
 ---
 
@@ -49,32 +59,42 @@ Hey pessoal/malta, este é o meu primeiro projeto com html e usei também AI par
 - 🧭 Acesso rápido às plataformas de torrents e pirataria mais populares  
 - 📰 Últimas notícias e atualizações do mundo da pirataria  
 - 📅 Calendário integrado com destaque no dia atual  
-- 🧠 Guias e tutoriais úteis (em breve)  
+- 🧠 Guias bilíngues com botão para troca de idioma  
+- ❓ Seção de FAQs nos guias para responder perguntas comuns  
 - 🧩 Barra lateral limpa com links organizados por categoria  
+- 🛠️ Ferramentas online úteis planejadas: conversor magnet/torrent, verificador de hash, calculadora de velocidade, monitor de trackers e mais (em breve)  
+- 🚫 Blacklist de sites suspeitos ou inseguros planejada (em breve)  
 - 📂 Ligações para comunidades: Reddit, fóruns, coleções no GitHub  
-
----
-
-## 🖼️ Pré-visualização
-
-![SCREENSHOT WEBSITE](https://github.com/user-attachments/assets/14696a6b-379d-4b64-ac5c-c82592108f0e)
 
 ---
 
 ## 🛠️ Tecnologias Usadas
 
-- HTML + CSS + JavaScript (puro)
-- Leve e responsivo
-- Sem frameworks ou dependências externas
-- Fácil de personalizar
+- HTML + CSS + JavaScript (puro)  
+- Leve e responsivo  
+- Sem frameworks ou dependências externas  
+- Fácil de personalizar  
 
 ---
 
+## 🤝 Contribuindo
+
+Sinta-se à vontade para abrir issues e pull requests!  
+Se quiser ajudar com traduções, adicionar guias ou implementar novas ferramentas, será muito bem-vindo!
+
+---
+
+
 ## 📣 Aviso Legal
 
-Este projeto é apenas para **fins educativos**.  
+Este projeto é apenas para fins educativos.  
 Nenhum conteúdo ilegal é hospedado ou partilhado.  
-Usa por tua conta e risco e respeita sempre as leis do teu país.
+Use por sua conta e risco e respeite sempre as leis do seu país.
 
-Feito com ❤️ por frraz
-🇵🇹 feito em Portugal
+---
+
+## 📞 Contacto
+
+Feito com ❤️ por frraz 🇵🇹  
+Entre em contacto: me.frraz@gmail.com  
+Siga-me no GitHub: [github.com/frraz](https://github.com/frraz)
