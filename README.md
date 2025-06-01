@@ -1,4 +1,5 @@
-# 🇬🇧 🇺🇸 Hattered
+# Hattered
+## 🇬🇧 🇺🇸 English
 
 Hi guys! Welcome to **Hattered: The Pirate Bay Classic**, my first repository featuring a **megathread** with my favorite torrent and piracy-related sites, guides, and tools.
 
@@ -48,7 +49,7 @@ Follow me on GitHub: [github.com/frraz](https://github.com/frraz)
 
 ---
 
-# 🇵🇹 🇧🇷 Hattered: The Pirate Bay Classic
+#" 🇵🇹 🇧🇷 Português
 
 Olá pessoal! Bem-vindos ao **Hattered: The Pirate Bay Classic**, meu primeiro repositório com um **megathread** dos meus sites favoritos relacionados a torrents, pirataria, guias e ferramentas.
 
