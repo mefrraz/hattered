@@ -49,7 +49,7 @@ Follow me on GitHub: [github.com/frraz](https://github.com/frraz)
 
 ---
 
-#" 🇵🇹 🇧🇷 Português
+## 🇵🇹 🇧🇷 Português
 
 Olá pessoal! Bem-vindos ao **Hattered: The Pirate Bay Classic**, meu primeiro repositório com um **megathread** dos meus sites favoritos relacionados a torrents, pirataria, guias e ferramentas.
 
