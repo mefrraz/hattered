@@ -1,4 +1,9 @@
 # Hattered
+
+![screenshot1](https://github.com/user-attachments/assets/79240a89-d993-4fe2-ae11-466453f740d1)
+![screenshot3](https://github.com/user-attachments/assets/6c90644c-145f-4f25-be75-df32dbec7c49)
+![screenshot2](https://github.com/user-attachments/assets/fb80cf11-0d5e-405a-977c-d6ad2e124cb7)
+
 ## 🇬🇧 🇺🇸 English
 
 Hi guys! Welcome to **Hattered**, my first repository featuring a **megathread** with my favorite torrent and piracy-related sites, guides, and tools.
@@ -40,6 +45,7 @@ If you want to help with translations, add guides, or implement new tools, you a
 This project is for educational purposes only. No illegal content is hosted or distributed. Use at your own risk and always respect your country's laws.
 
 ---
+
 
 ## 📞 Contact
 
