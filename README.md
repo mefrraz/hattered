@@ -44,7 +44,7 @@ This project is for educational purposes only. No illegal content is hosted or d
 ## 📞 Contact
 
 Made with ❤️ by frraz 🇵🇹  
-Feel free to reach out: your.email@example.com  
+Feel free to reach out: me.frraz@gmail.com   
 Follow me on GitHub: [github.com/frraz](https://github.com/frraz)
 
 ---
