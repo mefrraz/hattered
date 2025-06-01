@@ -45,7 +45,7 @@ This project is for educational purposes only. No illegal content is hosted or d
 
 Made with ❤️ by frraz 🇵🇹  
 Feel free to reach out: me.frraz@gmail.com   
-Follow me on GitHub: [github.com/frraz](https://github.com/frraz)
+Follow me on GitHub: [github.com/mefrraz](https://github.com/mefrraz)
 
 ---
 
@@ -98,4 +98,4 @@ Use por sua conta e risco e respeite sempre as leis do seu país.
 
 Feito com ❤️ por frraz 🇵🇹  
 Entre em contacto: me.frraz@gmail.com  
-Siga-me no GitHub: [github.com/frraz](https://github.com/frraz)
+Siga-me no GitHub: [github.com/mefrraz](https://github.com/mefrraz)
