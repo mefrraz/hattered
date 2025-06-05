@@ -1,0 +1,420 @@
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll; /* barra sempre reservada */
+}
+
+
+body {
+    font-family: Arial, Verdana, sans-serif;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* REMOVIDO overflow-y: scroll para evitar 2 barras */
+}
+        
+        /* CONTAINER PRINCIPAL */
+.container {
+    flex: 1 0 auto; /* Expande para ocupar espaço disponível */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+        
+        /* CABEÇALHO */
+        .header {
+            background: #f8f8f8;
+            padding: 10px 20px;
+            border-bottom: 3px solid #c33;
+            text-align: center;
+            max-width: 1200px;
+        }
+        
+        .logo {
+            font-family: 'Times New Roman', serif;
+            font-size: 36px;
+            color: hsl(0, 60%, 50%);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        /* MENU DE NAVEGAÇÃO */
+        .nav {
+            background: #333;
+            padding: 8px 0;
+            text-align: center;
+            position: relative;
+            width: 1200px; /* ou outro valor */
+        }
+        
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            margin: 0 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .nav a:hover {
+            color: #cc3333;
+            background: #555;
+        }
+        
+        /* MENU DROPDOWN */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 250px;
+            max-height: 500px;
+            overflow-y: auto;
+            box-shadow: 0px 8px 16px 0px #00000033;
+            z-index: 1;
+            left: 0;
+            text-align: left;
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            margin: 0;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        /* CONTEÚDO PRINCIPAL */
+        .content {
+            display: flex;
+            padding: 15px;
+        }
+        
+        /* BARRA LATERAL */
+        .sidebar {
+            width: 200px;
+            padding-right: 15px;
+        }
+        
+        .sidebar-box {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            background: #f5f5f5;
+        }
+        
+        .sidebar-title {
+            background: #c33;
+            color: #fff;
+            padding: 8px;
+            font-weight: bold;
+        }
+        
+        .sidebar-content {
+            padding: 10px;
+        }
+        
+        /* ÁREA PRINCIPAL */
+        .main-content {
+            flex: 1;
+            min-height: 300px; /* ou outro valor razoável */
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .site-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        
+        .site-table th {
+            background: #333;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .site-table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .site-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .site-name {
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        .site-name:hover {
+            text-decoration: underline;
+        }
+        
+        .visits {
+            color: #090;
+            font-weight: bold;
+        }
+        
+        /* RODAPÉ */
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+    border-top: 3px solid #c33;
+    flex-shrink: 0; /* Não encolhe */
+    margin-top: auto; /* Empurra o rodapé para baixo se o conteúdo for pequeno */
+}
+
+        
+        /* ELEMENTOS ESPECIAIS */
+        .ad-banner {
+            background: #ffc;
+            border: 1px dashed #c90;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .counter {
+            font-family: monospace;
+            font-size: 16px;
+            color: #c33;
+        }
+        
+        /* BOTÕES */
+        .btn-main {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #c33;
+            color: white;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .btn-main:hover {
+            background: #900;
+        }
+        
+        .btn-mirror {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #fff;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        
+        .btn-mirror:hover {
+            background: #f5f5f5;
+        }
+        
+        /* SEÇÃO DE MIRRORS */
+        .mirrors {
+            display: none;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        
+        .mirrors h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+        
+        .mirrors ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .mirrors a {
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        .mirrors a:hover {
+            text-decoration: underline;
+        }
+        
+        /* TOP SITES */
+        .top-sites {
+            margin-bottom: 30px;
+        }
+        
+        .top-sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .top-site-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        
+        .top-site-card a {
+            color: #06c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .top-site-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .top-site-visits {
+            color: #666;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* PÁGINAS DE CATEGORIA (OCULTAS POR PADRÃO) */
+        .site-section {
+            display: none;
+        }
+        
+        .site-section.active {
+            display: block;
+        }
+        
+        /* Estilo para subtítulos de categorias */
+        .category-title {
+            color: #c33;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #c33;
+        }
+        /* CSS dos magnets */
+.ms-sidebar-box {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  border-radius: 0; /* Sem cantos arredondados */
+}
+
+.ms-sidebar-title {
+  background: #c33;
+  color: #fff;
+  padding: 10px 12px; /* Ajustado para mesma altura dos outros títulos */
+  font-weight: bold;
+  font-size: 14px; /* Mesma fonte do Top collaborators / Getting Started */
+  border-radius: 0; /* Sem cantos arredondados */
+  line-height: 1.2;
+}
+
+.ms-sidebar-content {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ms-link {
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px; /* Nome menor que antes */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.ms-link:hover {
+  color: #900;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* CSS do Calendário Sidebar */
+.calendar-container {
+  width: 210px;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+/*css das setas */
+.toggle-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.toggle-content.open {
+  max-height: 1000px; /* suficiente para o conteúdo */
+}
+
+.toggle-icon {
+  transition: transform 0.5s ease;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.toggle-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-header .toggle-icon.rotate {
+  transform: rotate(180deg);
+}
+.category-title {
+  color: #c33;
+  margin: 5px 0 10px 0;  /* diminui espaço acima */
+  padding-bottom: 3px;   /* um pouco menos que antes */
+  border-bottom: 2px solid #c33;
+  font-size: 1rem;       /* menor tamanho da fonte */
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+
+.category-title svg {
+  margin-left: 10px;
+  fill: #cc3333;  /* cor do ícone */
+  transition: transform 0.5s ease;
+}
