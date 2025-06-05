@@ -1,103 +1,138 @@
-# 🌐 Hattered
+# ❤ Hattered  
+
+## 🇬🇧 English
+
+Welcome to **Hattered**, a community-driven megathread bringing you curated torrent and piracy-related sites, guides, and tools — all in one place.
 
 ---
 
-## English
+### 🎯 Categories
 
-Welcome to **Hattered**, a lightweight and organized megathread focused on helping users find the best torrent resources, guides, and tools — all in one place. Designed to be fast, clean, and accessible to everyone.
-
-### 🔗 Live Site
-
-👉 [Visit Hattered on GitHub Pages](https://mefrraz.github.io/hattered/index.html)
-
----
-
-### 🚀 Features
-
-- 🧭 Homepage with categorized links to torrent and IPTV sites  
-- 🧩 9 main categories:  
-  - 🎬 Movies & Series  
-  - 🎵 Music  
-  - 🎮 Games  
-  - 📚 Education  
-  - 💻 Software  
-  - 🎨 Graphics  
-  - 📡 Live TV  
-  - 🍥 Animes  
-  - 🔐 Activation  
-- 🗞️ News section with torrent world updates  
-- 🌐 Links to Reddit communities and forums  
-- 📚 User guides section in English and Portuguese  
-- ❓ Bilingual FAQ for easy reference  
-- 🧠 Language toggle button  
-- 📱 Responsive up to 1024×600px (mobile version coming soon)  
-- 🖼️ Visual improvements with emojis and background images
+- 🎬 Movies & Series  
+- 🎵 Music  
+- 🎮 Games  
+- 📚 Education  
+- 💻 Software  
+- 🎨 Graphics  
+- 📡 Live TV  
+- 🍥 Animes  
+- 🔐 Activation  
 
 ---
 
-### 📌 Useful Links
+### 🚀 What You Get
 
-- 🔗 GitHub Repo: [https://github.com/mefrraz/hattered](https://github.com/mefrraz/hattered)  
-- 🌍 Live Site: [https://mefrraz.github.io/hattered](https://mefrraz.github.io/hattered)
-
----
-
-### 👤 About
-
-This project is created and maintained by [@mefrraz](https://github.com/mefrraz).  
-I’m still learning web development and building this project step-by-step. Feedback and suggestions are always welcome!
-
----
-
-> 💡 *Want to contribute or suggest something? Open an issue or start a discussion on GitHub!*
+- 🧭 Easy access to top torrent and piracy platforms  
+- 📰 Up-to-date news and info from the piracy scene  
+- 📅 Handy built-in calendar highlighting the current day  
+- 🧠 Bilingual guides with a language toggle (English/Portuguese)  
+- ❓ FAQ section addressing common questions  
+- 🧩 Organized sidebar with categorized links for smooth browsing  
+- 🛠️ Planned useful tools: magnet/torrent converters, hash checkers, speed calculators, tracker monitors, and more  
+- 🚫 Upcoming blacklist feature for suspicious or unsafe sites  
+- 📂 Links to community hubs: Reddit, forums, GitHub collections  
 
 ---
 
-## Português
+### 🛠️ Technology
 
-Bem-vindo ao **Hattered**, uma megathread leve e organizada que ajuda os utilizadores a encontrar os melhores recursos, guias e sites de torrents — tudo num só lugar. Projetado para ser rápido, limpo e acessível a todos.
+- Built with clean HTML, CSS, and Vanilla JavaScript  
+- Lightweight and fully responsive  
+- No external frameworks or dependencies  
+- Easy to customize and expand  
 
-### 🔗 Site Online
+---
 
-👉 [Visite o Hattered no GitHub Pages](https://mefrraz.github.io/hattered/index.html)
+### 🤝 Get Involved
+
+Issues, suggestions, and pull requests are very welcome!  
+Help with translations, adding guides, or coding new tools? Join the project!
+
+---
+
+### 📣 Disclaimer
+
+This project is for educational purposes only. No illegal content is hosted or distributed. Please follow your local laws.
+
+---
+
+### 📞 Contact
+
+Made with ❤️ by frraz 🇵🇹  
+Reach me at: me.frraz@gmail.com  
+GitHub: [github.com/mefrraz](https://github.com/mefrraz)
+
+---
+
+## 🇵🇹 Português
+
+Bem-vindos ao **Hattered**, um megathread comunitário que reúne sites, guias e ferramentas relacionados a torrents e pirataria — tudo organizado para você.
+
+---
+
+### 🎯 Categorias
+
+- 🎬 Filmes & Séries  
+- 🎵 Música  
+- 🎮 Jogos  
+- 📚 Educação  
+- 💻 Software  
+- 🎨 Gráficos  
+- 📡 TV ao Vivo  
+- 🍥 Animes  
+- 🔐 Ativação  
 
 ---
 
 ### 🚀 Funcionalidades
 
-- 🧭 Página inicial com links categorizados para sites de torrents e IPTV  
-- 🧩 9 categorias principais:  
-  - 🎬 Filmes & Séries  
-  - 🎵 Música  
-  - 🎮 Jogos  
-  - 📚 Educação  
-  - 💻 Software  
-  - 🎨 Gráficos  
-  - 📡 TV ao Vivo  
-  - 🍥 Animes  
-  - 🔐 Ativações  
-- 🗞️ Seção de notícias atualizadas sobre o mundo dos torrents  
-- 🌐 Links para comunidades e fóruns no Reddit  
-- 📚 Seção de guias de usuário em Inglês e Português  
-- ❓ FAQ bilíngue para facilitar a consulta  
-- 🧠 Botão para alternar idioma  
-- 📱 Responsivo até 1024×600px (versão mobile em breve)  
-- 🖼️ Melhorias visuais com emojis e imagens de fundo
+- 🧭 Acesso rápido às principais plataformas de torrents e pirataria  
+- 📰 Notícias atualizadas do mundo da pirataria  
+- 📅 Calendário integrado com destaque para o dia atual  
+- 🧠 Guias bilíngues com botão para alternar entre Inglês e Português  
+- ❓ FAQ para responder às dúvidas mais comuns  
+- 🧩 Barra lateral organizada com links categorizados para melhor navegação  
+- 🛠️ Ferramentas planejadas: conversores magnet/torrent, verificador de hash, calculadora de velocidade, monitor de trackers e mais  
+- 🚫 Blacklist em desenvolvimento para sites suspeitos ou inseguros  
+- 📂 Links para comunidades: Reddit, fóruns, coleções no GitHub  
 
 ---
 
-### 📌 Links Úteis
+### 🛠️ Tecnologias
 
-- 🔗 Repositório GitHub: [https://github.com/mefrraz/hattered](https://github.com/mefrraz/hattered)  
-- 🌍 Site Online: [https://mefrraz.github.io/hattered](https://mefrraz.github.io/hattered)
-
----
-
-### 👤 Sobre
-
-Este projeto foi criado e é mantido por [@mefrraz](https://github.com/mefrraz).  
-Ainda estou a aprender desenvolvimento web e construo este projeto passo a passo. Feedback e sugestões são sempre bem-vindos!
+- Desenvolvido com HTML, CSS e JavaScript puro  
+- Leve e responsivo  
+- Sem frameworks ou dependências externas  
+- Fácil de personalizar e expandir  
 
 ---
 
-❤️ Made by frraz from 🇵🇹
+### 🤝 Participe
+
+Contribuições, sugestões e pull requests são muito bem-vindas!  
+Quer ajudar com traduções, guias ou novas ferramentas? Junte-se ao projeto!
+
+---
+
+### 📣 Aviso Legal
+
+Projeto apenas para fins educativos. Não hospeda nem distribui conteúdo ilegal. Respeite as leis do seu país.
+
+---
+
+### 📞 Contacto
+
+Feito com ❤️ por frraz 🇵🇹  
+Contato: me.frraz@gmail.com  
+GitHub: [github.com/mefrraz](https://github.com/mefrraz)
+
+---
+
+## Capturas de Tela / Screenshots
+
+![screenshot1](https://github.com/user-attachments/assets/79240a89-d993-4fe2-ae11-466453f740d1)  
+![screenshot2](https://github.com/user-attachments/assets/6c90644c-145f-4f25-be75-df32dbec7c49)  
+![screenshot3](https://github.com/user-attachments/assets/fb80cf11-0d5e-405a-977c-d6ad2e124cb7) 
+![screenshot4](https://github.com/user-attachments/assets/0833cd08-6574-4bbf-83d4-4f9e09ad0298)
+![screenshot5](https://github.com/user-attachments/assets/ee25d436-20c4-45f2-9fe7-e73470df08b9)
+
