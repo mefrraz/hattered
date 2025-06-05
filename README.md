@@ -130,9 +130,7 @@ GitHub: [github.com/mefrraz](https://github.com/mefrraz)
 
 ## Capturas de Tela / Screenshots
 
-![screenshot1](https://github.com/user-attachments/assets/79240a89-d993-4fe2-ae11-466453f740d1)  
+![screenshot5](https://github.com/user-attachments/assets/ee25d436-20c4-45f2-9fe7-e73470df08b9)
+![screenshot4](https://github.com/user-attachments/assets/0833cd08-6574-4bbf-83d4-4f9e09ad0298)
 ![screenshot2](https://github.com/user-attachments/assets/6c90644c-145f-4f25-be75-df32dbec7c49)  
 ![screenshot3](https://github.com/user-attachments/assets/fb80cf11-0d5e-405a-977c-d6ad2e124cb7) 
-![screenshot4](https://github.com/user-attachments/assets/0833cd08-6574-4bbf-83d4-4f9e09ad0298)
-![screenshot5](https://github.com/user-attachments/assets/ee25d436-20c4-45f2-9fe7-e73470df08b9)
-
