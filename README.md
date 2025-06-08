@@ -1,136 +1,101 @@
-# ❤ Hattered  
+# Hattered
+## 🇬🇧 🇺🇸 English
 
-## 🇬🇧 English
-
-Welcome to **Hattered**, a community-driven megathread bringing you curated torrent and piracy-related sites, guides, and tools — all in one place.
-
----
-
-### 🎯 Categories
-
-- 🎬 Movies & Series  
-- 🎵 Music  
-- 🎮 Games  
-- 📚 Education  
-- 💻 Software  
-- 🎨 Graphics  
-- 📡 Live TV  
-- 🍥 Animes  
-- 🔐 Activation  
+Hi guys! Welcome to **Hattered**, my first repository featuring a **megathread** with my favorite torrent and piracy-related sites, guides, and tools.
 
 ---
 
-### 🚀 What You Get
+## 🚀 Features
 
-- 🧭 Easy access to top torrent and piracy platforms  
-- 📰 Up-to-date news and info from the piracy scene  
-- 📅 Handy built-in calendar highlighting the current day  
-- 🧠 Bilingual guides with a language toggle (English/Portuguese)  
-- ❓ FAQ section addressing common questions  
-- 🧩 Organized sidebar with categorized links for smooth browsing  
-- 🛠️ Planned useful tools: magnet/torrent converters, hash checkers, speed calculators, tracker monitors, and more  
-- 🚫 Upcoming blacklist feature for suspicious or unsafe sites  
-- 📂 Links to community hubs: Reddit, forums, GitHub collections  
-
----
-
-### 🛠️ Technology
-
-- Built with clean HTML, CSS, and Vanilla JavaScript  
-- Lightweight and fully responsive  
-- No external frameworks or dependencies  
-- Easy to customize and expand  
+- 🧭 Quick access to popular torrent and piracy platforms  
+- 📰 Latest news and updates from the piracy world  
+- 📅 Built-in calendar with current day highlight  
+- 🧠 Useful bilingual guides and tutorials with language toggle button  
+- ❓ FAQ section in guides to answer common questions  
+- 🧩 Clean sidebar with categorized links  
+- 🛠️ Useful online tools planned: magnet/torrent converter, hash checker, speed calculator, tracker monitor, and more (coming soon)  
+- 🚫 Planned blacklist of suspicious or unsafe sites (coming soon)  
+- 📂 Community links: Reddit, forums, GitHub collections  
 
 ---
 
-### 🤝 Get Involved
+## 🛠️ Tech Stack
 
-Issues, suggestions, and pull requests are very welcome!  
-Help with translations, adding guides, or coding new tools? Join the project!
-
----
-
-### 📣 Disclaimer
-
-This project is for educational purposes only. No illegal content is hosted or distributed. Please follow your local laws.
+- HTML + CSS + JavaScript (Vanilla)  
+- Responsive and lightweight  
+- No dependencies or frameworks  
+- Easily customizable  
 
 ---
 
-### 📞 Contact
+## 🤝 Contributing
+
+Feel free to open issues and pull requests!  
+If you want to help with translations, add guides, or implement new tools, you are very welcome!
+
+---
+
+## 📣 Disclaimer
+
+This project is for educational purposes only. No illegal content is hosted or distributed. Use at your own risk and always respect your country's laws.
+
+---
+
+## 📞 Contact
 
 Made with ❤️ by frraz 🇵🇹  
-Reach me at: me.frraz@gmail.com  
-GitHub: [github.com/mefrraz](https://github.com/mefrraz)
+Feel free to reach out: me.frraz@gmail.com   
+Follow me on GitHub: [github.com/mefrraz](https://github.com/mefrraz)
 
 ---
 
-## 🇵🇹 Português
+## 🇵🇹 🇧🇷 Português
 
-Bem-vindos ao **Hattered**, um megathread comunitário que reúne sites, guias e ferramentas relacionados a torrents e pirataria — tudo organizado para você.
-
----
-
-### 🎯 Categorias
-
-- 🎬 Filmes & Séries  
-- 🎵 Música  
-- 🎮 Jogos  
-- 📚 Educação  
-- 💻 Software  
-- 🎨 Gráficos  
-- 📡 TV ao Vivo  
-- 🍥 Animes  
-- 🔐 Ativação  
+Olá pessoal! Bem-vindos ao **Hattered**, meu primeiro repositório com um **megathread** dos meus sites favoritos relacionados a torrents, pirataria, guias e ferramentas.
 
 ---
 
-### 🚀 Funcionalidades
+## 🚀 Funcionalidades
 
-- 🧭 Acesso rápido às principais plataformas de torrents e pirataria  
-- 📰 Notícias atualizadas do mundo da pirataria  
-- 📅 Calendário integrado com destaque para o dia atual  
-- 🧠 Guias bilíngues com botão para alternar entre Inglês e Português  
-- ❓ FAQ para responder às dúvidas mais comuns  
-- 🧩 Barra lateral organizada com links categorizados para melhor navegação  
-- 🛠️ Ferramentas planejadas: conversores magnet/torrent, verificador de hash, calculadora de velocidade, monitor de trackers e mais  
-- 🚫 Blacklist em desenvolvimento para sites suspeitos ou inseguros  
-- 📂 Links para comunidades: Reddit, fóruns, coleções no GitHub  
+- 🧭 Acesso rápido às plataformas de torrents e pirataria mais populares  
+- 📰 Últimas notícias e atualizações do mundo da pirataria  
+- 📅 Calendário integrado com destaque no dia atual  
+- 🧠 Guias bilíngues com botão para troca de idioma  
+- ❓ Seção de FAQs nos guias para responder perguntas comuns  
+- 🧩 Barra lateral limpa com links organizados por categoria  
+- 🛠️ Ferramentas online úteis planejadas: conversor magnet/torrent, verificador de hash, calculadora de velocidade, monitor de trackers e mais (em breve)  
+- 🚫 Blacklist de sites suspeitos ou inseguros planejada (em breve)  
+- 📂 Ligações para comunidades: Reddit, fóruns, coleções no GitHub  
 
 ---
 
-### 🛠️ Tecnologias
+## 🛠️ Tecnologias Usadas
 
-- Desenvolvido com HTML, CSS e JavaScript puro  
+- HTML + CSS + JavaScript (puro)  
 - Leve e responsivo  
 - Sem frameworks ou dependências externas  
-- Fácil de personalizar e expandir  
+- Fácil de personalizar  
 
 ---
 
-### 🤝 Participe
+## 🤝 Contribuindo
 
-Contribuições, sugestões e pull requests são muito bem-vindas!  
-Quer ajudar com traduções, guias ou novas ferramentas? Junte-se ao projeto!
-
----
-
-### 📣 Aviso Legal
-
-Projeto apenas para fins educativos. Não hospeda nem distribui conteúdo ilegal. Respeite as leis do seu país.
+Sinta-se à vontade para abrir issues e pull requests!  
+Se quiser ajudar com traduções, adicionar guias ou implementar novas ferramentas, será muito bem-vindo!
 
 ---
 
-### 📞 Contacto
+
+## 📣 Aviso Legal
+
+Este projeto é apenas para fins educativos.  
+Nenhum conteúdo ilegal é hospedado ou partilhado.  
+Use por sua conta e risco e respeite sempre as leis do seu país.
+
+---
+
+## 📞 Contacto
 
 Feito com ❤️ por frraz 🇵🇹  
-Contato: me.frraz@gmail.com  
-GitHub: [github.com/mefrraz](https://github.com/mefrraz)
-
----
-
-## Capturas de Tela / Screenshots
-
-![screenshot5](https://github.com/user-attachments/assets/ee25d436-20c4-45f2-9fe7-e73470df08b9)
-![screenshot4](https://github.com/user-attachments/assets/0833cd08-6574-4bbf-83d4-4f9e09ad0298)
-![screenshot2](https://github.com/user-attachments/assets/6c90644c-145f-4f25-be75-df32dbec7c49)  
-![screenshot3](https://github.com/user-attachments/assets/fb80cf11-0d5e-405a-977c-d6ad2e124cb7) 
+Entre em contacto: me.frraz@gmail.com  
+Siga-me no GitHub: [github.com/mefrraz](https://github.com/mefrraz)

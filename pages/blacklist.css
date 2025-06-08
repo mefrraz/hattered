@@ -1,0 +1,493 @@
+/* Reset e estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  position: relative; /* para contexto de empilhamento */
+  z-index: 0;         /* contexto de empilhamento do body */
+  font-family: Arial, Verdana, sans-serif;
+  background: #000;
+  color: #ddd;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  background: #111;
+  padding: 0 50px 40px 50px;
+  border-left: 1px solid #222;
+  border-right: 1px solid #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1; /* para ficar acima do body, mas abaixo dos elementos com z > 1 */
+}
+
+/* Top content */
+.top-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding-top: 40px;
+  flex: 1;
+}
+
+.left-block {
+  width: 800px;
+  padding-left: 130px;
+  padding-top: 220px;
+  padding-bottom: 60px;
+}
+
+.badge {
+  background-color: #c33;
+  color: #fff;
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.page-title {
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 36px;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 30px;
+  max-width: 500px;
+  color: #ddd;
+}
+
+/* Verificador de blacklist */
+.blacklist-checker {
+  margin: 30px 0;
+  max-width: 600px;
+  min-height: 130px; /* altura fixa que suporte as mensagens do resultado */
+  position: relative; /* para contexto local */
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background: #222;
+  color: #ddd;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #c33;
+}
+
+#search-btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #c33;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+#search-btn:hover {
+  background-color: #fff;
+  color: #c33;
+}
+
+.result-container {
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.result-container.success {
+  background-color: rgba(0, 128, 0, 0.2);
+  border: 1px solid rgba(0, 128, 0, 0.5);
+  color: #4CAF50;
+}
+
+.result-container.warning {
+  background-color: rgba(204, 51, 51, 0.2);
+  border: 1px solid rgba(204, 51, 51, 0.5);
+  color: #ff5252;
+}
+
+.result-container.error {
+  background-color: rgba(255, 165, 0, 0.2);
+  border: 1px solid rgba(255, 165, 0, 0.5);
+  color: #FFA500;
+}
+
+/* Result container absoluto abaixo do input */
+.result-container, 
+.result-container.info {
+  position: absolute;
+  top: 60px; /* logo abaixo do input */
+  left: 0;
+  width: 100%;
+  z-index: 10; /* acima de quase tudo */
+  margin-top: 0; /* remove margem */
+}
+
+/* Navegação */
+.main-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 0px;
+}
+
+.main-nav a {
+  font-family: Arial, Verdana, sans-serif;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease, color 0.3s ease;
+  background: #fff;
+  color: #000;
+}
+
+.main-nav a.btn-red {
+  background: #c33;
+  color: #fff;
+}
+
+.main-nav a:hover {
+  background: #c33;
+  color: #fff;
+}
+
+.main-nav a.btn-red:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Social icons */
+.social-icons {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #c33;
+}
+
+.social-icons svg {
+  width: 80%;
+  height: 80%;
+  fill: currentColor;
+}
+
+/* Rodapé */
+.footer-spacer {
+  flex: 1;
+}
+
+.footer {
+  text-align: center;
+  padding: 22px 0;
+  color: #666;
+  font-size: 12px;
+  border-top: 1px solid #222;
+  margin-top: 180px;
+}
+
+.download-section {
+  background-color: #181818;
+  border: 1px solid #333;
+  padding: 40px;
+  margin: 60px auto 20px auto;
+  border-radius: 12px;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.download-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.download-section p {
+  margin-bottom: 20px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #c33;
+  color: #fff;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.download-btn:hover {
+  background-color: #fff;
+  color: #cc3333;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.language-switch {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.language-switch {
+  position: absolute;
+  top: 60px;      /* 600px do topo */
+  right: 100px;    /* mantém a distância da direita */
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.language-switch a {
+  font-family: Arial, Verdana, sans-serif;
+  width: 100px;          /* largura fixa */
+  height: 40px;          /* altura fixa */
+  line-height: 40px;     /* para centralizar verticalmente */
+  text-align: center;    /* centralizar texto horizontalmente */
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  background: #fff;
+  color: #cc3333;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.language-switch a.btn-red {
+  background: #c33;
+  color: #ffffff;
+  border-color: #c33;
+}
+
+.language-switch a.btn-red:hover {
+  background: #fff;
+  color: #c33;
+  border-color: rgb(255, 255, 255);
+}
+
+.language-switch a:not(.btn-red):hover {
+  background: #c33;
+  color: #fff;
+  border-color: #c33;
+}
+
+
+/* Margem extra para download section */
+.download-section {
+  margin-top: 120px !important;
+}
+
+/* Blurs de fundo */
+.blur-image {
+  position: absolute;
+  z-index: -1; /* força ficar atrás */
+  filter: blur(30px);
+  opacity: 0.3;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Primeiro blur: 600px à esquerda do meio e 60px do topo */
+.blur-top-left {
+  top: 60px;
+  left: calc(50% - 720px); /* 600px à esquerda do meio da página */
+  width: 600px;
+  height: 600px;
+}
+
+/* Segundo blur: 180px à direita do meio e 600px do topo */
+.blur-right-center {
+  top: 600px;
+  left: calc(50% + 70px); /* 180px à direita do meio da página */
+  width: 700px;
+  height: 700px;
+}
+.right-block {
+  width: 300px;
+  padding: 30px 20px;
+  background-color: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.4;
+  max-height: 600px; /* se quiser limite */
+  overflow-y: auto;  /* scroll se for maior */
+  margin-top: 220px;  /* alinhar com padding-top da left-block */
+}
+
+/* Título da lista direita */
+.right-block h2 {
+  color: #c33;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Lista sem bullets */
+.right-block ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Itens da lista */
+.right-block li {
+  margin-bottom: 10px;
+  color: #bbb;
+}
+
+/* Destaque (opcional) */
+.right-block strong {
+  color: #ff6666;
+}
+.features-section {
+  position: absolute;
+  top: 250px;
+  left: calc(50% + 280px); /* 490px à direita do centro */
+  background-color: #181818;
+  border: 1px solid #333;
+  padding: 40px;
+  width: 300px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.features-section h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-family: Arial, Verdana, sans-serif;
+}
+
+.features-section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  color: #bbb;
+  font-size: 14px;
+  font-family: Arial, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+.features-section li {
+  margin-bottom: 8px;
+}
+.features-section ul li a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.features-section ul li a:hover {
+  color: #cc3333;
+}
+
+/* Troca de idioma dentro da secção */
+.features-section .language-switch {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.features-section .language-switch a {
+  font-family: Arial, Verdana, sans-serif;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  display: inline-block;
+  background: #fff;
+  color: #cc3333;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.features-section .language-switch a.btn-red {
+  background: #c33;
+  color: #fff;
+  border-color: #c33;
+}
+
+.features-section .language-switch a.btn-red:hover {
+  background: #fff;
+  color: #c33;
+  border-color: #fff;
+}
+
+.features-section .language-switch a:not(.btn-red):hover {
+  background: #c33;
+  color: #fff;
+  border-color: #c33;
+}
+/* Links sempre sublinhados e na cor herdada */
+.external-link {
+  text-decoration: underline;
+  color: inherit;
+}
