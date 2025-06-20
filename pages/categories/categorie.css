@@ -81,6 +81,7 @@ body {
         
         .nav a:hover {
             color: #cc3333;
+            background: #555;
         }
         
         /* MENU DROPDOWN */

@@ -6,16 +6,6 @@
   <link rel="icon" href="../../hattered_welcome1.svg" type="image/svg+xml" />
   <title>Hattered - Glossary</title>
   <link rel="stylesheet" href="../glossary.css" />
-  <style>
-    /* Esconde permanentemente todo o conteúdo em inglês */
-    .lang-en {
-      display: none;
-    }
-    /* Mostra permanentemente todo o conteúdo em português */
-    .lang-pt {
-      display: inline !important; 
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -26,6 +16,10 @@
     <div class="top-content">
       <div class="social-icons"></div>
 
+      <div class="language-switch">
+        <a href="#" class="btn-lang" data-lang="en">EN</a>
+        <a href="#" class="btn-lang" data-lang="pt">PT</a>
+      </div>
 
       <div class="left-block">
         <span class="badge">made by frraz</span>
@@ -175,6 +169,45 @@
     </footer>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.btn-lang').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const lang = btn.dataset.lang;
+
+          document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
+          document.querySelectorAll('.lang-pt').forEach(el => el.style.display = lang === 'pt' ? 'inline' : 'none');
+
+          document.querySelectorAll('.btn-lang').forEach(el => el.classList.remove('btn-red'));
+          btn.classList.add('btn-red');
+        });
+      });
+    });
+  </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const defaultLang = "en"; // linguagem padrão ao carregar
+    const langButtons = document.querySelectorAll(".btn-lang");
+
+    langButtons.forEach((btn) => {
+      if (btn.dataset.lang === defaultLang) {
+        btn.classList.add("btn-red");
+      } else {
+        btn.classList.remove("btn-red");
+      }
+
+      // Permitir troca de linguagem clicando
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        langButtons.forEach((b) => b.classList.remove("btn-red"));
+        btn.classList.add("btn-red");
+
+        // Aqui você pode também chamar uma função para trocar os textos, se necessário
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
