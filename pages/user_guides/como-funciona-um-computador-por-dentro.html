@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../../hattered_logo.svg" type="image/svg+xml" />
+<title>Guides</title>
+<style>
+    /* CSS de base do teu projeto */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828; /* Cor para o botão ativo */
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    /* Estilos para H1, H2, H3 (e outros se usares) - Espaçamento entre cabeçalhos e conteúdo */
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0; /* O primeiro h1 não precisa de margem superior */
+      margin-bottom: 15px; /* Espaçamento abaixo do H1 */
+      border-bottom: 2px solid #c33;
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px; /* Mais espaço acima do H2 */
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px; /* Mais espaço acima do H3 */
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    /* Estilos para Parágrafos (Texto Normal) */
+    .main-content p {
+      line-height: 1.7; /* Mais espaçamento entre linhas para leitura */
+      margin-top: 0; /* Garante que não há margem superior excessiva */
+      margin-bottom: 15px; /* Espaçamento entre parágrafos */
+      font-size: 16px;
+      word-spacing: 0.05em; /* Espaçamento subtil entre palavras */
+    }
+
+    /* Estilos para Negrito e Itálico */
+    .main-content strong {
+        font-weight: bold; /* Garante negrito */
+    }
+    .main-content em {
+        font-style: italic; /* Garante itálico */
+    }
+
+    /* Estilos para Imagens */
+    .main-content img {
+      max-width: 100%;
+      height: auto; /* Mantém a proporção da imagem */
+      display: block; /* Garante que a imagem se comporte como um bloco */
+      margin: 20px auto; /* Centraliza a imagem e adiciona espaço acima/abaixo */
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Estilos para Listas */
+    .main-content ul, .main-content ol {
+      margin-top: 10px;    /* Espaçamento acima da lista */
+      margin-bottom: 10px; /* Espaçamento abaixo da lista */
+      padding-left: 25px; /* Recuo da lista */
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px; /* Espaçamento entre itens da lista */
+      line-height: 1.6; /* Consistente com parágrafos para legibilidade */
+      word-spacing: 0.05em; /* Aplica o mesmo espaçamento de palavras */
+    }
+
+    /* Estilos para Links */
+    .main-content a {
+      color: #c33; /* Cor dos links */
+      text-decoration: none;
+    }
+    .main-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilos para Blocos de Citação (blockquote) - Markdown cria isto para texto precedido por > */
+    .main-content blockquote {
+        border-left: 4px solid #c33; /* Linha lateral para destacar */
+        margin: 20px 0; /* Espaçamento ao redor do bloco */
+        padding: 10px 20px; /* Preenchimento dentro do bloco */
+        background-color: #f9f9f9; /* Fundo suave */
+        font-style: italic; /* O texto do aside/bloco de citação deve ser itálico */
+        line-height: 1.7; /* Consistente */
+        word-spacing: 0.02em; /* Ligeiramente menor para destaque */
+    }
+    .main-content blockquote p {
+        margin-top: 0; /* Remover margem superior do parágrafo dentro do blockquote */
+        margin-bottom: 0; /* Remover margem inferior do parágrafo dentro do blockquote */
+    }
+
+    /* Estilos para parágrafo de nota que aparece depois de uma lista ou título (se estiver dentro de <em>) */
+    .main-content em p {
+        margin-top: 5px; /* Reduz a margem superior de parágrafos dentro de <em></em> para notas */
+        margin-bottom: 10px;
+    }
+
+    /* Botão de Voltar */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Controlo de visibilidade do conteúdo de idioma */
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="language-switcher">
+    <button id="btn-en">English</button>
+    <button id="btn-pt">Português</button>
+  </div>
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="../guides.html" id="back-button">← Back to Guides</a>
+
+      <div id="content-en" class="lang-content">
+        <h1>How Does a Computer Work Internally?</h1>
+<blockquote>
+<p>This detailed guide explores the core internal components of a computer, explaining how each part functions on its own and in conjunction with others. Perfect for beginners and tech enthusiasts curious about what happens "under the hood".</p>
+</blockquote>
+<h2>Introduction</h2>
+<p>When we turn on a computer, we trigger a complex process that involves several components working in perfect harmony. Although the interface we see (like the operating system and apps) appears simple, it hides a robust infrastructure made up of physical and logical elements that process data at lightning speed.</p>
+<p>Understanding how a computer works internally not only helps troubleshoot issues more effectively but also allows for more informed decisions when buying or building a PC.</p>
+<h2>Main Components of a Computer</h2>
+<p>The internal structure of a computer may vary slightly between desktops and laptops, but the core components remain the same.</p>
+<h3>1. Motherboard</h3>
+<p>The <strong>motherboard</strong> is the central hub that connects all other components. It houses the processor, RAM, graphics cards, and other peripherals.</p>
+<ul>
+<li>Key functions of the motherboard:<ul>
+<li>Connect and power all components.</li>
+<li>Control communication between CPU, memory, and devices.</li>
+<li>Provide expansion slots and ports.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Processor (CPU)</h3>
+<p>The <em>Central Processing Unit</em>, or <strong>CPU</strong>, is the computer’s brain. It executes all instructions from programs and the operating system.</p>
+<ul>
+<li>Main tasks of the CPU:<ul>
+<li>Perform calculations.</li>
+<li>Make logical decisions.</li>
+<li>Coordinate the operation of all other components.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Quick tip:</strong> Modern CPUs have multiple cores (dual-core, quad-core, etc.), allowing them to handle multiple tasks more efficiently.</p>
+</blockquote>
+<h3>3. RAM (Memory)</h3>
+<p><strong>RAM</strong> (<em>Random Access Memory</em>) temporarily stores data for quick access. The more RAM available, the more tasks a computer can handle simultaneously without slowing down.</p>
+<ul>
+<li>Example: Opening multiple browser tabs or editing a video consumes more RAM.</li>
+</ul>
+<h3>4. Storage (HDD or SSD)</h3>
+<p>The <strong>Hard Disk Drive (HDD)</strong> or <strong>Solid State Drive (SSD)</strong> stores all of the computer’s data—operating system, programs, documents, and personal files.</p>
+<ul>
+<li>SSDs are faster, quieter, and more shock-resistant than HDDs.</li>
+</ul>
+<h3>5. Graphics Card (GPU)</h3>
+<p>The <strong>GPU</strong> (<em>Graphics Processing Unit</em>) handles image rendering. While many systems use integrated graphics, dedicated cards are essential for gaming, video editing, and other heavy tasks.</p>
+<p><img alt="Image of a modern GPU" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/GPU_Asus_RTX_3080.jpg/800px-GPU_Asus_RTX_3080.jpg" /></p>
+<h3>6. Power Supply Unit (PSU)</h3>
+<p>The <strong>power supply</strong> converts electricity from your wall outlet into usable power for the computer's components. A low-quality PSU can damage parts, so choosing one with adequate wattage and good efficiency is important.</p>
+<h2>How Do Components Work Together?</h2>
+<p>When you power on a computer, here’s what happens:</p>
+<ol>
+<li>The PSU supplies energy to the motherboard.</li>
+<li>The BIOS (firmware) performs an initial hardware check.</li>
+<li>The OS loads from the SSD/HDD into RAM.</li>
+<li>The CPU takes over and begins executing commands.</li>
+<li>The GPU renders graphics for the monitor.</li>
+<li>All peripherals (keyboard, mouse, etc.) communicate via the motherboard.</li>
+</ol>
+<h2>Practical Example: Opening a Web Browser</h2>
+<ol>
+<li>The user clicks the browser icon.</li>
+<li>The CPU reads the instruction from the OS.</li>
+<li>The SSD provides the browser data, loaded into RAM.</li>
+<li>The CPU launches the program, and the GPU displays it on the screen.</li>
+</ol>
+<blockquote>
+<p>Every action on a computer involves <strong>multiple components working together within microseconds</strong>.</p>
+</blockquote>
+<h2>Conclusion</h2>
+<p>Understanding how a computer works internally is fundamental for anyone who interacts with technology. Even without advanced technical knowledge, knowing what a <strong>CPU</strong>, <strong>RAM</strong>, or <strong>SSD</strong> is can help with troubleshooting and smart hardware investments.</p>
+<blockquote>
+<p>To learn more about building PCs or choosing the right components, visit <a href="https://computer.howstuffworks.com/">HowStuffWorks</a>.</p>
+</blockquote>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Como funciona um computador por dentro?</h1>
+<blockquote>
+<p>Este guia detalhado irá explorar os principais componentes internos de um computador, explicando como eles funcionam individualmente e em conjunto. Ideal para iniciantes curiosos ou entusiastas da tecnologia que querem entender melhor o que acontece "por trás da carcaça".</p>
+</blockquote>
+<h2>Introdução</h2>
+<p>Quando ligamos um computador, iniciamos um processo complexo que envolve diversos componentes trabalhando em perfeita sincronia. Embora a interface que vemos (como o sistema operativo e os programas) pareça simples, por trás dela há uma estrutura robusta composta por elementos físicos e lógicos que processam informações a uma velocidade impressionante.</p>
+<p>Compreender como um computador funciona internamente ajuda não só a resolver problemas técnicos com mais eficiência, mas também a tomar decisões mais conscientes ao comprar ou montar um PC.</p>
+<h2>Principais Componentes de um Computador</h2>
+<p>A estrutura interna de um computador pode variar ligeiramente entre desktops e portáteis, mas os componentes fundamentais são essencialmente os mesmos.</p>
+<h3>1. Placa-mãe (Motherboard)</h3>
+<p>A <strong>placa-mãe</strong> é o centro de conexão de todos os outros componentes. Nela são instalados o processador, memória RAM, placas de vídeo e outros periféricos.</p>
+<ul>
+<li>Principais funções da placa-mãe:<ul>
+<li>Conectar e alimentar os componentes.</li>
+<li>Controlar a comunicação entre o processador, memória e dispositivos.</li>
+<li>Fornecer slots de expansão e portas de comunicação.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Processador (CPU)</h3>
+<p>A <em>Unidade Central de Processamento</em>, ou <strong>CPU</strong>, é o "cérebro" do computador. Ela executa todas as instruções dos programas e do sistema operativo.</p>
+<ul>
+<li>Algumas das suas principais tarefas incluem:<ul>
+<li>Realizar cálculos matemáticos.</li>
+<li>Tomar decisões lógicas.</li>
+<li>Coordenar o funcionamento dos outros componentes.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Dica rápida:</strong> CPUs modernas têm múltiplos núcleos (dual-core, quad-core, etc.), o que permite realizar várias tarefas ao mesmo tempo com maior eficiência.</p>
+</blockquote>
+<h3>3. Memória RAM</h3>
+<p>A <strong>RAM</strong> (<em>Random Access Memory</em>) é onde os dados temporários são armazenados para acesso rápido. Quanto mais RAM disponível, mais tarefas o computador pode realizar simultaneamente sem perder desempenho.</p>
+<ul>
+<li>Exemplo: ao abrir múltiplos separadores no navegador ou editar um vídeo, a RAM armazena temporariamente os dados desses processos.</li>
+</ul>
+<h3>4. Armazenamento (HDD ou SSD)</h3>
+<p>O <strong>disco rígido (HDD)</strong> ou <strong>unidade de estado sólido (SSD)</strong> é responsável por armazenar todos os dados do computador: sistema operativo, programas, documentos e arquivos pessoais.</p>
+<ul>
+<li>SSDs são mais rápidos e silenciosos do que HDDs, além de serem mais resistentes a impactos.</li>
+</ul>
+<h3>5. Placa de Vídeo (GPU)</h3>
+<p>A <strong>GPU</strong> (<em>Graphics Processing Unit</em>) é responsável pelo processamento gráfico. Embora muitos computadores usem placas integradas, placas dedicadas são essenciais para tarefas pesadas como jogos ou edição de vídeo.</p>
+<p><img alt="Imagem de uma placa gráfica moderna" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/GPU_Asus_RTX_3080.jpg/800px-GPU_Asus_RTX_3080.jpg" /></p>
+<h3>6. Fonte de Alimentação</h3>
+<p>A <strong>fonte</strong> converte a energia elétrica da tomada em energia que os componentes do computador conseguem usar. Uma fonte de má qualidade pode danificar os outros componentes, por isso é importante escolher uma com potência adequada e boa eficiência.</p>
+<h2>Como Tudo Funciona Junto?</h2>
+<p>Quando ligas o computador, o processo é mais ou menos assim:</p>
+<ol>
+<li>A fonte envia energia à placa-mãe.</li>
+<li>A BIOS (firmware da placa-mãe) realiza uma verificação inicial dos componentes.</li>
+<li>O sistema operativo é carregado do SSD/HDD para a RAM.</li>
+<li>A CPU assume o controlo e começa a executar comandos e tarefas.</li>
+<li>A GPU processa o que é exibido no ecrã.</li>
+<li>Todos os periféricos (teclado, rato, etc.) comunicam com o sistema através da placa-mãe.</li>
+</ol>
+<h2>Exemplo Prático: Abrir um Navegador</h2>
+<ol>
+<li>O utilizador clica no ícone do navegador.</li>
+<li>A CPU lê a instrução do sistema operativo.</li>
+<li>O SSD fornece os dados do navegador, que são carregados na RAM.</li>
+<li>A CPU executa o navegador, e a GPU exibe a interface gráfica no monitor.</li>
+</ol>
+<blockquote>
+<p>Cada ação no computador envolve <strong>múltiplos componentes trabalhando juntos em questão de microssegundos</strong>.</p>
+</blockquote>
+<h2>Conclusão</h2>
+<p>Compreender o funcionamento interno de um computador é fundamental para qualquer pessoa que utilize tecnologia diariamente. Mesmo sem conhecimentos técnicos avançados, saber o que é uma <strong>CPU</strong>, uma <strong>RAM</strong> ou um <strong>SSD</strong> pode ajudar a diagnosticar problemas e a investir melhor em novos equipamentos.</p>
+<blockquote>
+<p>Para aprender mais sobre montagem de computadores ou escolher os melhores componentes, visita o site <a href="https://www.tecmundo.com.br/">TecMundo</a>.</p>
+</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnPt = document.getElementById('btn-pt');
+  const btnEn = document.getElementById('btn-en');
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  // Verifica se existe conteúdo para cada idioma
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  // Define o idioma inicial. Prioriza 'en' se existir, senão 'pt', senão nada.
+  let initialLang = 'en';
+  if (!enContentExists && ptContentExists) {
+      initialLang = 'pt';
+  } else if (!enContentExists && !ptContentExists) {
+      // Se não houver conteúdo em nenhum dos idiomas, esconde os botões e mostra uma mensagem.
+      if (btnEn) btnEn.style.display = 'none';
+      if (btnPt) btnPt.style.display = 'none';
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função para alternar entre idiomas
+  function switchLanguage(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+      if (btnPt) btnPt.classList.remove('active');
+      if (btnEn) btnEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (btnPt) btnPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+      } else {
+          if (contentEn) contentEn.classList.add('active');
+          if (btnEn) btnEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+      }
+  }
+
+  // Adiciona event listeners aos botões
+  if (btnPt) {
+    btnPt.addEventListener('click', () => switchLanguage('pt'));
+  }
+  if (btnEn) {
+    btnEn.addEventListener('click', () => switchLanguage('en'));
+  }
+
+  // Ativa o idioma inicial apenas se houver conteúdo em algum dos idiomas
+  if (ptContentExists || enContentExists) {
+    switchLanguage(initialLang);
+  }
+
+  // Desabilita os botões de idioma se o conteúdo correspondente não existir
+  if (!ptContentExists && btnPt) {
+      btnPt.disabled = true;
+      btnPt.style.opacity = '0.5';
+      btnPt.style.cursor = 'not-allowed';
+  }
+  if (!enContentExists && btnEn) {
+      btnEn.disabled = true;
+      btnEn.style.opacity = '0.5';
+      btnEn.style.cursor = 'not-allowed';
+  }
+</script>
+
+</body>
+</html>

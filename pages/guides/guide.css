@@ -614,16 +614,16 @@ body {
     }
 }
 
-/* Ecrãs Médios (Apenas Tablet: 768px a 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Ecrãs Médios (Apenas Tablet: 769px a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
     /* Força a grelha a ter 2 colunas */
     .more-posts-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Ecrãs Pequenos (Apenas Telemóvel: até 767px) */
-@media (max-width: 767px) {
+/* Ecrãs Pequenos (Apenas Telemóvel: até 768px) */
+@media (max-width: 768px) {
     .container {
         padding: 0 10px;
     }
@@ -643,61 +643,4 @@ body {
     .more-posts-grid {
         grid-template-columns: 1fr;
     }
-}
-
-/* ==================================== */
-/* AVISO DE ORIENTAÇÃO PARA TABLET */
-/* ==================================== */
-#orientation-warning {
-  display: none; /* Escondido por defeito */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.95);
-  color: #fff;
-  z-index: 9999;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 30px;
-}
-
-#orientation-warning .warning-content {
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  align-items: center;
-}
-
-#orientation-warning p {
-  font-size: 22px;
-  line-height: 1.6;
-  font-weight: bold;
-}
-
-#orientation-warning button {
-  background: #c33;
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-#orientation-warning button:hover {
-  background: #fff;
-  color: #000;
-}
-
-/* Mostra o aviso apenas em tablets na vertical */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
-  #orientation-warning {
-    display: flex;
-  }
 }

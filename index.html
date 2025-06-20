@@ -1,189 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="index/hattered_welcome1.svg" type="image/svg+xml">
-  <title>Hattered</title>
-  <link rel="stylesheet" href="index/welcome.css" />
+    <meta charset="UTF-8" />
+    <!-- LINHA CRUCIAL ADICIONADA: Corrige a deteção do dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guides</title>
+    <link rel="icon" href="hattered_logo.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="guide.css" />
 </head>
 <body>
+    <div class="container">
+        <div class="header">
+            <div class="logo" style="display:flex; align-items:center;">
+                <img src="hattered_logo.svg" alt="Hattered Logo" />
+                Guides
+            </div>
+            <div class="counter"></div>
+        </div>
 
+        <div class="nav">
+            <a href="../home.html">Home</a>
+            <div class="dropdown"></div>
+            <div class="dropdown">
+                <div class="dropdown-content">
+                    <a href="guides.html">Guides</a>
+                </div>
+            </div>
 
-  <div class="container">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Pesquisar notícias..." aria-label="Pesquisar notícias" />
+                <button id="searchButton" aria-label="Pesquisar">&#128269;</button>
+            </div>
 
-<img src="pages/assets/index.html/blur_index1.png" alt="Blur Top Left" class="blur-image blur-top-left" />
-<img src="pages/assets/index.html/blur_index1.png" alt="Blur Right Center" class="blur-image blur-right-center" />
+            <div class="nav-categories"></div>
 
+            <button class="menu-toggle" aria-label="Toggle Categories Menu">&#9776;</button>
+        </div>
 
-<div class="top-content">
-<div class="social-icons">
-  <a href="https://github.com/mefrraz/hattered" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.207 11.387.6.112.793-.262.793-.58 0-.287-.01-1.045-.015-2.05-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.776.42-1.304.762-1.605-2.665-.3-5.466-1.334-5.466-5.93 0-1.31.467-2.38 1.235-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 0 1 3-.404c1.02.005 2.045.138 3 .404 2.29-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.807 5.628-5.48 5.922.43.372.813 1.102.813 2.222 0 1.606-.015 2.9-.015 3.293 0 .32.192.696.8.578C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/>
-    </svg>
-  </a>
-</div>
+        <div class="content two-columns">
+            <div class="left-column">
+                <h3>Últimos Posts</h3>
+                <div class="latest-posts">
+                </div>
+            </div>
+            <div class="main-column">
+                <h3>Posts em Destaque</h3>
+                <div class="main-news">
+                </div>
+            </div>
+        </div>
 
-
-  <div class="left-block">
-    <div class="badge">made by frraz</div>
-    <div class="page-title">Hattered</div>
-    <div class="description">
-Your go-to place for free media and creative tools. Explore, share, and add to the ever-growing Hattered library of free content online
-    </div>
-<nav class="main-nav">
-<nav class="main-nav">
-  <a href="pages/home.html" class="btn-red">Home</a>
-  <a href="pages/guides/guides.html">Guides</a>
-  <a href="pages/glossary.html">Glossary</a>
-  <a href="pages/blacklist.html">Blacklist Checker</a>
-</nav>
-</div>
-
-  <div class="right-block">
-    <img src="index/hattered_welcome.png" alt="Logo" />
-  </div>
-</div>
-
-
-
-
-
-<div class="features-block">
-  <h2 class="features-title">Megathread Highlights</h2>
-  <div class="features-grid">
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Simples">🧼 <span class="en-text">Simple</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">Clear layout, no clutter, easy to use. Find what you need quickly.</span>
-        <span class="feature-text-pt">Layout claro, sem bagunça, fácil de usar. Encontre o que precisa rápido.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Rápido">⚡ <span class="en-text">Fast</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">Pages load instantly, no waiting. Browse smoothly without delays.</span>
-        <span class="feature-text-pt">Páginas carregam instantaneamente, sem espera. Navegue sem atrasos.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Organizado">🗂️ <span class="en-text">Organized</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">Content grouped and easy to find. Sections are clear and consistent.</span>
-        <span class="feature-text-pt">Conteúdo agrupado e fácil de achar. Seções claras e consistentes.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Atualizado">🆕 <span class="en-text">Updated</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">Always with the latest info. Maintained daily for accuracy.</span>
-        <span class="feature-text-pt">Sempre com as informações mais recentes. Mantido diariamente para precisão.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Seguro">🔒 <span class="en-text">Secure</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">No ads, trackers, or shady scripts. Your privacy is fully protected.</span>
-        <span class="feature-text-pt">Sem anúncios, rastreadores ou scripts duvidosos. Sua privacidade totalmente protegida.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Grátis">💸 <span class="en-text">Free</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">100% free, no paywalls or accounts. Access everything without limits.</span>
-        <span class="feature-text-pt">100% grátis, sem pagamento ou cadastro. Acesse tudo sem limitações.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Bilíngue por Design">🌐 <span class="en-text">Bilingual by Design</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">Switch easily between English and Portuguese. Content clear in both languages.</span>
-        <span class="feature-text-pt">Troca fácil entre inglês e português. Conteúdo claro em ambas línguas.</span>
-      </p>
-    </div>
-    <div class="feature-card">
-      <span class="feature-title" data-pt="Útil">🤝 <span class="en-text">Helpful</span></span>
-      <p class="feature-text">
-        <span class="feature-text-en">Made to help you find what you need. Every section serves a purpose.</span>
-        <span class="feature-text-pt">Feito para ajudar você a encontrar o que precisa. Cada seção tem um propósito.</span>
-      </p>
-    </div>
-  </div>
-</div>
-
-
-
-    
-<section class="screenshot-section">
-  <div class="screenshot-wrapper">
-    <!-- imagens via JS -->
-  </div>
-  <div class="screenshot-controls">
-    <button class="prev-btn" onclick="prevScreenshot()">Previous</button>
-    <button class="next-btn" onclick="nextScreenshot()">Next</button>
-  </div>
-
-  <script>
-    const screenshots = [
-      "index/screenshot1.png",
-      "index/screenshot2.png",
-      "index/screenshot3.png",
-      "index/screenshot4.png",
-      "index/screenshot5.png",
-      "index/screenshot6.png"
-    ];
-    let currentScreenshot = 0;
-
-    const wrapper = document.querySelector('.screenshot-wrapper');
-
-    function createImg(src) {
-      const img = document.createElement('img');
-      img.src = src;
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.5s ease';
-      return img;
-    }
-
-    function showScreenshot(index) {
-      const oldImg = wrapper.querySelector('img.active');
-      const newImg = createImg(screenshots[index]);
-      wrapper.appendChild(newImg);
-
-      newImg.offsetHeight; // forçar reflow
-
-      newImg.classList.add('active');
-      newImg.style.opacity = '1';
-
-      if (oldImg) {
-        oldImg.style.opacity = '0';
-        oldImg.addEventListener('transitionend', () => {
-          if (oldImg.parentNode) oldImg.parentNode.removeChild(oldImg);
-        }, { once: true });
-      }
-
-      currentScreenshot = index;
-    }
-
-    function nextScreenshot() {
-      showScreenshot((currentScreenshot + 1) % screenshots.length);
-    }
-
-    function prevScreenshot() {
-      showScreenshot((currentScreenshot - 1 + screenshots.length) % screenshots.length);
-    }
-
-    // Inicialização
-    showScreenshot(0);
-  </script>
-</section>
-
-
-
-
-        <div class="footer">
-           
+        <div class="more-posts-section">
+            <h3>Mais Posts</h3>
+            <div class="more-posts-grid">
+            </div>
         </div>
     </div>
+
+    <div class="footer">
+        Hattered 2005-2025 | All content provided by third parties
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>Categorias</h3>
+            <button class="close-sidebar" aria-label="Close Categories Menu">&times;</button>
+        </div>
+        <div class="sidebar-content">
+        </div>
+    </div>
+
+    <!-- AVISO DE ORIENTAÇÃO PARA TABLET -->
+    <div id="orientation-warning">
+        <div class="warning-content">
+            <p>Para a melhor experiência, recomendamos que utilize este site com o dispositivo na horizontal.</p>
+            <button id="dismiss-warning-btn">Eu entendo</button>
+        </div>
+    </div>
+
+    <script src="guides.js"></script>
+    <script>
+        // JavaScript para dispensar o aviso de orientação
+        document.getElementById('dismiss-warning-btn').addEventListener('click', function() {
+            document.getElementById('orientation-warning').style.display = 'none';
+        });
+    </script>
 </body>
 </html>

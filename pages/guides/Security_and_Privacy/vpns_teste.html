@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../../hattered_logo.svg" type="image/svg+xml" />
+<title>Guides</title>
+<style>
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828; /* Cor para o botão ativo */
+    }
+
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+    /* Estilos para cabeçalhos - Aumentando o espaçamento superior para separar */
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0; /* O primeiro h1 não precisa de margem superior */
+      margin-bottom: 15px; /* Espaçamento abaixo do H1 */
+      border-bottom: 2px solid #c33;
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    /* Para todos os h1 que não são o primeiro filho do seu pai (para dar margem acima) */
+    /* Este seletor pode não ser necessário se o H1 for sempre o primeiro elemento de content-en/pt */
+    .main-content h1 + p, .main-content h1 + ul {
+        margin-top: 15px; /* Ajuste para o primeiro elemento após H1 */
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px; /* Mais espaço acima do H2 */
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px; /* Mais espaço acima do H3 */
+      margin-bottom: 8px;
+      color: #333333;
+    }
+    .main-content p {
+      line-height: 1.8; /* Aumentado de 1.6 para 1.8 para mais espaçamento entre linhas */
+      margin-top: 0; /* Garante que não há margem superior excessiva */
+      margin-bottom: 15px; /* Aumentado de 10px para 15px para mais espaçamento entre parágrafos */
+      font-size: 16px;
+      word-spacing: 1px; /* Adicionado para um leve aumento no espaçamento entre palavras */
+    }
+    /* Redução de espaçamento para listas e itens */
+    .main-content ul {
+      margin-top: 10px;    /* Espaçamento acima da lista */
+      margin-bottom: 10px; /* Espaçamento abaixo da lista */
+      padding-left: 25px; /* Recuo da lista */
+    }
+    .main-content ul li {
+      margin-bottom: 5px; /* Espaçamento entre itens da lista */
+    }
+
+    .main-content img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 20px 0; /* Mais espaçamento acima e abaixo da imagem */
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .main-content a {
+      color: #c33; /* Cor dos links */
+      text-decoration: none;
+    }
+    .main-content a:hover {
+      text-decoration: underline;
+    }
+    /* Estilos para blocos de citação (blockquote) - incluindo o aparte */
+    .main-content blockquote {
+        border-left: 4px solid #c33; /* Linha lateral para destacar */
+        margin: 20px 0; /* Espaçamento ao redor do bloco */
+        padding: 10px 20px; /* Preenchimento dentro do bloco */
+        background-color: #f9f9f9; /* Fundo suave */
+    }
+
+    .main-content blockquote p {
+        margin-top: 0; /* Remover margem superior do parágrafo dentro do blockquote */
+        margin-bottom: 0; /* Remover margem inferior do parágrafo dentro do blockquote */
+        font-style: italic; /* O texto do aparte deve ser itálico */
+        line-height: 1.8; /* Manter line-height consistente com parágrafos normais */
+        word-spacing: 1px; /* Manter word-spacing consistente */
+    }
+
+    .main-content em p {
+        margin-top: 5px; /* Reduz a margem superior de parágrafos dentro de <em></em> para notas */
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="language-switcher">
+    <button id="btn-en">English</button>
+    <button id="btn-pt">Português</button>
+  </div>
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="../guides.html" id="back-button">← Back to Guides</a>
+
+      <div id="content-en" class="lang-content">
+        <h1>What Are Servers and Why Are They Important</h1>
+Servers are central and indispensable elements of modern digital infrastructure. Although most people use online services daily — such as websites, social networks, games, or streaming platforms — few realize that behind all these functionalities are <strong>servers</strong>, machines specifically configured to continuously and reliably provide data, applications, and resources. Without servers, the internet as we know it simply would not exist. Understanding what servers are and why they are important is essential for anyone interested in technology, computer networks, web development, or information security.
+<hr />
+A server is not just a "powerful computer" but a system designed to offer services to other computers or devices on a network. The word "server" can also refer to the <strong>software that performs the task of providing data</strong>, meaning the program that responds to requests from other systems, called <strong>clients</strong>. This communication model is known as <strong>client-server</strong>, and it is present in virtually all connected digital technologies.
+<blockquote>
+<p><em>Servers are the "invisible hubs" that sustain the continuous and coordinated functioning of the internet, local networks, and corporate applications.</em></p>
+</blockquote>
+<h2>Server Structure and Functioning</h2>
+Servers can be either physical or virtual. A <strong>physical server</strong> is hardware dedicated exclusively to executing network tasks and storing data. <strong>Virtual servers</strong>, on the other hand, operate within physical machines, being partitioned by virtualization software to run multiple services simultaneously.
+Inside a server, you’ll find components similar to those of a personal computer, such as CPUs, RAM, and storage, but configured for <strong>reliability, performance, and scalability</strong>. They also run specialized operating systems, such as Linux Server, Windows Server, or cloud-specific distributions.
+Server architecture typically follows a modular and redundant approach: multiple power supplies, multiple network connections, automated backup systems, and constant monitoring are used to ensure <strong>high availability</strong> and <strong>fault tolerance</strong>.
+<h3>Common Types of Servers</h3>
+There are many types of servers, depending on their function. The most common include:
+<ul>
+<li><strong>Web Server</strong>: delivers web pages to browsers.</li>
+</ul>
+<ul>
+<li><strong>File Server</strong>: stores and distributes files to other devices.</li>
+</ul>
+<ul>
+<li><strong>Email Server</strong>: manages the sending, receiving, and storage of electronic messages.</li>
+</ul>
+<ul>
+<li><strong>Database Server</strong>: maintains and organizes large volumes of structured data.</li>
+</ul>
+<ul>
+<li><strong>DNS Server</strong>: translates domain names into machine-readable IP addresses.</li>
+</ul>
+<ul>
+<li><strong>Application Server</strong>: runs software and provides functionality to remote clients.</li>
+</ul>
+Each of these servers can be implemented locally (on-premises) or in the cloud (cloud computing), depending on the scale and needs of the organization or project.
+<h2>The Strategic Importance of Servers</h2>
+The importance of servers goes far beyond simply providing services. They are <strong>central structures for security, performance, availability, and technological growth</strong>. When a company depends on digital services — for sales, communication, or internal operations — the servers house the "heart" of those operations.
+Well-configured servers ensure <strong>fast response times</strong>, <strong>secure storage of sensitive data</strong>, <strong>continuous execution of critical processes</strong>, and <strong>disaster recovery in case of failure</strong>. The absence or poor management of servers can lead to financial loss, reputational damage, data leaks, and system downtime.
+<blockquote>
+<p><em>Investing in robust and well-managed servers is essential for any digitally active business.</em></p>
+</blockquote>
+Furthermore, with the rise of cloud computing, servers now play an even more dynamic and distributed role. On platforms like Amazon AWS, Microsoft Azure, or Google Cloud, servers are automatically activated and deactivated to adapt to real-time access demands. This elasticity is what enables services like Netflix or Spotify to function smoothly even with millions of simultaneous users.
+<h2>Final Considerations</h2>
+Understanding what servers are and why they are important is a key step for anyone seeking deeper knowledge in information technology. More than just machines, servers represent the <strong>digital nerves</strong> of the modern world, allowing complex systems to operate in a coordinated, secure, and efficient manner.
+<blockquote>
+<p><em>The next time you watch a video, send an email, or access a website, remember: there’s a server working tirelessly behind the scenes to make it all possible.</em></p>
+</blockquote>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>O Que São Servidores e Por Que São Importantes</h1>
+Servidores são elementos centrais e indispensáveis da infraestrutura digital moderna. Embora muitas pessoas usem serviços online diariamente — como sites, redes sociais, jogos ou plataformas de streaming — poucas se dão conta de que, por trás de todas essas funcionalidades, estão os <strong>servidores</strong>, máquinas especialmente configuradas para fornecer dados, aplicações e recursos de forma contínua e confiável. Sem servidores, a internet como conhecemos simplesmente não existiria. Compreender o que são servidores e sua importância é fundamental para qualquer pessoa interessada em tecnologia, redes de computadores, desenvolvimento web ou segurança da informação.
+<hr />
+Um servidor não é apenas um "computador potente", mas sim um sistema projetado para oferecer serviços a outros computadores ou dispositivos em uma rede. A palavra "servidor" também pode se referir ao <strong>software que realiza a função de fornecer dados</strong>, ou seja, o programa que responde às requisições de outros sistemas, chamados de <strong>clientes</strong>. Este modelo de comunicação é conhecido como <strong>cliente-servidor</strong>, e está presente em quase todas as tecnologias digitais conectadas.
+<blockquote>
+<p><em>Servidores são os "hubs invisíveis" que sustentam o funcionamento contínuo e coordenado da internet, redes locais e aplicativos corporativos.</em></p>
+</blockquote>
+<h2>Estrutura e Funcionamento dos Servidores</h2>
+Os servidores podem ser físicos ou virtuais. Um <strong>servidor físico</strong> é um hardware dedicado exclusivamente à execução de tarefas de rede e armazenamento de dados. Já os <strong>servidores virtuais</strong> operam dentro de máquinas físicas, sendo particionados por softwares de virtualização para executar múltiplos serviços simultaneamente.
+Dentro de um servidor, há componentes semelhantes aos de um computador pessoal, como CPU, memória RAM e armazenamento, mas com configurações otimizadas para <strong>confiabilidade, desempenho e escalabilidade</strong>. Eles também rodam sistemas operacionais especializados, como Linux Server, Windows Server ou distribuições específicas para nuvem.
+A arquitetura dos servidores costuma seguir uma abordagem modular e redundante: várias fontes de energia, múltiplas conexões de rede, sistemas de backup automáticos e monitoramento constante são usados para garantir <strong>alta disponibilidade</strong> e <strong>tolerância a falhas</strong>.
+<h3>Tipos Comuns de Servidores</h3>
+Existem diversos tipos de servidores, dependendo da função que exercem. Entre os mais comuns estão:
+<ul>
+<li><strong>Servidor Web</strong>: entrega páginas da web para os navegadores.</li>
+</ul>
+<ul>
+<li><strong>Servidor de Arquivos</strong>: armazena e distribui arquivos para outros dispositivos.</li>
+</ul>
+<ul>
+<li><strong>Servidor de E-mail</strong>: gerencia o envio, recebimento e armazenamento de mensagens eletrônicas.</li>
+</ul>
+<ul>
+<li><strong>Servidor de Banco de Dados</strong>: mantém e organiza grandes volumes de dados estruturados.</li>
+</ul>
+<ul>
+<li><strong>Servidor DNS</strong>: traduz nomes de domínio em endereços IP legíveis pelas máquinas.</li>
+</ul>
+<ul>
+<li><strong>Servidor de Aplicações</strong>: executa softwares e fornece funcionalidades a clientes remotos.</li>
+</ul>
+Cada um desses servidores pode ser implementado de maneira local (on-premises) ou na nuvem (cloud computing), dependendo da escala e das necessidades da organização ou do projeto.
+<h2>A Importância Estratégica dos Servidores</h2>
+A importância dos servidores vai muito além da simples prestação de serviços. Eles são <strong>estruturas centrais para segurança, desempenho, disponibilidade e crescimento tecnológico</strong>. Quando uma empresa depende de serviços digitais — seja para vendas, comunicação ou operação interna —, é nos servidores que reside o "coração" dessas operações.
+Servidores bem configurados garantem <strong>respostas rápidas</strong>, <strong>armazenamento seguro de dados sensíveis</strong>, <strong>execução contínua de processos críticos</strong> e <strong>recuperação de desastres em caso de falhas</strong>. A ausência ou má gestão de servidores pode levar a prejuízos financeiros, perda de reputação, vazamento de dados e paralisações de sistemas.
+<blockquote>
+<p><em>O investimento em servidores robustos e bem gerenciados é essencial para qualquer negócio digitalmente ativo.</em></p>
+</blockquote>
+Além disso, com o crescimento da computação em nuvem, os servidores passaram a ter um papel ainda mais dinâmico e distribuído. Em plataformas como Amazon AWS, Microsoft Azure ou Google Cloud, servidores são ativados e desativados automaticamente, adaptando-se às demandas de acesso em tempo real. Essa elasticidade é o que possibilita que serviços como Netflix ou Spotify funcionem com fluidez mesmo com milhões de usuários simultâneos.
+<h2>Considerações Finais</h2>
+Entender o que são servidores e por que eles são importantes é um passo fundamental para qualquer um que deseje aprofundar seu conhecimento em tecnologia da informação. Mais do que simples máquinas, os servidores representam os <strong>nervos digitais</strong> do mundo moderno, permitindo que sistemas complexos operem de forma coordenada, segura e eficiente.
+<blockquote>
+<p><em>A próxima vez que você assistir a um vídeo, enviar um e-mail ou acessar um site, lembre-se: há um servidor trabalhando incansavelmente nos bastidores para tornar isso possível.</em></p>
+</blockquote>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnPt = document.getElementById('btn-pt');
+  const btnEn = document.getElementById('btn-en');
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  let initialLang = 'en';
+  if (!enContentExists && ptContentExists) {
+      initialLang = 'pt';
+  } else if (!enContentExists && !ptContentExists) {
+      if (btnEn) btnEn.style.display = 'none';
+      if (btnPt) btnPt.style.display = 'none';
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  function switchLanguage(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+      if (btnPt) btnPt.classList.remove('active');
+      if (btnEn) btnEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (btnPt) btnPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+      } else {
+          if (contentEn) contentEn.classList.add('active');
+          if (btnEn) btnEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+      }
+  }
+
+  if (btnPt) {
+    btnPt.addEventListener('click', () => switchLanguage('pt'));
+  }
+  if (btnEn) {
+    btnEn.addEventListener('click', () => switchLanguage('en'));
+  }
+
+  if (ptContentExists || enContentExists) {
+    switchLanguage(initialLang);
+  }
+
+  if (!ptContentExists && btnPt) {
+      btnPt.disabled = true;
+      btnPt.style.opacity = '0.5';
+      btnPt.style.cursor = 'not-allowed';
+  }
+  if (!enContentExists && btnEn) {
+      btnEn.disabled = true;
+      btnEn.style.opacity = '0.5';
+      btnEn.style.cursor = 'not-allowed';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../../hattered_logo.svg" type="image/svg+xml" />
+<title>Guides</title>
+<style>
+    /* CSS de base do teu projeto */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828; /* Cor para o botão ativo */
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    /* Estilos para H1, H2, H3 (e outros se usares) - Espaçamento entre cabeçalhos e conteúdo */
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0; /* O primeiro h1 não precisa de margem superior */
+      margin-bottom: 15px; /* Espaçamento abaixo do H1 */
+      border-bottom: 2px solid #c33;
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px; /* Mais espaço acima do H2 */
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px; /* Mais espaço acima do H3 */
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    /* Estilos para Parágrafos (Texto Normal) */
+    .main-content p {
+      line-height: 1.7; /* Mais espaçamento entre linhas para leitura */
+      margin-top: 0; /* Garante que não há margem superior excessiva */
+      margin-bottom: 15px; /* Espaçamento entre parágrafos */
+      font-size: 16px;
+      word-spacing: 0.05em; /* Espaçamento subtil entre palavras */
+    }
+
+    /* Estilos para Negrito e Itálico */
+    .main-content strong {
+        font-weight: bold; /* Garante negrito */
+    }
+    .main-content em {
+        font-style: italic; /* Garante itálico */
+    }
+
+    /* Estilos para Imagens */
+    .main-content img {
+      max-width: 100%;
+      height: auto; /* Mantém a proporção da imagem */
+      display: block; /* Garante que a imagem se comporte como um bloco */
+      margin: 20px auto; /* Centraliza a imagem e adiciona espaço acima/abaixo */
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Estilos para Listas */
+    .main-content ul, .main-content ol {
+      margin-top: 10px;    /* Espaçamento acima da lista */
+      margin-bottom: 10px; /* Espaçamento abaixo da lista */
+      padding-left: 25px; /* Recuo da lista */
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px; /* Espaçamento entre itens da lista */
+      line-height: 1.6; /* Consistente com parágrafos para legibilidade */
+      word-spacing: 0.05em; /* Aplica o mesmo espaçamento de palavras */
+    }
+
+    /* Estilos para Links */
+    .main-content a {
+      color: #c33; /* Cor dos links */
+      text-decoration: none;
+    }
+    .main-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilos para Blocos de Citação (blockquote) - Markdown cria isto para texto precedido por > */
+    .main-content blockquote {
+        border-left: 4px solid #c33; /* Linha lateral para destacar */
+        margin: 20px 0; /* Espaçamento ao redor do bloco */
+        padding: 10px 20px; /* Preenchimento dentro do bloco */
+        background-color: #f9f9f9; /* Fundo suave */
+        font-style: italic; /* O texto do aside/bloco de citação deve ser itálico */
+        line-height: 1.7; /* Consistente */
+        word-spacing: 0.02em; /* Ligeiramente menor para destaque */
+    }
+    .main-content blockquote p {
+        margin-top: 0; /* Remover margem superior do parágrafo dentro do blockquote */
+        margin-bottom: 0; /* Remover margem inferior do parágrafo dentro do blockquote */
+    }
+
+    /* Estilos para parágrafo de nota que aparece depois de uma lista ou título (se estiver dentro de <em>) */
+    .main-content em p {
+        margin-top: 5px; /* Reduz a margem superior de parágrafos dentro de <em></em> para notas */
+        margin-bottom: 10px;
+    }
+
+    /* Botão de Voltar */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Controlo de visibilidade do conteúdo de idioma */
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="language-switcher">
+    <button id="btn-en">English</button>
+    <button id="btn-pt">Português</button>
+  </div>
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="../guides.html" id="back-button">← Back to Guides</a>
+
+      <div id="content-en" class="lang-content">
+        <h1>What VPNs Are and Their Importance for Privacy</h1>
+<blockquote>
+<p>In this article, we explore the concept of VPNs (Virtual Private Networks), how they work, and why they are essential tools for protecting online privacy. We’ll explain their uses, advantages, and precautions to take when using them.</p>
+</blockquote>
+<h2>Introduction to VPNs</h2>
+<p>A <strong>VPN</strong> (Virtual Private Network) is a technology that creates a secure and encrypted connection between your device and the internet. It can mask your real IP address, protect your data from interception, and allow access to geo-restricted content.</p>
+<p>The growing concern about digital privacy and increased online surveillance have contributed to the widespread use of VPNs.</p>
+<p>When using a VPN, all your internet traffic is routed through a secure "tunnel" to a remote server. This hides your digital identity and safeguards your information from malicious actors such as hackers, corporations, or even government agencies.</p>
+<h2>Why VPNs Matter for Privacy</h2>
+<p>We live in a time where almost everything is tracked. From the websites we visit to the products we purchase, every click can be recorded. This is where the <strong>importance of VPNs</strong> in privacy protection becomes evident.</p>
+<p><em>Key benefits of using a VPN for online privacy:</em></p>
+<ul>
+<li><strong>IP masking:</strong> VPNs hide your real IP address, making it harder to track your location and identity.</li>
+<li><strong>Data encryption:</strong> All internet traffic is encrypted, making it unreadable to third parties.</li>
+<li><strong>Protection on public Wi-Fi:</strong> Prevents hackers from intercepting data on open Wi-Fi networks.</li>
+<li><strong>Bypassing geo-restrictions:</strong> Allows access to content restricted based on geographic location.</li>
+</ul>
+<blockquote>
+<p>🔐 <strong>Security note:</strong> While VPNs significantly enhance privacy, they are <strong>not a silver bullet</strong>. Always pair them with strong passwords, two-factor authentication, and cautious browsing habits.</p>
+</blockquote>
+<h2>How a VPN Works in Practice</h2>
+<p>When you activate a VPN on your device, the process is as follows:</p>
+<ol>
+<li>Your device connects securely to a VPN server.</li>
+<li>Your data is encrypted before leaving your device.</li>
+<li>The VPN server forwards the encrypted traffic to the final destination (e.g., a website).</li>
+<li>The website sees only the VPN server’s IP address, not your actual one.</li>
+</ol>
+<p>This entire process runs seamlessly in the background, providing enhanced security and privacy without requiring technical expertise.</p>
+<h3>Common VPN Use Cases</h3>
+<ul>
+<li>A journalist uses a VPN to avoid state surveillance while researching sensitive topics.</li>
+<li>A traveler uses a VPN to access home country streaming services while abroad.</li>
+<li>A remote employee securely connects to the company's internal network via a corporate VPN.</li>
+</ul>
+<h2>What to Watch Out for When Choosing a VPN</h2>
+<p>Not all VPNs are created equal. Some may even jeopardize your privacy. It’s crucial to consider:</p>
+<ul>
+<li><strong>Logging policies:</strong> Avoid VPNs that keep records of your online activity.</li>
+<li><strong>Provider reputation:</strong> Research the company and read user reviews.</li>
+<li><strong>Speed and reliability:</strong> Poorly performing VPNs can disrupt your internet usage.</li>
+<li><strong>Device compatibility:</strong> Make sure the VPN supports your operating system and devices.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Quick tip:</strong> Be cautious of "100% free" VPNs. Many monetize by selling your data or injecting ads. Opt for paid, reputable services when possible.</p>
+</blockquote>
+<h2>Conclusion</h2>
+<p>VPNs are powerful tools to <strong>protect your online privacy</strong>, but they should be used responsibly and in conjunction with other digital security practices.</p>
+<p>Choosing a reliable VPN provides not only more freedom online but also an extra layer of protection against tracking, data leaks, and censorship.</p>
+<p>For anyone concerned about their digital privacy — and everyone should be! — learning about and using VPNs is a vital step toward safer internet usage.</p>
+<p><img alt="Illustration of how a VPN works" src="https://www.cyberghostvpn.com/content/dam/cyberghost/articles/en/vpn-how-it-works.svg" /></p>
+<p>To compare and learn more about different services, visit specialized websites like <a href="https://www.comparitech.com/vpn-reviews/">CompariTech</a>.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>O que são VPNs e as suas importâncias na privacidade</h1>
+<blockquote>
+<p>Neste artigo, vamos explorar o conceito de VPNs (Redes Privadas Virtuais), como elas funcionam, e por que são ferramentas essenciais para proteger a privacidade online. Explicaremos os seus usos, vantagens e cuidados que devemos ter ao utilizá-las.</p>
+</blockquote>
+<h2>Introdução às VPNs</h2>
+<p>Uma <strong>VPN</strong> (do inglês <em>Virtual Private Network</em>) é uma tecnologia que permite criar uma conexão segura e criptografada entre o seu dispositivo e a internet. Com ela, é possível mascarar seu endereço IP real, proteger seus dados contra interceptações e acessar conteúdos com restrições geográficas.</p>
+<p>A popularização das VPNs deve-se, principalmente, à crescente preocupação com a privacidade digital e ao aumento da vigilância e rastreamento online.</p>
+<p>Quando você usa uma VPN, todo o tráfego de internet é redirecionado por meio de um "túnel" seguro até um servidor remoto. Isso oculta sua identidade digital e protege suas informações de terceiros mal-intencionados, como hackers ou até mesmo empresas e governos.</p>
+<h2>Por que as VPNs são importantes para a privacidade</h2>
+<p>Vivemos numa era em que quase tudo é monitorado. Desde os sites que visitamos até os produtos que compramos, cada clique pode ser rastreado e armazenado. É aí que entra a <strong>relevância das VPNs</strong> na proteção da privacidade.</p>
+<p><em>Principais vantagens de usar uma VPN para proteger sua privacidade online:</em></p>
+<ul>
+<li><strong>Ocultação de IP:</strong> Uma VPN esconde o seu endereço IP real, dificultando o rastreamento de sua localização e identidade.</li>
+<li><strong>Criptografia de dados:</strong> Todo o tráfego é criptografado, tornando-o ilegível para terceiros.</li>
+<li><strong>Proteção em redes públicas:</strong> Evita que hackers interceptem seus dados em redes Wi-Fi abertas, como em cafés e aeroportos.</li>
+<li><strong>Acesso a conteúdos bloqueados:</strong> Permite acesso a sites e serviços que estão bloqueados por localização geográfica.</li>
+</ul>
+<blockquote>
+<p>🔐 <strong>Nota de segurança:</strong> Embora VPNs melhorem bastante a privacidade, elas <strong>não são uma solução absoluta</strong>. É fundamental combiná-las com outras boas práticas, como o uso de senhas fortes, autenticação em dois fatores e cuidado ao clicar em links suspeitos.</p>
+</blockquote>
+<h2>Como funciona uma VPN na prática</h2>
+<p>Ao ativar uma VPN no seu dispositivo, o processo é o seguinte:</p>
+<ol>
+<li>O dispositivo estabelece uma conexão segura com um servidor VPN.</li>
+<li>Os dados enviados e recebidos são criptografados.</li>
+<li>O servidor VPN encaminha o tráfego para o destino final (como um site).</li>
+<li>O site vê apenas o endereço IP do servidor VPN, e não o seu real.</li>
+</ol>
+<p>Este processo acontece de forma transparente e automática, permitindo uma navegação mais segura e privada sem exigir grandes conhecimentos técnicos do usuário.</p>
+<h3>Exemplos de uso comum de VPNs</h3>
+<ul>
+<li>Um jornalista investigativo usa uma VPN para se proteger de vigilância estatal enquanto realiza pesquisas sensíveis.</li>
+<li>Um viajante utiliza uma VPN para acessar serviços de streaming disponíveis apenas no seu país de origem.</li>
+<li>Um funcionário remoto se conecta com segurança à rede da empresa usando uma VPN corporativa.</li>
+</ul>
+<h2>Cuidados ao escolher uma VPN</h2>
+<p>Nem todas as VPNs são iguais. Algumas práticas podem comprometer ainda mais sua privacidade. É essencial considerar:</p>
+<ul>
+<li><strong>Política de registro (log):</strong> Evite VPNs que armazenam logs das suas atividades.</li>
+<li><strong>Reputação do provedor:</strong> Pesquise sobre a empresa e leia avaliações de outros usuários.</li>
+<li><strong>Velocidade e estabilidade:</strong> VPNs muito lentas podem prejudicar sua experiência online.</li>
+<li><strong>Compatibilidade com dispositivos:</strong> Verifique se a VPN funciona no seu sistema operacional e dispositivos móveis.</li>
+</ul>
+<blockquote>
+<p>💡 <strong>Dica rápida:</strong> Desconfie de VPNs "100% gratuitas". Muitas delas monetizam seus serviços vendendo seus dados ou injetando anúncios. Prefira opções pagas e confiáveis.</p>
+</blockquote>
+<h2>Conclusão</h2>
+<p>As VPNs são ferramentas poderosas para <strong>proteger a privacidade online</strong>, mas devem ser usadas com consciência e combinadas com outras boas práticas de segurança digital.</p>
+<p>Ao escolher uma boa VPN, você garante não apenas mais liberdade na navegação, mas também uma camada extra de proteção contra rastreamentos, vazamentos de dados e censura online.</p>
+<p>Para quem se preocupa com sua privacidade digital — e todos deveriam! —, entender e utilizar VPNs é um passo essencial rumo a uma experiência mais segura na internet.</p>
+<p><img alt="Ilustração do funcionamento de uma VPN" src="https://www.cyberghostvpn.com/content/dam/cyberghost/articles/en/vpn-how-it-works.svg" /></p>
+<p>Para saber mais e comparar diferentes serviços, recomendamos visitar sites especializados como o <a href="https://www.comparitech.com/pt/vpn-reviews/">CompariTech</a>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnPt = document.getElementById('btn-pt');
+  const btnEn = document.getElementById('btn-en');
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  // Verifica se existe conteúdo para cada idioma
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  // Define o idioma inicial. Prioriza 'en' se existir, senão 'pt', senão nada.
+  let initialLang = 'en';
+  if (!enContentExists && ptContentExists) {
+      initialLang = 'pt';
+  } else if (!enContentExists && !ptContentExists) {
+      // Se não houver conteúdo em nenhum dos idiomas, esconde os botões e mostra uma mensagem.
+      if (btnEn) btnEn.style.display = 'none';
+      if (btnPt) btnPt.style.display = 'none';
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função para alternar entre idiomas
+  function switchLanguage(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+      if (btnPt) btnPt.classList.remove('active');
+      if (btnEn) btnEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (btnPt) btnPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+      } else {
+          if (contentEn) contentEn.classList.add('active');
+          if (btnEn) btnEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+      }
+  }
+
+  // Adiciona event listeners aos botões
+  if (btnPt) {
+    btnPt.addEventListener('click', () => switchLanguage('pt'));
+  }
+  if (btnEn) {
+    btnEn.addEventListener('click', () => switchLanguage('en'));
+  }
+
+  // Ativa o idioma inicial apenas se houver conteúdo em algum dos idiomas
+  if (ptContentExists || enContentExists) {
+    switchLanguage(initialLang);
+  }
+
+  // Desabilita os botões de idioma se o conteúdo correspondente não existir
+  if (!ptContentExists && btnPt) {
+      btnPt.disabled = true;
+      btnPt.style.opacity = '0.5';
+      btnPt.style.cursor = 'not-allowed';
+  }
+  if (!enContentExists && btnEn) {
+      btnEn.disabled = true;
+      btnEn.style.opacity = '0.5';
+      btnEn.style.cursor = 'not-allowed';
+  }
+</script>
+
+</body>
+</html>

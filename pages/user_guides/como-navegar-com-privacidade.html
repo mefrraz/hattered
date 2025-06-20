@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" href="hattered_logo.svg" type="image/svg+xml" />
+<title>Guides</title>
+<style>
+    /* CSS de base do teu projeto */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828; /* Cor para o botão ativo */
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    /* Estilos para H1, H2, H3 (e outros se usares) - Espaçamento entre cabeçalhos e conteúdo */
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0; /* O primeiro h1 não precisa de margem superior */
+      margin-bottom: 15px; /* Espaçamento abaixo do H1 */
+      border-bottom: 2px solid #c33;
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px; /* Mais espaço acima do H2 */
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px; /* Mais espaço acima do H3 */
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    /* Estilos para Parágrafos (Texto Normal) */
+    .main-content p {
+      line-height: 1.7; /* Mais espaçamento entre linhas para leitura */
+      margin-top: 0; /* Garante que não há margem superior excessiva */
+      margin-bottom: 15px; /* Espaçamento entre parágrafos */
+      font-size: 16px;
+      word-spacing: 0.05em; /* Espaçamento subtil entre palavras */
+    }
+
+    /* Estilos para Negrito e Itálico */
+    .main-content strong {
+        font-weight: bold; /* Garante negrito */
+    }
+    .main-content em {
+        font-style: italic; /* Garante itálico */
+    }
+
+    /* Estilos para Imagens */
+    .main-content img {
+      max-width: 100%;
+      height: auto; /* Mantém a proporção da imagem */
+      display: block; /* Garante que a imagem se comporte como um bloco */
+      margin: 20px auto; /* Centraliza a imagem e adiciona espaço acima/abaixo */
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Estilos para Listas */
+    .main-content ul, .main-content ol {
+      margin-top: 10px;    /* Espaçamento acima da lista */
+      margin-bottom: 10px; /* Espaçamento abaixo da lista */
+      padding-left: 25px; /* Recuo da lista */
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px; /* Espaçamento entre itens da lista */
+      line-height: 1.6; /* Consistente com parágrafos para legibilidade */
+      word-spacing: 0.05em; /* Aplica o mesmo espaçamento de palavras */
+    }
+
+    /* Estilos para Links */
+    .main-content a {
+      color: #c33; /* Cor dos links */
+      text-decoration: none;
+    }
+    .main-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilos para Blocos de Citação (blockquote) - Markdown cria isto para texto precedido por > */
+    .main-content blockquote {
+        border-left: 4px solid #c33; /* Linha lateral para destacar */
+        margin: 20px 0; /* Espaçamento ao redor do bloco */
+        padding: 10px 20px; /* Preenchimento dentro do bloco */
+        background-color: #f9f9f9; /* Fundo suave */
+        font-style: italic; /* O texto do aside/bloco de citação deve ser itálico */
+        line-height: 1.7; /* Consistente */
+        word-spacing: 0.02em; /* Ligeiramente menor para destaque */
+    }
+    .main-content blockquote p {
+        margin-top: 0; /* Remover margem superior do parágrafo dentro do blockquote */
+        margin-bottom: 0; /* Remover margem inferior do parágrafo dentro do blockquote */
+    }
+
+    /* Estilos para parágrafo de nota que aparece depois de uma lista ou título (se estiver dentro de <em>) */
+    .main-content em p {
+        margin-top: 5px; /* Reduz a margem superior de parágrafos dentro de <em></em> para notas */
+        margin-bottom: 10px;
+    }
+
+    /* Botão de Voltar */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Controlo de visibilidade do conteúdo de idioma */
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="language-switcher">
+    <button id="btn-en">English</button>
+    <button id="btn-pt">Português</button>
+  </div>
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="../guides.html" id="back-button">← Back to Guides</a>
+
+      <div id="content-en" class="lang-content">
+        <h1>How to Browse Privately</h1>
+<blockquote>
+<p>In this guide, you’ll learn how to protect your privacy while browsing the web. We cover simple techniques, effective tools, and best practices to minimize surveillance, tracking, and the theft of personal data online.</p>
+</blockquote>
+<h2>Introduction to Private Browsing</h2>
+<p>The internet is an essential part of modern life, but as we browse, we leave behind a digital trail that can be tracked by corporations, governments, or cybercriminals.</p>
+<p><strong>Private browsing</strong> doesn't mean hiding completely, but rather controlling what data is shared, with whom, and in what context.</p>
+<h2>Essential Tools to Protect Your Privacy</h2>
+<p>There are several tools available that can greatly improve online privacy. Here are some of the most effective ones:</p>
+<ul>
+<li><strong>Privacy-focused browsers</strong><ul>
+<li>Brave</li>
+<li>Tor Browser</li>
+<li>Firefox (with privacy enhancements)</li>
+</ul>
+</li>
+<li><strong>Browser extensions</strong><ul>
+<li>uBlock Origin (ad and tracker blocker)</li>
+<li>HTTPS Everywhere</li>
+<li>Privacy Badger</li>
+</ul>
+</li>
+<li><strong>VPN (Virtual Private Network)</strong><ul>
+<li>Hides your IP and encrypts your internet connection</li>
+</ul>
+</li>
+<li><strong>Private search engines</strong><ul>
+<li>DuckDuckGo</li>
+<li>Startpage</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Note:</strong> Never rely on a single tool alone. A layered approach ensures stronger protection.</p>
+</blockquote>
+<h2>Private Browsing Best Practices</h2>
+<p>Technology helps, but user behavior is key. Here are some recommended practices:</p>
+<ol>
+<li>Use incognito/private mode when appropriate.</li>
+<li>Avoid logging into personal accounts on untrusted sites.</li>
+<li><strong>Disable third-party cookies</strong> in your browser.</li>
+<li>Read permissions before installing extensions or apps.</li>
+<li>Prefer services with clear, privacy-focused policies.</li>
+</ol>
+<blockquote>
+<p>💡 <em>Quick tip:</em> Use disposable (temporary) email addresses when signing up on websites you don’t plan to revisit.</p>
+</blockquote>
+<h2>Safe Browsing Example</h2>
+<p>Imagine you want to research a product without being tracked:</p>
+<ol>
+<li>Launch the <strong>Tor Browser</strong>.</li>
+<li>Turn on a <strong>reliable VPN</strong> beforehand.</li>
+<li>Access the website via an HTTPS connection.</li>
+<li>Use the <em>DuckDuckGo</em> search engine.</li>
+<li>Avoid signing into any personal account.</li>
+</ol>
+<h2>Useful Links</h2>
+<ul>
+<li><a href="https://www.torproject.org/">Tor Project - Tor Browser</a></li>
+<li><a href="https://duckduckgo.com/">DuckDuckGo</a></li>
+<li><a href="https://foundation.mozilla.org/en/privacynotincluded/">Mozilla’s Privacy Guide</a></li>
+</ul>
+<h2>Conclusion</h2>
+<p>Browsing privately is a right — and more than that, a necessity in the digital age. With the right tools, some knowledge, and good habits, anyone can significantly reduce their online exposure.</p>
+<p><img alt="Illustration representing digital privacy" src="https://www.privacy.org/images/privacy-illustration.png" /></p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Como Navegar com Privacidade</h1>
+<blockquote>
+<p>Neste guia, vais aprender a proteger a tua privacidade enquanto navegas na internet. Exploramos técnicas simples, ferramentas eficazes e boas práticas para minimizar a vigilância, o rastreamento e o roubo de dados pessoais online.</p>
+</blockquote>
+<h2>Introdução à Privacidade na Navegação</h2>
+<p>A internet tornou-se uma parte essencial da vida moderna, mas à medida que navegamos, deixamos um rastro digital que pode ser rastreado por empresas, governos ou cibercriminosos.</p>
+<p><strong>Navegar com privacidade</strong> não significa esconder-se completamente, mas sim controlar quais dados partilhamos, com quem e em que contexto.</p>
+<h2>Ferramentas Essenciais para Proteger a Sua Privacidade</h2>
+<p>Existem várias ferramentas que podem ser utilizadas para melhorar a privacidade online. Abaixo estão algumas das mais eficazes:</p>
+<ul>
+<li><strong>Navegadores focados em privacidade</strong><ul>
+<li>Brave</li>
+<li>Tor Browser</li>
+<li>Firefox com ajustes de privacidade</li>
+</ul>
+</li>
+<li><strong>Extensões de navegador</strong><ul>
+<li>uBlock Origin (bloqueador de anúncios e rastreadores)</li>
+<li>HTTPS Everywhere</li>
+<li>Privacy Badger</li>
+</ul>
+</li>
+<li><strong>VPN (Rede Privada Virtual)</strong><ul>
+<li>Oculta o IP e encripta a conexão com a internet</li>
+</ul>
+</li>
+<li><strong>Motores de busca privados</strong><ul>
+<li>DuckDuckGo</li>
+<li>Startpage</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Nota:</strong> Nunca confie apenas numa única ferramenta. O ideal é combinar várias abordagens para uma proteção mais robusta.</p>
+</blockquote>
+<h2>Boas Práticas de Navegação Privada</h2>
+<p>A tecnologia ajuda, mas os hábitos do utilizador são fundamentais. Aqui estão algumas práticas recomendadas:</p>
+<ol>
+<li>Utilize o modo de navegação privada sempre que possível.</li>
+<li>Evite iniciar sessão com contas pessoais em sites suspeitos.</li>
+<li><strong>Desative cookies de terceiros</strong> nos navegadores.</li>
+<li>Leia as permissões antes de instalar qualquer extensão ou aplicação.</li>
+<li>Prefira serviços com políticas de privacidade transparentes.</li>
+</ol>
+<blockquote>
+<p>💡 <em>Dica rápida:</em> Use e-mails descartáveis (temporários) ao fazer registos em sites que não pretende utilizar frequentemente.</p>
+</blockquote>
+<h2>Exemplo de Navegação Segura</h2>
+<p>Imaginemos que queres pesquisar por um produto sem deixar rastros:</p>
+<ol>
+<li>Abre o <strong>Tor Browser</strong>.</li>
+<li>Ativa uma <strong>VPN confiável</strong> antes de iniciar.</li>
+<li>Acede ao site através de uma ligação HTTPS.</li>
+<li>Utiliza o motor de busca <em>DuckDuckGo</em>.</li>
+<li>Não faças login em nenhuma conta pessoal.</li>
+</ol>
+<h2>Links Úteis</h2>
+<ul>
+<li><a href="https://www.torproject.org/">Tor Project - Navegador Tor</a></li>
+<li><a href="https://duckduckgo.com/">DuckDuckGo</a></li>
+<li><a href="https://foundation.mozilla.org/pt-PT/privacynotincluded/">Guia da Mozilla sobre privacidade online</a></li>
+</ul>
+<h2>Conclusão</h2>
+<p>Navegar com privacidade é um direito, e mais do que isso, uma necessidade no mundo digital atual. Com ferramentas apropriadas, um pouco de conhecimento e bons hábitos, qualquer pessoa pode reduzir significativamente a sua exposição online.</p>
+<p><img alt="Imagem representando privacidade digital" src="https://www.privacy.org/images/privacy-illustration.png" /></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnPt = document.getElementById('btn-pt');
+  const btnEn = document.getElementById('btn-en');
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  // Verifica se existe conteúdo para cada idioma
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  // Define o idioma inicial. Prioriza 'en' se existir, senão 'pt', senão nada.
+  let initialLang = 'en';
+  if (!enContentExists && ptContentExists) {
+      initialLang = 'pt';
+  } else if (!enContentExists && !ptContentExists) {
+      // Se não houver conteúdo em nenhum dos idiomas, esconde os botões e mostra uma mensagem.
+      if (btnEn) btnEn.style.display = 'none';
+      if (btnPt) btnPt.style.display = 'none';
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função para alternar entre idiomas
+  function switchLanguage(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+      if (btnPt) btnPt.classList.remove('active');
+      if (btnEn) btnEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (btnPt) btnPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+      } else {
+          if (contentEn) contentEn.classList.add('active');
+          if (btnEn) btnEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+      }
+  }
+
+  // Adiciona event listeners aos botões
+  if (btnPt) {
+    btnPt.addEventListener('click', () => switchLanguage('pt'));
+  }
+  if (btnEn) {
+    btnEn.addEventListener('click', () => switchLanguage('en'));
+  }
+
+  // Ativa o idioma inicial apenas se houver conteúdo em algum dos idiomas
+  if (ptContentExists || enContentExists) {
+    switchLanguage(initialLang);
+  }
+
+  // Desabilita os botões de idioma se o conteúdo correspondente não existir
+  if (!ptContentExists && btnPt) {
+      btnPt.disabled = true;
+      btnPt.style.opacity = '0.5';
+      btnPt.style.cursor = 'not-allowed';
+  }
+  if (!enContentExists && btnEn) {
+      btnEn.disabled = true;
+      btnEn.style.opacity = '0.5';
+      btnEn.style.cursor = 'not-allowed';
+  }
+</script>
+
+</body>
+</html>

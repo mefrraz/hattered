@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../../hattered_logo.svg" type="image/svg+xml" />
+<title>Guides</title>
+<style>
+    /* CSS de base do teu projeto */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828; /* Cor para o botão ativo */
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    /* Estilos para H1, H2, H3 (e outros se usares) - Espaçamento entre cabeçalhos e conteúdo */
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0; /* O primeiro h1 não precisa de margem superior */
+      margin-bottom: 15px; /* Espaçamento abaixo do H1 */
+      border-bottom: 2px solid #c33;
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px; /* Mais espaço acima do H2 */
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px; /* Mais espaço acima do H3 */
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    /* Estilos para Parágrafos (Texto Normal) */
+    .main-content p {
+      line-height: 1.7; /* Mais espaçamento entre linhas para leitura */
+      margin-top: 0; /* Garante que não há margem superior excessiva */
+      margin-bottom: 15px; /* Espaçamento entre parágrafos */
+      font-size: 16px;
+      word-spacing: 0.05em; /* Espaçamento subtil entre palavras */
+    }
+
+    /* Estilos para Negrito e Itálico */
+    .main-content strong {
+        font-weight: bold; /* Garante negrito */
+    }
+    .main-content em {
+        font-style: italic; /* Garante itálico */
+    }
+
+    /* Estilos para Imagens */
+    .main-content img {
+      max-width: 100%;
+      height: auto; /* Mantém a proporção da imagem */
+      display: block; /* Garante que a imagem se comporte como um bloco */
+      margin: 20px auto; /* Centraliza a imagem e adiciona espaço acima/abaixo */
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Estilos para Listas */
+    .main-content ul, .main-content ol {
+      margin-top: 10px;    /* Espaçamento acima da lista */
+      margin-bottom: 10px; /* Espaçamento abaixo da lista */
+      padding-left: 25px; /* Recuo da lista */
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px; /* Espaçamento entre itens da lista */
+      line-height: 1.6; /* Consistente com parágrafos para legibilidade */
+      word-spacing: 0.05em; /* Aplica o mesmo espaçamento de palavras */
+    }
+
+    /* Estilos para Links */
+    .main-content a {
+      color: #c33; /* Cor dos links */
+      text-decoration: none;
+    }
+    .main-content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilos para Blocos de Citação (blockquote) - Markdown cria isto para texto precedido por > */
+    .main-content blockquote {
+        border-left: 4px solid #c33; /* Linha lateral para destacar */
+        margin: 20px 0; /* Espaçamento ao redor do bloco */
+        padding: 10px 20px; /* Preenchimento dentro do bloco */
+        background-color: #f9f9f9; /* Fundo suave */
+        font-style: italic; /* O texto do aside/bloco de citação deve ser itálico */
+        line-height: 1.7; /* Consistente */
+        word-spacing: 0.02em; /* Ligeiramente menor para destaque */
+    }
+    .main-content blockquote p {
+        margin-top: 0; /* Remover margem superior do parágrafo dentro do blockquote */
+        margin-bottom: 0; /* Remover margem inferior do parágrafo dentro do blockquote */
+    }
+
+    /* Estilos para parágrafo de nota que aparece depois de uma lista ou título (se estiver dentro de <em>) */
+    .main-content em p {
+        margin-top: 5px; /* Reduz a margem superior de parágrafos dentro de <em></em> para notas */
+        margin-bottom: 10px;
+    }
+
+    /* Botão de Voltar */
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    /* Controlo de visibilidade do conteúdo de idioma */
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="language-switcher">
+    <button id="btn-en">English</button>
+    <button id="btn-pt">Português</button>
+  </div>
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="../guides.html" id="back-button">← Back to Guides</a>
+
+      <div id="content-en" class="lang-content">
+        <h1>Comprehensive Test Guide (English)</h1>
+<h2>Welcome to the Test</h2>
+<p>This is a <strong>paragraph</strong> of normal text. This is where you can write the main content of your guides. Try to keep paragraphs concise for <em>better readability</em>.</p>
+<hr />
+<h3>Features and Functionality</h3>
+<p>You can use <strong>bold</strong> and <em>italics</em> to highlight important parts of the text. For example, the <strong><em>most important word</em></strong> here.
+You can also add lists:
+* First list item
+* Second list item
+    * A sub-item
+* Third list item</p>
+<hr />
+<h4>Images and Links</h4>
+<p>Here's an example of an image from a link:</p>
+<p><img alt="Gemini Logo" src="https://www.gstatic.com/images/branding/product/2x/gemini_2023_212x88_standard_color.png" /></p>
+<p>If you have an image in the same folder as the generated HTML (or an accessible subfolder like <code>web/assets/</code>), you can reference it like this:</p>
+<p><img alt="Local Test Image" src="../assets/photo.png" />
+<em>Make sure you have a <code>photo.png</code> file inside the <code>web/assets/</code> folder for this to work.</em></p>
+<p>For links: Visit the <a href="https://www.google.com">Google website</a>.</p>
+<hr />
+<blockquote>
+<p>This is a blockquote, useful for "asides," side notes, or important quotes.
+You can use it to draw attention to additional information.</p>
+</blockquote>
+<hr />
+<h3>Test Conclusion</h3>
+<p>We hope this test guide helps you verify all the Markdown functionalities you've implemented.
+Remember, <strong>consistency</strong> in your Markdown is the <em>key</em> to good formatting.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia de Teste Completa (Português)</h1>
+<h2>Bem-vindo ao Teste</h2>
+<p>Este é um parágrafo de texto normal. É aqui que podes escrever o conteúdo principal das tuas guias. Tenta manter os parágrafos concisos para <em>melhor legibilidade</em>.</p>
+<hr />
+<h3>Recursos e Funcionalidades</h3>
+<p>Podes usar <strong>negrito</strong> e <em>itálico</em> para realçar partes importantes do texto. Por exemplo, a <strong><em>palavra mais importante</em></strong> aqui.</p>
+<p>Também é possível adicionar listas:
+* Primeiro item da lista
+* Segundo item da lista
+    * Um sub-item
+* Terceiro item da lista</p>
+<hr />
+<h4>Imagens e Links</h4>
+<p>Aqui tens um exemplo de uma imagem a partir de um link:</p>
+<p><img alt="Logo da Gemini" src="https://www.gstatic.com/images/branding/product/2x/gemini_2023_212x88_standard_color.png" /></p>
+<p>Se tiveres uma imagem na mesma pasta que o HTML gerado (ou uma subpasta acessível, como <code>web/assets/</code>), podes referenciá-la assim:</p>
+<p><img alt="Imagem de Teste Local" src="../assets/photo.png" />
+<em>Certifica-te de que tens um ficheiro <code>photo.png</code> dentro da pasta <code>web/assets/</code> para que isto funcione.</em></p>
+<p>Para links: Visita o <a href="https://www.google.com">website do Google</a>.</p>
+<hr />
+<blockquote>
+<p>Este é um bloco de citação, útil para "apartes", notas laterais ou citações importantes.
+Podes usá-lo para chamar a atenção para informações adicionais.</p>
+</blockquote>
+<hr />
+<h3>Conclusão do Teste</h3>
+<p>Esperamos que esta guia de teste te ajude a verificar todas as funcionalidades de Markdown que implementaste.
+Lembra-te, <strong>a consistência</strong> no teu Markdown é a <em>chave</em> para uma boa formatação.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnPt = document.getElementById('btn-pt');
+  const btnEn = document.getElementById('btn-en');
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  // Verifica se existe conteúdo para cada idioma
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  // Define o idioma inicial. Prioriza 'en' se existir, senão 'pt', senão nada.
+  let initialLang = 'en';
+  if (!enContentExists && ptContentExists) {
+      initialLang = 'pt';
+  } else if (!enContentExists && !ptContentExists) {
+      // Se não houver conteúdo em nenhum dos idiomas, esconde os botões e mostra uma mensagem.
+      if (btnEn) btnEn.style.display = 'none';
+      if (btnPt) btnPt.style.display = 'none';
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função para alternar entre idiomas
+  function switchLanguage(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+      if (btnPt) btnPt.classList.remove('active');
+      if (btnEn) btnEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (btnPt) btnPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+      } else {
+          if (contentEn) contentEn.classList.add('active');
+          if (btnEn) btnEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+      }
+  }
+
+  // Adiciona event listeners aos botões
+  if (btnPt) {
+    btnPt.addEventListener('click', () => switchLanguage('pt'));
+  }
+  if (btnEn) {
+    btnEn.addEventListener('click', () => switchLanguage('en'));
+  }
+
+  // Ativa o idioma inicial apenas se houver conteúdo em algum dos idiomas
+  if (ptContentExists || enContentExists) {
+    switchLanguage(initialLang);
+  }
+
+  // Desabilita os botões de idioma se o conteúdo correspondente não existir
+  if (!ptContentExists && btnPt) {
+      btnPt.disabled = true;
+      btnPt.style.opacity = '0.5';
+      btnPt.style.cursor = 'not-allowed';
+  }
+  if (!enContentExists && btnEn) {
+      btnEn.disabled = true;
+      btnEn.style.opacity = '0.5';
+      btnEn.style.cursor = 'not-allowed';
+  }
+</script>
+
+</body>
+</html>

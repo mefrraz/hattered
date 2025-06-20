@@ -1,101 +1,65 @@
 # Hattered
-## 🇬🇧 🇺🇸 English
 
-Hi guys! Welcome to **Hattered**, my first repository featuring a **megathread** with my favorite torrent and piracy-related sites, guides, and tools.
+### O seu guia completo para o universo digital.
 
----
+**Hattered** é uma "megathread" centralizada e um repositório de conhecimento, criado a pensar na comunidade de língua portuguesa. O objetivo é ser um ponto de partida seguro e organizado para explorar o mundo dos torrents, IPTV, segurança online e muito mais.
 
-## 🚀 Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Versão-1.3.1-blue?style=for-the-badge" alt="Versão">
+  <img src="https://img.shields.io/badge/Licença-MIT-green?style=for-the-badge" alt="Licença">
+  <img src="https://img.shields.io/github/last-commit/mefrraz/hattered?style=for-the-badge&logo=github" alt="Último Commit">
+</p>
 
-- 🧭 Quick access to popular torrent and piracy platforms  
-- 📰 Latest news and updates from the piracy world  
-- 📅 Built-in calendar with current day highlight  
-- 🧠 Useful bilingual guides and tutorials with language toggle button  
-- ❓ FAQ section in guides to answer common questions  
-- 🧩 Clean sidebar with categorized links  
-- 🛠️ Useful online tools planned: magnet/torrent converter, hash checker, speed calculator, tracker monitor, and more (coming soon)  
-- 🚫 Planned blacklist of suspicious or unsafe sites (coming soon)  
-- 📂 Community links: Reddit, forums, GitHub collections  
+## ✨ Funcionalidades Principais
 
----
+Este projeto foi construído para ser simples, rápido e, acima de tudo, útil.
 
-## 🛠️ Tech Stack
+* 📚 **Guias Abrangentes:** Tutoriais detalhados que cobrem desde os conceitos básicos de torrents e IPTV até configurações avançadas de segurança e privacidade.
+* 🗂️ **Conteúdo Organizado:** Navegação intuitiva com categorias bem definidas para encontrar facilmente sites e recursos para filmes, séries, jogos, software e mais.
+* 🚫 **Verificador de Blacklist:** Uma ferramenta integrada para verificar se um domínio é considerado inseguro, ajudando a proteger os utilizadores contra sites maliciosos.
+* 🔒 **Foco em Segurança e Privacidade:** O projeto não contém anúncios, rastreadores ou scripts desnecessários. Além disso, oferece guias dedicados a como usar VPNs e outras ferramentas para proteger a sua identidade online.
+* 🌐 **100% Estático e Leve:** Construído com HTML, CSS e JavaScript puros (vanilla), garantindo um carregamento quase instantâneo e total transparência no código.
 
-- HTML + CSS + JavaScript (Vanilla)  
-- Responsive and lightweight  
-- No dependencies or frameworks  
-- Easily customizable  
+## 🚀 Como Usar
 
----
+Existem duas maneiras de aceder ao Hattered:
 
-## 🤝 Contributing
+**1. Aceder à Versão Online (Recomendado)**
+* Podes visitar o site diretamente através do link: **[mefrraz.github.io/hattered/](https://mefrraz.github.io/hattered/)**
 
-Feel free to open issues and pull requests!  
-If you want to help with translations, add guides, or implement new tools, you are very welcome!
+**2. Executar Localmente**
+* Faz o clone deste repositório:
+    ```bash
+    git clone [https://github.com/mefrraz/hattered.git](https://github.com/mefrraz/hattered.git)
+    ```
+* Navega para a pasta do projeto e inicia um servidor local simples. Se tiveres Python instalado, podes usar o seguinte comando:
+    ```bash
+    cd hattered
+    python -m http.server
+    ```
+* Abre o teu navegador e acede a `http://localhost:8000`.
 
----
+## 🛠️ Tecnologias Utilizadas
 
-## 📣 Disclaimer
+* **HTML5**
+* **CSS3**
+* **JavaScript (Vanilla)**
+* Sem frameworks, sem dependências, sem complicações.
 
-This project is for educational purposes only. No illegal content is hosted or distributed. Use at your own risk and always respect your country's laws.
+## 🤝 Como Contribuir
 
----
+Este é um projeto construído a pensar na comunidade, e toda a ajuda é bem-vinda! Se tiveres alguma ideia, sugestão ou correção, por favor:
 
-## 📞 Contact
+1.  **Abre uma Issue:** Descreve a tua ideia ou o problema que encontraste.
+2.  **Envia um Pull Request:** Se quiseres adicionar um novo guia, um link útil ou corrigir algo diretamente, os PRs são a melhor forma de o fazer.
 
-Made with ❤️ by frraz 🇵🇹  
-Feel free to reach out: me.frraz@gmail.com   
-Follow me on GitHub: [github.com/mefrraz](https://github.com/mefrraz)
-
----
-
-## 🇵🇹 🇧🇷 Português
-
-Olá pessoal! Bem-vindos ao **Hattered**, meu primeiro repositório com um **megathread** dos meus sites favoritos relacionados a torrents, pirataria, guias e ferramentas.
-
----
-
-## 🚀 Funcionalidades
-
-- 🧭 Acesso rápido às plataformas de torrents e pirataria mais populares  
-- 📰 Últimas notícias e atualizações do mundo da pirataria  
-- 📅 Calendário integrado com destaque no dia atual  
-- 🧠 Guias bilíngues com botão para troca de idioma  
-- ❓ Seção de FAQs nos guias para responder perguntas comuns  
-- 🧩 Barra lateral limpa com links organizados por categoria  
-- 🛠️ Ferramentas online úteis planejadas: conversor magnet/torrent, verificador de hash, calculadora de velocidade, monitor de trackers e mais (em breve)  
-- 🚫 Blacklist de sites suspeitos ou inseguros planejada (em breve)  
-- 📂 Ligações para comunidades: Reddit, fóruns, coleções no GitHub  
-
----
-
-## 🛠️ Tecnologias Usadas
-
-- HTML + CSS + JavaScript (puro)  
-- Leve e responsivo  
-- Sem frameworks ou dependências externas  
-- Fácil de personalizar  
-
----
-
-## 🤝 Contribuindo
-
-Sinta-se à vontade para abrir issues e pull requests!  
-Se quiser ajudar com traduções, adicionar guias ou implementar novas ferramentas, será muito bem-vindo!
-
----
-
+Qualquer contribuição, por mais pequena que seja, ajuda a tornar o projeto melhor para todos!
 
 ## 📣 Aviso Legal
 
-Este projeto é apenas para fins educativos.  
-Nenhum conteúdo ilegal é hospedado ou partilhado.  
-Use por sua conta e risco e respeite sempre as leis do seu país.
+Este projeto destina-se exclusivamente a fins educativos. Nenhum conteúdo ilegal é hospedado ou distribuído através deste repositório. A utilização das ferramentas e informações aqui presentes é da inteira responsabilidade do utilizador. Respeita sempre as leis do teu país.
 
 ---
-
-## 📞 Contacto
-
-Feito com ❤️ por frraz 🇵🇹  
-Entre em contacto: me.frraz@gmail.com  
-Siga-me no GitHub: [github.com/mefrraz](https://github.com/mefrraz)
+<p align="center">
+Feito com ❤️ por <a href="https://github.com/mefrraz">frraz</a> 🇵🇹
+</p>
