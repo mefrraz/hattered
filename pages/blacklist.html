@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="../hattered_welcome1.svg" type="image/svg+xml" />
-  <title>Hattered - Blacklist Checker</title>
-  <link rel="stylesheet" href="blacklist.css" />
+  <title>Blacklist Checker | Hattered</title>
+  <link rel="stylesheet" href="assets/blacklist/blacklist.css" />
+  <link rel="stylesheet" href="assets/global.css">
+
+  <style>
+    /* Esconde permanentemente todo o conteúdo em inglês */
+    .lang-en {
+      display: none;
+    }
+    /* Mostra permanentemente todo o conteúdo em português */
+    .lang-pt {
+      display: inline !important; 
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -16,36 +28,29 @@
     <div class="top-content">
       <div class="social-icons"></div>
 
-
-
-      <div class="language-switch">
-        <a href="#" class="btn-lang" data-lang="en">EN</a>
-        <a href="#" class="btn-lang" data-lang="pt">PT</a>
-      </div>
-
       <div class="left-block">
         <div class="">
-<nav class="main-nav">
-  <a href="../index.html" class="btn-red">Home</a>
-</nav>
+          <nav class="main-nav">
+            <a href="../index.html" class="btn-red">🚀 Portal</a>
+          </nav>
         </div>
 
         <h1 class="page-title">
           <span class="lang-en">Blacklist Checker</span>
-          <span class="lang-pt" style="display:none;">Verificador de Sites Inseguros</span>
+          <span class="lang-pt">Verificador de Sites Inseguros</span>
         </h1>
 
         <div class="description">
           <span class="lang-en">Check if a domain is on our blacklist. Enter the full domain (e.g., example.com) and click check.</span>
-          <span class="lang-pt" style="display:none;">Verifique se um domínio está na nossa lista negra. Digite o domínio completo (ex: exemplo.com) e clique em verificar.</span>
+          <span class="lang-pt">Verifique se um domínio está na nossa Blacklist. Digite o domínio completo (ex: exemplo.com) e clique em verificar.</span>
         </div>
 
         <div class="blacklist-checker">
           <div class="search-container">
-            <input type="text" id="search-input" placeholder="example.com" />
+            <input type="text" id="search-input" placeholder="exemplo.com" />
             <button id="search-btn" class="btn-red">
               <span class="lang-en">Check</span>
-              <span class="lang-pt" style="display:none;">Verificar</span>
+              <span class="lang-pt">Verificar</span>
             </button>
           </div>
           <div id="result" class="result-container"></div>
@@ -57,84 +62,41 @@
     <div class="download-section">
       <h2>
         <span class="lang-en">Download Blacklist</span>
-        <span class="lang-pt" style="display:none;">Baixar Lista Negra</span>
+        <span class="lang-pt">Baixar Black List</span>
       </h2>
       <p>
         <span class="lang-en">Click below to download the full blacklist in .txt format.</span>
-        <span class="lang-pt" style="display:none;">Clique abaixo para baixar a lista completa em formato .txt.</span>
+        <span class="lang-pt">Clique abaixo para baixar a lista completa em formato .txt.</span>
       </p>
-      <a href="blacklist.txt" download class="btn-red download-btn">
+      <!-- CAMINHO DO LINK DE DOWNLOAD CORRIGIDO -->
+      <a href="assets/blacklist/blacklist.txt" download class="btn-red download-btn">
         <span class="lang-en">Download</span>
-        <span class="lang-pt" style="display:none;">Baixar</span>
+        <span class="lang-pt">Baixar</span>
       </a>
     </div>
 
-
     <div class="footer">
-      <p>
-        
-        
-        
-        Hattered © 2025 - All rights reserved</p>
+      <p>Hattered © 2025 - All rights reserved</p>
     </div>
   </div>
 
 <script>
   let blacklist = [];
 
-  document.addEventListener('DOMContentLoaded', () => {
-    // Carrega a blacklist
-    fetch('blacklist.txt')
-      .then(response => response.text())
-      .then(data => {
-        blacklist = data.split('\n').map(d => d.trim().toLowerCase());
-      })
-      .catch(() => {
-        const resultDiv = document.getElementById('result');
-        resultDiv.textContent = 'Error loading blacklist.';
-        resultDiv.className = 'result-container error';
-      });
-
-    // Eventos
-    document.getElementById('search-btn').addEventListener('click', checkDomain);
-    document.getElementById('search-input').addEventListener('keypress', e => {
-      if (e.key === 'Enter') checkDomain();
-    });
-
-    // Troca de idioma
-    document.querySelectorAll('.btn-lang').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = btn.dataset.lang;
-        switchLanguage(lang);
-      });
-    });
-
-    // Idioma padrão
-    switchLanguage('en');
-  });
-
-  function switchLanguage(lang) {
-    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'inline' : 'none');
-    document.querySelectorAll('.lang-pt').forEach(el => el.style.display = lang === 'pt' ? 'inline' : 'none');
-
-    document.querySelectorAll('.btn-lang').forEach(el => el.classList.remove('btn-red'));
-    const active = document.querySelector(`.btn-lang[data-lang="${lang}"]`);
-    if (active) active.classList.add('btn-red');
-  }
-
+  // Função para verificar se um domínio é válido
   function isValidDomain(domain) {
     const domainRegex = /^(?!\-)(?:[a-zA-Z0-9\-]{1,63}\.)+[a-zA-Z]{2,}$/;
     return domainRegex.test(domain);
   }
 
+  // Função principal para verificar o domínio
   function checkDomain() {
     const input = document.getElementById('search-input').value.trim().toLowerCase();
     const resultDiv = document.getElementById('result');
     const infoDiv = document.getElementById('info');
 
     if (!input) {
-      resultDiv.textContent = 'Please enter a domain.';
+      resultDiv.textContent = 'Por favor, insira um domínio.';
       resultDiv.className = 'result-container error';
       infoDiv.style.display = 'none';
       return;
@@ -143,7 +105,7 @@
     let sanitized = input.replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[\/?#]/)[0];
 
     if (!isValidDomain(sanitized)) {
-      resultDiv.textContent = 'Invalid domain format. Example: example.com';
+      resultDiv.textContent = 'Formato de domínio inválido. Exemplo: exemplo.com';
       resultDiv.className = 'result-container error';
       infoDiv.style.display = 'none';
       return;
@@ -159,32 +121,58 @@
 
     if (isListed) {
       resultDiv.innerHTML = `
-        ⚠️ <strong>${sanitized}</strong> <span class="lang-en">is blacklisted.</span><span class="lang-pt" style="display:none;">está na lista negra.</span><br>
-        <span class="lang-en">Root domain checked:</span><span class="lang-pt" style="display:none;">Domínio base verificado:</span> <strong>${rootDomain}</strong><br>
+        ⚠️ <strong>${sanitized}</strong> está na lista negra.<br>
+        Domínio base verificado: <strong>${rootDomain}</strong><br>
         🔗 <a href="https://www.virustotal.com/gui/domain/${sanitized}" target="_blank" class="external-link">
-          <span class="lang-en">View on VirusTotal</span>
-          <span class="lang-pt" style="display:none;">Ver no VirusTotal</span>
+          Ver no VirusTotal
         </a><br>
-        <span class="lang-en">Learn more in our <a href="guia-falsos-positivos.html" class="external-link">guide</a> about false positives on VirusTotal.</span>
-        <span class="lang-pt" style="display:none;">Saiba mais no nosso <a href="guia-falsos-positivos.html" class="external-link">guia</a> sobre falsos positivos no VirusTotal.</span>
+        Saiba mais no nosso <a href="guides/blacklist/guides.html" class="external-link">guia</a> sobre falsos positivos no VirusTotal.
       `;
       resultDiv.className = 'result-container warning';
     } else {
       resultDiv.innerHTML = `
-        ✅ <strong>${sanitized}</strong> <span class="lang-en">is safe.</span><span class="lang-pt" style="display:none;">está seguro.</span><br>
-        <span class="lang-en">Root domain checked:</span><span class="lang-pt" style="display:none;">Domínio base verificado:</span> <strong>${rootDomain}</strong><br>
+        ✅ <strong>${sanitized}</strong> está seguro.<br>
+        Domínio base verificado: <strong>${rootDomain}</strong><br>
         🔗 <a href="https://www.virustotal.com/gui/domain/${sanitized}" target="_blank" class="external-link">
-          <span class="lang-en">View on VirusTotal</span>
-          <span class="lang-pt" style="display:none;">Ver no VirusTotal</span>
+          Ver no VirusTotal
         </a><br>
-<span class="lang-en">Learn more in our <a href="guides/blacklist/guides.html" class="external-link">guide</a> about false positives on VirusTotal.</span>
-<span class="lang-pt" style="display:none;">Saiba mais no nosso <a href="guides/blacklist/guides.html" class="external-link">guia</a> sobre falsos positivos no VirusTotal.</span>
+        Saiba mais no nosso <a href="guides/blacklist/guides.html" class="external-link">guia</a> sobre falsos positivos no VirusTotal.
       `;
       resultDiv.className = 'result-container success';
     }
 
     infoDiv.style.display = 'block';
   }
+
+  // Evento que corre quando a página carrega
+  document.addEventListener('DOMContentLoaded', () => {
+    // CAMINHO DO FETCH CORRIGIDO
+    fetch('assets/blacklist/blacklist.txt')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        blacklist = data.split('\n').map(d => d.trim().toLowerCase()).filter(Boolean); // Filtra linhas em branco
+      })
+      .catch(() => {
+        const resultDiv = document.getElementById('result');
+        resultDiv.textContent = 'Erro ao carregar o ficheiro da lista negra.';
+        resultDiv.className = 'result-container error';
+      });
+
+    // Adiciona os eventos ao botão e à caixa de texto
+    document.getElementById('search-btn').addEventListener('click', checkDomain);
+    document.getElementById('search-input').addEventListener('keypress', e => {
+      if (e.key === 'Enter') {
+        checkDomain();
+      }
+    });
+  });
 </script>
+  <script src="assets/emogi.js" defer></script>
+
 </body>
 </html>

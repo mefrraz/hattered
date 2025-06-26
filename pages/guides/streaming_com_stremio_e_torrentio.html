@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Streaming com Stremio e Torrentio</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Streaming com Stremio e Torrentio</h1>
+<blockquote>
+<p>No mundo do entretenimento digital, a conveniência é rei. O <strong>Stremio</strong> surge como uma plataforma de media center unificada que, quando combinada com o add-on <strong>Torrentio</strong>, transforma a sua experiência de streaming, permitindo aceder a filmes, séries e programas de TV de várias fontes, incluindo torrents, numa interface elegante e fácil de usar. Este guia detalhado irá mostrar-lhe como configurar e otimizar o Stremio e o Torrentio para desfrutar de streaming de alta qualidade, enquanto aborda considerações importantes sobre privacidade e a ética da partilha.</p>
+</blockquote>
+<h2>O Que É Stremio? O Seu Centro de Entretenimento Unificado</h2>
+<p>Stremio é um <strong>aplicativo de media center</strong> de código aberto, multiplataforma (Windows, macOS, Linux, Android, iOS) que agrega conteúdo de vídeo de diferentes fontes. Ele funciona como um "hub", reunindo numa única interface tudo o que você quer ver.</p>
+<h3>Por Que Usar o Stremio?</h3>
+<ul>
+<li><strong>Interface Amigável</strong>: Design intuitivo e fácil de navegar, semelhante a serviços de streaming populares.</li>
+<li><strong>Catálogo Abrangente</strong>: Agrega informações de filmes e séries com capas, sinopses, trailers e classificações.</li>
+<li><strong>Multiplataforma</strong>: Desfrute do seu conteúdo em quase qualquer dispositivo.</li>
+<li><strong>Add-ons (Extensões)</strong>: A funcionalidade central do Stremio reside nos seus add-ons. Eles permitem-lhe encontrar e transmitir conteúdo de diversas fontes, incluindo serviços de subscrição, bibliotecas públicas e, crucialmente, redes BitTorrent.</li>
+</ul>
+<blockquote>
+<p><strong>Cuidado com Add-ons Não Oficiais</strong>: A força do Stremio vem dos seus add-ons, mas tenha sempre <strong>cuidado</strong> ao instalar add-ons de terceiros, pois a sua segurança e legitimidade podem variar. Mantenha-se nas recomendações de comunidades confiáveis.</p>
+</blockquote>
+<h2>Torrentio: A Ponte para o Conteúdo de Torrent</h2>
+<p><strong>Torrentio</strong> é um <strong>add-on de terceiros</strong> para o Stremio que pesquisa fontes de vídeo diretamente na rede BitTorrent. Ele atua como um "motor de busca de torrents" dentro do Stremio, permitindo que você transmita conteúdo via torrent sem a necessidade de um cliente BitTorrent separado.</p>
+<h3>Como Funciona o Torrentio?</h3>
+<ol>
+<li>Você pesquisa um filme ou série no Stremio.</li>
+<li>O Torrentio procura por <em>streams</em> de torrent disponíveis para esse conteúdo.</li>
+<li>Ele lista as fontes encontradas, muitas vezes indicando a qualidade (4K, 1080p, 720p), o tamanho e o número de <em>seeders</em>.</li>
+<li>Ao selecionar um <em>stream</em>, o Torrentio inicia a reprodução do torrent diretamente no Stremio, usando o seu cliente de torrent embutido.</li>
+</ol>
+<blockquote>
+<p><strong>Importante para a Privacidade</strong>: Ao usar o Torrentio diretamente (sem um resolvedor como Real-Debrid), o seu <strong>endereço IP real é exposto</strong> na rede BitTorrent. Isso significa que a sua atividade pode ser monitorizada por entidades de direitos autorais, que podem enviar avisos de DMCA para o seu ISP. A sua VPN é <strong>essencial</strong> neste cenário.</p>
+</blockquote>
+<h2>Configuração Essencial: Stremio, Torrentio e VPN</h2>
+<p>Para uma experiência de streaming segura e de alta qualidade.</p>
+<h3>1. Instalar o Stremio</h3>
+<ul>
+<li><strong>Download</strong>: Visite o site oficial do Stremio: <a href="https://www.stremio.com/">stremio.com</a>.</li>
+<li>Baixe e instale a aplicação para o seu sistema operativo (Windows, macOS, Linux, Android, iOS).</li>
+</ul>
+<h3>2. Configurar a Sua VPN</h3>
+<p>Antes de qualquer coisa, <strong>ative e verifique a sua VPN</strong>.</p>
+<ul>
+<li><strong>Essencialidade</strong>: Para usar o Stremio com Torrentio de forma privada, uma <strong>VPN de alta qualidade</strong> é <em>mandatória</em>. Ela irá ocultar o seu endereço IP real de outros <em>peers</em> na rede BitTorrent.</li>
+<li><strong>Kill Switch</strong>: Certifique-se de que o <strong>Kill Switch</strong> da sua VPN está ativado. Isso impedirá que o seu IP vaze se a conexão VPN cair. Consulte <a href="o_essencial_sobre_o_kill_switch.html">o essencial sobre o kill switch</a> para um guia detalhado.</li>
+<li><strong>Binding de Aplicação (Opcional, mas Recomendado)</strong>: Para a máxima segurança, considere bindar o Stremio (e/ou o seu cliente BitTorrent se usar um em separado) à interface da VPN. Isso garante que a aplicação só funciona quando a VPN está ativa. Consulte <a href="forcar_apps_a_usar_a_vpn_binding.html">forcar apps a usar a vpn binding</a>.</li>
+<li>Para escolher e configurar a sua VPN, veja <a href="configurar_a_sua_primeira_vpn.html">configurar a sua primeira vpn</a>.</li>
+</ul>
+<h3>3. Instalar o Add-on Torrentio</h3>
+<ul>
+<li>Abra o Stremio e inicie sessão (ou crie uma conta).</li>
+<li>No menu à esquerda, vá para <code>Add-ons</code>.</li>
+<li>Na parte superior, selecione <code>Community Add-ons</code>.</li>
+<li>Procure por <strong><code>Torrentio</code></strong> na lista.</li>
+<li>Clique em <code>Install</code> (Instalar) ao lado do Torrentio.</li>
+</ul>
+<h4>Configuração do Torrentio (Crucial!)</h4>
+<p>Após clicar em <code>Install</code>, o Torrentio geralmente apresenta uma tela de configuração.</p>
+<ul>
+<li><strong>Real-Debrid (Altamente Recomendado)</strong>: Se você tem uma conta Real-Debrid, esta é a forma mais segura e eficiente de usar o Torrentio.<ul>
+<li>Selecione <code>Real-Debrid</code> na opção <code>Debrid provider</code>.</li>
+<li>Clique no botão <code>Configure</code> ou <code>Authorize</code> para vincular a sua conta Real-Debrid. Isso fará com que o Torrentio transmita os torrents através dos servidores do Real-Debrid (aproveitando a sua cache), <strong>protegendo o seu IP real</strong> e oferecendo velocidades máximas.</li>
+<li>Para mais informações sobre Real-Debrid, consulte <a href="acelerar_downloads_com_real-debrid.html">acelerar downloads com real-debrid</a>.</li>
+</ul>
+</li>
+<li><strong>Provedor de VPN (Se Não Usar Real-Debrid)</strong>: Se você não usa Real-Debrid, mas tem uma VPN, poderá haver uma opção para especificar o seu provedor de VPN. Esta opção pode ajudar o Torrentio a otimizar a sua conexão, mas a proteção real vem da sua aplicação VPN a correr no seu sistema.</li>
+<li><strong>Qualidade Padrão</strong>: Você pode selecionar a qualidade de vídeo preferida (ex: <code>1080p</code>, <code>4K</code>).</li>
+<li><strong>Filtros</strong>: Pode filtrar por idioma de áudio e legendas.</li>
+</ul>
+<h2>Como Usar o Stremio para Streaming</h2>
+<ol>
+<li><strong>Navegar/Pesquisar</strong>: Use a função de pesquisa ou navegue pelo catálogo do Stremio.</li>
+<li><strong>Selecionar Conteúdo</strong>: Clique num filme ou série. Você verá a sinopse, elenco, trailers, etc.</li>
+<li><strong>Escolher o Stream</strong>: No painel de fontes à direita, o Torrentio listará as opções de torrent disponíveis.<ul>
+<li>As fontes do <strong>Real-Debrid</strong> (se configurado) aparecerão primeiro e serão as mais rápidas e seguras.</li>
+<li>As fontes de torrent diretas também estarão lá, mas lembre-se do risco de exposição de IP se não estiver a usar Real-Debrid ou uma VPN.</li>
+<li>As fontes geralmente mostram a qualidade do vídeo (ex: 4K, 1080p), o tamanho do ficheiro e o número de <em>seeders</em> (<code>S:</code>). Escolha a que melhor se adequa à sua conexão e preferências.</li>
+</ul>
+</li>
+<li><strong>Iniciar o Streaming</strong>: Clique na fonte desejada e o Stremio começará a transmitir.</li>
+</ol>
+<h2>Ética da Partilha: A Sua Responsabilidade</h2>
+<p>Ao usar o Torrentio e, em particular, o Real-Debrid, é crucial entender o seu papel na ética da partilha:</p>
+<ul>
+<li><strong>Streaming Direto de Torrents (Sem Real-Debrid)</strong>: Quando você transmite um torrent diretamente pelo Stremio, você está a atuar como um <em>leecher</em> e, por vezes, como um <em>seeder</em> (dependendo da implementação interna do Stremio). O seu cliente Stremio irá conectar-se a outros <em>peers</em> e pode partilhar partes do ficheiro. Nesse caso, a <strong>sua VPN é a sua única proteção</strong> para a sua privacidade.</li>
+<li><strong>Streaming Via Real-Debrid Cache</strong>: Quando você usa o Real-Debrid, você está a descarregar o ficheiro dos servidores do Real-Debrid, e não diretamente da rede P2P no momento do streaming. Isso significa que você não está a contribuir com <em>seeding</em> para a comunidade BitTorrent <em>enquanto assiste</em>.</li>
+<li><strong>A Ética do Seeding</strong>: A rede BitTorrent depende da partilha (seeding) para a sua sobrevivência. Se todos apenas descarregassem e ninguém semeasse, os torrents morreriam.<ul>
+<li><strong>Recomendação</strong>: Se você usa o Real-Debrid extensivamente para consumir conteúdo de torrents, considere <strong>contribuir para a rede BitTorrent através de um cliente BitTorrent dedicado (como o qBittorrent)</strong> para alguns torrents. Especialmente para torrents de trackers privados, onde manter um bom <em>ratio</em> é vital. O Real-Debrid é para conveniência no consumo, não para contribuição.</li>
+</ul>
+</li>
+</ul>
+<h2>Problemas Comuns e Soluções</h2>
+<ul>
+<li><strong>Buffering Constante</strong>:<ul>
+<li><strong>Velocidade da Internet</strong>: Verifique se a sua conexão é rápida o suficiente para a qualidade do <em>stream</em> que está a tentar ver.</li>
+<li><strong>Número de Seeders</strong>: Escolha <em>streams</em> com um alto número de <em>seeders</em>.</li>
+<li><strong>Real-Debrid</strong>: Se estiver a usar, verifique se a sua conta está ativa. Se não estiver, ative-a.</li>
+<li><strong>Qualidade do Stream</strong>: Tente uma qualidade inferior (ex: 720p em vez de 1080p).</li>
+<li><strong>Cache do Stremio</strong>: Limpe a cache do Stremio nas configurações da aplicação.</li>
+</ul>
+</li>
+<li><strong>Add-on Torrentio Não Aparece / Não Funciona</strong>:<ul>
+<li>Verifique se instalou corretamente. Tente desinstalar e reinstalar.</li>
+<li>O serviço Torrentio pode estar temporariamente offline.</li>
+</ul>
+</li>
+<li><strong>Problemas de VPN</strong>:<ul>
+<li>Verifique se a sua VPN está conectada e a funcionar corretamente.</li>
+<li>Faça um teste de fuga de IP/DNS para garantir que não há vazamentos (veja <a href="testar_fugas_na_sua_vpn.html">testar fugas na sua vpn</a>).</li>
+<li>O Kill Switch está ativado?</li>
+</ul>
+</li>
+<li><strong>Sem Som / Legendas</strong>:<ul>
+<li>No ecrã de reprodução do Stremio, verifique as opções de áudio e legendas disponíveis e selecione as corretas.</li>
+<li>Para legendas, pode ser necessário procurar add-ons de legendas adicionais no Stremio.</li>
+</ul>
+</li>
+</ul>
+<h2>Conclusão: O Poder do Streaming Personalizado</h2>
+<p>O Stremio, em conjunto com o add-on Torrentio e, idealmente, uma integração com Real-Debrid e uma VPN robusta, oferece uma experiência de streaming <strong>poderosa, flexível e altamente personalizada</strong>. Você pode aceder a uma biblioteca de conteúdo quase ilimitada, tudo numa interface coesa. Lembre-se, a sua privacidade é primordial, por isso, nunca subestime a importância de uma VPN e de configurações de segurança adequadas. Desfrute da liberdade de assistir ao seu entretenimento favorito, com a responsabilidade de compreender como a rede funciona e de, sempre que possível, contribuir para ela.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Streaming com Stremio e Torrentio</h1>
+<blockquote>
+<p>No mundo do entretenimento digital, a conveniência é rei. O <strong>Stremio</strong> surge como uma plataforma de media center unificada que, quando combinada com o add-on <strong>Torrentio</strong>, transforma a sua experiência de streaming, permitindo aceder a filmes, séries e programas de TV de várias fontes, incluindo torrents, numa interface elegante e fácil de usar. Este guia detalhado irá mostrar-lhe como configurar e otimizar o Stremio e o Torrentio para desfrutar de streaming de alta qualidade, enquanto aborda considerações importantes sobre privacidade e a ética da partilha.</p>
+</blockquote>
+<h2>O Que É Stremio? O Seu Centro de Entretenimento Unificado</h2>
+<p>Stremio é um <strong>aplicativo de media center</strong> de código aberto, multiplataforma (Windows, macOS, Linux, Android, iOS) que agrega conteúdo de vídeo de diferentes fontes. Ele funciona como um "hub", reunindo numa única interface tudo o que você quer ver.</p>
+<h3>Por Que Usar o Stremio?</h3>
+<ul>
+<li><strong>Interface Amigável</strong>: Design intuitivo e fácil de navegar, semelhante a serviços de streaming populares.</li>
+<li><strong>Catálogo Abrangente</strong>: Agrega informações de filmes e séries com capas, sinopses, trailers e classificações.</li>
+<li><strong>Multiplataforma</strong>: Desfrute do seu conteúdo em quase qualquer dispositivo.</li>
+<li><strong>Add-ons (Extensões)</strong>: A funcionalidade central do Stremio reside nos seus add-ons. Eles permitem-lhe encontrar e transmitir conteúdo de diversas fontes, incluindo serviços de subscrição, bibliotecas públicas e, crucialmente, redes BitTorrent.</li>
+</ul>
+<blockquote>
+<p><strong>Cuidado com Add-ons Não Oficiais</strong>: A força do Stremio vem dos seus add-ons, mas tenha sempre <strong>cuidado</strong> ao instalar add-ons de terceiros, pois a sua segurança e legitimidade podem variar. Mantenha-se nas recomendações de comunidades confiáveis.</p>
+</blockquote>
+<h2>Torrentio: A Ponte para o Conteúdo de Torrent</h2>
+<p><strong>Torrentio</strong> é um <strong>add-on de terceiros</strong> para o Stremio que pesquisa fontes de vídeo diretamente na rede BitTorrent. Ele atua como um "motor de busca de torrents" dentro do Stremio, permitindo que você transmita conteúdo via torrent sem a necessidade de um cliente BitTorrent separado.</p>
+<h3>Como Funciona o Torrentio?</h3>
+<ol>
+<li>Você pesquisa um filme ou série no Stremio.</li>
+<li>O Torrentio procura por <em>streams</em> de torrent disponíveis para esse conteúdo.</li>
+<li>Ele lista as fontes encontradas, muitas vezes indicando a qualidade (4K, 1080p, 720p), o tamanho e o número de <em>seeders</em>.</li>
+<li>Ao selecionar um <em>stream</em>, o Torrentio inicia a reprodução do torrent diretamente no Stremio, usando o seu cliente de torrent embutido.</li>
+</ol>
+<blockquote>
+<p><strong>Importante para a Privacidade</strong>: Ao usar o Torrentio diretamente (sem um resolvedor como Real-Debrid), o seu <strong>endereço IP real é exposto</strong> na rede BitTorrent. Isso significa que a sua atividade pode ser monitorizada por entidades de direitos autorais, que podem enviar avisos de DMCA para o seu ISP. A sua VPN é <strong>essencial</strong> neste cenário.</p>
+</blockquote>
+<h2>Configuração Essencial: Stremio, Torrentio e VPN</h2>
+<p>Para uma experiência de streaming segura e de alta qualidade.</p>
+<h3>1. Instalar o Stremio</h3>
+<ul>
+<li><strong>Download</strong>: Visite o site oficial do Stremio: <a href="https://www.stremio.com/">stremio.com</a>.</li>
+<li>Baixe e instale a aplicação para o seu sistema operativo (Windows, macOS, Linux, Android, iOS).</li>
+</ul>
+<h3>2. Configurar a Sua VPN</h3>
+<p>Antes de qualquer coisa, <strong>ative e verifique a sua VPN</strong>.</p>
+<ul>
+<li><strong>Essencialidade</strong>: Para usar o Stremio com Torrentio de forma privada, uma <strong>VPN de alta qualidade</strong> é <em>mandatória</em>. Ela irá ocultar o seu endereço IP real de outros <em>peers</em> na rede BitTorrent.</li>
+<li><strong>Kill Switch</strong>: Certifique-se de que o <strong>Kill Switch</strong> da sua VPN está ativado. Isso impedirá que o seu IP vaze se a conexão VPN cair. Consulte <a href="o_essencial_sobre_o_kill_switch.html">o essencial sobre o kill switch</a> para um guia detalhado.</li>
+<li><strong>Binding de Aplicação (Opcional, mas Recomendado)</strong>: Para a máxima segurança, considere bindar o Stremio (e/ou o seu cliente BitTorrent se usar um em separado) à interface da VPN. Isso garante que a aplicação só funciona quando a VPN está ativa. Consulte <a href="forcar_apps_a_usar_a_vpn_binding.html">forcar apps a usar a vpn binding</a>.</li>
+<li>Para escolher e configurar a sua VPN, veja <a href="configurar_a_sua_primeira_vpn.html">configurar a sua primeira vpn</a>.</li>
+</ul>
+<h3>3. Instalar o Add-on Torrentio</h3>
+<ul>
+<li>Abra o Stremio e inicie sessão (ou crie uma conta).</li>
+<li>No menu à esquerda, vá para <code>Add-ons</code>.</li>
+<li>Na parte superior, selecione <code>Community Add-ons</code>.</li>
+<li>Procure por <strong><code>Torrentio</code></strong> na lista.</li>
+<li>Clique em <code>Install</code> (Instalar) ao lado do Torrentio.</li>
+</ul>
+<h4>Configuração do Torrentio (Crucial!)</h4>
+<p>Após clicar em <code>Install</code>, o Torrentio geralmente apresenta uma tela de configuração.</p>
+<ul>
+<li><strong>Real-Debrid (Altamente Recomendado)</strong>: Se você tem uma conta Real-Debrid, esta é a forma mais segura e eficiente de usar o Torrentio.<ul>
+<li>Selecione <code>Real-Debrid</code> na opção <code>Debrid provider</code>.</li>
+<li>Clique no botão <code>Configure</code> ou <code>Authorize</code> para vincular a sua conta Real-Debrid. Isso fará com que o Torrentio transmita os torrents através dos servidores do Real-Debrid (aproveitando a sua cache), <strong>protegendo o seu IP real</strong> e oferecendo velocidades máximas.</li>
+<li>Para mais informações sobre Real-Debrid, consulte <a href="acelerar_downloads_com_real-debrid.html">acelerar downloads com real-debrid</a>.</li>
+</ul>
+</li>
+<li><strong>Provedor de VPN (Se Não Usar Real-Debrid)</strong>: Se você não usa Real-Debrid, mas tem uma VPN, poderá haver uma opção para especificar o seu provedor de VPN. Esta opção pode ajudar o Torrentio a otimizar a sua conexão, mas a proteção real vem da sua aplicação VPN a correr no seu sistema.</li>
+<li><strong>Qualidade Padrão</strong>: Você pode selecionar a qualidade de vídeo preferida (ex: <code>1080p</code>, <code>4K</code>).</li>
+<li><strong>Filtros</strong>: Pode filtrar por idioma de áudio e legendas.</li>
+</ul>
+<h2>Como Usar o Stremio para Streaming</h2>
+<ol>
+<li><strong>Navegar/Pesquisar</strong>: Use a função de pesquisa ou navegue pelo catálogo do Stremio.</li>
+<li><strong>Selecionar Conteúdo</strong>: Clique num filme ou série. Você verá a sinopse, elenco, trailers, etc.</li>
+<li><strong>Escolher o Stream</strong>: No painel de fontes à direita, o Torrentio listará as opções de torrent disponíveis.<ul>
+<li>As fontes do <strong>Real-Debrid</strong> (se configurado) aparecerão primeiro e serão as mais rápidas e seguras.</li>
+<li>As fontes de torrent diretas também estarão lá, mas lembre-se do risco de exposição de IP se não estiver a usar Real-Debrid ou uma VPN.</li>
+<li>As fontes geralmente mostram a qualidade do vídeo (ex: 4K, 1080p), o tamanho do ficheiro e o número de <em>seeders</em> (<code>S:</code>). Escolha a que melhor se adequa à sua conexão e preferências.</li>
+</ul>
+</li>
+<li><strong>Iniciar o Streaming</strong>: Clique na fonte desejada e o Stremio começará a transmitir.</li>
+</ol>
+<h2>Ética da Partilha: A Sua Responsabilidade</h2>
+<p>Ao usar o Torrentio e, em particular, o Real-Debrid, é crucial entender o seu papel na ética da partilha:</p>
+<ul>
+<li><strong>Streaming Direto de Torrents (Sem Real-Debrid)</strong>: Quando você transmite um torrent diretamente pelo Stremio, você está a atuar como um <em>leecher</em> e, por vezes, como um <em>seeder</em> (dependendo da implementação interna do Stremio). O seu cliente Stremio irá conectar-se a outros <em>peers</em> e pode partilhar partes do ficheiro. Nesse caso, a <strong>sua VPN é a sua única proteção</strong> para a sua privacidade.</li>
+<li><strong>Streaming Via Real-Debrid Cache</strong>: Quando você usa o Real-Debrid, você está a descarregar o ficheiro dos servidores do Real-Debrid, e não diretamente da rede P2P no momento do streaming. Isso significa que você não está a contribuir com <em>seeding</em> para a comunidade BitTorrent <em>enquanto assiste</em>.</li>
+<li><strong>A Ética do Seeding</strong>: A rede BitTorrent depende da partilha (seeding) para a sua sobrevivência. Se todos apenas descarregassem e ninguém semeasse, os torrents morreriam.<ul>
+<li><strong>Recomendação</strong>: Se você usa o Real-Debrid extensivamente para consumir conteúdo de torrents, considere <strong>contribuir para a rede BitTorrent através de um cliente BitTorrent dedicado (como o qBittorrent)</strong> para alguns torrents. Especialmente para torrents de trackers privados, onde manter um bom <em>ratio</em> é vital. O Real-Debrid é para conveniência no consumo, não para contribuição.</li>
+</ul>
+</li>
+</ul>
+<h2>Problemas Comuns e Soluções</h2>
+<ul>
+<li><strong>Buffering Constante</strong>:<ul>
+<li><strong>Velocidade da Internet</strong>: Verifique se a sua conexão é rápida o suficiente para a qualidade do <em>stream</em> que está a tentar ver.</li>
+<li><strong>Número de Seeders</strong>: Escolha <em>streams</em> com um alto número de <em>seeders</em>.</li>
+<li><strong>Real-Debrid</strong>: Se estiver a usar, verifique se a sua conta está ativa. Se não estiver, ative-a.</li>
+<li><strong>Qualidade do Stream</strong>: Tente uma qualidade inferior (ex: 720p em vez de 1080p).</li>
+<li><strong>Cache do Stremio</strong>: Limpe a cache do Stremio nas configurações da aplicação.</li>
+</ul>
+</li>
+<li><strong>Add-on Torrentio Não Aparece / Não Funciona</strong>:<ul>
+<li>Verifique se instalou corretamente. Tente desinstalar e reinstalar.</li>
+<li>O serviço Torrentio pode estar temporariamente offline.</li>
+</ul>
+</li>
+<li><strong>Problemas de VPN</strong>:<ul>
+<li>Verifique se a sua VPN está conectada e a funcionar corretamente.</li>
+<li>Faça um teste de fuga de IP/DNS para garantir que não há vazamentos (veja <a href="testar_fugas_na_sua_vpn.html">testar fugas na sua vpn</a>).</li>
+<li>O Kill Switch está ativado?</li>
+</ul>
+</li>
+<li><strong>Sem Som / Legendas</strong>:<ul>
+<li>No ecrã de reprodução do Stremio, verifique as opções de áudio e legendas disponíveis e selecione as corretas.</li>
+<li>Para legendas, pode ser necessário procurar add-ons de legendas adicionais no Stremio.</li>
+</ul>
+</li>
+</ul>
+<h2>Conclusão: O Poder do Streaming Personalizado</h2>
+<p>O Stremio, em conjunto com o add-on Torrentio e, idealmente, uma integração com Real-Debrid e uma VPN robusta, oferece uma experiência de streaming <strong>poderosa, flexível e altamente personalizada</strong>. Você pode aceder a uma biblioteca de conteúdo quase ilimitada, tudo numa interface coesa. Lembre-se, a sua privacidade é primordial, por isso, nunca subestime a importância de uma VPN e de configurações de segurança adequadas. Desfrute da liberdade de assistir ao seu entretenimento favorito, com a responsabilidade de compreender como a rede funciona e de, sempre que possível, contribuir para ela.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Streaming com Stremio e Torrentio';
+  const enTitle = 'Guia Completo: Streaming com Stremio e Torrentio';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

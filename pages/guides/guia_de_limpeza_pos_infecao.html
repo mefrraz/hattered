@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Limpeza Pós-Infeção de Malware</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Limpeza Pós-Infeção de Malware</h1>
+<blockquote>
+<p>Infelizmente, mesmo com as melhores precauções, as infeções por malware podem acontecer. Quando isso ocorre, a ação rápida e sistemática é <strong>crucial</strong> para remover a ameaça, restaurar a segurança do seu sistema e proteger os seus dados. Este guia detalhado irá levá-lo passo a passo pelo processo de limpeza pós-infeção, desde a identificação inicial até à recuperação e prevenção futuras, garantindo que o seu sistema volta a ser um ambiente seguro.</p>
+</blockquote>
+<h2>Sinais de Infeção: Como Reconhecer um Problema de Malware</h2>
+<p>O primeiro passo para a recuperação é reconhecer os sintomas. Fique atento a estes sinais de alerta:</p>
+<ul>
+<li><strong>Lentidão Inesperada</strong>: O computador está significativamente mais lento do que o normal, mesmo sem muitas aplicações abertas.</li>
+<li><strong>Pop-ups e Anúncios Excessivos</strong>: Anúncios que aparecem fora do seu navegador, ou pop-ups em sites que normalmente não os têm.</li>
+<li><strong>Comportamento Estranho do Navegador</strong>: Redirecionamentos para sites desconhecidos, página inicial ou motor de busca alterados, novas barras de ferramentas que você não instalou.</li>
+<li><strong>Programas Desconhecidos</strong>: Novas aplicações ou serviços a correr em segundo plano que você não reconhece.</li>
+<li><strong>Acesso Negado a Ficheiros/Definições</strong>: Não consegue aceder a certos ficheiros, pastas ou definições de segurança.</li>
+<li><strong>Mensagens de Erro Constantes</strong>: Erros aleatórios do sistema operativo ou de aplicações.</li>
+<li><strong>Atividade de Rede Suspeita</strong>: Luzes do router a piscar constantemente mesmo quando não está a usar a internet, ou alto consumo de dados.</li>
+<li><strong>Ficheiros Criptografados (Ransomware)</strong>: Os seus ficheiros têm extensões estranhas e você vê uma nota de resgate.</li>
+<li><strong>Antivírus Desativado ou Bloqueado</strong>: O seu software de segurança é desativado ou impede o acesso a sites de segurança.</li>
+</ul>
+<blockquote>
+<p><strong>Ação Imediata</strong>: Se suspeitar de uma infeção, <strong>desligue a sua conexão de internet (Wi-Fi ou Ethernet)</strong>. Isso pode evitar que o malware se espalhe para outros dispositivos na sua rede ou que continue a comunicar com os servidores dos atacantes.</p>
+</blockquote>
+<h2>Passo 1: Isolar o Sistema Infectado</h2>
+<p>Para evitar a propagação e facilitar a limpeza, o isolamento é fundamental.</p>
+<ol>
+<li><strong>Desligar a Internet</strong>: Como mencionado, desconecte o cabo Ethernet ou desligue o Wi-Fi.</li>
+<li><strong>Desligar Dispositivos Externos</strong>: Remova pen drives, discos externos ou outros dispositivos de armazenamento que possam ter estado conectados ao PC infetado.</li>
+<li><strong>Isolar na Rede (se possível)</strong>: Se for um ambiente de rede, desconecte o computador da rede local para evitar que o malware se espalhe para outros dispositivos.</li>
+</ol>
+<h2>Passo 2: Preparar as Ferramentas de Limpeza</h2>
+<p>Você precisará de ferramentas de segurança que possam ser executadas <em>offline</em> ou de um ambiente limpo.</p>
+<ol>
+<li>
+<p><strong>Obter as Ferramentas (Usando um PC Não Infectado)</strong>:</p>
+<ul>
+<li>Use um computador <em>confiável e não infetado</em> para descarregar as ferramentas de limpeza.</li>
+<li>Guarde-as numa pen drive formatada em FAT32 ou exFAT (para compatibilidade máxima) que não contenha outros ficheiros importantes.</li>
+<li><strong>Ferramentas Essenciais</strong>:<ul>
+<li><strong>Malwarebytes Free</strong>: Um dos scanners de malware mais eficazes para deteção e remoção. É o <strong>pilar</strong> da sua limpeza.</li>
+<li><strong>AdwCleaner</strong>: Especializado na remoção de adware, PUPs e sequestradores de navegador.</li>
+<li><strong>HitmanPro</strong>: Outro scanner baseado em nuvem que é bom para detetar malware persistente.</li>
+<li><strong>Emsisoft Emergency Kit</strong>: Um conjunto de ferramentas de remoção de malware portátil e poderoso.</li>
+<li><strong>Navegador Web Portátil (Opcional)</strong>: Uma versão portátil do Firefox ou Chrome, caso o seu navegador principal esteja comprometido.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Criar Mídia de Resgate (Opcional, mas Recomendado)</strong>:</p>
+<ul>
+<li>Para infeções graves que impedem o arranque do sistema ou a execução de software, uma mídia de resgate é vital.</li>
+<li><strong>Kaspersky Rescue Disk</strong>: Uma imagem ISO que você pode gravar num CD/DVD ou pen drive e arrancar o computador a partir dela. Permite varrer e remover malware antes mesmo do Windows carregar.</li>
+<li><strong>Emsisoft Emergency Kit</strong>: Pode ser executado a partir de uma pen drive sem instalação.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Importante</strong>: Nunca descarregue ferramentas de segurança de sites que não sejam os seus distribuidores oficiais. Use links como <code>malwarebytes.com</code>, <code>adguard.com/adwcleaner</code>, <code>emsisoft.com/en/software/eek/</code> e <code>kaspersky.com/free-anti-virus</code> para garantir a autenticidade.</p>
+</blockquote>
+<h2>Passo 3: Entrar em Modo de Segurança (Safe Mode)</h2>
+<p>O Modo de Segurança inicia o Windows com um conjunto mínimo de drivers e serviços, o que pode impedir que o malware carregue e se torne ativo, facilitando a remoção.</p>
+<ul>
+<li><strong>Windows 10/11</strong>:<ol>
+<li>Desligue o PC.</li>
+<li>Ligue-o e, no ecrã de login, mantenha <code>Shift</code> pressionado enquanto clica em <code>Reiniciar</code>.</li>
+<li>Isto irá levá-lo ao <code>Ambiente de Recuperação do Windows</code>.</li>
+<li>Vá em <code>Solucionar Problemas &gt; Opções Avançadas &gt; Configurações de Inicialização &gt; Reiniciar</code>.</li>
+<li>Após o reinício, pressione <code>4</code> para <code>Habilitar Modo de Segurança</code> ou <code>5</code> para <code>Habilitar Modo de Segurança com Rede</code> (se precisar de internet para baixar algo, mas com cuidado).</li>
+</ol>
+</li>
+</ul>
+<h2>Passo 4: Fazer Backup de Dados Essenciais (Se Ainda Não Feito)</h2>
+<p>Se você não tem um backup recente, esta é a sua última chance de salvar ficheiros importantes.</p>
+<ul>
+<li><strong>Cuidado</strong>: Apenas copie ficheiros <em>pessoais</em> (documentos, fotos, vídeos). <strong>Não copie executáveis de programas (.exe, .dll) ou ficheiros de sistema</strong>, pois podem estar infetados.</li>
+<li>Use um disco externo ou pen drive <em>limpo</em> para esta cópia.</li>
+<li>Para um guia sobre backup, consulte fazer_backup_da_sua_colecao_digital.html.</li>
+</ul>
+<h2>Passo 5: Limpeza do Sistema (O Coração da Remoção)</h2>
+<p>Este é o processo principal de remoção do malware.</p>
+<ol>
+<li>
+<p><strong>Desinstalar Programas Suspeitos</strong>:</p>
+<ul>
+<li>No Modo de Segurança, vá em <code>Painel de Controlo &gt; Programas e Recursos</code> (ou <code>Configurações &gt; Aplicações &gt; Aplicações e Recursos</code>).</li>
+<li>Procure por quaisquer programas desconhecidos, recentemente instalados ou que pareçam suspeitos. Desinstale-os.</li>
+<li><strong>Cuidado</strong>: Não desinstale programas que você não tem certeza do que são, especialmente se forem componentes do sistema. Pesquise online se tiver dúvidas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Executar o Malwarebytes (Pilar da Limpeza)</strong>:</p>
+<ul>
+<li>Transfira o Malwarebytes para o PC infetado (via pen drive).</li>
+<li>Instale-o e <strong>atualize as definições de vírus</strong> (se estiver com rede). Se não estiver, use as definições que vieram com o instalador baixado.</li>
+<li>Execute uma <strong>verificação completa (<code>Full Scan</code>)</strong>. Esteja preparado para que demore.</li>
+<li>Após a varredura, <strong>quarentene</strong> todas as ameaças detetadas. O Malwarebytes pode pedir para reiniciar o PC. Faça-o.</li>
+<li>Repita a verificação até que nada seja detetado.</li>
+</ul>
+</li>
+<li>
+<p><strong>Executar Outros Scanners (Segunda Opinião)</strong>:</p>
+<ul>
+<li>Após o Malwarebytes, execute o <strong>AdwCleaner</strong> para eliminar adware e PUPs que possam ter sido deixados para trás.</li>
+<li>Considere executar o <strong>HitmanPro</strong> ou o <strong>Emsisoft Emergency Kit</strong> para uma varredura adicional. Eles podem detetar ameaças que outros scanners perderam.</li>
+<li>Quarentene e remova tudo o que for detetado por estas ferramentas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verificar e Restaurar o Navegador</strong>:</p>
+<ul>
+<li>Abra o seu navegador (Chrome, Firefox, Edge).</li>
+<li>Vá para as <code>Extensões/Add-ons</code>. Remova todas as extensões que você não instalou ou que pareçam suspeitas.</li>
+<li>Verifique a sua <code>Página Inicial</code> e <code>Motor de Busca Padrão</code>. Se tiverem sido alterados, restaure-os para o que deveriam ser.</li>
+<li>Considere <strong>redefinir o navegador para as configurações padrão</strong> (isto limpará favoritos e histórico, então faça backup se necessário).</li>
+<li>Limpe o cache e os cookies do navegador.</li>
+</ul>
+</li>
+<li>
+<p><strong>Limpar Ficheiros Temporários</strong>:</p>
+<ul>
+<li>Use a ferramenta <code>Limpeza de Disco</code> (Disk Cleanup) do Windows ou um programa como <em>BleachBit</em> para remover ficheiros temporários, cache do sistema e outros detritos que podem conter vestígios de malware.</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 6: Pós-Limpeza: Restaurar e Proteger</h2>
+<p>A remoção do malware é apenas metade da batalha. A restauração da segurança é igualmente importante.</p>
+<ol>
+<li>
+<p><strong>Atualizar o Sistema Operativo e Todo o Software</strong>:</p>
+<ul>
+<li>Reconecte à internet (com cautela).</li>
+<li>Execute o <code>Windows Update</code> e certifique-se de que todos os sistemas (Windows, macOS, Linux) estão com as últimas atualizações de segurança.</li>
+<li>Atualize <strong>todas as aplicações instaladas</strong>: navegadores, suíte de escritório, leitores de PDF, clientes de multimédia, etc. Softwares desatualizados são uma porta de entrada para futuras infeções.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mudar Todas as Senhas Essenciais</strong>:</p>
+<ul>
+<li>Esta é uma etapa <strong>crítica</strong>. Assuma que todas as suas senhas foram comprometidas.</li>
+<li>Use outro dispositivo (seguro) para mudar as senhas das suas contas mais importantes: <strong>e-mail principal</strong>, banca online, redes sociais, contas de armazenamento em nuvem, e-commerce e qualquer outro serviço sensível.</li>
+<li><strong>Use senhas fortes e únicas</strong> para cada conta. Utilize um gerenciador de senhas.</li>
+<li>Ative a <strong>Autenticação de Dois Fatores (2FA)</strong> em todas as contas que a suportam.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verificar Restaurações do Sistema (System Restore Points)</strong>:</p>
+<ul>
+<li>Se você usa Pontos de Restauração do Sistema, o malware pode ter-los corrompido ou criado um ponto de restauração infetado.</li>
+<li>Pode ser necessário desativar e reativar a Restauração do Sistema para limpar os pontos antigos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reinstalar o Sistema Operativo (Opcional, mas Mais Seguro para Infeções Graves)</strong>:</p>
+<ul>
+<li>Para infeções <em>extremamente persistentes</em>, rootkits, ou se você não se sentir seguro após a limpeza, a <strong>reinstalação limpa do sistema operativo</strong> é a opção mais segura.</li>
+<li>Isso apaga tudo e recomeça do zero, garantindo que nenhum vestígio de malware permaneça.</li>
+<li>Você precisará dos seus backups para restaurar os seus dados pessoais.</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 7: Fortalecer a Prevenção Futura</h2>
+<p>Aprenda com a experiência para evitar futuras infeções.</p>
+<ul>
+<li><strong>Antivírus Sempre Ativo</strong>: Mantenha o seu antivírus principal (como Windows Defender, ou um de terceiros) <strong>sempre ativo e atualizado</strong>.</li>
+<li><strong>Uso de Firewall</strong>: Certifique-se de que o seu firewall (do sistema operativo e/ou do router) está ativado e configurado corretamente.</li>
+<li><strong>Navegação Segura</strong>:<ul>
+<li>Seja cético com links e anexos de e-mail suspeitos (Phishing).</li>
+<li>Evite sites de reputação duvidosa.</li>
+<li>Use um navegador focado em privacidade com extensões como uBlock Origin. Consulte <a href="comparativo_de_navegadores_privados_firefox.html">comparativo de navegadores privados</a>.</li>
+</ul>
+</li>
+<li><strong>VPN (Rede Privada Virtual)</strong>: Use uma VPN para criptografar o seu tráfego de internet, especialmente em redes públicas.</li>
+<li><strong>Moderação em Downloads</strong>: Ao descarregar ficheiros de fontes não oficiais (como torrents ou sites de hospedagem de ficheiros), use um scanner como o Malwarebytes para verificar os ficheiros <em>antes de abri-los</em>.<ul>
+<li>Para um guia sobre isso, consulte <a href="analisar_ficheiros_contra_malware.html">analisar ficheiros contra malware</a>.</li>
+</ul>
+</li>
+<li><strong>Consciencialização</strong>: Eduque-se continuamente sobre as últimas ameaças e táticas de engenharia social.</li>
+</ul>
+<h2>Conclusão: Recuperação e Resiliência na Luta Contra o Malware</h2>
+<p>Uma infeção de malware pode ser assustadora, mas não é o fim do mundo. Com uma abordagem <strong>metódica e paciente</strong>, a maioria das ameaças pode ser removida e o seu sistema restaurado. A limpeza pós-infeção é um processo que exige vigilância e as ferramentas certas, mas é, acima de tudo, uma oportunidade para fortalecer as suas defesas digitais. Ao seguir este guia e implementar as melhores práticas de segurança e prevenção, você não só recuperará o controlo do seu sistema, mas também construirá uma base mais <strong>resiliente</strong> contra as futuras ameaças do mundo digital.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Limpeza Pós-Infeção de Malware</h1>
+<blockquote>
+<p>Infelizmente, mesmo com as melhores precauções, as infeções por malware podem acontecer. Quando isso ocorre, a ação rápida e sistemática é <strong>crucial</strong> para remover a ameaça, restaurar a segurança do seu sistema e proteger os seus dados. Este guia detalhado irá levá-lo passo a passo pelo processo de limpeza pós-infeção, desde a identificação inicial até à recuperação e prevenção futuras, garantindo que o seu sistema volta a ser um ambiente seguro.</p>
+</blockquote>
+<h2>Sinais de Infeção: Como Reconhecer um Problema de Malware</h2>
+<p>O primeiro passo para a recuperação é reconhecer os sintomas. Fique atento a estes sinais de alerta:</p>
+<ul>
+<li><strong>Lentidão Inesperada</strong>: O computador está significativamente mais lento do que o normal, mesmo sem muitas aplicações abertas.</li>
+<li><strong>Pop-ups e Anúncios Excessivos</strong>: Anúncios que aparecem fora do seu navegador, ou pop-ups em sites que normalmente não os têm.</li>
+<li><strong>Comportamento Estranho do Navegador</strong>: Redirecionamentos para sites desconhecidos, página inicial ou motor de busca alterados, novas barras de ferramentas que você não instalou.</li>
+<li><strong>Programas Desconhecidos</strong>: Novas aplicações ou serviços a correr em segundo plano que você não reconhece.</li>
+<li><strong>Acesso Negado a Ficheiros/Definições</strong>: Não consegue aceder a certos ficheiros, pastas ou definições de segurança.</li>
+<li><strong>Mensagens de Erro Constantes</strong>: Erros aleatórios do sistema operativo ou de aplicações.</li>
+<li><strong>Atividade de Rede Suspeita</strong>: Luzes do router a piscar constantemente mesmo quando não está a usar a internet, ou alto consumo de dados.</li>
+<li><strong>Ficheiros Criptografados (Ransomware)</strong>: Os seus ficheiros têm extensões estranhas e você vê uma nota de resgate.</li>
+<li><strong>Antivírus Desativado ou Bloqueado</strong>: O seu software de segurança é desativado ou impede o acesso a sites de segurança.</li>
+</ul>
+<blockquote>
+<p><strong>Ação Imediata</strong>: Se suspeitar de uma infeção, <strong>desligue a sua conexão de internet (Wi-Fi ou Ethernet)</strong>. Isso pode evitar que o malware se espalhe para outros dispositivos na sua rede ou que continue a comunicar com os servidores dos atacantes.</p>
+</blockquote>
+<h2>Passo 1: Isolar o Sistema Infectado</h2>
+<p>Para evitar a propagação e facilitar a limpeza, o isolamento é fundamental.</p>
+<ol>
+<li><strong>Desligar a Internet</strong>: Como mencionado, desconecte o cabo Ethernet ou desligue o Wi-Fi.</li>
+<li><strong>Desligar Dispositivos Externos</strong>: Remova pen drives, discos externos ou outros dispositivos de armazenamento que possam ter estado conectados ao PC infetado.</li>
+<li><strong>Isolar na Rede (se possível)</strong>: Se for um ambiente de rede, desconecte o computador da rede local para evitar que o malware se espalhe para outros dispositivos.</li>
+</ol>
+<h2>Passo 2: Preparar as Ferramentas de Limpeza</h2>
+<p>Você precisará de ferramentas de segurança que possam ser executadas <em>offline</em> ou de um ambiente limpo.</p>
+<ol>
+<li>
+<p><strong>Obter as Ferramentas (Usando um PC Não Infectado)</strong>:</p>
+<ul>
+<li>Use um computador <em>confiável e não infetado</em> para descarregar as ferramentas de limpeza.</li>
+<li>Guarde-as numa pen drive formatada em FAT32 ou exFAT (para compatibilidade máxima) que não contenha outros ficheiros importantes.</li>
+<li><strong>Ferramentas Essenciais</strong>:<ul>
+<li><strong>Malwarebytes Free</strong>: Um dos scanners de malware mais eficazes para deteção e remoção. É o <strong>pilar</strong> da sua limpeza.</li>
+<li><strong>AdwCleaner</strong>: Especializado na remoção de adware, PUPs e sequestradores de navegador.</li>
+<li><strong>HitmanPro</strong>: Outro scanner baseado em nuvem que é bom para detetar malware persistente.</li>
+<li><strong>Emsisoft Emergency Kit</strong>: Um conjunto de ferramentas de remoção de malware portátil e poderoso.</li>
+<li><strong>Navegador Web Portátil (Opcional)</strong>: Uma versão portátil do Firefox ou Chrome, caso o seu navegador principal esteja comprometido.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Criar Mídia de Resgate (Opcional, mas Recomendado)</strong>:</p>
+<ul>
+<li>Para infeções graves que impedem o arranque do sistema ou a execução de software, uma mídia de resgate é vital.</li>
+<li><strong>Kaspersky Rescue Disk</strong>: Uma imagem ISO que você pode gravar num CD/DVD ou pen drive e arrancar o computador a partir dela. Permite varrer e remover malware antes mesmo do Windows carregar.</li>
+<li><strong>Emsisoft Emergency Kit</strong>: Pode ser executado a partir de uma pen drive sem instalação.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Importante</strong>: Nunca descarregue ferramentas de segurança de sites que não sejam os seus distribuidores oficiais. Use links como <code>malwarebytes.com</code>, <code>adguard.com/adwcleaner</code>, <code>emsisoft.com/en/software/eek/</code> e <code>kaspersky.com/free-anti-virus</code> para garantir a autenticidade.</p>
+</blockquote>
+<h2>Passo 3: Entrar em Modo de Segurança (Safe Mode)</h2>
+<p>O Modo de Segurança inicia o Windows com um conjunto mínimo de drivers e serviços, o que pode impedir que o malware carregue e se torne ativo, facilitando a remoção.</p>
+<ul>
+<li><strong>Windows 10/11</strong>:<ol>
+<li>Desligue o PC.</li>
+<li>Ligue-o e, no ecrã de login, mantenha <code>Shift</code> pressionado enquanto clica em <code>Reiniciar</code>.</li>
+<li>Isto irá levá-lo ao <code>Ambiente de Recuperação do Windows</code>.</li>
+<li>Vá em <code>Solucionar Problemas &gt; Opções Avançadas &gt; Configurações de Inicialização &gt; Reiniciar</code>.</li>
+<li>Após o reinício, pressione <code>4</code> para <code>Habilitar Modo de Segurança</code> ou <code>5</code> para <code>Habilitar Modo de Segurança com Rede</code> (se precisar de internet para baixar algo, mas com cuidado).</li>
+</ol>
+</li>
+</ul>
+<h2>Passo 4: Fazer Backup de Dados Essenciais (Se Ainda Não Feito)</h2>
+<p>Se você não tem um backup recente, esta é a sua última chance de salvar ficheiros importantes.</p>
+<ul>
+<li><strong>Cuidado</strong>: Apenas copie ficheiros <em>pessoais</em> (documentos, fotos, vídeos). <strong>Não copie executáveis de programas (.exe, .dll) ou ficheiros de sistema</strong>, pois podem estar infetados.</li>
+<li>Use um disco externo ou pen drive <em>limpo</em> para esta cópia.</li>
+<li>Para um guia sobre backup, consulte fazer_backup_da_sua_colecao_digital.html.</li>
+</ul>
+<h2>Passo 5: Limpeza do Sistema (O Coração da Remoção)</h2>
+<p>Este é o processo principal de remoção do malware.</p>
+<ol>
+<li>
+<p><strong>Desinstalar Programas Suspeitos</strong>:</p>
+<ul>
+<li>No Modo de Segurança, vá em <code>Painel de Controlo &gt; Programas e Recursos</code> (ou <code>Configurações &gt; Aplicações &gt; Aplicações e Recursos</code>).</li>
+<li>Procure por quaisquer programas desconhecidos, recentemente instalados ou que pareçam suspeitos. Desinstale-os.</li>
+<li><strong>Cuidado</strong>: Não desinstale programas que você não tem certeza do que são, especialmente se forem componentes do sistema. Pesquise online se tiver dúvidas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Executar o Malwarebytes (Pilar da Limpeza)</strong>:</p>
+<ul>
+<li>Transfira o Malwarebytes para o PC infetado (via pen drive).</li>
+<li>Instale-o e <strong>atualize as definições de vírus</strong> (se estiver com rede). Se não estiver, use as definições que vieram com o instalador baixado.</li>
+<li>Execute uma <strong>verificação completa (<code>Full Scan</code>)</strong>. Esteja preparado para que demore.</li>
+<li>Após a varredura, <strong>quarentene</strong> todas as ameaças detetadas. O Malwarebytes pode pedir para reiniciar o PC. Faça-o.</li>
+<li>Repita a verificação até que nada seja detetado.</li>
+</ul>
+</li>
+<li>
+<p><strong>Executar Outros Scanners (Segunda Opinião)</strong>:</p>
+<ul>
+<li>Após o Malwarebytes, execute o <strong>AdwCleaner</strong> para eliminar adware e PUPs que possam ter sido deixados para trás.</li>
+<li>Considere executar o <strong>HitmanPro</strong> ou o <strong>Emsisoft Emergency Kit</strong> para uma varredura adicional. Eles podem detetar ameaças que outros scanners perderam.</li>
+<li>Quarentene e remova tudo o que for detetado por estas ferramentas.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verificar e Restaurar o Navegador</strong>:</p>
+<ul>
+<li>Abra o seu navegador (Chrome, Firefox, Edge).</li>
+<li>Vá para as <code>Extensões/Add-ons</code>. Remova todas as extensões que você não instalou ou que pareçam suspeitas.</li>
+<li>Verifique a sua <code>Página Inicial</code> e <code>Motor de Busca Padrão</code>. Se tiverem sido alterados, restaure-os para o que deveriam ser.</li>
+<li>Considere <strong>redefinir o navegador para as configurações padrão</strong> (isto limpará favoritos e histórico, então faça backup se necessário).</li>
+<li>Limpe o cache e os cookies do navegador.</li>
+</ul>
+</li>
+<li>
+<p><strong>Limpar Ficheiros Temporários</strong>:</p>
+<ul>
+<li>Use a ferramenta <code>Limpeza de Disco</code> (Disk Cleanup) do Windows ou um programa como <em>BleachBit</em> para remover ficheiros temporários, cache do sistema e outros detritos que podem conter vestígios de malware.</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 6: Pós-Limpeza: Restaurar e Proteger</h2>
+<p>A remoção do malware é apenas metade da batalha. A restauração da segurança é igualmente importante.</p>
+<ol>
+<li>
+<p><strong>Atualizar o Sistema Operativo e Todo o Software</strong>:</p>
+<ul>
+<li>Reconecte à internet (com cautela).</li>
+<li>Execute o <code>Windows Update</code> e certifique-se de que todos os sistemas (Windows, macOS, Linux) estão com as últimas atualizações de segurança.</li>
+<li>Atualize <strong>todas as aplicações instaladas</strong>: navegadores, suíte de escritório, leitores de PDF, clientes de multimédia, etc. Softwares desatualizados são uma porta de entrada para futuras infeções.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mudar Todas as Senhas Essenciais</strong>:</p>
+<ul>
+<li>Esta é uma etapa <strong>crítica</strong>. Assuma que todas as suas senhas foram comprometidas.</li>
+<li>Use outro dispositivo (seguro) para mudar as senhas das suas contas mais importantes: <strong>e-mail principal</strong>, banca online, redes sociais, contas de armazenamento em nuvem, e-commerce e qualquer outro serviço sensível.</li>
+<li><strong>Use senhas fortes e únicas</strong> para cada conta. Utilize um gerenciador de senhas.</li>
+<li>Ative a <strong>Autenticação de Dois Fatores (2FA)</strong> em todas as contas que a suportam.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verificar Restaurações do Sistema (System Restore Points)</strong>:</p>
+<ul>
+<li>Se você usa Pontos de Restauração do Sistema, o malware pode ter-los corrompido ou criado um ponto de restauração infetado.</li>
+<li>Pode ser necessário desativar e reativar a Restauração do Sistema para limpar os pontos antigos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Reinstalar o Sistema Operativo (Opcional, mas Mais Seguro para Infeções Graves)</strong>:</p>
+<ul>
+<li>Para infeções <em>extremamente persistentes</em>, rootkits, ou se você não se sentir seguro após a limpeza, a <strong>reinstalação limpa do sistema operativo</strong> é a opção mais segura.</li>
+<li>Isso apaga tudo e recomeça do zero, garantindo que nenhum vestígio de malware permaneça.</li>
+<li>Você precisará dos seus backups para restaurar os seus dados pessoais.</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 7: Fortalecer a Prevenção Futura</h2>
+<p>Aprenda com a experiência para evitar futuras infeções.</p>
+<ul>
+<li><strong>Antivírus Sempre Ativo</strong>: Mantenha o seu antivírus principal (como Windows Defender, ou um de terceiros) <strong>sempre ativo e atualizado</strong>.</li>
+<li><strong>Uso de Firewall</strong>: Certifique-se de que o seu firewall (do sistema operativo e/ou do router) está ativado e configurado corretamente.</li>
+<li><strong>Navegação Segura</strong>:<ul>
+<li>Seja cético com links e anexos de e-mail suspeitos (Phishing).</li>
+<li>Evite sites de reputação duvidosa.</li>
+<li>Use um navegador focado em privacidade com extensões como uBlock Origin. Consulte <a href="comparativo_de_navegadores_privados_firefox.html">comparativo de navegadores privados</a>.</li>
+</ul>
+</li>
+<li><strong>VPN (Rede Privada Virtual)</strong>: Use uma VPN para criptografar o seu tráfego de internet, especialmente em redes públicas.</li>
+<li><strong>Moderação em Downloads</strong>: Ao descarregar ficheiros de fontes não oficiais (como torrents ou sites de hospedagem de ficheiros), use um scanner como o Malwarebytes para verificar os ficheiros <em>antes de abri-los</em>.<ul>
+<li>Para um guia sobre isso, consulte <a href="analisar_ficheiros_contra_malware.html">analisar ficheiros contra malware</a>.</li>
+</ul>
+</li>
+<li><strong>Consciencialização</strong>: Eduque-se continuamente sobre as últimas ameaças e táticas de engenharia social.</li>
+</ul>
+<h2>Conclusão: Recuperação e Resiliência na Luta Contra o Malware</h2>
+<p>Uma infeção de malware pode ser assustadora, mas não é o fim do mundo. Com uma abordagem <strong>metódica e paciente</strong>, a maioria das ameaças pode ser removida e o seu sistema restaurado. A limpeza pós-infeção é um processo que exige vigilância e as ferramentas certas, mas é, acima de tudo, uma oportunidade para fortalecer as suas defesas digitais. Ao seguir este guia e implementar as melhores práticas de segurança e prevenção, você não só recuperará o controlo do seu sistema, mas também construirá uma base mais <strong>resiliente</strong> contra as futuras ameaças do mundo digital.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Limpeza Pós-Infeção de Malware';
+  const enTitle = 'Guia Completo: Limpeza Pós-Infeção de Malware';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

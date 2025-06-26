@@ -1,0 +1,9 @@
+/* Estilo para as imagens de emoji substituídas */
+.emoji-img {
+  /* Controla o tamanho da imagem para se alinhar com o texto */
+  height: 1em; 
+  width: 1em;
+  
+  /* Alinha a imagem verticalmente com o texto */
+  vertical-align: 0em; 
+}

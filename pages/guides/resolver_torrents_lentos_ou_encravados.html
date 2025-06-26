@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Resolver Torrents Lentos ou "Encravados"</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Resolver Torrents Lentos ou "Encravados"</h1>
+<blockquote>
+<p>É uma frustração comum: o seu cliente BitTorrent está a funcionar, mas os downloads estão lentos como uma lesma, ou pior, completamente "encravados". Não se preocupe! Este guia detalhado vai ajudá-lo a diagnosticar e resolver os problemas mais comuns que causam lentidão ou paragem nos seus torrents. Abordaremos desde as configurações básicas do cliente e da rede até dicas avançadas para maximizar a sua velocidade e conectividade.</p>
+</blockquote>
+<hr />
+<h2>Entendendo a Lentidão: Por Que o Meu Torrent Não Acelera?</h2>
+<p>O BitTorrent é um protocolo de partilha de ficheiros peer-to-peer (P2P), o que significa que você está a descarregar ficheiros de (e a enviar para) outros utilizadores (chamados <em>peers</em> ou <em>seeders</em>). A velocidade do seu download depende de vários fatores:</p>
+<ul>
+<li><strong>Número de Seeders (Semeadores)</strong>: São os utilizadores que têm o ficheiro completo e o estão a partilhar. Quanto mais <em>seeders</em> com boa largura de banda, mais rápido será o download.</li>
+<li><strong>Número de Leechers (Sugadores)</strong>: São os utilizadores que estão a descarregar e ainda não têm o ficheiro completo. Muitos <em>leechers</em> e poucos <em>seeders</em> podem abrandar o download.</li>
+<li><strong>Largura de Banda dos Peers</strong>: Se os <em>seeders</em> têm uma conexão de upload lenta, o seu download também será lento.</li>
+<li><strong>Conectividade (Port Forwarding)</strong>: Se a sua porta não estiver aberta (<em>unconnectable</em>), você só pode iniciar conexões. Outros <em>peers</em> não podem iniciar conexões com você, o que limita o número de fontes e a sua capacidade de <em>seedear</em>.</li>
+<li><strong>Throttling do ISP</strong>: Alguns Provedores de Serviços de Internet (ISPs) limitam o tráfego de BitTorrent.</li>
+<li><strong>Firewall/Antivírus</strong>: O seu software de segurança pode estar a bloquear o cliente BitTorrent.</li>
+<li><strong>Estado do Torrent</strong>: Torrents muito antigos ou com pouco interesse podem ter poucos <em>seeders</em>.</li>
+</ul>
+<blockquote>
+<p><strong>Conceito Chave</strong>: No BitTorrent, você quer ser "conectável". Ser "conectável" significa que outros utilizadores (peers) podem iniciar uma conexão diretamente com o seu cliente BitTorrent, o que aumenta drasticamente o número de fontes disponíveis e melhora as velocidades.</p>
+</blockquote>
+<h2>Soluções Básicas: Diagnóstico e Ajustes Rápidos</h2>
+<p>Comece com estas verificações e ajustes simples.</p>
+<h3>1. Verifique a Fonte do Torrent</h3>
+<ul>
+<li><strong>Número de Seeders e Leechers</strong>: No seu cliente BitTorrent (como qBittorrent), veja as colunas <code>S (Seeders)</code> e <code>L (Leechers)</code>.<ul>
+<li>Se <code>S</code> for 0 ou muito baixo (ex: 1-5) e <code>L</code> for alto, o torrent provavelmente não tem fontes suficientes.</li>
+<li><strong>Solução</strong>: Procure por uma alternativa do mesmo conteúdo com mais <em>seeders</em>. Trocar para um tracker privado (se for um torrent público) pode ajudar.</li>
+</ul>
+</li>
+<li><strong>Saúde do Torrent</strong>: Verifique o "estado" do torrent. Se estiver como "Parado", "Erro" ou "Sem Conexão", algo está errado.</li>
+</ul>
+<h3>2. Verifique a Sua Conexão de Internet</h3>
+<ul>
+<li><strong>Velocidade Geral</strong>: Faça um teste de velocidade (ex: Speedtest.net) para garantir que a sua conexão de internet está a funcionar corretamente e que está a obter as velocidades esperadas.</li>
+<li><strong>Conflitos na Rede</strong>: Outros dispositivos na sua rede podem estar a consumir largura de banda (streaming 4K, jogos online, downloads grandes). Pause outras atividades que consomem muita banda.</li>
+</ul>
+<h3>3. Reinicie o Cliente BitTorrent e o Router</h3>
+<ul>
+<li>Um reinício simples do seu cliente BitTorrent e/ou do seu router pode resolver problemas temporários de conexão ou congestionamento.</li>
+</ul>
+<h2>Soluções Essenciais: Otimizando o Cliente e a Rede</h2>
+<p>Estas são as configurações mais importantes para a maioria dos problemas de lentidão.</p>
+<h3>1. Port Forwarding (Encaminhamento de Portas)</h3>
+<p>Este é, muitas vezes, o <strong>problema número um</strong> para torrents lentos ou "encravados". Se a sua porta não estiver aberta, você é "não conectável", o que limita severamente as suas fontes.</p>
+<ul>
+<li><strong>Verificação</strong>: No qBittorrent, o ícone de status de conexão no canto inferior direito deve estar <strong>verde</strong>. Se estiver amarelo ou vermelho, a sua porta não está aberta.</li>
+<li><strong>Ação</strong>: Configure o <strong>port forwarding</strong> no seu router.<ul>
+<li>Descubra a <code>porta de escuta</code> do seu cliente BitTorrent (em <code>Configurações &gt; Conexão</code> no qBittorrent). Anote-a.</li>
+<li>Aceda à interface de administração do seu router (geralmente <code>192.168.1.1</code> ou <code>192.168.0.1</code>).</li>
+<li>Procure por <code>Port Forwarding</code>, <code>NAT</code> ou <code>Virtual Servers</code>.</li>
+<li>Crie uma nova regra:<ul>
+<li><strong>Porta Externa e Interna</strong>: Use a porta de escuta do seu cliente BitTorrent.</li>
+<li><strong>Endereço IP Interno</strong>: Use o endereço IP local estático do seu computador (ex: <code>192.168.1.100</code>).</li>
+<li><strong>Protocolo</strong>: Selecione <strong>TCP</strong> e <strong>UDP</strong> (ou "Both").</li>
+</ul>
+</li>
+<li>Salve e, se necessário, reinicie o router.</li>
+<li><strong>Verifique novamente</strong>: Use um verificador de porta online (ex: canyouseeme.org) e o status do qBittorrent.</li>
+</ul>
+</li>
+<li>Para um guia completo sobre port forwarding, consulte acelerar_torrents_com_port_forwarding.html.</li>
+</ul>
+<h3>2. Firewall e Antivírus</h3>
+<p>Seu software de segurança pode estar a bloquear as conexões do seu cliente BitTorrent.</p>
+<ul>
+<li><strong>Adicione uma Exceção</strong>: Abra as configurações do seu firewall (Windows Defender Firewall, ou de um antivírus de terceiros) e <strong>adicione uma exceção</strong> para o executável do seu cliente BitTorrent (ex: <code>qbittorrent.exe</code>).</li>
+<li><strong>Verifique o Antivírus</strong>: Alguns antivírus têm funcionalidades de "proteção web" ou "monitorização de rede" que podem interferir com o tráfego P2P. Verifique as configurações do seu antivírus.</li>
+</ul>
+<h3>3. Limites de Conexão no Cliente BitTorrent</h3>
+<p>Configurações excessivamente restritivas podem limitar o número de <em>peers</em> aos quais você pode se conectar.</p>
+<ul>
+<li><strong>Ajuste os Limites (no qBittorrent, <code>Conexão</code>)</strong>:<ul>
+<li><code>Número máximo de conexões globais</code>: Aumente para <code>300-500</code>.</li>
+<li><code>Número máximo de conexões por torrent</code>: Aumente para <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload globais</code>: Aumente para <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload por torrent</code>: Aumente para <code>5-10</code>.</li>
+</ul>
+</li>
+<li><strong>Não Zere os Limites de Upload</strong>: Não definir limites de upload ou defini-los como zero pode prejudicar a sua capacidade de download. O BitTorrent é um sistema de troca; ao partilhar, você incentiva outros a partilharem consigo. Mantenha um limite razoável (ex: 80% da sua velocidade de upload total).</li>
+</ul>
+<h2>Soluções Avançadas e Cenários Específicos</h2>
+<p>Para problemas mais persistentes ou para utilizadores avançados.</p>
+<h3>1. Usar uma VPN de Qualidade (Especialmente para Throttling do ISP)</h3>
+<p>Se o seu ISP estiver a limitar o tráfego BitTorrent (o que é comum), uma VPN pode ajudar.</p>
+<ul>
+<li><strong>Como Ajuda</strong>: A VPN criptografa todo o seu tráfego, ocultando-o do seu ISP. Se o ISP não consegue ver que é tráfego de torrent, ele não pode limitá-lo.</li>
+<li><strong>Escolha da VPN</strong>: Escolha um provedor de VPN <em>confiável</em> que suporte tráfego P2P e tenha um Kill Switch robusto.</li>
+<li><strong>Kill Switch e Binding</strong>:<ul>
+<li><strong>Ative o Kill Switch</strong> na sua aplicação VPN para evitar vazamentos de IP se a VPN cair. Consulte o_essencial_sobre_o_kill_switch.html.</li>
+<li>Considere <strong>bindar</strong> o seu cliente BitTorrent à interface da VPN. Isso garante que o cliente só funciona quando a VPN está ativa, prevenindo completamente vazamentos de IP. Consulte forcar_apps_a_usar_a_vpn_binding.html.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Verificar o Status do Rastreador</h3>
+<ul>
+<li>No qBittorrent, clique no torrent problemático e vá na aba <code>Trackers</code> (Rastreadores).</li>
+<li>Verifique o <code>Status</code> dos rastreadores. Se estiverem "Não conectado", "Inválido" ou "Tempo Esgotado", isso pode ser o problema.</li>
+<li><strong>Ação</strong>:<ul>
+<li>Tente forçar uma nova atualização do rastreador (clique com o botão direito no rastreador e selecione <code>Anunciar agora</code>).</li>
+<li>Para torrents públicos, adicione rastreadores públicos adicionais (você pode encontrar listas online de "rastreadores públicos atualizados").</li>
+<li>Para torrents privados, se o rastreador estiver offline, você terá de esperar que ele volte. <strong>Nunca adicione rastreadores públicos a torrents de trackers privados.</strong></li>
+</ul>
+</li>
+</ul>
+<h3>3. Ativar/Desativar DHT, PEX, LPD</h3>
+<ul>
+<li>Para <strong>torrents públicos</strong>, certifique-se de que <code>DHT</code> (Distributed Hash Table) e <code>PEX</code> (Peer Exchange) estão ativados (em <code>Configurações &gt; BitTorrent</code> no qBittorrent). Isso ajuda a encontrar <em>peers</em> mesmo se os rastreadores estiverem offline.</li>
+<li>Para <strong>torrents de trackers privados</strong>, <code>DHT</code> e <code>PEX</code> devem estar <strong>desativados</strong> (a maioria dos trackers privados proíbe-os). Verifique as regras do seu tracker.</li>
+</ul>
+<h3>4. Erros de Disco ou Espaço Insuficiente</h3>
+<ul>
+<li><strong>Espaço em Disco</strong>: Verifique se você tem espaço livre suficiente no disco onde os downloads estão a ser guardados. Torrents grandes podem falhar se o espaço acabar.</li>
+<li><strong>Saúde do Disco</strong>: Ficheiros corrompidos ou erros de disco podem causar problemas de download/seed.<ul>
+<li>Use ferramentas como <code>CrystalDiskInfo</code> (Windows) ou <code>Gnome Disks</code> (Linux) para verificar a saúde S.M.A.R.T. do seu disco.</li>
+<li>Consulte o guia sobre <a href="manter_a_saude_dos_seus_discos.html">manter a saude dos seus discos</a> para mais informações.</li>
+</ul>
+</li>
+</ul>
+<h3>5. Configurações de Conexão do Router (APIs desativadas)</h3>
+<ul>
+<li>Alguns routers podem ter o UPnP/NAT-PMP desativado por padrão nas suas configurações avançadas. Certifique-se de que está ativado se você confiar na sua configuração automática de port forwarding.</li>
+<li>Verifique também se não há outras regras de firewall no seu router que possam estar a bloquear a porta do seu cliente BitTorrent.</li>
+</ul>
+<h3>6. VPN com CGNAT (Carrier-Grade NAT)</h3>
+<p>Se o seu ISP usa CGNAT, você partilha um endereço IP público com outros utilizadores, o que impede o port forwarding tradicional.</p>
+<ul>
+<li><strong>Solução</strong>: Uma VPN com suporte a port forwarding (geralmente através de um IP dedicado ou portas específicas que eles encaminham para você) é a solução mais eficaz neste caso.</li>
+</ul>
+<h2>Conclusão: Dominando a Arte do BitTorrent Rápido e Eficiente</h2>
+<p>Torrents lentos ou "encravados" são um obstáculo comum, mas quase sempre solucionáveis. A chave para a maioria dos problemas reside no <strong>port forwarding</strong> e numa compreensão clara de como o BitTorrent se conecta aos <em>peers</em>. Ao seguir este guia e dedicar tempo para otimizar as configurações do seu cliente BitTorrent, do seu router e, se necessário, integrar uma VPN robusta, você transformará a sua experiência de download de frustrante para <strong>rápida e eficiente</strong>. Lembre-se, a sua capacidade de contribuir (semear) é tão importante quanto a sua capacidade de descarregar; um ambiente P2P saudável beneficia a todos.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Resolver Torrents Lentos ou "Encravados"</h1>
+<blockquote>
+<p>É uma frustração comum: o seu cliente BitTorrent está a funcionar, mas os downloads estão lentos como uma lesma, ou pior, completamente "encravados". Não se preocupe! Este guia detalhado vai ajudá-lo a diagnosticar e resolver os problemas mais comuns que causam lentidão ou paragem nos seus torrents. Abordaremos desde as configurações básicas do cliente e da rede até dicas avançadas para maximizar a sua velocidade e conectividade.</p>
+</blockquote>
+<h2>Entendendo a Lentidão: Por Que o Meu Torrent Não Acelera?</h2>
+<p>O BitTorrent é um protocolo de partilha de ficheiros peer-to-peer (P2P), o que significa que você está a descarregar ficheiros de (e a enviar para) outros utilizadores (chamados <em>peers</em> ou <em>seeders</em>). A velocidade do seu download depende de vários fatores:</p>
+<ul>
+<li><strong>Número de Seeders (Semeadores)</strong>: São os utilizadores que têm o ficheiro completo e o estão a partilhar. Quanto mais <em>seeders</em> com boa largura de banda, mais rápido será o download.</li>
+<li><strong>Número de Leechers (Sugadores)</strong>: São os utilizadores que estão a descarregar e ainda não têm o ficheiro completo. Muitos <em>leechers</em> e poucos <em>seeders</em> podem abrandar o download.</li>
+<li><strong>Largura de Banda dos Peers</strong>: Se os <em>seeders</em> têm uma conexão de upload lenta, o seu download também será lento.</li>
+<li><strong>Conectividade (Port Forwarding)</strong>: Se a sua porta não estiver aberta (<em>unconnectable</em>), você só pode iniciar conexões. Outros <em>peers</em> não podem iniciar conexões com você, o que limita o número de fontes e a sua capacidade de <em>seedear</em>.</li>
+<li><strong>Throttling do ISP</strong>: Alguns Provedores de Serviços de Internet (ISPs) limitam o tráfego de BitTorrent.</li>
+<li><strong>Firewall/Antivírus</strong>: O seu software de segurança pode estar a bloquear o cliente BitTorrent.</li>
+<li><strong>Estado do Torrent</strong>: Torrents muito antigos ou com pouco interesse podem ter poucos <em>seeders</em>.</li>
+</ul>
+<blockquote>
+<p><strong>Conceito Chave</strong>: No BitTorrent, você quer ser "conectável". Ser "conectável" significa que outros utilizadores (peers) podem iniciar uma conexão diretamente com o seu cliente BitTorrent, o que aumenta drasticamente o número de fontes disponíveis e melhora as velocidades.</p>
+</blockquote>
+<h2>Soluções Básicas: Diagnóstico e Ajustes Rápidos</h2>
+<p>Comece com estas verificações e ajustes simples.</p>
+<h3>1. Verifique a Fonte do Torrent</h3>
+<ul>
+<li><strong>Número de Seeders e Leechers</strong>: No seu cliente BitTorrent (como qBittorrent), veja as colunas <code>S (Seeders)</code> e <code>L (Leechers)</code>.<ul>
+<li>Se <code>S</code> for 0 ou muito baixo (ex: 1-5) e <code>L</code> for alto, o torrent provavelmente não tem fontes suficientes.</li>
+<li><strong>Solução</strong>: Procure por uma alternativa do mesmo conteúdo com mais <em>seeders</em>. Trocar para um tracker privado (se for um torrent público) pode ajudar.</li>
+</ul>
+</li>
+<li><strong>Saúde do Torrent</strong>: Verifique o "estado" do torrent. Se estiver como "Parado", "Erro" ou "Sem Conexão", algo está errado.</li>
+</ul>
+<h3>2. Verifique a Sua Conexão de Internet</h3>
+<ul>
+<li><strong>Velocidade Geral</strong>: Faça um teste de velocidade (ex: Speedtest.net) para garantir que a sua conexão de internet está a funcionar corretamente e que está a obter as velocidades esperadas.</li>
+<li><strong>Conflitos na Rede</strong>: Outros dispositivos na sua rede podem estar a consumir largura de banda (streaming 4K, jogos online, downloads grandes). Pause outras atividades que consomem muita banda.</li>
+</ul>
+<h3>3. Reinicie o Cliente BitTorrent e o Router</h3>
+<ul>
+<li>Um reinício simples do seu cliente BitTorrent e/ou do seu router pode resolver problemas temporários de conexão ou congestionamento.</li>
+</ul>
+<h2>Soluções Essenciais: Otimizando o Cliente e a Rede</h2>
+<p>Estas são as configurações mais importantes para a maioria dos problemas de lentidão.</p>
+<h3>1. Port Forwarding (Encaminhamento de Portas)</h3>
+<p>Este é, muitas vezes, o <strong>problema número um</strong> para torrents lentos ou "encravados". Se a sua porta não estiver aberta, você é "não conectável", o que limita severamente as suas fontes.</p>
+<ul>
+<li><strong>Verificação</strong>: No qBittorrent, o ícone de status de conexão no canto inferior direito deve estar <strong>verde</strong>. Se estiver amarelo ou vermelho, a sua porta não está aberta.</li>
+<li><strong>Ação</strong>: Configure o <strong>port forwarding</strong> no seu router.<ul>
+<li>Descubra a <code>porta de escuta</code> do seu cliente BitTorrent (em <code>Configurações &gt; Conexão</code> no qBittorrent). Anote-a.</li>
+<li>Aceda à interface de administração do seu router (geralmente <code>192.168.1.1</code> ou <code>192.168.0.1</code>).</li>
+<li>Procure por <code>Port Forwarding</code>, <code>NAT</code> ou <code>Virtual Servers</code>.</li>
+<li>Crie uma nova regra:<ul>
+<li><strong>Porta Externa e Interna</strong>: Use a porta de escuta do seu cliente BitTorrent.</li>
+<li><strong>Endereço IP Interno</strong>: Use o endereço IP local estático do seu computador (ex: <code>192.168.1.100</code>).</li>
+<li><strong>Protocolo</strong>: Selecione <strong>TCP</strong> e <strong>UDP</strong> (ou "Both").</li>
+</ul>
+</li>
+<li>Salve e, se necessário, reinicie o router.</li>
+<li><strong>Verifique novamente</strong>: Use um verificador de porta online (ex: canyouseeme.org) e o status do qBittorrent.</li>
+</ul>
+</li>
+<li>Para um guia completo sobre port forwarding, consulte acelerar_torrents_com_port_forwarding.html.</li>
+</ul>
+<h3>2. Firewall e Antivírus</h3>
+<p>Seu software de segurança pode estar a bloquear as conexões do seu cliente BitTorrent.</p>
+<ul>
+<li><strong>Adicione uma Exceção</strong>: Abra as configurações do seu firewall (Windows Defender Firewall, ou de um antivírus de terceiros) e <strong>adicione uma exceção</strong> para o executável do seu cliente BitTorrent (ex: <code>qbittorrent.exe</code>).</li>
+<li><strong>Verifique o Antivírus</strong>: Alguns antivírus têm funcionalidades de "proteção web" ou "monitorização de rede" que podem interferir com o tráfego P2P. Verifique as configurações do seu antivírus.</li>
+</ul>
+<h3>3. Limites de Conexão no Cliente BitTorrent</h3>
+<p>Configurações excessivamente restritivas podem limitar o número de <em>peers</em> aos quais você pode se conectar.</p>
+<ul>
+<li><strong>Ajuste os Limites (no qBittorrent, <code>Conexão</code>)</strong>:<ul>
+<li><code>Número máximo de conexões globais</code>: Aumente para <code>300-500</code>.</li>
+<li><code>Número máximo de conexões por torrent</code>: Aumente para <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload globais</code>: Aumente para <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload por torrent</code>: Aumente para <code>5-10</code>.</li>
+</ul>
+</li>
+<li><strong>Não Zere os Limites de Upload</strong>: Não definir limites de upload ou defini-los como zero pode prejudicar a sua capacidade de download. O BitTorrent é um sistema de troca; ao partilhar, você incentiva outros a partilharem consigo. Mantenha um limite razoável (ex: 80% da sua velocidade de upload total).</li>
+</ul>
+<h2>Soluções Avançadas e Cenários Específicos</h2>
+<p>Para problemas mais persistentes ou para utilizadores avançados.</p>
+<h3>1. Usar uma VPN de Qualidade (Especialmente para Throttling do ISP)</h3>
+<p>Se o seu ISP estiver a limitar o tráfego BitTorrent (o que é comum), uma VPN pode ajudar.</p>
+<ul>
+<li><strong>Como Ajuda</strong>: A VPN criptografa todo o seu tráfego, ocultando-o do seu ISP. Se o ISP não consegue ver que é tráfego de torrent, ele não pode limitá-lo.</li>
+<li><strong>Escolha da VPN</strong>: Escolha um provedor de VPN <em>confiável</em> que suporte tráfego P2P e tenha um Kill Switch robusto.</li>
+<li><strong>Kill Switch e Binding</strong>:<ul>
+<li><strong>Ative o Kill Switch</strong> na sua aplicação VPN para evitar vazamentos de IP se a VPN cair. Consulte o_essencial_sobre_o_kill_switch.html.</li>
+<li>Considere <strong>bindar</strong> o seu cliente BitTorrent à interface da VPN. Isso garante que o cliente só funciona quando a VPN está ativa, prevenindo completamente vazamentos de IP. Consulte forcar_apps_a_usar_a_vpn_binding.html.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Verificar o Status do Rastreador</h3>
+<ul>
+<li>No qBittorrent, clique no torrent problemático e vá na aba <code>Trackers</code> (Rastreadores).</li>
+<li>Verifique o <code>Status</code> dos rastreadores. Se estiverem "Não conectado", "Inválido" ou "Tempo Esgotado", isso pode ser o problema.</li>
+<li><strong>Ação</strong>:<ul>
+<li>Tente forçar uma nova atualização do rastreador (clique com o botão direito no rastreador e selecione <code>Anunciar agora</code>).</li>
+<li>Para torrents públicos, adicione rastreadores públicos adicionais (você pode encontrar listas online de "rastreadores públicos atualizados").</li>
+<li>Para torrents privados, se o rastreador estiver offline, você terá de esperar que ele volte. <strong>Nunca adicione rastreadores públicos a torrents de trackers privados.</strong></li>
+</ul>
+</li>
+</ul>
+<h3>3. Ativar/Desativar DHT, PEX, LPD</h3>
+<ul>
+<li>Para <strong>torrents públicos</strong>, certifique-se de que <code>DHT</code> (Distributed Hash Table) e <code>PEX</code> (Peer Exchange) estão ativados (em <code>Configurações &gt; BitTorrent</code> no qBittorrent). Isso ajuda a encontrar <em>peers</em> mesmo se os rastreadores estiverem offline.</li>
+<li>Para <strong>torrents de trackers privados</strong>, <code>DHT</code> e <code>PEX</code> devem estar <strong>desativados</strong> (a maioria dos trackers privados proíbe-os). Verifique as regras do seu tracker.</li>
+</ul>
+<h3>4. Erros de Disco ou Espaço Insuficiente</h3>
+<ul>
+<li><strong>Espaço em Disco</strong>: Verifique se você tem espaço livre suficiente no disco onde os downloads estão a ser guardados. Torrents grandes podem falhar se o espaço acabar.</li>
+<li><strong>Saúde do Disco</strong>: Ficheiros corrompidos ou erros de disco podem causar problemas de download/seed.<ul>
+<li>Use ferramentas como <code>CrystalDiskInfo</code> (Windows) ou <code>Gnome Disks</code> (Linux) para verificar a saúde S.M.A.R.T. do seu disco.</li>
+<li>Consulte o guia sobre <a href="manter_a_saude_dos_seus_discos.html">manter a saude dos seus discos</a> para mais informações.</li>
+</ul>
+</li>
+</ul>
+<h3>5. Configurações de Conexão do Router (APIs desativadas)</h3>
+<ul>
+<li>Alguns routers podem ter o UPnP/NAT-PMP desativado por padrão nas suas configurações avançadas. Certifique-se de que está ativado se você confiar na sua configuração automática de port forwarding.</li>
+<li>Verifique também se não há outras regras de firewall no seu router que possam estar a bloquear a porta do seu cliente BitTorrent.</li>
+</ul>
+<h3>6. VPN com CGNAT (Carrier-Grade NAT)</h3>
+<p>Se o seu ISP usa CGNAT, você partilha um endereço IP público com outros utilizadores, o que impede o port forwarding tradicional.</p>
+<ul>
+<li><strong>Solução</strong>: Uma VPN com suporte a port forwarding (geralmente através de um IP dedicado ou portas específicas que eles encaminham para você) é a solução mais eficaz neste caso.</li>
+</ul>
+<h2>Conclusão: Dominando a Arte do BitTorrent Rápido e Eficiente</h2>
+<p>Torrents lentos ou "encravados" são um obstáculo comum, mas quase sempre solucionáveis. A chave para a maioria dos problemas reside no <strong>port forwarding</strong> e numa compreensão clara de como o BitTorrent se conecta aos <em>peers</em>. Ao seguir este guia e dedicar tempo para otimizar as configurações do seu cliente BitTorrent, do seu router e, se necessário, integrar uma VPN robusta, você transformará a sua experiência de download de frustrante para <strong>rápida e eficiente</strong>. Lembre-se, a sua capacidade de contribuir (semear) é tão importante quanto a sua capacidade de descarregar; um ambiente P2P saudável beneficia a todos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Resolver Torrents Lentos ou \"Encravados\"';
+  const enTitle = 'Guia Completo: Resolver Torrents Lentos ou \"Encravados\"';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

@@ -1,420 +1,414 @@
+/* ==========================================================================
+   ESTILOS GERAIS DA PÁGINA
+   ========================================================================== */
 html {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-y: scroll; /* barra sempre reservada */
 }
-
-
 body {
     font-family: Arial, Verdana, sans-serif;
-    background: #fff;
+    background-color: #fff;
     color: #333;
     font-size: 14px;
     line-height: 1.5;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    height: 100vh;
     margin: 0;
     padding: 0;
-    /* REMOVIDO overflow-y: scroll para evitar 2 barras */
 }
-        
-        /* CONTAINER PRINCIPAL */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL (LAYOUT)
+   ========================================================================== */
 .container {
-    flex: 1 0 auto; /* Expande para ocupar espaço disponível */
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    background: #fff;
+    background-color: #fff;
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
 }
-
-        
-        /* CABEÇALHO */
-        .header {
-            background: #f8f8f8;
-            padding: 10px 20px;
-            border-bottom: 3px solid #c33;
-            text-align: center;
-            max-width: 1200px;
-        }
-        
-        .logo {
-            font-family: 'Times New Roman', serif;
-            font-size: 36px;
-            color: hsl(0, 60%, 50%);
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo img {
-            height: 50px;
-            margin-right: 15px;
-        }
-        
-        /* MENU DE NAVEGAÇÃO */
-        .nav {
-            background: #333;
-            padding: 8px 0;
-            text-align: center;
-            position: relative;
-            width: 1200px; /* ou outro valor */
-        }
-        
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 15px;
-            margin: 0 5px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        
-        .nav a:hover {
-            color: #cc3333;
-            background: #555;
-        }
-        
-        /* MENU DROPDOWN */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            min-width: 250px;
-            max-height: 500px;
-            overflow-y: auto;
-            box-shadow: 0px 8px 16px 0px #00000033;
-            z-index: 1;
-            left: 0;
-            text-align: left;
-        }
-        
-        .dropdown-content a {
-            color: white;
-            padding: 8px 12px;
-            text-decoration: none;
-            display: block;
-            margin: 0;
-            font-size: 13px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        /* CONTEÚDO PRINCIPAL */
-        .content {
-            display: flex;
-            padding: 15px;
-        }
-        
-        /* BARRA LATERAL */
-        .sidebar {
-            width: 200px;
-            padding-right: 15px;
-        }
-        
-        .sidebar-box {
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            background: #f5f5f5;
-        }
-        
-        .sidebar-title {
-            background: #c33;
-            color: #fff;
-            padding: 8px;
-            font-weight: bold;
-        }
-        
-        .sidebar-content {
-            padding: 10px;
-        }
-        
-        /* ÁREA PRINCIPAL */
-        .main-content {
-            flex: 1;
-            min-height: 300px; /* ou outro valor razoável */
-            width: 100%;
-            max-width: 100%;
-        }
-        
-        .site-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 30px;
-        }
-        
-        .site-table th {
-            background: #333;
-            color: #fff;
-            padding: 8px;
-            text-align: left;
-        }
-        
-        .site-table td {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .site-table tr:hover {
-            background: #f5f5f5;
-        }
-        
-        .site-name {
-            color: #333333;
-            text-decoration: none;
-        }
-        
-        .site-name:hover {
-            text-decoration: underline;
-        }
-        
-        .visits {
-            color: #090;
-            font-weight: bold;
-        }
-        
-        /* RODAPÉ */
+.content {
+    display: flex;
+    flex-grow: 1;
+    padding: 15px;
+    min-height: 800px; /* Garante que a área de conteúdo tem altura mínima */
+}
+.main-content {
+    flex-grow: 1;
+}
 .footer {
-    background: #333;
+    background-color: #333;
     color: #fff;
     padding: 15px;
     text-align: center;
     font-size: 12px;
     border-top: 3px solid #c33;
-    flex-shrink: 0; /* Não encolhe */
-    margin-top: auto; /* Empurra o rodapé para baixo se o conteúdo for pequeno */
+    margin-top: auto;
 }
 
-        
-        /* ELEMENTOS ESPECIAIS */
-        .ad-banner {
-            background: #ffc;
-            border: 1px dashed #c90;
-            padding: 10px;
-            margin: 10px 0;
-            text-align: center;
-        }
-        
-        .counter {
-            font-family: monospace;
-            font-size: 16px;
-            color: #c33;
-        }
-        
-        /* BOTÕES */
-        .btn-main {
-            display: inline-block;
-            padding: 5px 10px;
-            background: #c33;
-            color: white;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            margin-right: 5px;
-        }
-        
-        .btn-main:hover {
-            background: #900;
-        }
-        
-        .btn-mirror {
-            display: inline-block;
-            padding: 5px 10px;
-            background: #fff;
-            color: #333;
-            text-decoration: none;
-            border: 1px solid #ddd;
-            cursor: pointer;
-        }
-        
-        .btn-mirror:hover {
-            background: #f5f5f5;
-        }
-        
-        /* SEÇÃO DE MIRRORS */
-        .mirrors {
-            display: none;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-top: 10px;
-        }
-        
-        .mirrors h4 {
-            margin: 0 0 5px 0;
-            color: #333;
-        }
-        
-        .mirrors ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        
-        .mirrors a {
-            color: #333333;
-            text-decoration: none;
-        }
-        
-        .mirrors a:hover {
-            text-decoration: underline;
-        }
-        
-        /* TOP SITES */
-        .top-sites {
-            margin-bottom: 30px;
-        }
-        
-        .top-sites-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-        .top-site-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            background: #f9f9f9;
-        }
-        
-        .top-site-card a {
-            color: #06c;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        .top-site-card a:hover {
-            text-decoration: underline;
-        }
-        
-        .top-site-visits {
-            color: #666;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        /* PÁGINAS DE CATEGORIA (OCULTAS POR PADRÃO) */
-        .site-section {
-            display: none;
-        }
-        
-        .site-section.active {
-            display: block;
-        }
-        
-        /* Estilo para subtítulos de categorias */
-        .category-title {
-            color: #c33;
-            margin: 20px 0 10px 0;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #c33;
-        }
-        /* CSS dos magnets */
-.ms-sidebar-box {
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  background: #f5f5f5;
-  border-radius: 0; /* Sem cantos arredondados */
+/* ==========================================================================
+   CABEÇALHO E NAVEGAÇÃO
+   ========================================================================== */
+.header {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+    border-bottom: 3px solid #c33;
+    text-align: center;
+}
+.logo {
+    font-family: 'Times New Roman', serif;
+    font-size: 36px;
+    color: hsl(0, 60%, 50%);
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    height: 50px;
+    margin-right: 15px;
+}
+.nav {
+    background-color: #333;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.desktop-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 15px;
+    margin: 0 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+.desktop-nav a:hover {
+    color: #c33;
+}
+.mobile-nav-title,
+.hamburger-icon {
+    display: none;
 }
 
-.ms-sidebar-title {
-  background: #c33;
-  color: #fff;
-  padding: 10px 12px; /* Ajustado para mesma altura dos outros títulos */
-  font-weight: bold;
-  font-size: 14px; /* Mesma fonte do Top collaborators / Getting Started */
-  border-radius: 0; /* Sem cantos arredondados */
-  line-height: 1.2;
+/* ==========================================================================
+   SIDEBAR (BARRA LATERAL)
+   ========================================================================== */
+.sidebar {
+    width: 200px;
+    padding-right: 15px;
+    flex-shrink: 0;
 }
-
+.sidebar-box {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+.sidebar-title {
+    background-color: #c33;
+    color: #fff;
+    padding: 8px;
+    font-weight: bold;
+}
+.sidebar-content {
+    padding: 10px;
+}
 .ms-sidebar-content {
-  padding: 10px 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
-
 .ms-link {
-  color: inherit;
-  text-decoration: none;
-  font-size: 14px; /* Nome menor que antes */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
+    line-height: 1; /* ADICIONADO: A correção definitiva para o alinhamento */
 }
-
 .ms-link:hover {
-  color: #900;
-  text-decoration: none;
-  cursor: pointer;
+    color: #900;
 }
-/* CSS do Calendário Sidebar */
-.calendar-container {
-  width: 210px;
-  font-family: Arial, sans-serif;
-  user-select: none;
-}
-/*css das setas */
-.toggle-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
+.ms-link.active {
+    color: #c33;
+    font-weight: bold;
 }
 
-.toggle-content.open {
-  max-height: 1000px; /* suficiente para o conteúdo */
-}
 
-.toggle-icon {
-  transition: transform 0.5s ease;
-  margin-left: 8px;
-  vertical-align: middle;
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================================== */
+.page-title {
+    margin-bottom: 5px;
 }
-
-.toggle-header {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+.page-description {
+    color: #666;
+    margin-top: 0;
+    margin-bottom: 25px;
+    max-width: 80%;
 }
-
-.toggle-header .toggle-icon.rotate {
-  transform: rotate(180deg);
+.description-mobile {
+    display: none;
 }
 .category-title {
-  color: #c33;
-  margin: 5px 0 10px 0;  /* diminui espaço acima */
-  padding-bottom: 3px;   /* um pouco menos que antes */
-  border-bottom: 2px solid #c33;
-  font-size: 1rem;       /* menor tamanho da fonte */
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  user-select: none;
+    color: #c33;
+    margin: 20px 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #c33;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+.category-title:first-of-type {
+    margin-top: 0;
+}
+.category-title span {
+    margin-right: 8px;
+}
+.toggle-header .toggle-icon {
+    transition: transform 0.3s ease;
+    fill: #c33;
+    margin-left: auto; /* Garante que o ícone fica à direita */
+}
+.toggle-header .toggle-icon.rotate {
+    transform: rotate(180deg);
+}
+.toggle-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+}
+.toggle-content.open {
+    max-height: 2000px;
 }
 
+/* Tabela de Links (PC) */
+.site-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+.site-table thead {
+    background-color: #333;
+    color: #fff;
+}
+.site-table th {
+    padding: 8px 15px;
+    text-align: left;
+    font-size: 0.9em;
+}
+.site-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+.site-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+.site-name {
+    font-weight: bold;
+    color: #333;
+    transition: color 0.2s ease;
+}
+.keywords {
+    font-style: italic;
+    color: #555;
+    font-size: 0.9em;
+}
+.action-cell {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    color: white !important;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    height: 35px; /* Adicionado para garantir altura consistente */
+    box-sizing: border-box; /* Garante que o padding está incluído na altura */
+}
+.btn-action:active {
+    transform: scale(0.98);
+}
+.btn-action .icon {
+    width: 16px;
+    height: 16px;
+}
+.btn-visitar { background-color: #c33; }
+.btn-visitar:hover { background-color: #900; }
+.btn-virustotal { background-color: #2b6cb0; }
+.btn-virustotal:hover { background-color: #2c5282; }
+.btn-search { background-color: #6a737d; }
+.btn-search:hover { background-color: #4a5568; }
 
-.category-title svg {
-  margin-left: 10px;
-  fill: #cc3333;  /* cor do ícone */
-  transition: transform 0.5s ease;
+/* ==========================================================================
+   SIDEBAR MÓVEL E OVERLAY
+   ========================================================================== */
+.mobile-sidebar { position: fixed; top: 0; right: -100%; width: 280px; height: 100%; background-color: #333; z-index: 1001; transition: right 0.3s ease-in-out; padding: 20px; box-shadow: -5px 0 15px rgba(0,0,0,0.2); display: flex; flex-direction: column; overflow-y: auto; }
+.mobile-sidebar.open { right: 0; }
+#close-btn { background: none; border: none; color: white; font-size: 28px; position: absolute; top: 10px; right: 20px; cursor: pointer; }
+.mobile-sidebar h4 { color: #fff; padding-bottom: 5px; margin-top: 20px; text-transform: uppercase; font-size: 13px; font-weight: bold; border-bottom: 1px solid #555; }
+.mobile-sidebar h4:first-of-type { margin-top: 25px; }
+.mobile-sidebar a { color: white; text-decoration: none; font-size: 14px; padding: 10px 0; display: block; transition: color 0.2s ease; border-bottom: 1px solid #444; }
+.mobile-sidebar a:last-of-type { border-bottom: none; }
+.mobile-sidebar a:hover { color: #c33; }
+#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; }
+#overlay.open { opacity: 1; visibility: visible; transition: opacity 0.3s ease-in-out; }
+
+/* ==========================================================================
+   REGRAS PARA TELEMÓVEL (MEDIA QUERIES)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .container { border-left: none; border-right: none; }
+    .desktop-nav { display: none; }
+    .mobile-nav-title, .hamburger-icon { display: block; }
+    .nav { justify-content: space-between; padding: 16px 24px; }
+    .mobile-nav-title { color: #fff; font-weight: bold; font-size: 1em; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .hamburger-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
+    .hamburger-icon .line { width: 25px; height: 3px; background-color: white; border-radius: 2px; }
+    .content { padding: 10px; }
+    .sidebar { display: none; }
+    .main-content { width: 100%; padding: 0; }
+    
+    .page-title { display: none; }
+
+    .description-desktop { display: none; }
+    .description-mobile { display: block; max-width: 100%; }
+
+    /* Transforma a Tabela em Cartões Clicáveis */
+    .site-table thead, .site-table .action-cell {
+        display: none;
+    }
+
+    .site-table tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .site-table tr:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    
+    .site-table td {
+        display: block;
+        border: none;
+        padding: 5px 15px;
+    }
+    
+    .site-table .site-name {
+        font-size: 1.15em;
+        transition: color 0.2s ease, text-decoration 0.2s ease;
+    } 
+    
+    .site-table .keywords {
+        font-size: 1em;
+    }
+
+    .site-table tr:hover .site-name,
+    .site-table tr:active .site-name {
+        color: #c33;
+        text-decoration: underline;
+    }
+
+    .site-table td:first-child {
+        padding-top: 12px;
+    }
+
+    .site-table td:nth-child(2) {
+        padding-bottom: 12px;
+    }
+}
+
+/* ==================================== */
+/* AVISO DE ORIENTAÇÃO PARA TABLET      */
+/* ==================================== */
+#orientation-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+#orientation-warning .warning-content {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+#orientation-warning p {
+  font-size: 22px;
+  line-height: 1.6;
+  font-weight: bold;
+}
+
+#orientation-warning button {
+  background: #c33;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#orientation-warning button:hover {
+  background: #fff;
+  color: #000;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  #orientation-warning {
+    display: flex;
+  }
+}
+
+a, button, input {
+  -webkit-tap-highlight-color: transparent;
 }

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Aumentar Privacidade com DNS Seguro</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Aumentar Privacidade com DNS Seguro</h1>
+<blockquote>
+<p>Proteger sua privacidade online vai muito além de usar uma VPN ou navegar em modo anónimo. O <strong>DNS (Domain Name System)</strong>, muitas vezes esquecido, é um componente <em>crítico</em> da sua pegada digital que pode revelar muito sobre suas atividades. Este guia detalhado explicará o que é o DNS, por que o DNS tradicional compromete sua privacidade e como configurar e usar DNS seguro (DNS-over-HTTPS, DNS-over-TLS) para uma navegação mais privada e segura.</p>
+</blockquote>
+<h2>O Que é DNS e Por Que Ele Importa Para a Sua Privacidade?</h2>
+<p>Imagine a internet como uma vasta rede de ruas e avenidas. Para chegar a um destino, você precisa de um endereço. No mundo digital, os websites têm endereços numéricos complexos chamados <strong>endereços IP</strong> (ex: <code>192.168.1.1</code> ou <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>). No entanto, nós, humanos, preferimos nomes fáceis de lembrar, como <code>google.com</code> ou <code>youtube.com</code>.</p>
+<p>É aqui que entra o DNS. O DNS atua como o <em>catálogo telefónico da internet</em>. Quando você digita um nome de domínio no seu navegador (ex: <code>example.com</code>), seu computador envia uma solicitação a um <strong>servidor DNS</strong> para traduzir esse nome de domínio para o endereço IP correspondente. Uma vez que o IP é recebido, seu navegador pode então conectar-se ao site.</p>
+<h3>O Problema com o DNS Tradicional (DNS Não Criptografado)</h3>
+<p>Por padrão, as solicitações DNS são enviadas como texto simples (não criptografado) através da internet, principalmente usando o protocolo UDP na porta 53. Isso representa uma <strong>séria ameaça à privacidade</strong>:</p>
+<ul>
+<li><strong>Monitorização do ISP</strong>: Seu <em>Provedor de Serviços de Internet (ISP)</em> pode ver <strong>cada site</strong> que você visita, mesmo que o site use HTTPS. A criptografia HTTPS protege o <em>conteúdo</em> da sua comunicação com o site, mas não a própria solicitação DNS que inicia a conexão.</li>
+<li><strong>Vigilância Governamental</strong>: Governos e agências de segurança podem facilmente intercetar e analisar suas solicitações DNS para monitorar suas atividades online.</li>
+<li><strong>Ataques de DNS Spoofing/Envenenamento</strong>: Malfeitores podem redirecioná-lo para sites falsos (phishing) ao manipular as respostas DNS, fazendo com que você pense que está num site legítimo quando não está.</li>
+<li><strong>Censura e Bloqueios Geográficos</strong>: ISP's ou governos podem bloquear o acesso a certos sites ao filtrar ou redirecionar solicitações DNS, impedindo que você chegue ao endereço IP correto.</li>
+</ul>
+<blockquote>
+<p><strong>Importante</strong>: Mesmo que você use uma VPN, algumas configurações padrão podem ainda permitir que suas solicitações DNS vazem para fora do túnel VPN (o que é conhecido como <strong>DNS leak</strong>). Usar DNS seguro <em>adicionalmente</em> à VPN pode reforçar sua privacidade.</p>
+</blockquote>
+<h2>Entendendo o DNS Seguro: DNS-over-HTTPS (DoH) e DNS-over-TLS (DoT)</h2>
+<p>Para combater as vulnerabilidades do DNS tradicional, surgiram novos protocolos que criptografam as solicitações DNS, protegendo-as de olhares curiosos.</p>
+<h3>DNS-over-HTTPS (DoH)</h3>
+<ul>
+<li><strong>Como Funciona</strong>: O DoH encapsula as solicitações DNS dentro de tráfego HTTPS (o mesmo protocolo usado para navegar em sites seguros). Isso significa que as solicitações DNS parecem tráfego web normal, dificultando a distinção e o bloqueio por terceiros.</li>
+<li><strong>Porta</strong>: Usa a porta TCP 443 (a porta padrão para HTTPS).</li>
+<li><strong>Prós</strong>:<ul>
+<li><strong>Difícil de Bloquear</strong>: Como se parece com o tráfego web normal, é muito mais difícil para ISPs ou governos bloquearem ou filtrarem.</li>
+<li><strong>Compatibilidade com Firewalls</strong>: Funciona bem com firewalls existentes, que geralmente permitem o tráfego HTTPS.</li>
+<li><strong>Integração em Navegadores</strong>: Muitos navegadores modernos (Chrome, Firefox, Edge, Brave) já oferecem suporte nativo a DoH.</li>
+</ul>
+</li>
+<li><strong>Contras</strong>: Pode ser ligeiramente mais lento que o DoT devido à sobrecarga do HTTPS.</li>
+</ul>
+<h3>DNS-over-TLS (DoT)</h3>
+<ul>
+<li><strong>Como Funciona</strong>: O DoT criptografa as solicitações DNS usando o protocolo TLS (Transport Layer Security), que é a tecnologia por trás do HTTPS. Ele estabelece uma conexão dedicada e segura para o tráfego DNS.</li>
+<li><strong>Porta</strong>: Usa a porta TCP 853.</li>
+<li><strong>Prós</strong>:<ul>
+<li><strong>Pura Criptografia DNS</strong>: Dedicado apenas ao tráfego DNS, o que pode torná-lo marginalmente mais eficiente.</li>
+<li><strong>Menos Sobrecarga</strong>: Potencialmente mais rápido que o DoH em algumas situações, pois não tem a sobrecarga de um pacote HTTP completo.</li>
+</ul>
+</li>
+<li><strong>Contras</strong>:<ul>
+<li><strong>Fácil de Bloquear</strong>: Como usa uma porta específica (853), pode ser mais fácil para firewalls ou ISPs identificarem e bloquearem o tráfego DoT se quiserem impedir o uso de DNS seguro.</li>
+<li><strong>Menos Adoção em Navegadores</strong>: Menos comum para ser implementado diretamente em navegadores, mas comum em sistemas operativos e routers.</li>
+</ul>
+</li>
+</ul>
+<h3>Comparativo Rápido: DoH vs. DoT</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">DNS-over-HTTPS (DoH)</th>
+<th style="text-align: left;">DNS-over-TLS (DoT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Protocolo</strong></td>
+<td style="text-align: left;">HTTPS</td>
+<td style="text-align: left;">TLS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Porta Padrão</strong></td>
+<td style="text-align: left;">TCP 443</td>
+<td style="text-align: left;">TCP 853</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Obfuscação</strong></td>
+<td style="text-align: left;">Tráfego DNS "misturado" com tráfego web normal</td>
+<td style="text-align: left;">Tráfego DNS criptografado, mas identificável na porta</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Detecção/Bloqueio</strong></td>
+<td style="text-align: left;">Mais difícil de detetar/bloquear</td>
+<td style="text-align: left;">Mais fácil de detetar/bloquear (pela porta)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Implementação</strong></td>
+<td style="text-align: left;">Navegadores, SOs</td>
+<td style="text-align: left;">SOs, Routers, Servidores</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso Ideal</strong></td>
+<td style="text-align: left;">Privacidade geral de navegação, contorno de bloqueios</td>
+<td style="text-align: left;">Proteção de privacidade em nível de sistema/rede</td>
+</tr>
+</tbody>
+</table>
+<h2>Provedores de DNS Seguro</h2>
+<p>Para usar DoH ou DoT, você precisará de um provedor de DNS que suporte esses protocolos. Alguns dos mais populares e confiáveis incluem:</p>
+<ul>
+<li><strong>Cloudflare DNS (1.1.1.1)</strong>: Focado em privacidade e velocidade. Oferece DoH e DoT.<ul>
+<li>Endereços IP: <code>1.1.1.1</code>, <code>1.0.0.1</code></li>
+<li>URL DoH: <code>https://cloudflare-dns.com/dns-query</code></li>
+<li>URL DoT: <code>tls://1.1.1.1</code></li>
+</ul>
+</li>
+<li><strong>Google Public DNS (8.8.8.8)</strong>: Muito popular e confiável, mas o Google recolhe dados de forma agregada para melhorias de serviço. Oferece DoH e DoT.<ul>
+<li>Endereços IP: <code>8.8.8.8</code>, <code>8.8.4.4</code></li>
+<li>URL DoH: <code>https://dns.google/dns-query</code></li>
+<li>URL DoT: <code>tls://8.8.8.8</code></li>
+</ul>
+</li>
+<li><strong>OpenDNS (Cisco)</strong>: Oferece filtragem de conteúdo e proteção contra malware, além de DNS tradicional e DoH.<ul>
+<li>Endereços IP: <code>208.67.222.222</code>, <code>208.67.220.220</code></li>
+<li>URL DoH: <code>https://doh.opendns.com/dns-query</code></li>
+</ul>
+</li>
+<li><strong>Quad9 (9.9.9.9)</strong>: Focado em segurança, bloqueando domínios maliciosos. Oferece DoH e DoT.<ul>
+<li>Endereços IP: <code>9.9.9.9</code>, <code>149.112.112.112</code></li>
+<li>URL DoH: <code>https://dns.quad9.net/dns-query</code></li>
+<li>URL DoT: <code>tls://9.9.9.9</code></li>
+</ul>
+</li>
+<li><strong>AdGuard DNS</strong>: Oferece bloqueio de anúncios e rastreadores em nível de DNS, além de DoH e DoT.<ul>
+<li>URLs DoH: <code>https://dns.adguard.com/dns-query</code> (padrão), <code>https://dns-family.adguard.com/dns-query</code> (com bloqueio familiar)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Escolha com Sabedoria</strong>: Ao escolher um provedor de DNS, considere sua política de privacidade (eles registam suas consultas?), desempenho e quaisquer recursos adicionais (bloqueio de anúncios, filtragem de malware).</p>
+</blockquote>
+<h2>Como Configurar DNS Seguro em Seus Dispositivos</h2>
+<p>A configuração varia dependendo do seu sistema operativo e dos programas que você usa.</p>
+<h3>1. Configuração em Navegadores Web (DoH)</h3>
+<p>A forma mais fácil de começar com DoH é configurá-lo diretamente no seu navegador.</p>
+<h4>Google Chrome / Chromium-based Browsers (Brave, Edge)</h4>
+<ol>
+<li>Vá em <code>Settings</code> (Configurações).</li>
+<li>Procure por <code>Security</code> (Segurança) ou <code>Privacy and Security</code> (Privacidade e Segurança).</li>
+<li>Encontre a opção <code>Use secure DNS</code> (Usar DNS seguro) ou <code>Use secure DNS</code> / <code>DNS seguro</code>.</li>
+<li>Selecione <code>With</code> (Com) ou <code>Custom</code> (Personalizado) e escolha um provedor na lista ou insira o URL DoH manualmente.</li>
+</ol>
+<h4>Mozilla Firefox</h4>
+<ol>
+<li>Vá em <code>Settings</code> (Configurações).</li>
+<li>Procure por <code>General</code> (Geral) &gt; <code>Network Settings</code> (Configurações de Rede) &gt; <code>Settings...</code> (Configurações...).</li>
+<li>Role para baixo até <code>Enable DNS over HTTPS</code> (Ativar DNS sobre HTTPS).</li>
+<li>Escolha um provedor da lista ou selecione <code>Custom</code> (Personalizado) e insira o URL DoH.</li>
+</ol>
+<h3>2. Configuração em Sistemas Operativos (DoT/DoH)</h3>
+<p>Configurar o DNS seguro no nível do sistema operativo garantirá que <em>todo o tráfego</em> DNS do seu computador seja criptografado, não apenas o do navegador.</p>
+<h4>Windows 10/11 (DoT - Limitado e em Desenvolvimento)</h4>
+<p>O suporte nativo a DoT no Windows ainda está a ser implementado. Para uma cobertura mais ampla, é geralmente mais fácil usar um software de terceiros ou configurar DoH no navegador.</p>
+<ul>
+<li>Para DoT no Windows (mais avançado): Requer a edição das configurações de rede ou o uso de ferramentas de terceiros como <code>dnscrypt-proxy</code> ou <code>Simple DNSCrypt</code>.</li>
+</ul>
+<h4>macOS (DoT/DoH - Via Perfil ou Ferramentas)</h4>
+<p>O macOS não tem suporte nativo fácil para DoT/DoH nas configurações de rede.</p>
+<ul>
+<li><strong>Via Perfil de Configuração</strong>: Você pode instalar perfis de configuração que ativam DoH/DoT para todo o sistema. Provedores como Cloudflare (1.1.1.1 for Families) oferecem perfis para download.</li>
+<li><strong>Via Software de Terceiros</strong>: Ferramentas como <code>dnscrypt-proxy</code> ou aplicações específicas de provedores de DNS.</li>
+</ul>
+<h4>Linux (DoT/DoH)</h4>
+<p>A configuração depende da sua distribuição Linux e do seu gerenciador de rede (ex: NetworkManager, systemd-resolved).</p>
+<ul>
+<li><strong>systemd-resolved (comum em Ubuntu, Fedora)</strong>:<ol>
+<li>Edite o ficheiro <code>/etc/systemd/resolved.conf</code>.</li>
+<li>Adicione as linhas:
+    <code>[Resolve]
+    DNS=1.1.1.1 1.0.0.1
+    DNSOverTLS=yes</code>
+    Para DoH, use uma ferramenta como <code>dnscrypt-proxy</code>.</li>
+<li>Reinicie o serviço: <code>sudo systemctl restart systemd-resolved</code></li>
+</ol>
+</li>
+<li><strong>dnscrypt-proxy</strong>: Uma solução mais flexível para DoH/DoT que pode ser configurada manualmente.</li>
+</ul>
+<h4>Android (DoT - Nativo no Android 9+)</h4>
+<ol>
+<li>Vá em <code>Settings</code> (Configurações) &gt; <code>Network &amp; Internet</code> (Rede e Internet) &gt; <code>Private DNS</code> (DNS Privado).</li>
+<li>Selecione <code>Private DNS provider hostname</code> (Nome do host do provedor de DNS privado).</li>
+<li>Digite o nome do host do provedor DoT (ex: <code>cloudflare-dns.com</code> para Cloudflare ou <code>dns.google</code> para Google DNS).</li>
+</ol>
+<h4>iOS (DoH/DoT - Via Perfis ou Apps)</h4>
+<p>O iOS não oferece uma opção nativa simples nas configurações.</p>
+<ul>
+<li><strong>Perfis de Configuração</strong>: Tal como no macOS, você pode instalar perfis de configuração que ativam DoH/DoT.</li>
+<li><strong>Aplicações VPN/DNS</strong>: Algumas aplicações de VPN ou DNS (como a app oficial do 1.1.1.1 da Cloudflare) podem configurar o DNS seguro para você.</li>
+</ul>
+<h3>3. Configuração em Routers (Avançado)</h3>
+<p>Alguns routers mais recentes suportam DoH ou DoT diretamente nas suas configurações. Se o seu router o fizer, configurar o DNS seguro aqui protegerá <strong>todos os dispositivos conectados à sua rede</strong>.</p>
+<ul>
+<li>Aceda à interface de administração do seu router (geralmente <code>192.168.1.1</code> ou <code>192.168.0.1</code> no seu navegador).</li>
+<li>Procure por <code>DNS Settings</code>, <code>WAN Settings</code> ou <code>Advanced Network Settings</code>.</li>
+<li>Procure por opções como <code>DNS over TLS</code> ou <code>DNS over HTTPS</code>.</li>
+<li>Insira os URLs ou IPs do seu provedor de DNS seguro.</li>
+<li><strong>Se o seu router não suporta nativamente DoH/DoT</strong>: Você pode mudar os servidores DNS para os IPs DoT/DoH (ex: 1.1.1.1) nas configurações WAN, mas eles ainda serão consultas DNS não criptografadas. Para uma proteção real no nível do router, você precisaria de um router com firmware personalizado (ex: <em>OpenWRT</em>, <em>DD-WRT</em>) que permita instalar <code>dnscrypt-proxy</code> ou <code>Unbound</code> com DoT/DoH.</li>
+</ul>
+<h2>Verificando o Seu DNS Seguro</h2>
+<p>Após a configuração, é <strong>essencial</strong> verificar se o DNS seguro está a funcionar corretamente e se não há vazamentos.</p>
+<ol>
+<li><strong>Ferramentas de Teste de DNS Leak</strong>:<ul>
+<li>Visite <a href="https://www.dnsleaktest.com/">dnsleaktest.com</a> e clique em <code>Standard Test</code> ou <code>Extended Test</code>.</li>
+<li>Seus servidores DNS devem corresponder ao provedor de DNS seguro que você configurou (ex: Cloudflare, Google, Quad9). Se você vir os servidores DNS do seu ISP, você tem um vazamento.</li>
+<li><strong>Cloudflare DNS Checker</strong>: <a href="https://1.1.1.1/help">1.1.1.1/help</a> para verificar se você está a usar o 1.1.1.1 com DoH/DoT.</li>
+</ul>
+</li>
+</ol>
+<h2>Conclusão: Um Passo Fundamental para a Privacidade Online</h2>
+<p>Configurar o DNS seguro é um passo <strong>simples, mas extremamente eficaz</strong> para melhorar sua privacidade e segurança online. Ao criptografar suas consultas DNS, você oculta seus hábitos de navegação de seu ISP e de outros bisbilhoteiros em potencial, tornando sua pegada digital muito mais difícil de rastrear.</p>
+<p>Combine o DNS seguro com outras práticas de privacidade, como o uso de uma <strong>VPN confiável</strong> (com proteção contra DNS leaks ativada), navegadores focados em privacidade e extensões de bloqueio de rastreadores, e você estará no caminho certo para uma experiência online verdadeiramente <strong>privada e livre</strong>. Não subestime o poder de uma simples mudança de DNS; ela é a fundação para uma internet mais segura.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Aumentar Privacidade com DNS Seguro</h1>
+<blockquote>
+<p>Proteger sua privacidade online vai muito além de usar uma VPN ou navegar em modo anónimo. O <strong>DNS (Domain Name System)</strong>, muitas vezes esquecido, é um componente <em>crítico</em> da sua pegada digital que pode revelar muito sobre suas atividades. Este guia detalhado explicará o que é o DNS, por que o DNS tradicional compromete sua privacidade e como configurar e usar DNS seguro (DNS-over-HTTPS, DNS-over-TLS) para uma navegação mais privada e segura.</p>
+</blockquote>
+<h2>O Que é DNS e Por Que Ele Importa Para a Sua Privacidade?</h2>
+<p>Imagine a internet como uma vasta rede de ruas e avenidas. Para chegar a um destino, você precisa de um endereço. No mundo digital, os websites têm endereços numéricos complexos chamados <strong>endereços IP</strong> (ex: <code>192.168.1.1</code> ou <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>). No entanto, nós, humanos, preferimos nomes fáceis de lembrar, como <code>google.com</code> ou <code>youtube.com</code>.</p>
+<p>É aqui que entra o DNS. O DNS atua como o <em>catálogo telefónico da internet</em>. Quando você digita um nome de domínio no seu navegador (ex: <code>example.com</code>), seu computador envia uma solicitação a um <strong>servidor DNS</strong> para traduzir esse nome de domínio para o endereço IP correspondente. Uma vez que o IP é recebido, seu navegador pode então conectar-se ao site.</p>
+<h3>O Problema com o DNS Tradicional (DNS Não Criptografado)</h3>
+<p>Por padrão, as solicitações DNS são enviadas como texto simples (não criptografado) através da internet, principalmente usando o protocolo UDP na porta 53. Isso representa uma <strong>séria ameaça à privacidade</strong>:</p>
+<ul>
+<li><strong>Monitorização do ISP</strong>: Seu <em>Provedor de Serviços de Internet (ISP)</em> pode ver <strong>cada site</strong> que você visita, mesmo que o site use HTTPS. A criptografia HTTPS protege o <em>conteúdo</em> da sua comunicação com o site, mas não a própria solicitação DNS que inicia a conexão.</li>
+<li><strong>Vigilância Governamental</strong>: Governos e agências de segurança podem facilmente intercetar e analisar suas solicitações DNS para monitorar suas atividades online.</li>
+<li><strong>Ataques de DNS Spoofing/Envenenamento</strong>: Malfeitores podem redirecioná-lo para sites falsos (phishing) ao manipular as respostas DNS, fazendo com que você pense que está num site legítimo quando não está.</li>
+<li><strong>Censura e Bloqueios Geográficos</strong>: ISP's ou governos podem bloquear o acesso a certos sites ao filtrar ou redirecionar solicitações DNS, impedindo que você chegue ao endereço IP correto.</li>
+</ul>
+<blockquote>
+<p><strong>Importante</strong>: Mesmo que você use uma VPN, algumas configurações padrão podem ainda permitir que suas solicitações DNS vazem para fora do túnel VPN (o que é conhecido como <strong>DNS leak</strong>). Usar DNS seguro <em>adicionalmente</em> à VPN pode reforçar sua privacidade.</p>
+</blockquote>
+<h2>Entendendo o DNS Seguro: DNS-over-HTTPS (DoH) e DNS-over-TLS (DoT)</h2>
+<p>Para combater as vulnerabilidades do DNS tradicional, surgiram novos protocolos que criptografam as solicitações DNS, protegendo-as de olhares curiosos.</p>
+<h3>DNS-over-HTTPS (DoH)</h3>
+<ul>
+<li><strong>Como Funciona</strong>: O DoH encapsula as solicitações DNS dentro de tráfego HTTPS (o mesmo protocolo usado para navegar em sites seguros). Isso significa que as solicitações DNS parecem tráfego web normal, dificultando a distinção e o bloqueio por terceiros.</li>
+<li><strong>Porta</strong>: Usa a porta TCP 443 (a porta padrão para HTTPS).</li>
+<li><strong>Prós</strong>:<ul>
+<li><strong>Difícil de Bloquear</strong>: Como se parece com o tráfego web normal, é muito mais difícil para ISPs ou governos bloquearem ou filtrarem.</li>
+<li><strong>Compatibilidade com Firewalls</strong>: Funciona bem com firewalls existentes, que geralmente permitem o tráfego HTTPS.</li>
+<li><strong>Integração em Navegadores</strong>: Muitos navegadores modernos (Chrome, Firefox, Edge, Brave) já oferecem suporte nativo a DoH.</li>
+</ul>
+</li>
+<li><strong>Contras</strong>: Pode ser ligeiramente mais lento que o DoT devido à sobrecarga do HTTPS.</li>
+</ul>
+<h3>DNS-over-TLS (DoT)</h3>
+<ul>
+<li><strong>Como Funciona</strong>: O DoT criptografa as solicitações DNS usando o protocolo TLS (Transport Layer Security), que é a tecnologia por trás do HTTPS. Ele estabelece uma conexão dedicada e segura para o tráfego DNS.</li>
+<li><strong>Porta</strong>: Usa a porta TCP 853.</li>
+<li><strong>Prós</strong>:<ul>
+<li><strong>Pura Criptografia DNS</strong>: Dedicado apenas ao tráfego DNS, o que pode torná-lo marginalmente mais eficiente.</li>
+<li><strong>Menos Sobrecarga</strong>: Potencialmente mais rápido que o DoH em algumas situações, pois não tem a sobrecarga de um pacote HTTP completo.</li>
+</ul>
+</li>
+<li><strong>Contras</strong>:<ul>
+<li><strong>Fácil de Bloquear</strong>: Como usa uma porta específica (853), pode ser mais fácil para firewalls ou ISPs identificarem e bloquearem o tráfego DoT se quiserem impedir o uso de DNS seguro.</li>
+<li><strong>Menos Adoção em Navegadores</strong>: Menos comum para ser implementado diretamente em navegadores, mas comum em sistemas operativos e routers.</li>
+</ul>
+</li>
+</ul>
+<h3>Comparativo Rápido: DoH vs. DoT</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">DNS-over-HTTPS (DoH)</th>
+<th style="text-align: left;">DNS-over-TLS (DoT)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Protocolo</strong></td>
+<td style="text-align: left;">HTTPS</td>
+<td style="text-align: left;">TLS</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Porta Padrão</strong></td>
+<td style="text-align: left;">TCP 443</td>
+<td style="text-align: left;">TCP 853</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Obfuscação</strong></td>
+<td style="text-align: left;">Tráfego DNS "misturado" com tráfego web normal</td>
+<td style="text-align: left;">Tráfego DNS criptografado, mas identificável na porta</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Detecção/Bloqueio</strong></td>
+<td style="text-align: left;">Mais difícil de detetar/bloquear</td>
+<td style="text-align: left;">Mais fácil de detetar/bloquear (pela porta)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Implementação</strong></td>
+<td style="text-align: left;">Navegadores, SOs</td>
+<td style="text-align: left;">SOs, Routers, Servidores</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Uso Ideal</strong></td>
+<td style="text-align: left;">Privacidade geral de navegação, contorno de bloqueios</td>
+<td style="text-align: left;">Proteção de privacidade em nível de sistema/rede</td>
+</tr>
+</tbody>
+</table>
+<h2>Provedores de DNS Seguro</h2>
+<p>Para usar DoH ou DoT, você precisará de um provedor de DNS que suporte esses protocolos. Alguns dos mais populares e confiáveis incluem:</p>
+<ul>
+<li><strong>Cloudflare DNS (1.1.1.1)</strong>: Focado em privacidade e velocidade. Oferece DoH e DoT.<ul>
+<li>Endereços IP: <code>1.1.1.1</code>, <code>1.0.0.1</code></li>
+<li>URL DoH: <code>https://cloudflare-dns.com/dns-query</code></li>
+<li>URL DoT: <code>tls://1.1.1.1</code></li>
+</ul>
+</li>
+<li><strong>Google Public DNS (8.8.8.8)</strong>: Muito popular e confiável, mas o Google recolhe dados de forma agregada para melhorias de serviço. Oferece DoH e DoT.<ul>
+<li>Endereços IP: <code>8.8.8.8</code>, <code>8.8.4.4</code></li>
+<li>URL DoH: <code>https://dns.google/dns-query</code></li>
+<li>URL DoT: <code>tls://8.8.8.8</code></li>
+</ul>
+</li>
+<li><strong>OpenDNS (Cisco)</strong>: Oferece filtragem de conteúdo e proteção contra malware, além de DNS tradicional e DoH.<ul>
+<li>Endereços IP: <code>208.67.222.222</code>, <code>208.67.220.220</code></li>
+<li>URL DoH: <code>https://doh.opendns.com/dns-query</code></li>
+</ul>
+</li>
+<li><strong>Quad9 (9.9.9.9)</strong>: Focado em segurança, bloqueando domínios maliciosos. Oferece DoH e DoT.<ul>
+<li>Endereços IP: <code>9.9.9.9</code>, <code>149.112.112.112</code></li>
+<li>URL DoH: <code>https://dns.quad9.net/dns-query</code></li>
+<li>URL DoT: <code>tls://9.9.9.9</code></li>
+</ul>
+</li>
+<li><strong>AdGuard DNS</strong>: Oferece bloqueio de anúncios e rastreadores em nível de DNS, além de DoH e DoT.<ul>
+<li>URLs DoH: <code>https://dns.adguard.com/dns-query</code> (padrão), <code>https://dns-family.adguard.com/dns-query</code> (com bloqueio familiar)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Escolha com Sabedoria</strong>: Ao escolher um provedor de DNS, considere sua política de privacidade (eles registam suas consultas?), desempenho e quaisquer recursos adicionais (bloqueio de anúncios, filtragem de malware).</p>
+</blockquote>
+<h2>Como Configurar DNS Seguro em Seus Dispositivos</h2>
+<p>A configuração varia dependendo do seu sistema operativo e dos programas que você usa.</p>
+<h3>1. Configuração em Navegadores Web (DoH)</h3>
+<p>A forma mais fácil de começar com DoH é configurá-lo diretamente no seu navegador.</p>
+<h4>Google Chrome / Chromium-based Browsers (Brave, Edge)</h4>
+<ol>
+<li>Vá em <code>Settings</code> (Configurações).</li>
+<li>Procure por <code>Security</code> (Segurança) ou <code>Privacy and Security</code> (Privacidade e Segurança).</li>
+<li>Encontre a opção <code>Use secure DNS</code> (Usar DNS seguro) ou <code>Use secure DNS</code> / <code>DNS seguro</code>.</li>
+<li>Selecione <code>With</code> (Com) ou <code>Custom</code> (Personalizado) e escolha um provedor na lista ou insira o URL DoH manualmente.</li>
+</ol>
+<h4>Mozilla Firefox</h4>
+<ol>
+<li>Vá em <code>Settings</code> (Configurações).</li>
+<li>Procure por <code>General</code> (Geral) &gt; <code>Network Settings</code> (Configurações de Rede) &gt; <code>Settings...</code> (Configurações...).</li>
+<li>Role para baixo até <code>Enable DNS over HTTPS</code> (Ativar DNS sobre HTTPS).</li>
+<li>Escolha um provedor da lista ou selecione <code>Custom</code> (Personalizado) e insira o URL DoH.</li>
+</ol>
+<h3>2. Configuração em Sistemas Operativos (DoT/DoH)</h3>
+<p>Configurar o DNS seguro no nível do sistema operativo garantirá que <em>todo o tráfego</em> DNS do seu computador seja criptografado, não apenas o do navegador.</p>
+<h4>Windows 10/11 (DoT - Limitado e em Desenvolvimento)</h4>
+<p>O suporte nativo a DoT no Windows ainda está a ser implementado. Para uma cobertura mais ampla, é geralmente mais fácil usar um software de terceiros ou configurar DoH no navegador.</p>
+<ul>
+<li>Para DoT no Windows (mais avançado): Requer a edição das configurações de rede ou o uso de ferramentas de terceiros como <code>dnscrypt-proxy</code> ou <code>Simple DNSCrypt</code>.</li>
+</ul>
+<h4>macOS (DoT/DoH - Via Perfil ou Ferramentas)</h4>
+<p>O macOS não tem suporte nativo fácil para DoT/DoH nas configurações de rede.</p>
+<ul>
+<li><strong>Via Perfil de Configuração</strong>: Você pode instalar perfis de configuração que ativam DoH/DoT para todo o sistema. Provedores como Cloudflare (1.1.1.1 for Families) oferecem perfis para download.</li>
+<li><strong>Via Software de Terceiros</strong>: Ferramentas como <code>dnscrypt-proxy</code> ou aplicações específicas de provedores de DNS.</li>
+</ul>
+<h4>Linux (DoT/DoH)</h4>
+<p>A configuração depende da sua distribuição Linux e do seu gerenciador de rede (ex: NetworkManager, systemd-resolved).</p>
+<ul>
+<li><strong>systemd-resolved (comum em Ubuntu, Fedora)</strong>:<ol>
+<li>Edite o ficheiro <code>/etc/systemd/resolved.conf</code>.</li>
+<li>Adicione as linhas:
+    <code>[Resolve]
+    DNS=1.1.1.1 1.0.0.1
+    DNSOverTLS=yes</code>
+    Para DoH, use uma ferramenta como <code>dnscrypt-proxy</code>.</li>
+<li>Reinicie o serviço: <code>sudo systemctl restart systemd-resolved</code></li>
+</ol>
+</li>
+<li><strong>dnscrypt-proxy</strong>: Uma solução mais flexível para DoH/DoT que pode ser configurada manualmente.</li>
+</ul>
+<h4>Android (DoT - Nativo no Android 9+)</h4>
+<ol>
+<li>Vá em <code>Settings</code> (Configurações) &gt; <code>Network &amp; Internet</code> (Rede e Internet) &gt; <code>Private DNS</code> (DNS Privado).</li>
+<li>Selecione <code>Private DNS provider hostname</code> (Nome do host do provedor de DNS privado).</li>
+<li>Digite o nome do host do provedor DoT (ex: <code>cloudflare-dns.com</code> para Cloudflare ou <code>dns.google</code> para Google DNS).</li>
+</ol>
+<h4>iOS (DoH/DoT - Via Perfis ou Apps)</h4>
+<p>O iOS não oferece uma opção nativa simples nas configurações.</p>
+<ul>
+<li><strong>Perfis de Configuração</strong>: Tal como no macOS, você pode instalar perfis de configuração que ativam DoH/DoT.</li>
+<li><strong>Aplicações VPN/DNS</strong>: Algumas aplicações de VPN ou DNS (como a app oficial do 1.1.1.1 da Cloudflare) podem configurar o DNS seguro para você.</li>
+</ul>
+<h3>3. Configuração em Routers (Avançado)</h3>
+<p>Alguns routers mais recentes suportam DoH ou DoT diretamente nas suas configurações. Se o seu router o fizer, configurar o DNS seguro aqui protegerá <strong>todos os dispositivos conectados à sua rede</strong>.</p>
+<ul>
+<li>Aceda à interface de administração do seu router (geralmente <code>192.168.1.1</code> ou <code>192.168.0.1</code> no seu navegador).</li>
+<li>Procure por <code>DNS Settings</code>, <code>WAN Settings</code> ou <code>Advanced Network Settings</code>.</li>
+<li>Procure por opções como <code>DNS over TLS</code> ou <code>DNS over HTTPS</code>.</li>
+<li>Insira os URLs ou IPs do seu provedor de DNS seguro.</li>
+<li><strong>Se o seu router não suporta nativamente DoH/DoT</strong>: Você pode mudar os servidores DNS para os IPs DoT/DoH (ex: 1.1.1.1) nas configurações WAN, mas eles ainda serão consultas DNS não criptografadas. Para uma proteção real no nível do router, você precisaria de um router com firmware personalizado (ex: <em>OpenWRT</em>, <em>DD-WRT</em>) que permita instalar <code>dnscrypt-proxy</code> ou <code>Unbound</code> com DoT/DoH.</li>
+</ul>
+<h2>Verificando o Seu DNS Seguro</h2>
+<p>Após a configuração, é <strong>essencial</strong> verificar se o DNS seguro está a funcionar corretamente e se não há vazamentos.</p>
+<ol>
+<li><strong>Ferramentas de Teste de DNS Leak</strong>:<ul>
+<li>Visite <a href="https://www.dnsleaktest.com/">dnsleaktest.com</a> e clique em <code>Standard Test</code> ou <code>Extended Test</code>.</li>
+<li>Seus servidores DNS devem corresponder ao provedor de DNS seguro que você configurou (ex: Cloudflare, Google, Quad9). Se você vir os servidores DNS do seu ISP, você tem um vazamento.</li>
+<li><strong>Cloudflare DNS Checker</strong>: <a href="https://1.1.1.1/help">1.1.1.1/help</a> para verificar se você está a usar o 1.1.1.1 com DoH/DoT.</li>
+</ul>
+</li>
+</ol>
+<h2>Conclusão: Um Passo Fundamental para a Privacidade Online</h2>
+<p>Configurar o DNS seguro é um passo <strong>simples, mas extremamente eficaz</strong> para melhorar sua privacidade e segurança online. Ao criptografar suas consultas DNS, você oculta seus hábitos de navegação de seu ISP e de outros bisbilhoteiros em potencial, tornando sua pegada digital muito mais difícil de rastrear.</p>
+<p>Combine o DNS seguro com outras práticas de privacidade, como o uso de uma <strong>VPN confiável</strong> (com proteção contra DNS leaks ativada), navegadores focados em privacidade e extensões de bloqueio de rastreadores, e você estará no caminho certo para uma experiência online verdadeiramente <strong>privada e livre</strong>. Não subestime o poder de uma simples mudança de DNS; ela é a fundação para uma internet mais segura.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Aumentar Privacidade com DNS Seguro';
+  const enTitle = 'Guia Completo: Aumentar Privacidade com DNS Seguro';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Configuração Essencial do qBittorrent</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Configuração Essencial do qBittorrent</h1>
+<blockquote>
+<p>O qBittorrent é um cliente BitTorrent <strong>gratuito, de código aberto e extremamente popular</strong>, conhecido pela sua interface limpa, ausência de anúncios e uma vasta gama de funcionalidades avançadas. Este guia detalhado vai levá-lo pelas configurações <strong>essenciais</strong> do qBittorrent para otimizar as suas velocidades de download e upload, garantir a sua privacidade e configurar a integração com hard links para uma gestão eficiente da sua coleção digital.</p>
+</blockquote>
+<h2>Por Que o qBittorrent é a Escolha Preferida?</h2>
+<p>No ecossistema BitTorrent, a escolha do cliente é crucial. O qBittorrent destaca-se por várias razões:</p>
+<ul>
+<li><strong>Livre e Código Aberto</strong>: Sem custos, sem "surpresas" ou software empacotado indesejado. O código pode ser inspecionado por qualquer pessoa.</li>
+<li><strong>Sem Anúncios</strong>: Uma experiência de utilizador limpa e sem distrações.</li>
+<li><strong>Leve e Eficiente</strong>: Consome poucos recursos do sistema, tornando-o ideal para computadores mais antigos ou para funcionar em segundo plano.</li>
+<li><strong>Funcionalidades Avançadas</strong>: Suporte a RSS, planeamento de largura de banda, autenticação web UI, pesquisa integrada, e muito mais.</li>
+<li><strong>Desenvolvimento Ativo</strong>: Uma comunidade ativa garante atualizações regulares e compatibilidade com os padrões mais recentes.</li>
+</ul>
+<blockquote>
+<p><strong>Dica de Ouro</strong>: Sempre faça o download do qBittorrent do site oficial para evitar versões modificadas ou maliciosas. Visite <a href="https://www.qbittorrent.org/download.php">qbittorrent.org/download.php</a>.</p>
+</blockquote>
+<h2>Configurações Iniciais e Interface</h2>
+<p>Após a instalação, a interface do qBittorrent é bastante intuitiva. Antes de adicionar qualquer torrent, vamos configurar as bases.</p>
+<h3>1. Visão Geral da Interface Principal</h3>
+<p>A interface divide-se em painéis:</p>
+<ul>
+<li><strong>Barra Lateral Esquerda</strong>: Filtros para torrents (a descarregar, concluídos, a semear, etc.).</li>
+<li><strong>Painel Central</strong>: Lista dos seus torrents, com status, progresso, velocidade, tempo restante, etc.</li>
+<li><strong>Painel Inferior</strong>: Detalhes do torrent selecionado (informações, <em>peers</em>, rastreadores, ficheiros, velocidade).</li>
+</ul>
+<p><img alt="Interface principal do qBittorrent" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cloudwards.net%2Fwp-content%2Fuploads%2F2023%2F02%2Fqbittorrent-main-ui.png&f=1&nofb=1&ipt=9cfb90cd2054bb5b911624da9ea8f856a6dc211f0ca9a208089277e8dbed37c0" />
+<em>Exemplo visual da interface principal do qBittorrent. (https://www.cloudwards.net)</em></p>
+<h3>2. Aceder às Configurações (<code>Ferramentas &gt; Opções</code> ou <code>Alt+O</code>)</h3>
+<p>Todas as configurações essenciais estão no menu <code>Ferramentas</code> &gt; <code>Opções</code> (ou <code>Edit</code> &gt; <code>Preferences</code> no macOS).</p>
+<h2>Otimização de Conexão e Velocidade</h2>
+<p>Estas configurações são cruciais para maximizar a sua velocidade e conectividade.</p>
+<h3>1. Conexão (<code>Conexão</code>)</h3>
+<ul>
+<li><strong>Porta de Escuta (Listening Port)</strong>:<ul>
+<li>Esta é a <strong>configuração mais importante</strong> para a sua conectividade. O qBittorrent usa esta porta para comunicar com outros <em>peers</em>.</li>
+<li><strong>Marque a caixa <code>Usar porta aleatória a cada arranque</code> (Use UPnP/NAT-PMP para redireccionamento de portas)</strong>: O UPnP/NAT-PMP tenta configurar o <em>port forwarding</em> automaticamente no seu router. Se o seu router suportar e tiver UPnP/NAT-PMP ativado, esta é a forma mais fácil.</li>
+<li><strong>Recomendado: Port Forwarding Manual</strong>: Se UPnP/NAT-PMP não funcionar ou se você quiser maior controlo/segurança, <strong>desmarque a caixa <code>Usar porta aleatória</code></strong>. Anote a porta que aparece (certifique-se que é uma porta alta, ex: acima de <code>49152</code>).</li>
+<li><strong>Configure o Port Forwarding no seu Router</strong>: Vá às configurações do seu router e encaminhe a porta que você anotou para o endereço IP local do seu computador. Certifique-se de encaminhar tanto <strong>TCP</strong> quanto <strong>UDP</strong>.</li>
+<li>Para um guia detalhado sobre como fazer o port forwarding, consulte acelerar_torrents_com_port_forwarding.html.</li>
+</ul>
+</li>
+<li><strong>Verificação de Porta</strong>: Após configurar o port forwarding, o ícone de status de conexão no canto inferior direito do qBittorrent deve ficar <strong>verde</strong> (indicando que está conectável). Se estiver amarelo/vermelho, a porta não está aberta.</li>
+<li><strong>Limites Globais de Upload/Download</strong>:<ul>
+<li><code>Limite global de taxa de download (kB/s)</code>: Defina um limite se você não quiser que o qBittorrent consuma toda a sua largura de banda de download.</li>
+<li><code>Limite global de taxa de upload (kB/s)</code>: Para a saúde da rede P2P e para manter um bom <em>ratio</em> em trackers privados, é <strong>altamente recomendado</strong> definir este limite para uma porcentagem da sua sua velocidade de upload máxima (ex: 80%) em vez de desativá-lo. Não semeie excessivamente a ponto de prejudicar sua navegação, mas contribua.</li>
+</ul>
+</li>
+<li><strong>Número de Conexões</strong>:<ul>
+<li><code>Número máximo de conexões globais</code>: Sugestão: <code>300-500</code>.</li>
+<li><code>Número máximo de conexões por torrent</code>: Sugestão: <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload globais</code>: Sugestão: <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload por torrent</code>: Sugestão: <code>5-10</code>.</li>
+<li>Ajuste estes valores com base na sua largura de banda. Valores muito altos podem sobrecarregar seu router ou conexão.</li>
+</ul>
+</li>
+</ul>
+<h3>2. BitTorrent (<code>BitTorrent</code>)</h3>
+<ul>
+<li><strong>DHT (Distributed Hash Table)</strong>:<ul>
+<li><code>Ativar DHT para novos torrents</code>: <strong>Desmarque esta opção</strong> se você usa principalmente trackers privados. Trackers privados geralmente proíbem DHT para manter o controlo da sua comunidade. Para torrents públicos, pode manter ativado.</li>
+</ul>
+</li>
+<li><strong>PEX (Peer Exchange)</strong>:<ul>
+<li><code>Ativar Peer Exchange para novos torrents</code>: Similar ao DHT, pode desativar para trackers privados.</li>
+</ul>
+</li>
+<li><strong>Local Peer Discovery (LPD)</strong>:<ul>
+<li><code>Ativar Local Peer Discovery para novos torrents</code>: Permite encontrar peers na sua rede local. Geralmente seguro e pode ser útil para acelerar transferências em rede local.</li>
+</ul>
+</li>
+<li><strong>Protocolo de Encriptação</strong>:<ul>
+<li><code>Modo de encriptação</code>: Selecione <code>Exigir encriptação</code>. Isso garante que as suas comunicações com outros peers sejam criptografadas, oferecendo uma camada extra de privacidade e ajudando a evitar a limitação de tráfego por ISPs.</li>
+</ul>
+</li>
+</ul>
+<h2>Privacidade e Segurança</h2>
+<p>Proteger o seu endereço IP e as suas atividades é fundamental, especialmente ao lidar com conteúdo de fontes diversas.</p>
+<h3>1. Interface do Usuário (<code>Interface de Usuário</code>)</h3>
+<ul>
+<li><strong>Confirmações</strong>: Ative as confirmações para <code>Remover torrents</code>, <code>Apagar ficheiros descarregados</code>, etc., para evitar exclusões acidentais.</li>
+</ul>
+<h3>2. Web UI (<code>Web UI</code>)</h3>
+<p>A Web UI permite controlar o qBittorrent a partir de um navegador web, mesmo remotamente.</p>
+<ul>
+<li><strong>Ativar <code>Web UI</code></strong>: Marque a caixa.</li>
+<li><strong>Porta</strong>: Escolha uma porta que não esteja em uso (ex: <code>8080</code> ou <code>8081</code>).</li>
+<li><strong>Nome de Utilizador e Senha</strong>: <strong>Defina um nome de utilizador e uma senha fortes.</strong> Isso é crucial para a segurança, especialmente se você for aceder a Web UI de fora da sua rede.</li>
+<li><strong>Autenticação HTTPS</strong>: Ative <code>Usar HTTPS para interface de utilizador web</code> e gere um certificado para criptografar as comunicações.</li>
+<li><strong>IPs Restritos (Opcional)</strong>: Se for aceder apenas da sua rede local, pode restringir o acesso a apenas o seu IP local.</li>
+</ul>
+<blockquote>
+<p><strong>Importante para Acesso Remoto</strong>: Se você quiser aceder à Web UI de fora da sua rede local, terá de configurar o <em>port forwarding</em> para a porta da Web UI no seu router também. <strong>Use uma VPN</strong> para aceder remotamente à sua Web UI para maior segurança.</p>
+</blockquote>
+<h2>Gerenciamento de Downloads e Organização (Hard Linking!)</h2>
+<p>Estas configurações são cruciais para a automação e organização da sua coleção.</p>
+<h3>1. Downloads (<code>Downloads</code>)</h3>
+<ul>
+<li><strong>Local de Gravação de Ficheiros</strong>:<ul>
+<li><code>Salvar ficheiros em</code>: Defina a pasta padrão onde os downloads concluídos serão movidos.</li>
+<li><code>Local para torrents incompletos</code>: Defina uma pasta temporária separada para downloads em andamento.</li>
+</ul>
+</li>
+<li><strong>Gestão de Torrents Completos</strong>:<ul>
+<li><code>Manter a pasta de torrent em ...</code>: Esta opção é <strong>essencial para o hard-linking</strong>.</li>
+<li><strong>Atenção</strong>: Esta opção garante que o ficheiro descarregado <em>permanece</em> na sua pasta de download do qBittorrent para seedear, enquanto permite que você crie um hard link para a sua biblioteca de multimédia noutro local <em>no mesmo disco/partição</em>.</li>
+<li>Para garantir a funcionalidade de hard linking com ferramentas externas (como Sonarr/Radarr), certifique-se de que a sua pasta de download do qBittorrent e a sua pasta da biblioteca de multimédia estão <strong>no mesmo volume/partição do disco</strong>.</li>
+<li>Para uma compreensão aprofundada sobre hard links, consulte poupar_espaco_com_hard_linking.html.</li>
+</ul>
+</li>
+<li><strong>Remover .torrent quando adicionado</strong>: <strong>Desmarque</strong> esta opção. Manter o ficheiro <code>.torrent</code> é útil para re-adicionar o torrent mais tarde, se necessário.</li>
+<li><strong>Adicionar .torrent para pasta</strong>: Configure uma pasta onde o qBittorrent deve procurar por novos ficheiros <code>.torrent</code> para adicionar automaticamente.</li>
+</ul>
+<h3>2. Limites de Partilha (Ratio Management)</h3>
+<ul>
+<li><code>Rácio padrão para partilha (</code>seed<code>) de torrents</code>:<ul>
+<li>Para trackers públicos, um rácio de <code>1.0</code> (1:1) é um bom ponto de partida.</li>
+<li>Para <strong>trackers privados</strong>, verifique as suas regras. Muitos exigem que você seedee por um certo tempo (ex: 72 horas) ou até um rácio específico (ex: <code>1.0</code>, <code>1.5</code>, ou até <code>2.0</code>). <strong>Defina de acordo com as regras do seu tracker mais restrito.</strong></li>
+<li><code>Parar de partilhar quando o rácio atingir</code>: Defina o valor desejado.</li>
+<li><code>Parar de partilhar quando o tempo de partilha atingir</code>: (Opcional) Defina um limite de tempo, se preferir.</li>
+</ul>
+</li>
+</ul>
+<h2>Automação e Recursos Adicionais</h2>
+<h3>1. RSS (<code>RSS</code>)</h3>
+<p>O qBittorrent possui um leitor de RSS integrado que pode automatizar downloads.</p>
+<ul>
+<li><strong>Ativar <code>RSS Downloader</code></strong>:</li>
+<li><strong>Adicionar Feed RSS</strong>: Cole o URL do feed RSS de um tracker ou site.</li>
+<li><strong>Regras de Download</strong>: Crie regras para descarregar automaticamente torrents com base em palavras-chave (ex: "Nome da Série S01E01", "Filme.4K"). Isso é <strong>extremamente poderoso</strong> para manter as suas coleções atualizadas.</li>
+</ul>
+<h3>2. Pesquisa (<code>Pesquisa</code>)</h3>
+<p>O qBittorrent tem um motor de pesquisa integrado que pode procurar torrents em vários sites (públicos). Você precisa de instalar o Python e os "motores de pesquisa" (plugins) para que funcione.</p>
+<ul>
+<li><strong>Instalar Python</strong>: Certifique-se de que o Python está instalado no seu sistema.</li>
+<li><strong>Atualizar Motores de Pesquisa</strong>: Na aba <code>Pesquisa</code>, clique em <code>Motores de pesquisa</code> e depois em <code>Verificar por atualizações</code>.</li>
+</ul>
+<h2>Conclusão: Um Cliente BitTorrent Otimizado para o Poder</h2>
+<p>Configurar o qBittorrent adequadamente é um passo <strong>transformador</strong> para qualquer utilizador de BitTorrent. Ao dominar o <em>port forwarding</em>, otimizar as suas velocidades, implementar medidas de privacidade e aproveitar as funcionalidades de automação e hard-linking, você transformará a sua experiência de download de uma tarefa manual para um processo <strong>fluido e eficiente</strong>. O qBittorrent, com a sua robustez e versatilidade, é a ferramenta perfeita para gerir a sua coleção digital e garantir que você está sempre conectado ao máximo potencial da rede BitTorrent. Lembre-se, a configuração inicial pode levar algum tempo, mas os benefícios a longo prazo em desempenho e conveniência são <strong>inestimáveis</strong>.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Configuração Essencial do qBittorrent</h1>
+<blockquote>
+<p>O qBittorrent é um cliente BitTorrent <strong>gratuito, de código aberto e extremamente popular</strong>, conhecido pela sua interface limpa, ausência de anúncios e uma vasta gama de funcionalidades avançadas. Este guia detalhado vai levá-lo pelas configurações <strong>essenciais</strong> do qBittorrent para otimizar as suas velocidades de download e upload, garantir a sua privacidade e configurar a integração com hard links para uma gestão eficiente da sua coleção digital.</p>
+</blockquote>
+<h2>Por Que o qBittorrent é a Escolha Preferida?</h2>
+<p>No ecossistema BitTorrent, a escolha do cliente é crucial. O qBittorrent destaca-se por várias razões:</p>
+<ul>
+<li><strong>Livre e Código Aberto</strong>: Sem custos, sem "surpresas" ou software empacotado indesejado. O código pode ser inspecionado por qualquer pessoa.</li>
+<li><strong>Sem Anúncios</strong>: Uma experiência de utilizador limpa e sem distrações.</li>
+<li><strong>Leve e Eficiente</strong>: Consome poucos recursos do sistema, tornando-o ideal para computadores mais antigos ou para funcionar em segundo plano.</li>
+<li><strong>Funcionalidades Avançadas</strong>: Suporte a RSS, planeamento de largura de banda, autenticação web UI, pesquisa integrada, e muito mais.</li>
+<li><strong>Desenvolvimento Ativo</strong>: Uma comunidade ativa garante atualizações regulares e compatibilidade com os padrões mais recentes.</li>
+</ul>
+<blockquote>
+<p><strong>Dica de Ouro</strong>: Sempre faça o download do qBittorrent do site oficial para evitar versões modificadas ou maliciosas. Visite <a href="https://www.qbittorrent.org/download.php">qbittorrent.org/download.php</a>.</p>
+</blockquote>
+<h2>Configurações Iniciais e Interface</h2>
+<p>Após a instalação, a interface do qBittorrent é bastante intuitiva. Antes de adicionar qualquer torrent, vamos configurar as bases.</p>
+<h3>1. Visão Geral da Interface Principal</h3>
+<p>A interface divide-se em painéis:</p>
+<ul>
+<li><strong>Barra Lateral Esquerda</strong>: Filtros para torrents (a descarregar, concluídos, a semear, etc.).</li>
+<li><strong>Painel Central</strong>: Lista dos seus torrents, com status, progresso, velocidade, tempo restante, etc.</li>
+<li><strong>Painel Inferior</strong>: Detalhes do torrent selecionado (informações, <em>peers</em>, rastreadores, ficheiros, velocidade).</li>
+</ul>
+<p><img alt="Interface principal do qBittorrent" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.cloudwards.net%2Fwp-content%2Fuploads%2F2023%2F02%2Fqbittorrent-main-ui.png&f=1&nofb=1&ipt=9cfb90cd2054bb5b911624da9ea8f856a6dc211f0ca9a208089277e8dbed37c0" />
+<em>Exemplo visual da interface principal do qBittorrent. (https://www.cloudwards.net)</em></p>
+<h3>2. Aceder às Configurações (<code>Ferramentas &gt; Opções</code> ou <code>Alt+O</code>)</h3>
+<p>Todas as configurações essenciais estão no menu <code>Ferramentas</code> &gt; <code>Opções</code> (ou <code>Edit</code> &gt; <code>Preferences</code> no macOS).</p>
+<h2>Otimização de Conexão e Velocidade</h2>
+<p>Estas configurações são cruciais para maximizar a sua velocidade e conectividade.</p>
+<h3>1. Conexão (<code>Conexão</code>)</h3>
+<ul>
+<li><strong>Porta de Escuta (Listening Port)</strong>:<ul>
+<li>Esta é a <strong>configuração mais importante</strong> para a sua conectividade. O qBittorrent usa esta porta para comunicar com outros <em>peers</em>.</li>
+<li><strong>Marque a caixa <code>Usar porta aleatória a cada arranque</code> (Use UPnP/NAT-PMP para redireccionamento de portas)</strong>: O UPnP/NAT-PMP tenta configurar o <em>port forwarding</em> automaticamente no seu router. Se o seu router suportar e tiver UPnP/NAT-PMP ativado, esta é a forma mais fácil.</li>
+<li><strong>Recomendado: Port Forwarding Manual</strong>: Se UPnP/NAT-PMP não funcionar ou se você quiser maior controlo/segurança, <strong>desmarque a caixa <code>Usar porta aleatória</code></strong>. Anote a porta que aparece (certifique-se que é uma porta alta, ex: acima de <code>49152</code>).</li>
+<li><strong>Configure o Port Forwarding no seu Router</strong>: Vá às configurações do seu router e encaminhe a porta que você anotou para o endereço IP local do seu computador. Certifique-se de encaminhar tanto <strong>TCP</strong> quanto <strong>UDP</strong>.</li>
+<li>Para um guia detalhado sobre como fazer o port forwarding, consulte acelerar_torrents_com_port_forwarding.html.</li>
+</ul>
+</li>
+<li><strong>Verificação de Porta</strong>: Após configurar o port forwarding, o ícone de status de conexão no canto inferior direito do qBittorrent deve ficar <strong>verde</strong> (indicando que está conectável). Se estiver amarelo/vermelho, a porta não está aberta.</li>
+<li><strong>Limites Globais de Upload/Download</strong>:<ul>
+<li><code>Limite global de taxa de download (kB/s)</code>: Defina um limite se você não quiser que o qBittorrent consuma toda a sua largura de banda de download.</li>
+<li><code>Limite global de taxa de upload (kB/s)</code>: Para a saúde da rede P2P e para manter um bom <em>ratio</em> em trackers privados, é <strong>altamente recomendado</strong> definir este limite para uma porcentagem da sua sua velocidade de upload máxima (ex: 80%) em vez de desativá-lo. Não semeie excessivamente a ponto de prejudicar sua navegação, mas contribua.</li>
+</ul>
+</li>
+<li><strong>Número de Conexões</strong>:<ul>
+<li><code>Número máximo de conexões globais</code>: Sugestão: <code>300-500</code>.</li>
+<li><code>Número máximo de conexões por torrent</code>: Sugestão: <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload globais</code>: Sugestão: <code>50-100</code>.</li>
+<li><code>Número máximo de slots de upload por torrent</code>: Sugestão: <code>5-10</code>.</li>
+<li>Ajuste estes valores com base na sua largura de banda. Valores muito altos podem sobrecarregar seu router ou conexão.</li>
+</ul>
+</li>
+</ul>
+<h3>2. BitTorrent (<code>BitTorrent</code>)</h3>
+<ul>
+<li><strong>DHT (Distributed Hash Table)</strong>:<ul>
+<li><code>Ativar DHT para novos torrents</code>: <strong>Desmarque esta opção</strong> se você usa principalmente trackers privados. Trackers privados geralmente proíbem DHT para manter o controlo da sua comunidade. Para torrents públicos, pode manter ativado.</li>
+</ul>
+</li>
+<li><strong>PEX (Peer Exchange)</strong>:<ul>
+<li><code>Ativar Peer Exchange para novos torrents</code>: Similar ao DHT, pode desativar para trackers privados.</li>
+</ul>
+</li>
+<li><strong>Local Peer Discovery (LPD)</strong>:<ul>
+<li><code>Ativar Local Peer Discovery para novos torrents</code>: Permite encontrar peers na sua rede local. Geralmente seguro e pode ser útil para acelerar transferências em rede local.</li>
+</ul>
+</li>
+<li><strong>Protocolo de Encriptação</strong>:<ul>
+<li><code>Modo de encriptação</code>: Selecione <code>Exigir encriptação</code>. Isso garante que as suas comunicações com outros peers sejam criptografadas, oferecendo uma camada extra de privacidade e ajudando a evitar a limitação de tráfego por ISPs.</li>
+</ul>
+</li>
+</ul>
+<h2>Privacidade e Segurança</h2>
+<p>Proteger o seu endereço IP e as suas atividades é fundamental, especialmente ao lidar com conteúdo de fontes diversas.</p>
+<h3>1. Interface do Usuário (<code>Interface de Usuário</code>)</h3>
+<ul>
+<li><strong>Confirmações</strong>: Ative as confirmações para <code>Remover torrents</code>, <code>Apagar ficheiros descarregados</code>, etc., para evitar exclusões acidentais.</li>
+</ul>
+<h3>2. Web UI (<code>Web UI</code>)</h3>
+<p>A Web UI permite controlar o qBittorrent a partir de um navegador web, mesmo remotamente.</p>
+<ul>
+<li><strong>Ativar <code>Web UI</code></strong>: Marque a caixa.</li>
+<li><strong>Porta</strong>: Escolha uma porta que não esteja em uso (ex: <code>8080</code> ou <code>8081</code>).</li>
+<li><strong>Nome de Utilizador e Senha</strong>: <strong>Defina um nome de utilizador e uma senha fortes.</strong> Isso é crucial para a segurança, especialmente se você for aceder a Web UI de fora da sua rede.</li>
+<li><strong>Autenticação HTTPS</strong>: Ative <code>Usar HTTPS para interface de utilizador web</code> e gere um certificado para criptografar as comunicações.</li>
+<li><strong>IPs Restritos (Opcional)</strong>: Se for aceder apenas da sua rede local, pode restringir o acesso a apenas o seu IP local.</li>
+</ul>
+<blockquote>
+<p><strong>Importante para Acesso Remoto</strong>: Se você quiser aceder à Web UI de fora da sua rede local, terá de configurar o <em>port forwarding</em> para a porta da Web UI no seu router também. <strong>Use uma VPN</strong> para aceder remotamente à sua Web UI para maior segurança.</p>
+</blockquote>
+<h2>Gerenciamento de Downloads e Organização (Hard Linking!)</h2>
+<p>Estas configurações são cruciais para a automação e organização da sua coleção.</p>
+<h3>1. Downloads (<code>Downloads</code>)</h3>
+<ul>
+<li><strong>Local de Gravação de Ficheiros</strong>:<ul>
+<li><code>Salvar ficheiros em</code>: Defina a pasta padrão onde os downloads concluídos serão movidos.</li>
+<li><code>Local para torrents incompletos</code>: Defina uma pasta temporária separada para downloads em andamento.</li>
+</ul>
+</li>
+<li><strong>Gestão de Torrents Completos</strong>:<ul>
+<li><code>Manter a pasta de torrent em ...</code>: Esta opção é <strong>essencial para o hard-linking</strong>.</li>
+<li><strong>Atenção</strong>: Esta opção garante que o ficheiro descarregado <em>permanece</em> na sua pasta de download do qBittorrent para seedear, enquanto permite que você crie um hard link para a sua biblioteca de multimédia noutro local <em>no mesmo disco/partição</em>.</li>
+<li>Para garantir a funcionalidade de hard linking com ferramentas externas (como Sonarr/Radarr), certifique-se de que a sua pasta de download do qBittorrent e a sua pasta da biblioteca de multimédia estão <strong>no mesmo volume/partição do disco</strong>.</li>
+<li>Para uma compreensão aprofundada sobre hard links, consulte poupar_espaco_com_hard_linking.html.</li>
+</ul>
+</li>
+<li><strong>Remover .torrent quando adicionado</strong>: <strong>Desmarque</strong> esta opção. Manter o ficheiro <code>.torrent</code> é útil para re-adicionar o torrent mais tarde, se necessário.</li>
+<li><strong>Adicionar .torrent para pasta</strong>: Configure uma pasta onde o qBittorrent deve procurar por novos ficheiros <code>.torrent</code> para adicionar automaticamente.</li>
+</ul>
+<h3>2. Limites de Partilha (Ratio Management)</h3>
+<ul>
+<li><code>Rácio padrão para partilha (</code>seed<code>) de torrents</code>:<ul>
+<li>Para trackers públicos, um rácio de <code>1.0</code> (1:1) é um bom ponto de partida.</li>
+<li>Para <strong>trackers privados</strong>, verifique as suas regras. Muitos exigem que você seedee por um certo tempo (ex: 72 horas) ou até um rácio específico (ex: <code>1.0</code>, <code>1.5</code>, ou até <code>2.0</code>). <strong>Defina de acordo com as regras do seu tracker mais restrito.</strong></li>
+<li><code>Parar de partilhar quando o rácio atingir</code>: Defina o valor desejado.</li>
+<li><code>Parar de partilhar quando o tempo de partilha atingir</code>: (Opcional) Defina um limite de tempo, se preferir.</li>
+</ul>
+</li>
+</ul>
+<h2>Automação e Recursos Adicionais</h2>
+<h3>1. RSS (<code>RSS</code>)</h3>
+<p>O qBittorrent possui um leitor de RSS integrado que pode automatizar downloads.</p>
+<ul>
+<li><strong>Ativar <code>RSS Downloader</code></strong>:</li>
+<li><strong>Adicionar Feed RSS</strong>: Cole o URL do feed RSS de um tracker ou site.</li>
+<li><strong>Regras de Download</strong>: Crie regras para descarregar automaticamente torrents com base em palavras-chave (ex: "Nome da Série S01E01", "Filme.4K"). Isso é <strong>extremamente poderoso</strong> para manter as suas coleções atualizadas.</li>
+</ul>
+<h3>2. Pesquisa (<code>Pesquisa</code>)</h3>
+<p>O qBittorrent tem um motor de pesquisa integrado que pode procurar torrents em vários sites (públicos). Você precisa de instalar o Python e os "motores de pesquisa" (plugins) para que funcione.</p>
+<ul>
+<li><strong>Instalar Python</strong>: Certifique-se de que o Python está instalado no seu sistema.</li>
+<li><strong>Atualizar Motores de Pesquisa</strong>: Na aba <code>Pesquisa</code>, clique em <code>Motores de pesquisa</code> e depois em <code>Verificar por atualizações</code>.</li>
+</ul>
+<h2>Conclusão: Um Cliente BitTorrent Otimizado para o Poder</h2>
+<p>Configurar o qBittorrent adequadamente é um passo <strong>transformador</strong> para qualquer utilizador de BitTorrent. Ao dominar o <em>port forwarding</em>, otimizar as suas velocidades, implementar medidas de privacidade e aproveitar as funcionalidades de automação e hard-linking, você transformará a sua experiência de download de uma tarefa manual para um processo <strong>fluido e eficiente</strong>. O qBittorrent, com a sua robustez e versatilidade, é a ferramenta perfeita para gerir a sua coleção digital e garantir que você está sempre conectado ao máximo potencial da rede BitTorrent. Lembre-se, a configuração inicial pode levar algum tempo, mas os benefícios a longo prazo em desempenho e conveniência são <strong>inestimáveis</strong>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Configuração Essencial do qBittorrent';
+  const enTitle = 'Guia Completo: Configuração Essencial do qBittorrent';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

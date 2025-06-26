@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: O Essencial sobre o Kill Switch em VPNs</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: O Essencial sobre o Kill Switch em VPNs</h1>
+<blockquote>
+<p>No universo da privacidade e segurança online, onde a interrupção da conexão VPN pode expor o seu endereço IP real e suas atividades, o <strong>Kill Switch</strong> surge como um recurso <strong>indispensável</strong>. Este guia detalhado explicará o que é um Kill Switch, como ele funciona, por que é uma funcionalidade <em>crítica</em> para qualquer utilizador de VPN, e como garantir que ele está devidamente configurado para proteger a sua privacidade.</p>
+</blockquote>
+<h2>O Que é um Kill Switch e Como Ele o Protege?</h2>
+<p>Um <strong>Kill Switch</strong> é um recurso de segurança encontrado em muitos softwares de VPN que visa <strong>prevenir vazamentos de dados</strong> caso a conexão com o servidor VPN caia inesperadamente. Imagine que você está a usar uma VPN para navegar na internet ou para atividades sensíveis, e de repente, a sua conexão VPN é interrompida (por exemplo, devido a uma falha de rede, instabilidade do servidor VPN, ou uma mudança no tipo de rede).</p>
+<p>Sem um Kill Switch, o seu dispositivo voltaria imediatamente a usar a sua conexão à internet <strong>direta e não criptografada</strong>. Isso significa que o seu <strong>endereço IP real</strong> seria exposto e o seu tráfego de internet ficaria visível para o seu <em>Provedor de Serviços de Internet (ISP)</em>, ou qualquer outra entidade que possa estar a monitorizar a sua rede.</p>
+<p>O Kill Switch atua como um <strong>guardião de emergência</strong>. No momento em que deteta que a conexão VPN foi perdida, ele faz uma das seguintes ações:</p>
+<ul>
+<li><strong>Bloqueia todo o tráfego de internet</strong>: Esta é a forma mais comum. Ele interrompe completamente a sua conexão à internet, garantindo que nenhum dado seja enviado ou recebido fora do túnel VPN seguro.</li>
+<li><strong>Bloqueia o tráfego para aplicações específicas</strong>: Alguns Kill Switches mais avançados permitem que você selecione quais aplicações devem ter seu tráfego bloqueado.</li>
+</ul>
+<blockquote>
+<p><strong>Propósito Principal</strong>: A função primordial do Kill Switch é garantir que a sua <strong>privacidade seja mantida</strong> e que o seu <strong>endereço IP real nunca seja revelado</strong>, mesmo nas piores circunstâncias de conexão VPN.</p>
+</blockquote>
+<h2>Por Que o Kill Switch é Indispensável? Cenários de Risco</h2>
+<p>Embora uma VPN seja a sua principal ferramenta de privacidade, a sua eficácia depende da sua consistência. O Kill Switch atua como uma rede de segurança para quando essa consistência falha. Considere estes cenários:</p>
+<ul>
+<li><strong>Quedas de Conexão Inesperadas</strong>: Mesmo os melhores provedores de VPN podem ter momentos de instabilidade. Uma queda momentânea no servidor VPN ou na sua própria conexão à internet pode deixá-lo exposto.</li>
+<li><strong>Mudança de Redes Wi-Fi</strong>: Se você estiver em movimento e o seu dispositivo mudar automaticamente de uma rede Wi-Fi para outra (ex: de uma rede doméstica para uma pública), ou de Wi-Fi para dados móveis, a conexão VPN pode ser temporariamente interrompida.</li>
+<li><strong>Reconfiguração da VPN</strong>: Ao alterar servidores VPN ou configurações dentro da aplicação, pode haver um breve período de desconexão.</li>
+<li><strong>Ameaças Externas</strong>: Ataques de <em>Denial of Service (DoS)</em>, interferência de rede ou até mesmo manipulação do ISP podem perturbar sua conexão VPN.</li>
+<li><strong>Descargas de Torrents</strong>: Este é um dos cenários mais críticos. Ao baixar ou semear <em>torrents</em>, a exposição do seu IP real, mesmo por segundos, pode levar à sua identificação por entidades de monitorização de direitos autorais, que registam IPs de utilizadores em redes P2P. Um Kill Switch é <strong>absolutamente essencial</strong> para utilizadores de torrents.</li>
+<li><strong>Navegação em Conteúdo Sensível</strong>: Aceder a informações delicadas ou contornar a censura exige que a sua identidade permaneça oculta o tempo todo.</li>
+</ul>
+<h3>Tipos de Implementação do Kill Switch</h3>
+<p>Existem diferentes formas como um Kill Switch pode ser implementado:</p>
+<ol>
+<li><strong>Kill Switch a Nível de Aplicação (App-Level Kill Switch)</strong>: A maioria dos provedores de VPN oferece um Kill Switch como parte integrante do seu software. Este Kill Switch monitoriza a conexão VPN e age rapidamente para bloquear o tráfego. É a forma mais comum e recomendada para a maioria dos utilizadores.</li>
+<li><strong>Kill Switch a Nível de Sistema Operativo (OS-Level Kill Switch)</strong>: Mais raro e complexo de configurar, mas pode ser implementado através de regras de firewall avançadas. Ele garante que <strong>todo</strong> o tráfego de rede é bloqueado se a conexão VPN não estiver ativa. Provedores de VPN com Kill Switches robustos frequentemente implementam algo similar a nível de sistema para máxima proteção.</li>
+<li><strong>Kill Switch a Nível de Router (Router-Level Kill Switch)</strong>: Se você configurar a VPN diretamente no seu router, um Kill Switch pode ser implementado através das regras de firewall do router. Isso protege todos os dispositivos conectados ao router. É mais complexo de configurar e exige um router compatível.</li>
+</ol>
+<h2>Como Configurar e Verificar o Seu Kill Switch</h2>
+<p>A configuração de um Kill Switch geralmente é feita dentro da aplicação da VPN, e a sua verificação é crucial.</p>
+<h3>1. Ativar o Kill Switch na Sua Aplicação VPN</h3>
+<ul>
+<li><strong>Localização</strong>: Abra a aplicação do seu provedor de VPN. Procure por <code>Settings</code> (Configurações), <code>Security</code> (Segurança), <code>Advanced</code> (Avançado) ou <code>Kill Switch</code>.</li>
+<li><strong>Ativação</strong>: Geralmente é uma caixa de seleção para <code>Enable Kill Switch</code> (Ativar Kill Switch) ou <code>Network Lock</code>.</li>
+<li><strong>Modos (se aplicável)</strong>: Alguns Kill Switches oferecem diferentes modos:<ul>
+<li><code>Always on</code> (Sempre ligado): O Kill Switch está sempre ativo e impede o tráfego se a VPN não estiver conectada.</li>
+<li><code>Auto</code> (Automático): Ativa-se apenas quando a VPN está ativa.</li>
+<li><code>Application-specific</code> (Específico da aplicação): Permite-lhe escolher quais aplicações (ex: o seu cliente BitTorrent) devem ser bloqueadas. Para torrents, escolha esta opção se disponível e selecione o seu cliente BitTorrent. Se não disponível, use a opção global.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Exemplo de Kill Switch em Aplicação VPN" src="https://i.imgur.com/vpn_kill_switch_example.png" />
+<em>Exemplo genérico de como a opção de Kill Switch aparece em uma aplicação de VPN.</em></p>
+<h3>2. Verificar se o Kill Switch Está a Funcionar Corretamente</h3>
+<p>É vital testar o seu Kill Switch para garantir que ele o protegerá quando mais precisar.</p>
+<ul>
+<li>
+<p><strong>Método Simples (e Recomendado)</strong>:</p>
+<ol>
+<li>Conecte-se à sua VPN.</li>
+<li>Abra um site como <a href="https://www.whatismyip.com/">whatismyip.com</a> ou <a href="https://www.dnsleaktest.com/">dnsleaktest.com</a> para confirmar que o seu IP visível é o da VPN.</li>
+<li><strong>Sem desconectar manualmente a VPN na aplicação</strong>, force uma desconexão da rede:<ul>
+<li><strong>Desligue o Wi-Fi</strong> no seu computador ou dispositivo móvel.</li>
+<li>Se estiver no desktop, <strong>desconecte o cabo Ethernet</strong>.</li>
+</ul>
+</li>
+<li>Observe o comportamento do seu sistema.<ul>
+<li><strong>Kill Switch Funcional</strong>: Você deve perder imediatamente a conexão à internet. Não será capaz de navegar em sites ou aceder a qualquer serviço online até que a conexão VPN seja restabelecida ou o Kill Switch seja desativado manualmente na aplicação da VPN.</li>
+<li><strong>Falha do Kill Switch</strong>: Se você ainda conseguir navegar na internet com o seu IP real após a desconexão forçada, o Kill Switch não está a funcionar corretamente.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Método Mais Agressivo (Apenas para Utilizadores Experientes)</strong>:</p>
+<ol>
+<li>Conecte-se à sua VPN.</li>
+<li>Abra o <code>Gestor de Tarefas</code> (Windows) ou <code>Monitor de Atividade</code> (macOS/Linux).</li>
+<li>Encontre o processo da sua aplicação VPN (ex: <code>ExpressVPN.exe</code>, <code>NordVPN.exe</code>).</li>
+<li><strong>Termine o processo da aplicação VPN</strong>.</li>
+<li>Verifique imediatamente seu IP online. Se o Kill Switch funcionar, você perderá a conexão à internet.</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p><strong>Importante</strong>: Nunca confie cegamente num Kill Switch sem testá-lo. As configurações podem variar e ocasionalmente falhar.</p>
+</blockquote>
+<h2>Limitações e Considerações Finais</h2>
+<p>Embora o Kill Switch seja uma ferramenta poderosa, ele não é uma bala de prata e tem algumas limitações:</p>
+<ul>
+<li><strong>Dependência do Software VPN</strong>: A eficácia do Kill Switch depende da qualidade e da implementação do software da VPN. Escolha provedores de VPN <em>confiáveis</em> e com boa reputação.</li>
+<li><strong>Impacto na Usabilidade</strong>: Quando o Kill Switch é ativado, você fica sem conexão à internet. Isso pode ser inconveniente, mas é o preço da proteção total.</li>
+<li><strong>Não Protege Contra Ataques de Nível de DNS</strong>: Embora alguns Kill Switches também bloqueiem vazamentos de DNS, a sua função primária é o tráfego IP. Para proteção total de DNS, combine o Kill Switch com a configuração de DNS seguro (DNS-over-HTTPS/TLS).</li>
+<li><strong>Nem Todas as VPNs Têm Kill Switch</strong>: VPNs gratuitas ou de baixa qualidade podem não oferecer este recurso vital.</li>
+</ul>
+<h2>Conclusão: A Sua Salvaguarda Essencial Contra Vazamentos de IP</h2>
+<p>O Kill Switch é mais do que uma funcionalidade adicional; é uma <strong>salvaguarda essencial</strong> que qualquer utilizador sério de VPN deve ativar e verificar. Ele é a sua <strong>garantia final</strong> de que, mesmo em face de uma desconexão inesperada da VPN, o seu endereço IP real e as suas atividades online permanecerão ocultos. Para atividades que exigem a máxima privacidade, como o uso de <em>redes P2P</em> ou a navegação em conteúdo sensível, o Kill Switch transforma a sua VPN de uma ferramenta poderosa numa <strong>fortaleza impenetrável</strong>. Não se aventure online sem ele.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: O Essencial sobre o Kill Switch em VPNs</h1>
+<blockquote>
+<p>No universo da privacidade e segurança online, onde a interrupção da conexão VPN pode expor o seu endereço IP real e suas atividades, o <strong>Kill Switch</strong> surge como um recurso <strong>indispensável</strong>. Este guia detalhado explicará o que é um Kill Switch, como ele funciona, por que é uma funcionalidade <em>crítica</em> para qualquer utilizador de VPN, e como garantir que ele está devidamente configurado para proteger a sua privacidade.</p>
+</blockquote>
+<h2>O Que é um Kill Switch e Como Ele o Protege?</h2>
+<p>Um <strong>Kill Switch</strong> é um recurso de segurança encontrado em muitos softwares de VPN que visa <strong>prevenir vazamentos de dados</strong> caso a conexão com o servidor VPN caia inesperadamente. Imagine que você está a usar uma VPN para navegar na internet ou para atividades sensíveis, e de repente, a sua conexão VPN é interrompida (por exemplo, devido a uma falha de rede, instabilidade do servidor VPN, ou uma mudança no tipo de rede).</p>
+<p>Sem um Kill Switch, o seu dispositivo voltaria imediatamente a usar a sua conexão à internet <strong>direta e não criptografada</strong>. Isso significa que o seu <strong>endereço IP real</strong> seria exposto e o seu tráfego de internet ficaria visível para o seu <em>Provedor de Serviços de Internet (ISP)</em>, ou qualquer outra entidade que possa estar a monitorizar a sua rede.</p>
+<p>O Kill Switch atua como um <strong>guardião de emergência</strong>. No momento em que deteta que a conexão VPN foi perdida, ele faz uma das seguintes ações:</p>
+<ul>
+<li><strong>Bloqueia todo o tráfego de internet</strong>: Esta é a forma mais comum. Ele interrompe completamente a sua conexão à internet, garantindo que nenhum dado seja enviado ou recebido fora do túnel VPN seguro.</li>
+<li><strong>Bloqueia o tráfego para aplicações específicas</strong>: Alguns Kill Switches mais avançados permitem que você selecione quais aplicações devem ter seu tráfego bloqueado.</li>
+</ul>
+<blockquote>
+<p><strong>Propósito Principal</strong>: A função primordial do Kill Switch é garantir que a sua <strong>privacidade seja mantida</strong> e que o seu <strong>endereço IP real nunca seja revelado</strong>, mesmo nas piores circunstâncias de conexão VPN.</p>
+</blockquote>
+<h2>Por Que o Kill Switch é Indispensável? Cenários de Risco</h2>
+<p>Embora uma VPN seja a sua principal ferramenta de privacidade, a sua eficácia depende da sua consistência. O Kill Switch atua como uma rede de segurança para quando essa consistência falha. Considere estes cenários:</p>
+<ul>
+<li><strong>Quedas de Conexão Inesperadas</strong>: Mesmo os melhores provedores de VPN podem ter momentos de instabilidade. Uma queda momentânea no servidor VPN ou na sua própria conexão à internet pode deixá-lo exposto.</li>
+<li><strong>Mudança de Redes Wi-Fi</strong>: Se você estiver em movimento e o seu dispositivo mudar automaticamente de uma rede Wi-Fi para outra (ex: de uma rede doméstica para uma pública), ou de Wi-Fi para dados móveis, a conexão VPN pode ser temporariamente interrompida.</li>
+<li><strong>Reconfiguração da VPN</strong>: Ao alterar servidores VPN ou configurações dentro da aplicação, pode haver um breve período de desconexão.</li>
+<li><strong>Ameaças Externas</strong>: Ataques de <em>Denial of Service (DoS)</em>, interferência de rede ou até mesmo manipulação do ISP podem perturbar sua conexão VPN.</li>
+<li><strong>Descargas de Torrents</strong>: Este é um dos cenários mais críticos. Ao baixar ou semear <em>torrents</em>, a exposição do seu IP real, mesmo por segundos, pode levar à sua identificação por entidades de monitorização de direitos autorais, que registam IPs de utilizadores em redes P2P. Um Kill Switch é <strong>absolutamente essencial</strong> para utilizadores de torrents.</li>
+<li><strong>Navegação em Conteúdo Sensível</strong>: Aceder a informações delicadas ou contornar a censura exige que a sua identidade permaneça oculta o tempo todo.</li>
+</ul>
+<h3>Tipos de Implementação do Kill Switch</h3>
+<p>Existem diferentes formas como um Kill Switch pode ser implementado:</p>
+<ol>
+<li><strong>Kill Switch a Nível de Aplicação (App-Level Kill Switch)</strong>: A maioria dos provedores de VPN oferece um Kill Switch como parte integrante do seu software. Este Kill Switch monitoriza a conexão VPN e age rapidamente para bloquear o tráfego. É a forma mais comum e recomendada para a maioria dos utilizadores.</li>
+<li><strong>Kill Switch a Nível de Sistema Operativo (OS-Level Kill Switch)</strong>: Mais raro e complexo de configurar, mas pode ser implementado através de regras de firewall avançadas. Ele garante que <strong>todo</strong> o tráfego de rede é bloqueado se a conexão VPN não estiver ativa. Provedores de VPN com Kill Switches robustos frequentemente implementam algo similar a nível de sistema para máxima proteção.</li>
+<li><strong>Kill Switch a Nível de Router (Router-Level Kill Switch)</strong>: Se você configurar a VPN diretamente no seu router, um Kill Switch pode ser implementado através das regras de firewall do router. Isso protege todos os dispositivos conectados ao router. É mais complexo de configurar e exige um router compatível.</li>
+</ol>
+<h2>Como Configurar e Verificar o Seu Kill Switch</h2>
+<p>A configuração de um Kill Switch geralmente é feita dentro da aplicação da VPN, e a sua verificação é crucial.</p>
+<h3>1. Ativar o Kill Switch na Sua Aplicação VPN</h3>
+<ul>
+<li><strong>Localização</strong>: Abra a aplicação do seu provedor de VPN. Procure por <code>Settings</code> (Configurações), <code>Security</code> (Segurança), <code>Advanced</code> (Avançado) ou <code>Kill Switch</code>.</li>
+<li><strong>Ativação</strong>: Geralmente é uma caixa de seleção para <code>Enable Kill Switch</code> (Ativar Kill Switch) ou <code>Network Lock</code>.</li>
+<li><strong>Modos (se aplicável)</strong>: Alguns Kill Switches oferecem diferentes modos:<ul>
+<li><code>Always on</code> (Sempre ligado): O Kill Switch está sempre ativo e impede o tráfego se a VPN não estiver conectada.</li>
+<li><code>Auto</code> (Automático): Ativa-se apenas quando a VPN está ativa.</li>
+<li><code>Application-specific</code> (Específico da aplicação): Permite-lhe escolher quais aplicações (ex: o seu cliente BitTorrent) devem ser bloqueadas. Para torrents, escolha esta opção se disponível e selecione o seu cliente BitTorrent. Se não disponível, use a opção global.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Exemplo de Kill Switch em Aplicação VPN" src="https://i.imgur.com/vpn_kill_switch_example.png" />
+<em>Exemplo genérico de como a opção de Kill Switch aparece em uma aplicação de VPN.</em></p>
+<h3>2. Verificar se o Kill Switch Está a Funcionar Corretamente</h3>
+<p>É vital testar o seu Kill Switch para garantir que ele o protegerá quando mais precisar.</p>
+<ul>
+<li>
+<p><strong>Método Simples (e Recomendado)</strong>:</p>
+<ol>
+<li>Conecte-se à sua VPN.</li>
+<li>Abra um site como <a href="https://www.whatismyip.com/">whatismyip.com</a> ou <a href="https://www.dnsleaktest.com/">dnsleaktest.com</a> para confirmar que o seu IP visível é o da VPN.</li>
+<li><strong>Sem desconectar manualmente a VPN na aplicação</strong>, force uma desconexão da rede:<ul>
+<li><strong>Desligue o Wi-Fi</strong> no seu computador ou dispositivo móvel.</li>
+<li>Se estiver no desktop, <strong>desconecte o cabo Ethernet</strong>.</li>
+</ul>
+</li>
+<li>Observe o comportamento do seu sistema.<ul>
+<li><strong>Kill Switch Funcional</strong>: Você deve perder imediatamente a conexão à internet. Não será capaz de navegar em sites ou aceder a qualquer serviço online até que a conexão VPN seja restabelecida ou o Kill Switch seja desativado manualmente na aplicação da VPN.</li>
+<li><strong>Falha do Kill Switch</strong>: Se você ainda conseguir navegar na internet com o seu IP real após a desconexão forçada, o Kill Switch não está a funcionar corretamente.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Método Mais Agressivo (Apenas para Utilizadores Experientes)</strong>:</p>
+<ol>
+<li>Conecte-se à sua VPN.</li>
+<li>Abra o <code>Gestor de Tarefas</code> (Windows) ou <code>Monitor de Atividade</code> (macOS/Linux).</li>
+<li>Encontre o processo da sua aplicação VPN (ex: <code>ExpressVPN.exe</code>, <code>NordVPN.exe</code>).</li>
+<li><strong>Termine o processo da aplicação VPN</strong>.</li>
+<li>Verifique imediatamente seu IP online. Se o Kill Switch funcionar, você perderá a conexão à internet.</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p><strong>Importante</strong>: Nunca confie cegamente num Kill Switch sem testá-lo. As configurações podem variar e ocasionalmente falhar.</p>
+</blockquote>
+<h2>Limitações e Considerações Finais</h2>
+<p>Embora o Kill Switch seja uma ferramenta poderosa, ele não é uma bala de prata e tem algumas limitações:</p>
+<ul>
+<li><strong>Dependência do Software VPN</strong>: A eficácia do Kill Switch depende da qualidade e da implementação do software da VPN. Escolha provedores de VPN <em>confiáveis</em> e com boa reputação.</li>
+<li><strong>Impacto na Usabilidade</strong>: Quando o Kill Switch é ativado, você fica sem conexão à internet. Isso pode ser inconveniente, mas é o preço da proteção total.</li>
+<li><strong>Não Protege Contra Ataques de Nível de DNS</strong>: Embora alguns Kill Switches também bloqueiem vazamentos de DNS, a sua função primária é o tráfego IP. Para proteção total de DNS, combine o Kill Switch com a configuração de DNS seguro (DNS-over-HTTPS/TLS).</li>
+<li><strong>Nem Todas as VPNs Têm Kill Switch</strong>: VPNs gratuitas ou de baixa qualidade podem não oferecer este recurso vital.</li>
+</ul>
+<h2>Conclusão: A Sua Salvaguarda Essencial Contra Vazamentos de IP</h2>
+<p>O Kill Switch é mais do que uma funcionalidade adicional; é uma <strong>salvaguarda essencial</strong> que qualquer utilizador sério de VPN deve ativar e verificar. Ele é a sua <strong>garantia final</strong> de que, mesmo em face de uma desconexão inesperada da VPN, o seu endereço IP real e as suas atividades online permanecerão ocultos. Para atividades que exigem a máxima privacidade, como o uso de <em>redes P2P</em> ou a navegação em conteúdo sensível, o Kill Switch transforma a sua VPN de uma ferramenta poderosa numa <strong>fortaleza impenetrável</strong>. Não se aventure online sem ele.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: O Essencial sobre o Kill Switch em VPNs';
+  const enTitle = 'Guia Completo: O Essencial sobre o Kill Switch em VPNs';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

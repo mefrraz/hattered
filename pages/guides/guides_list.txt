@@ -1,0 +1,35 @@
+Multimédia|guardar_cursos_online_para_ver_offline.html|Guardar Cursos Online para Ver Offline|Descarregue e aceda aos seus cursos favoritos sem precisar de uma ligação à internet.|secundaria|
+Privacidade|proxy_vs_vpn_qual_usar.html|Proxy vs. VPN: Qual Usar?|Decida entre Proxy e VPN para privacidade e acesso a conteúdos online.|secundaria|
+Privacidade|sobreviver_em_trackers_privados.html|Sobreviver em Trackers Privados|Navegue e prospere em comunidades BitTorrent exclusivas, mantendo o seu rácio.|secundaria|
+Ferramentas|encontrar_musica_rara_com_soulseek.html|Encontrar Música Rara com Soulseek|Descubra e baixe faixas raras e obscuras através desta rede de partilha única.|secundaria|
+Ferramentas|automatizar_downloads_com_jdownloader_2.html|Automatizar Downloads com JDownloader 2|Simplifique e acelere todos os seus downloads com esta poderosa ferramenta de automação.|secundaria|
+Multimédia|fazer_backup_da_sua_colecao_digital.html|Fazer Backup da Sua Coleção Digital|Proteja os seus ficheiros mais valiosos contra perdas inesperadas com uma estratégia de backup eficaz.|secundaria|
+Privacidade|aumentar_privacidade_com_dns_seguro.html|Aumentar Privacidade com DNS Seguro|Criptografe as suas consultas DNS para esconder os seus hábitos de navegação do seu provedor de internet.|secundaria|
+Segurança|analisar_ficheiros_contra_malware_com_malwarebytes.html|Analisar Ficheiros Contra Malware|Analise e proteja sua coleção digital com este guia. Saiba por que o Malwarebytes é vital como verificador secundário, como ele se destaca na deteção e remoção de malware, e as melhores práticas para manter seus arquivos limpos e seguros.|principal|assets/malwarebytes.png
+Segurança|5_erros_de_seguranca_a_evitar.html|5 Erros de Segurança a Evitar|Identifique e elimine as vulnerabilidades mais comuns que expõem os seus dados online.|secundaria|
+Otimização|manter_a_saude_dos_seus_discos.html|Manter a Saúde dos Seus Discos|Aprenda a monitorizar e prolongar a vida útil dos seus HDDs e SSDs, protegendo os seus dados.|secundaria|
+Otimização|poupar_espaco_com_hard_linking.html|Poupar Espaço com Hard-Linking|Duplique ficheiros sem duplicar o espaço em disco, ideal para gerir torrents e bibliotecas de média.|secundaria|
+Multimédia|encontrar_e_ler_livros_e_mangas.html|Encontrar e Ler Livros e Mangas|Explore as melhores fontes e apps para expandir e desfrutar da sua biblioteca de leitura digital.|secundaria|
+Otimização|acelerar_torrents_com_port_forwarding.html|Acelerar Torrents com Port Forwarding|Otimize as suas velocidades de download e upload de torrents configurando o encaminhamento de portas.|secundaria|
+Segurança|usar_ativadores_de_software_em_seguranca.html|Usar Ativadores de Software em Segurança|Minimize os riscos ao usar ativadores de software, protegendo o seu sistema contra malware.|secundaria|
+Ferramentas|configuracao_essencial_do_qbittorrent.html|Configuração Essencial do qBittorrent|Otimize o seu cliente de torrents para velocidades máximas, privacidade e gestão eficiente.|secundaria|
+Privacidade|o_essencial_sobre_o_kill_switch.html|O Essencial sobre o Kill Switch|Garanta que o seu IP real nunca é exposto, mesmo que a sua VPN caia inesperadamente.|secundaria|
+Ferramentas|organizar_ficheiros_com_filebot.html|Organizar Ficheiros com FileBot|Renomeie e organize automaticamente toda a sua coleção de filmes, séries e músicas com esta ferramenta.|secundaria|
+Privacidade|forcar_apps_a_usar_a_vpn_binding.html|Forçar Apps a Usar a VPN (Binding)|Garanta que aplicações críticas, como o seu cliente de torrents, só funcionam através da VPN.|secundaria|
+Otimização|como_criar_e_partilhar_os_seus_torrents.html|Como Criar e Partilhar os Seus Torrents|Aprenda a gerar e distribuir os seus próprios ficheiros torrent, contribuindo para a rede P2P.|secundaria|
+Ferramentas|criar_um_netflix_pessoal_com_plex.html|Criar um "Netflix" Pessoal com Plex|Transforme a sua coleção de filmes e séries num serviço de streaming acessível em qualquer dispositivo.|secundaria|
+Privacidade|comparativo_de_navegadores_privados_firefox.html|Comparativo de Navegadores Privados|Configure o Firefox e outras ferramentas para uma navegação com máxima privacidade e menos rastreamento.|secundaria|
+Otimização|resolver_torrents_lentos_ou_encravados.html|Resolver Torrents Lentos ou "Encravados"|Diagnostique e solucione problemas comuns que impedem os seus torrents de descarregar rapidamente.|secundaria|
+Segurança|guia_de_limpeza_pos_infecao.html|Guia de Limpeza Pós-Infeção|Um plano de ação detalhado para remover malware do seu sistema e restaurar a segurança.|secundaria|
+Segurança|como_agir_ao_receber_um_aviso_de_dmca.html|Como Agir ao Receber um Aviso de DMCA|Entenda as notificações de direitos de autor e os passos essenciais para se proteger.|secundaria|
+Privacidade|configurar_a_sua_primeira_vpn.html|Configurar a Sua Primeira VPN|Passo a passo para instalar e otimizar a sua VPN, garantindo privacidade e segurança online.|secundaria|
+Ferramentas|acelerar_downloads_com_real-debrid.html|Acelerar Downloads com Real-Debrid|Remova limites de velocidade e tempos de espera, aproveitando downloads premium de ficheiros e torrents.|secundaria|
+Otimização|guia_rapido_de_seedboxes.html|Guia Rápido de Seedboxes|Obtenha downloads e uploads ultrarrápidos, mantendo um bom rácio em trackers privados.|secundaria|
+Segurança|testar_fugas_na_sua_vpn.html|Testar Fugas na sua VPN|Verifique se a sua VPN está a proteger o seu IP real e as suas consultas DNS contra vazamentos.|secundaria|
+Multimédia|guia_de_iptv_para_iniciantes.html|Guia de IPTV para Iniciantes|Aprenda os fundamentos para aceder e desfrutar de uma vasta gama de canais de TV via internet.|secundaria|
+Multimédia|entender_a_qualidade_de_video_remux_x265.html|Entender a Qualidade de Vídeo (Remux, x265)|Desvende os termos técnicos para escolher sempre a melhor qualidade visual para a sua coleção.|secundaria|
+Segurança|dominar_o_virustotal.html|Dominar o VirusTotal|Use esta ferramenta multi-scanner para analisar ficheiros e URLs suspeitos e interpretar os resultados, incluindo falsos positivos.|secundaria|
+Privacidade|escolher_a_vpn_certa.html|Escolher a VPN Certa|Escolha a VPN certa para privacidade e segurança online. Este guia apresenta critérios essenciais, como política de no-logs e Kill Switch, para selecionar provedores como Proton VPN e Mullvad VPN, garantindo uma conexão protegida.|principal|escolha-vpn.png
+Ferramentas|streaming_com_stremio_e_torrentio.html|Streaming com Stremio e Torrentio|Combine estas ferramentas para um serviço de streaming de média pessoal e completo.|secundaria|
+Multimédia|encontrar_e_sincronizar_legendas.html|Encontrar e Sincronizar Legendas|Domine a arte de encontrar, baixar e ajustar legendas para uma visualização perfeita.|secundaria|
+Otimização|montar_um_servidor_nas_caseiro.html|Montar um Servidor NAS Caseiro|Construa o seu próprio centro de armazenamento em rede para centralizar e proteger a sua coleção digital.|secundaria|

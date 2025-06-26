@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Montar um Servidor NAS Caseiro</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Montar um Servidor NAS Caseiro</h1>
+<blockquote>
+<p>No cenário digital atual, onde coleções massivas de filmes, séries, músicas e fotos se acumulam, ter um local centralizado, seguro e acessível para armazená-las é fundamental. Um <strong>Servidor NAS (Network Attached Storage) Caseiro</strong> oferece a solução perfeita, transformando um computador antigo (ou hardware dedicado) num poderoso centro de armazenamento e streaming para toda a sua rede. Este guia detalhado vai levá-lo passo a passo através da escolha do hardware, a seleção do software e a configuração básica para que possa montar o seu próprio NAS, garantindo que os seus dados estejam sempre seguros e disponíveis.</p>
+</blockquote>
+<h2>O Que É um NAS e Por Que Precisa de Um em Casa?</h2>
+<p>Um <strong>NAS (Network Attached Storage)</strong> é, essencialmente, um servidor de armazenamento de ficheiros conectado à sua rede doméstica. Ele permite que múltiplos dispositivos (computadores, smartphones, smart TVs, media players) acedam e partilhem ficheiros a partir de um local centralizado.</p>
+<h3>Vantagens de Ter um NAS Caseiro:</h3>
+<ul>
+<li><strong>Armazenamento Centralizado</strong>: Todos os seus ficheiros multimédia, documentos e backups num só lugar, acessíveis por todos os dispositivos da sua rede.</li>
+<li><strong>Segurança de Dados (RAID)</strong>: A maioria dos sistemas NAS suporta configurações RAID (Redundant Array of Independent Disks), que protegem os seus dados contra falhas de disco ao duplicá-los em múltiplos drives.</li>
+<li><strong>Acesso Remoto</strong>: Aceda aos seus ficheiros de qualquer lugar com conexão à internet (com configuração adequada).</li>
+<li><strong>Streaming de Mídia</strong>: Sirva a sua coleção de filmes e séries para media players como Plex, Emby ou Jellyfin.</li>
+<li><strong>Backups Automatizados</strong>: Faça backups automáticos de todos os seus dispositivos para o NAS.</li>
+<li><strong>Consumo de Energia Eficiente</strong>: Muitas soluções NAS são projetadas para baixo consumo de energia em comparação com um PC desktop tradicional.</li>
+<li><strong>Flexibilidade</strong>: Você tem controlo total sobre o hardware, software e as suas funcionalidades.</li>
+</ul>
+<blockquote>
+<p><strong>Comparativo Rápido: NAS Comprado vs. NAS Caseiro</strong>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">NAS Comprado (Ex: Synology, QNAP)</th>
+<th style="text-align: left;">NAS Caseiro (DIY)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Custo Inicial</strong></td>
+<td style="text-align: left;">Mais alto (hardware + licença)</td>
+<td style="text-align: left;">Potencialmente mais baixo (aproveitando hardware antigo)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Facilidade de Uso</strong></td>
+<td style="text-align: left;">Mais simples, software pré-configurado</td>
+<td style="text-align: left;">Mais complexo, exige mais conhecimento técnico</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Flexibilidade</strong></td>
+<td style="text-align: left;">Limitado ao software/hardware do fabricante</td>
+<td style="text-align: left;"><strong>Máxima flexibilidade</strong>, personalizável</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Expansibilidade</strong></td>
+<td style="text-align: left;">Limitado às baias de disco disponíveis</td>
+<td style="text-align: left;">Altamente expansível (portas SATA/PCIe)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Suporte</strong></td>
+<td style="text-align: left;">Suporte técnico do fabricante</td>
+<td style="text-align: left;">Comunidade (fóruns, documentação online)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2>Passo 1: Escolher o Hardware para o Seu NAS</h2>
+<p>A base do seu NAS é o hardware. Você pode reaproveitar um PC antigo ou comprar componentes.</p>
+<h3>Componentes Essenciais:</h3>
+<ol>
+<li><strong>Placa-Mãe (Motherboard) e CPU</strong>:<ul>
+<li><strong>Requisitos Mínimos</strong>: Para um NAS básico (apenas armazenamento e talvez um streaming leve), um CPU Intel Celeron, Pentium ou um AMD Ryzen de baixo custo (ou até mesmo um Atom antigo) com 4-8 GB de RAM é suficiente.</li>
+<li><strong>Para Streaming 4K / Transcodificação</strong>: Se planeia usar o Plex para transmitir 4K (e precisar de transcodificação), precisará de um CPU mais poderoso. Processadores Intel com <strong>Quick Sync Video</strong> (ex: Intel Core de 8ª geração ou superior, ou processadores Celeron/Pentium modernos) são <em>excelentes</em> para transcodificação de hardware.</li>
+<li><strong>Motherboard</strong>: Deve ter baias SATA suficientes para os seus discos rígidos. Para RAID, quanto mais SATA, melhor.</li>
+</ul>
+</li>
+<li><strong>RAM (Memória)</strong>:<ul>
+<li><strong>Mínimo</strong>: 4 GB.</li>
+<li><strong>Recomendado</strong>: 8 GB ou mais. Se for usar ZFS (um sistema de ficheiros avançado), 16 GB ou mais é altamente recomendado para o ARC (Adaptive Replacement Cache).</li>
+<li><strong>ECC RAM (Opcional)</strong>: Para máxima integridade de dados (especialmente com ZFS), a RAM ECC (Error-Correcting Code) é ideal, mas é mais cara e exige suporte da CPU/motherboard (comum em hardware de servidor).</li>
+</ul>
+</li>
+<li><strong>Discos Rígidos (HDDs) de Armazenamento</strong>:<ul>
+<li><strong>Tipo</strong>: Opte por HDDs de "grau NAS" (ex: Western Digital Red, Seagate IronWolf). Eles são projetados para funcionamento 24/7 e têm maior durabilidade.</li>
+<li><strong>Capacidade</strong>: Comece com 2 ou 3 discos da mesma capacidade. O ideal é ter discos maiores do que você precisa inicialmente para permitir crescimento.</li>
+<li><strong>Número</strong>: Depende da sua estratégia RAID. Para RAID 1 (espelhamento) ou ZFS, precisará de pelo menos 2 discos. Para RAID 5, 3 ou mais.</li>
+</ul>
+</li>
+<li><strong>Disco de Sistema Operativo (OS Drive)</strong>:<ul>
+<li>Um pequeno SSD (120-240 GB) ou até mesmo uma pen drive USB de boa qualidade (para sistemas baseados em Linux como TrueNAS SCALE/Core, OMV) é ideal para o sistema operativo. <strong>Nunca instale o SO no mesmo disco dos seus dados principais</strong>, pois isso anularia o benefício do RAID para os dados.</li>
+</ul>
+</li>
+<li><strong>Caixa (Case)</strong>:<ul>
+<li>Escolha uma caixa com baias de disco suficientes e bom fluxo de ar para manter os HDDs frescos. Caixas ITX ou Micro-ATX são populares para NAS.</li>
+</ul>
+</li>
+<li><strong>Fonte de Alimentação (PSU)</strong>:<ul>
+<li>Uma fonte de alimentação confiável e com classificação 80 Plus (Bronze, Gold, Platinum) é crucial para eficiência e estabilidade, especialmente para um sistema que funciona 24/7. Calcule a potência necessária com base nos seus componentes.</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 2: Escolher o Software para o Seu NAS</h2>
+<p>O software (o sistema operativo NAS) é o cérebro do seu servidor. Existem várias opções excelentes e gratuitas.</p>
+<h3>Opções de Software NAS (Gratuitas e Populares):</h3>
+<ol>
+<li><strong>TrueNAS SCALE (Baseado em Debian Linux)</strong>:<ul>
+<li><strong>Prós</strong>: Extremamente poderoso, com suporte nativo a ZFS (o sistema de ficheiros mais robusto para integridade de dados), suporte a Docker (Contêineres) e Máquinas Virtuais. Interface web rica em recursos.</li>
+<li><strong>Contras</strong>: Exige mais RAM (16GB+ para ZFS é ideal), curva de aprendizagem mais íngreme para iniciantes.</li>
+<li><strong>Ideal para</strong>: Utilizadores avançados, quem precisa de máxima integridade de dados, quer executar aplicações em contêineres/VMs.</li>
+</ul>
+</li>
+<li><strong>TrueNAS CORE (Baseado em FreeBSD)</strong>:<ul>
+<li>Similar ao SCALE, mas baseado em FreeBSD. Focado em estabilidade e ZFS.</li>
+<li><strong>Ideal para</strong>: Quem busca máxima estabilidade e só quer NAS, sem as complexidades de contêineres/VMs do Linux.</li>
+</ul>
+</li>
+<li><strong>OpenMediaVault (OMV - Baseado em Debian Linux)</strong>:<ul>
+<li><strong>Prós</strong>: Mais leve e fácil de usar que o TrueNAS, interface web limpa, extensível via plugins (Docker, Plex, etc.). Menos requisitos de hardware.</li>
+<li><strong>Contras</strong>: Não tem ZFS nativo tão bem integrado quanto o TrueNAS (usa btrfs ou mdadm para RAID), embora possa ser configurado.</li>
+<li><strong>Ideal para</strong>: Iniciantes, utilizadores com hardware mais modesto, quem quer uma solução NAS simples e funcional.</li>
+</ul>
+</li>
+<li><strong>Unraid (Baseado em Slackware Linux - Pago, mas Popular)</strong>:<ul>
+<li><strong>Prós</strong>: Ótimo para flexibilidade de discos (pode usar discos de tamanhos diferentes), excelente para servidores de mídia (Plex, Sonarr, Radarr em Docker) e VMs.</li>
+<li><strong>Contras</strong>: É pago, não usa RAID tradicional (usa um conceito de "paridade" para proteção de dados).</li>
+<li><strong>Ideal para</strong>: Quem quer um NAS com flexibilidade de discos, streaming de mídia e aplicações Docker/VMs, e está disposto a pagar.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Recomendação para Iniciantes</strong>: Comece com <strong>OpenMediaVault</strong>. É mais fácil de instalar e configurar, e você pode adicionar plugins para expandir as funcionalidades à medida que ganha confiança.</p>
+</blockquote>
+<h2>Passo 3: Instalação e Configuração Básica do Software NAS (Exemplo OMV)</h2>
+<p>Vamos usar o OpenMediaVault como exemplo de instalação básica.</p>
+<h3>1. Descarregar o ISO</h3>
+<ul>
+<li>Vá ao site oficial do OpenMediaVault: <a href="https://www.openmediavault.org/download.html">openmediavault.org/download.html</a>.</li>
+<li>Descarregue o ficheiro ISO mais recente.</li>
+</ul>
+<h3>2. Criar Mídia de Instalação</h3>
+<ul>
+<li>Use uma ferramenta como <strong>Rufus</strong> (Windows) ou <strong>Etcher</strong> (Windows/macOS/Linux) para "gravar" o ficheiro ISO numa pen drive USB (mínimo 8 GB).</li>
+</ul>
+<h3>3. Instalar o OMV no Seu Hardware NAS</h3>
+<ol>
+<li>Conecte a pen drive USB com o OMV ao seu hardware NAS.</li>
+<li>Ligue o PC e configure a BIOS para arrancar a partir da pen drive USB.</li>
+<li>Siga as instruções de instalação:<ul>
+<li>Selecione o idioma e localização.</li>
+<li><strong>Selecione o seu disco de SO</strong> (o SSD pequeno ou pen drive USB dedicada) como o destino da instalação. <strong>Cuidado para não selecionar os seus HDDs de dados!</strong></li>
+<li>Defina uma senha para o utilizador <code>root</code>.</li>
+<li>Deixe a instalação continuar. O sistema irá reiniciar.</li>
+</ul>
+</li>
+<li>Após a instalação e reinício, você verá um ecrã de login do terminal. Anote o endereço IP exibido (ex: <code>192.168.1.150</code>).</li>
+</ol>
+<h3>4. Aceder à Interface Web do OMV</h3>
+<ol>
+<li>Num computador na <strong>mesma rede</strong> que o seu NAS, abra um navegador web.</li>
+<li>Digite o endereço IP que você anotou (ex: <code>http://192.168.1.150</code>).</li>
+<li>Inicie sessão com o utilizador padrão: <code>admin</code>, senha: <code>openmediavault</code>. <strong>Altere esta senha imediatamente!</strong></li>
+</ol>
+<h3>5. Configurações Iniciais Essenciais no OMV</h3>
+<ol>
+<li><strong>Alterar Senha do Administrador</strong>: Vá em <code>System &gt; General Settings &gt; Web Administrator Password</code>.</li>
+<li><strong>Atualizar o Sistema</strong>: Vá em <code>System &gt; Update Management</code> e instale todas as atualizações disponíveis.</li>
+<li><strong>Configurar Discos Rígidos</strong>:<ul>
+<li>Vá em <code>Storage &gt; Disks</code>. Você verá todos os seus discos.</li>
+<li><strong>Limpar Discos</strong>: Para discos novos ou usados, é uma boa prática limpar todos os dados existentes. Selecione o disco e clique em <code>Wipe</code> (Limpar). Escolha <code>Quick</code> (Rápido).</li>
+<li><strong>Criar um Sistema de Ficheiros</strong>:<ul>
+<li>Vá em <code>Storage &gt; File Systems</code>.</li>
+<li>Clique em <code>Create</code> (Criar).</li>
+<li>Escolha o disco que limpou e selecione o sistema de ficheiros (ex: <code>ext4</code> é uma boa escolha para a maioria dos utilizadores).</li>
+<li>Dê um nome ao seu volume (ex: <code>DataVolume</code>).</li>
+<li>Após a criação, <strong>monte</strong> o sistema de ficheiros (selecione-o e clique em <code>Mount</code>).</li>
+</ul>
+</li>
+<li><strong>Configurar RAID (Opcional, mas Recomendado para Proteção de Dados)</strong>:<ul>
+<li>Se você tem múltiplos discos e quer proteção contra falhas, vá em <code>Storage &gt; RAID Management</code>.</li>
+<li>Clique em <code>Create</code> (Criar) e selecione o nível de RAID desejado (ex: <code>RAID 1</code> para espelhamento, <code>RAID 5</code> para paridade).</li>
+<li>Selecione os discos a serem incluídos no array RAID.</li>
+<li>Uma vez que o array RAID esteja criado, você precisará de criar um sistema de ficheiros (como <code>ext4</code>) sobre ele (em <code>File Systems</code>) e montá-lo, como faria com um único disco.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Criar Pastas Partilhadas (Shared Folders)</strong>:<ul>
+<li>Vá em <code>Access Rights Management &gt; Shared Folders</code>.</li>
+<li>Clique em <code>Create</code>.</li>
+<li>Dê um nome (ex: <code>Filmes</code>, <code>Series</code>, <code>Backups</code>).</li>
+<li>Selecione o volume onde esta pasta estará (ex: <code>DataVolume</code> ou o seu array RAID).</li>
+<li>Defina as permissões (leitura/escrita para o proprietário, etc.).</li>
+</ul>
+</li>
+<li><strong>Configurar Serviço SMB/CIFS (Partilha de Rede)</strong>:<ul>
+<li>Vá em <code>Services &gt; SMB/CIFS</code>.</li>
+<li><code>Ativar</code> o serviço.</li>
+<li>Vá para a aba <code>Shares</code> (Partilhas) e clique em <code>Add</code> (Adicionar).</li>
+<li>Selecione as <code>Pastas Partilhadas</code> que você criou.</li>
+<li><code>Privileged users only</code>: Marque se quiser restringir o acesso apenas a utilizadores que você criar.</li>
+<li><strong>Aplicar as alterações</strong>. Agora, você deve ser capaz de ver o seu NAS na sua rede doméstica (em "Rede" no Windows Explorer, ou Finder no macOS).</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 4: Adicionar Utilizadores e Acesso Remoto</h2>
+<h3>1. Criar Utilizadores (Para Acesso Controlado)</h3>
+<ul>
+<li>Vá em <code>Access Rights Management &gt; Users</code>.</li>
+<li>Clique em <code>Create</code>.</li>
+<li>Defina um <code>Nome de Utilizador</code> e uma <code>Senha</code> fortes para cada pessoa que acederá ao NAS.</li>
+<li>Dê as permissões necessárias para as pastas partilhadas.</li>
+</ul>
+<h3>2. Acesso Remoto (Avançado e com Cautela)</h3>
+<p>Aceder ao seu NAS de fora da sua rede doméstica exige cuidado.</p>
+<ul>
+<li><strong>Port Forwarding (Não Recomendado Diretamente para SMB)</strong>: Não é seguro encaminhar a porta SMB (445) diretamente para a internet.</li>
+<li><strong>VPN (Melhor Opção)</strong>: A forma <strong>mais segura</strong> de aceder ao seu NAS remotamente é configurar um servidor VPN <em>no seu NAS</em> (se o software NAS suportar, como o OpenVPN no OMV) ou no seu router. Você se conecta à VPN e, uma vez conectado, estará "dentro" da sua rede doméstica e pode aceder ao NAS com segurança.<ul>
+<li>Para configurar a sua primeira VPN, consulte <a href="configurar_a_sua_primeira_vpn.html">configurar a sua primeira vpn</a>.</li>
+</ul>
+</li>
+<li><strong>Serviços de Nuvem Privada (ex: Nextcloud em Docker no NAS)</strong>: Instale o Nextcloud (ou similar) em um contêiner Docker no seu NAS. Ele pode então ser acedido remotamente via HTTPS.</li>
+<li><strong>Serviços de Media Server (Plex, Emby, Jellyfin)</strong>: Configurar o Plex no seu NAS é a melhor forma de aceder à sua coleção de multimédia remotamente. O Plex gerencia o acesso remoto de forma segura. Para detalhes, consulte <a href="criar_um_netflix_pessoal_com_plex.html">criar um "netflix" pessoal com plex</a>.</li>
+</ul>
+<h2>Passo 5: Gerenciamento e Manutenção Essencial</h2>
+<ul>
+<li><strong>Monitorização S.M.A.R.T. dos Discos</strong>: O software NAS permite monitorizar a saúde dos seus HDDs via S.M.A.R.T. Configure alertas para ser notificado se um disco começar a falhar.<ul>
+<li>Para mais informações, consulte <a href="manter_a_saude_dos_seus_discos.html">manter a saude dos seus discos</a>.</li>
+</ul>
+</li>
+<li><strong>Backups da Configuração do NAS</strong>: Faça backups da configuração do seu software NAS. Isso poupa tempo se precisar de reinstalar o SO.</li>
+<li><strong>UPS (Uninterruptible Power Supply)</strong>: Conecte o seu NAS a uma UPS. Isso protege-o contra quedas de energia que podem corromper os seus dados ou danificar o hardware, especialmente com arrays RAID.</li>
+<li><strong>Limpeza Regular</strong>: Mantenha a caixa do NAS limpa de poeira para garantir um bom fluxo de ar e temperaturas ideais para os discos.</li>
+</ul>
+<h2>Conclusão: O Seu Centro de Dados Pessoal, Seguro e Poderoso</h2>
+<p>Montar um servidor NAS caseiro é um projeto gratificante que lhe dá <strong>controlo total</strong> sobre os seus dados. Embora exija um investimento inicial de tempo e alguma aprendizagem, os benefícios de ter armazenamento centralizado, protegido por RAID, acessível em toda a sua rede e, opcionalmente, remotamente, são imensos. Desde servir a sua biblioteca de multimédia para o Plex, a fazer backups automáticos de todos os seus dispositivos, um NAS caseiro é o coração da sua infraestrutura digital. Comece com um hardware modesto e um software amigável como o OpenMediaVault, e expanda as suas capacidades à medida que a sua experiência e necessidades crescem. A segurança e a acessibilidade dos seus dados nunca foram tão importantes, e o seu próprio NAS é a resposta definitiva.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Montar um Servidor NAS Caseiro</h1>
+<blockquote>
+<p>No cenário digital atual, onde coleções massivas de filmes, séries, músicas e fotos se acumulam, ter um local centralizado, seguro e acessível para armazená-las é fundamental. Um <strong>Servidor NAS (Network Attached Storage) Caseiro</strong> oferece a solução perfeita, transformando um computador antigo (ou hardware dedicado) num poderoso centro de armazenamento e streaming para toda a sua rede. Este guia detalhado vai levá-lo passo a passo através da escolha do hardware, a seleção do software e a configuração básica para que possa montar o seu próprio NAS, garantindo que os seus dados estejam sempre seguros e disponíveis.</p>
+</blockquote>
+<h2>O Que É um NAS e Por Que Precisa de Um em Casa?</h2>
+<p>Um <strong>NAS (Network Attached Storage)</strong> é, essencialmente, um servidor de armazenamento de ficheiros conectado à sua rede doméstica. Ele permite que múltiplos dispositivos (computadores, smartphones, smart TVs, media players) acedam e partilhem ficheiros a partir de um local centralizado.</p>
+<h3>Vantagens de Ter um NAS Caseiro:</h3>
+<ul>
+<li><strong>Armazenamento Centralizado</strong>: Todos os seus ficheiros multimédia, documentos e backups num só lugar, acessíveis por todos os dispositivos da sua rede.</li>
+<li><strong>Segurança de Dados (RAID)</strong>: A maioria dos sistemas NAS suporta configurações RAID (Redundant Array of Independent Disks), que protegem os seus dados contra falhas de disco ao duplicá-los em múltiplos drives.</li>
+<li><strong>Acesso Remoto</strong>: Aceda aos seus ficheiros de qualquer lugar com conexão à internet (com configuração adequada).</li>
+<li><strong>Streaming de Mídia</strong>: Sirva a sua coleção de filmes e séries para media players como Plex, Emby ou Jellyfin.</li>
+<li><strong>Backups Automatizados</strong>: Faça backups automáticos de todos os seus dispositivos para o NAS.</li>
+<li><strong>Consumo de Energia Eficiente</strong>: Muitas soluções NAS são projetadas para baixo consumo de energia em comparação com um PC desktop tradicional.</li>
+<li><strong>Flexibilidade</strong>: Você tem controlo total sobre o hardware, software e as suas funcionalidades.</li>
+</ul>
+<blockquote>
+<p><strong>Comparativo Rápido: NAS Comprado vs. NAS Caseiro</strong>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">NAS Comprado (Ex: Synology, QNAP)</th>
+<th style="text-align: left;">NAS Caseiro (DIY)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Custo Inicial</strong></td>
+<td style="text-align: left;">Mais alto (hardware + licença)</td>
+<td style="text-align: left;">Potencialmente mais baixo (aproveitando hardware antigo)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Facilidade de Uso</strong></td>
+<td style="text-align: left;">Mais simples, software pré-configurado</td>
+<td style="text-align: left;">Mais complexo, exige mais conhecimento técnico</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Flexibilidade</strong></td>
+<td style="text-align: left;">Limitado ao software/hardware do fabricante</td>
+<td style="text-align: left;"><strong>Máxima flexibilidade</strong>, personalizável</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Expansibilidade</strong></td>
+<td style="text-align: left;">Limitado às baias de disco disponíveis</td>
+<td style="text-align: left;">Altamente expansível (portas SATA/PCIe)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Suporte</strong></td>
+<td style="text-align: left;">Suporte técnico do fabricante</td>
+<td style="text-align: left;">Comunidade (fóruns, documentação online)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2>Passo 1: Escolher o Hardware para o Seu NAS</h2>
+<p>A base do seu NAS é o hardware. Você pode reaproveitar um PC antigo ou comprar componentes.</p>
+<h3>Componentes Essenciais:</h3>
+<ol>
+<li><strong>Placa-Mãe (Motherboard) e CPU</strong>:<ul>
+<li><strong>Requisitos Mínimos</strong>: Para um NAS básico (apenas armazenamento e talvez um streaming leve), um CPU Intel Celeron, Pentium ou um AMD Ryzen de baixo custo (ou até mesmo um Atom antigo) com 4-8 GB de RAM é suficiente.</li>
+<li><strong>Para Streaming 4K / Transcodificação</strong>: Se planeia usar o Plex para transmitir 4K (e precisar de transcodificação), precisará de um CPU mais poderoso. Processadores Intel com <strong>Quick Sync Video</strong> (ex: Intel Core de 8ª geração ou superior, ou processadores Celeron/Pentium modernos) são <em>excelentes</em> para transcodificação de hardware.</li>
+<li><strong>Motherboard</strong>: Deve ter baias SATA suficientes para os seus discos rígidos. Para RAID, quanto mais SATA, melhor.</li>
+</ul>
+</li>
+<li><strong>RAM (Memória)</strong>:<ul>
+<li><strong>Mínimo</strong>: 4 GB.</li>
+<li><strong>Recomendado</strong>: 8 GB ou mais. Se for usar ZFS (um sistema de ficheiros avançado), 16 GB ou mais é altamente recomendado para o ARC (Adaptive Replacement Cache).</li>
+<li><strong>ECC RAM (Opcional)</strong>: Para máxima integridade de dados (especialmente com ZFS), a RAM ECC (Error-Correcting Code) é ideal, mas é mais cara e exige suporte da CPU/motherboard (comum em hardware de servidor).</li>
+</ul>
+</li>
+<li><strong>Discos Rígidos (HDDs) de Armazenamento</strong>:<ul>
+<li><strong>Tipo</strong>: Opte por HDDs de "grau NAS" (ex: Western Digital Red, Seagate IronWolf). Eles são projetados para funcionamento 24/7 e têm maior durabilidade.</li>
+<li><strong>Capacidade</strong>: Comece com 2 ou 3 discos da mesma capacidade. O ideal é ter discos maiores do que você precisa inicialmente para permitir crescimento.</li>
+<li><strong>Número</strong>: Depende da sua estratégia RAID. Para RAID 1 (espelhamento) ou ZFS, precisará de pelo menos 2 discos. Para RAID 5, 3 ou mais.</li>
+</ul>
+</li>
+<li><strong>Disco de Sistema Operativo (OS Drive)</strong>:<ul>
+<li>Um pequeno SSD (120-240 GB) ou até mesmo uma pen drive USB de boa qualidade (para sistemas baseados em Linux como TrueNAS SCALE/Core, OMV) é ideal para o sistema operativo. <strong>Nunca instale o SO no mesmo disco dos seus dados principais</strong>, pois isso anularia o benefício do RAID para os dados.</li>
+</ul>
+</li>
+<li><strong>Caixa (Case)</strong>:<ul>
+<li>Escolha uma caixa com baias de disco suficientes e bom fluxo de ar para manter os HDDs frescos. Caixas ITX ou Micro-ATX são populares para NAS.</li>
+</ul>
+</li>
+<li><strong>Fonte de Alimentação (PSU)</strong>:<ul>
+<li>Uma fonte de alimentação confiável e com classificação 80 Plus (Bronze, Gold, Platinum) é crucial para eficiência e estabilidade, especialmente para um sistema que funciona 24/7. Calcule a potência necessária com base nos seus componentes.</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 2: Escolher o Software para o Seu NAS</h2>
+<p>O software (o sistema operativo NAS) é o cérebro do seu servidor. Existem várias opções excelentes e gratuitas.</p>
+<h3>Opções de Software NAS (Gratuitas e Populares):</h3>
+<ol>
+<li><strong>TrueNAS SCALE (Baseado em Debian Linux)</strong>:<ul>
+<li><strong>Prós</strong>: Extremamente poderoso, com suporte nativo a ZFS (o sistema de ficheiros mais robusto para integridade de dados), suporte a Docker (Contêineres) e Máquinas Virtuais. Interface web rica em recursos.</li>
+<li><strong>Contras</strong>: Exige mais RAM (16GB+ para ZFS é ideal), curva de aprendizagem mais íngreme para iniciantes.</li>
+<li><strong>Ideal para</strong>: Utilizadores avançados, quem precisa de máxima integridade de dados, quer executar aplicações em contêineres/VMs.</li>
+</ul>
+</li>
+<li><strong>TrueNAS CORE (Baseado em FreeBSD)</strong>:<ul>
+<li>Similar ao SCALE, mas baseado em FreeBSD. Focado em estabilidade e ZFS.</li>
+<li><strong>Ideal para</strong>: Quem busca máxima estabilidade e só quer NAS, sem as complexidades de contêineres/VMs do Linux.</li>
+</ul>
+</li>
+<li><strong>OpenMediaVault (OMV - Baseado em Debian Linux)</strong>:<ul>
+<li><strong>Prós</strong>: Mais leve e fácil de usar que o TrueNAS, interface web limpa, extensível via plugins (Docker, Plex, etc.). Menos requisitos de hardware.</li>
+<li><strong>Contras</strong>: Não tem ZFS nativo tão bem integrado quanto o TrueNAS (usa btrfs ou mdadm para RAID), embora possa ser configurado.</li>
+<li><strong>Ideal para</strong>: Iniciantes, utilizadores com hardware mais modesto, quem quer uma solução NAS simples e funcional.</li>
+</ul>
+</li>
+<li><strong>Unraid (Baseado em Slackware Linux - Pago, mas Popular)</strong>:<ul>
+<li><strong>Prós</strong>: Ótimo para flexibilidade de discos (pode usar discos de tamanhos diferentes), excelente para servidores de mídia (Plex, Sonarr, Radarr em Docker) e VMs.</li>
+<li><strong>Contras</strong>: É pago, não usa RAID tradicional (usa um conceito de "paridade" para proteção de dados).</li>
+<li><strong>Ideal para</strong>: Quem quer um NAS com flexibilidade de discos, streaming de mídia e aplicações Docker/VMs, e está disposto a pagar.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Recomendação para Iniciantes</strong>: Comece com <strong>OpenMediaVault</strong>. É mais fácil de instalar e configurar, e você pode adicionar plugins para expandir as funcionalidades à medida que ganha confiança.</p>
+</blockquote>
+<h2>Passo 3: Instalação e Configuração Básica do Software NAS (Exemplo OMV)</h2>
+<p>Vamos usar o OpenMediaVault como exemplo de instalação básica.</p>
+<h3>1. Descarregar o ISO</h3>
+<ul>
+<li>Vá ao site oficial do OpenMediaVault: <a href="https://www.openmediavault.org/download.html">openmediavault.org/download.html</a>.</li>
+<li>Descarregue o ficheiro ISO mais recente.</li>
+</ul>
+<h3>2. Criar Mídia de Instalação</h3>
+<ul>
+<li>Use uma ferramenta como <strong>Rufus</strong> (Windows) ou <strong>Etcher</strong> (Windows/macOS/Linux) para "gravar" o ficheiro ISO numa pen drive USB (mínimo 8 GB).</li>
+</ul>
+<h3>3. Instalar o OMV no Seu Hardware NAS</h3>
+<ol>
+<li>Conecte a pen drive USB com o OMV ao seu hardware NAS.</li>
+<li>Ligue o PC e configure a BIOS para arrancar a partir da pen drive USB.</li>
+<li>Siga as instruções de instalação:<ul>
+<li>Selecione o idioma e localização.</li>
+<li><strong>Selecione o seu disco de SO</strong> (o SSD pequeno ou pen drive USB dedicada) como o destino da instalação. <strong>Cuidado para não selecionar os seus HDDs de dados!</strong></li>
+<li>Defina uma senha para o utilizador <code>root</code>.</li>
+<li>Deixe a instalação continuar. O sistema irá reiniciar.</li>
+</ul>
+</li>
+<li>Após a instalação e reinício, você verá um ecrã de login do terminal. Anote o endereço IP exibido (ex: <code>192.168.1.150</code>).</li>
+</ol>
+<h3>4. Aceder à Interface Web do OMV</h3>
+<ol>
+<li>Num computador na <strong>mesma rede</strong> que o seu NAS, abra um navegador web.</li>
+<li>Digite o endereço IP que você anotou (ex: <code>http://192.168.1.150</code>).</li>
+<li>Inicie sessão com o utilizador padrão: <code>admin</code>, senha: <code>openmediavault</code>. <strong>Altere esta senha imediatamente!</strong></li>
+</ol>
+<h3>5. Configurações Iniciais Essenciais no OMV</h3>
+<ol>
+<li><strong>Alterar Senha do Administrador</strong>: Vá em <code>System &gt; General Settings &gt; Web Administrator Password</code>.</li>
+<li><strong>Atualizar o Sistema</strong>: Vá em <code>System &gt; Update Management</code> e instale todas as atualizações disponíveis.</li>
+<li><strong>Configurar Discos Rígidos</strong>:<ul>
+<li>Vá em <code>Storage &gt; Disks</code>. Você verá todos os seus discos.</li>
+<li><strong>Limpar Discos</strong>: Para discos novos ou usados, é uma boa prática limpar todos os dados existentes. Selecione o disco e clique em <code>Wipe</code> (Limpar). Escolha <code>Quick</code> (Rápido).</li>
+<li><strong>Criar um Sistema de Ficheiros</strong>:<ul>
+<li>Vá em <code>Storage &gt; File Systems</code>.</li>
+<li>Clique em <code>Create</code> (Criar).</li>
+<li>Escolha o disco que limpou e selecione o sistema de ficheiros (ex: <code>ext4</code> é uma boa escolha para a maioria dos utilizadores).</li>
+<li>Dê um nome ao seu volume (ex: <code>DataVolume</code>).</li>
+<li>Após a criação, <strong>monte</strong> o sistema de ficheiros (selecione-o e clique em <code>Mount</code>).</li>
+</ul>
+</li>
+<li><strong>Configurar RAID (Opcional, mas Recomendado para Proteção de Dados)</strong>:<ul>
+<li>Se você tem múltiplos discos e quer proteção contra falhas, vá em <code>Storage &gt; RAID Management</code>.</li>
+<li>Clique em <code>Create</code> (Criar) e selecione o nível de RAID desejado (ex: <code>RAID 1</code> para espelhamento, <code>RAID 5</code> para paridade).</li>
+<li>Selecione os discos a serem incluídos no array RAID.</li>
+<li>Uma vez que o array RAID esteja criado, você precisará de criar um sistema de ficheiros (como <code>ext4</code>) sobre ele (em <code>File Systems</code>) e montá-lo, como faria com um único disco.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Criar Pastas Partilhadas (Shared Folders)</strong>:<ul>
+<li>Vá em <code>Access Rights Management &gt; Shared Folders</code>.</li>
+<li>Clique em <code>Create</code>.</li>
+<li>Dê um nome (ex: <code>Filmes</code>, <code>Series</code>, <code>Backups</code>).</li>
+<li>Selecione o volume onde esta pasta estará (ex: <code>DataVolume</code> ou o seu array RAID).</li>
+<li>Defina as permissões (leitura/escrita para o proprietário, etc.).</li>
+</ul>
+</li>
+<li><strong>Configurar Serviço SMB/CIFS (Partilha de Rede)</strong>:<ul>
+<li>Vá em <code>Services &gt; SMB/CIFS</code>.</li>
+<li><code>Ativar</code> o serviço.</li>
+<li>Vá para a aba <code>Shares</code> (Partilhas) e clique em <code>Add</code> (Adicionar).</li>
+<li>Selecione as <code>Pastas Partilhadas</code> que você criou.</li>
+<li><code>Privileged users only</code>: Marque se quiser restringir o acesso apenas a utilizadores que você criar.</li>
+<li><strong>Aplicar as alterações</strong>. Agora, você deve ser capaz de ver o seu NAS na sua rede doméstica (em "Rede" no Windows Explorer, ou Finder no macOS).</li>
+</ul>
+</li>
+</ol>
+<h2>Passo 4: Adicionar Utilizadores e Acesso Remoto</h2>
+<h3>1. Criar Utilizadores (Para Acesso Controlado)</h3>
+<ul>
+<li>Vá em <code>Access Rights Management &gt; Users</code>.</li>
+<li>Clique em <code>Create</code>.</li>
+<li>Defina um <code>Nome de Utilizador</code> e uma <code>Senha</code> fortes para cada pessoa que acederá ao NAS.</li>
+<li>Dê as permissões necessárias para as pastas partilhadas.</li>
+</ul>
+<h3>2. Acesso Remoto (Avançado e com Cautela)</h3>
+<p>Aceder ao seu NAS de fora da sua rede doméstica exige cuidado.</p>
+<ul>
+<li><strong>Port Forwarding (Não Recomendado Diretamente para SMB)</strong>: Não é seguro encaminhar a porta SMB (445) diretamente para a internet.</li>
+<li><strong>VPN (Melhor Opção)</strong>: A forma <strong>mais segura</strong> de aceder ao seu NAS remotamente é configurar um servidor VPN <em>no seu NAS</em> (se o software NAS suportar, como o OpenVPN no OMV) ou no seu router. Você se conecta à VPN e, uma vez conectado, estará "dentro" da sua rede doméstica e pode aceder ao NAS com segurança.<ul>
+<li>Para configurar a sua primeira VPN, consulte <a href="configurar_a_sua_primeira_vpn.html">configurar a sua primeira vpn</a>.</li>
+</ul>
+</li>
+<li><strong>Serviços de Nuvem Privada (ex: Nextcloud em Docker no NAS)</strong>: Instale o Nextcloud (ou similar) em um contêiner Docker no seu NAS. Ele pode então ser acedido remotamente via HTTPS.</li>
+<li><strong>Serviços de Media Server (Plex, Emby, Jellyfin)</strong>: Configurar o Plex no seu NAS é a melhor forma de aceder à sua coleção de multimédia remotamente. O Plex gerencia o acesso remoto de forma segura. Para detalhes, consulte <a href="criar_um_netflix_pessoal_com_plex.html">criar um "netflix" pessoal com plex</a>.</li>
+</ul>
+<h2>Passo 5: Gerenciamento e Manutenção Essencial</h2>
+<ul>
+<li><strong>Monitorização S.M.A.R.T. dos Discos</strong>: O software NAS permite monitorizar a saúde dos seus HDDs via S.M.A.R.T. Configure alertas para ser notificado se um disco começar a falhar.<ul>
+<li>Para mais informações, consulte <a href="manter_a_saude_dos_seus_discos.html">manter a saude dos seus discos</a>.</li>
+</ul>
+</li>
+<li><strong>Backups da Configuração do NAS</strong>: Faça backups da configuração do seu software NAS. Isso poupa tempo se precisar de reinstalar o SO.</li>
+<li><strong>UPS (Uninterruptible Power Supply)</strong>: Conecte o seu NAS a uma UPS. Isso protege-o contra quedas de energia que podem corromper os seus dados ou danificar o hardware, especialmente com arrays RAID.</li>
+<li><strong>Limpeza Regular</strong>: Mantenha a caixa do NAS limpa de poeira para garantir um bom fluxo de ar e temperaturas ideais para os discos.</li>
+</ul>
+<h2>Conclusão: O Seu Centro de Dados Pessoal, Seguro e Poderoso</h2>
+<p>Montar um servidor NAS caseiro é um projeto gratificante que lhe dá <strong>controlo total</strong> sobre os seus dados. Embora exija um investimento inicial de tempo e alguma aprendizagem, os benefícios de ter armazenamento centralizado, protegido por RAID, acessível em toda a sua rede e, opcionalmente, remotamente, são imensos. Desde servir a sua biblioteca de multimédia para o Plex, a fazer backups automáticos de todos os seus dispositivos, um NAS caseiro é o coração da sua infraestrutura digital. Comece com um hardware modesto e um software amigável como o OpenMediaVault, e expanda as suas capacidades à medida que a sua experiência e necessidades crescem. A segurança e a acessibilidade dos seus dados nunca foram tão importantes, e o seu próprio NAS é a resposta definitiva.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Montar um Servidor NAS Caseiro';
+  const enTitle = 'Guia Completo: Montar um Servidor NAS Caseiro';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

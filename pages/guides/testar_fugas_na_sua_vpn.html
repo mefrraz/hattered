@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Testar Fugas na Sua VPN</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Testar Fugas na Sua VPN</h1>
+<blockquote>
+<p>Você confia na sua VPN para proteger a sua privacidade online, mas como pode ter <strong>certeza</strong> de que ela está realmente a funcionar? As "fugas" (leaks) podem expor o seu endereço IP real, as suas consultas DNS ou outras informações sensíveis, mesmo quando pensa que está protegido. Este guia detalhado irá mostrar-lhe como identificar e corrigir os tipos mais comuns de fugas da VPN – <strong>fugas de IP (IPv4/IPv6), fugas de DNS e fugas de WebRTC</strong> – garantindo que a sua conexão VPN é realmente segura e anónima.</p>
+</blockquote>
+<h2>Por Que Testar a Sua VPN é Crucial?</h2>
+<p>A principal função de uma VPN é criar um <strong>túnel criptografado</strong> para o seu tráfego de internet e mascarar o seu endereço IP real. No entanto, devido a falhas de software, configurações incorretas, ou limitações do sistema operativo, a sua VPN pode não estar a fornecer a proteção completa que promete.</p>
+<h3>Cenários de Fuga Comuns:</h3>
+<ul>
+<li><strong>Queda da Conexão VPN</strong>: A VPN desconecta-se, e o tráfego volta para a sua conexão não criptografada. (O Kill Switch previne isso, mas precisa de ser testado!)</li>
+<li><strong>Vazamento de DNS</strong>: As suas consultas DNS (pedidos para traduzir nomes de sites em endereços IP) são enviadas para os servidores DNS do seu ISP em vez de irem através do túnel VPN.</li>
+<li><strong>Vazamento de IPv6</strong>: Se o seu ISP usa IPv6 e a sua VPN não o suporta ou não o configura corretamente, o seu endereço IPv6 real pode ser exposto.</li>
+<li><strong>Vazamento de WebRTC</strong>: Protocolos de comunicação em tempo real (como os usados em videochamadas) podem revelar o seu IP real.</li>
+</ul>
+<blockquote>
+<p><strong>O Risco</strong>: Uma fuga significa que, apesar de usar uma VPN, a sua identidade ou os seus hábitos de navegação podem ser expostos a terceiros (ISP, sites, anunciantes, agências de monitorização).</p>
+</blockquote>
+<h2>Ferramentas Essenciais para Testes de Fuga</h2>
+<p>Existem vários websites e ferramentas dedicadas a testar a sua conexão VPN. É recomendado usar uma combinação deles para uma verificação completa.</p>
+<ul>
+<li><strong><code>whatismyip.com</code> / <code>ipinfo.io</code></strong>: Para verificar o seu endereço IP público e localização geográfica.</li>
+<li><strong><code>dnsleaktest.com</code></strong>: O padrão da indústria para testes de fugas de DNS.</li>
+<li><strong><code>browserleaks.com/webrtc</code></strong>: Para testar fugas de WebRTC.</li>
+<li><strong><code>ipleak.net</code></strong>: Uma ferramenta abrangente que testa IP, DNS, WebRTC e outros.</li>
+<li><strong><code>1.1.1.1/help</code> (Cloudflare)</strong>: Uma ferramenta simples para verificar o seu resolver DNS.</li>
+</ul>
+<h2>Passo a Passo: Como Testar a Sua VPN</h2>
+<p>Siga estes passos para uma verificação completa da sua VPN. <strong>Certifique-se de que a sua VPN está conectada antes de iniciar os testes.</strong></p>
+<h3>Teste 1: Fuga de Endereço IP (IPv4 e IPv6)</h3>
+<p>Este teste verifica se o seu endereço IP real (o que o seu ISP lhe atribuiu) está a ser exposto.</p>
+<ol>
+<li><strong>Desconecte a Sua VPN</strong>: Primeiro, visite <code>whatismyip.com</code> ou <code>ipinfo.io</code> para anotar o seu <strong>endereço IP real</strong> e a sua localização. Isso servirá como referência.</li>
+<li><strong>Conecte a Sua VPN</strong>: Ative a sua VPN e conecte-se a um servidor (de preferência, num país diferente do seu).</li>
+<li><strong>Verifique o Endereço IP Oculto</strong>: Volte a <code>whatismyip.com</code> ou <code>ipinfo.io</code>.<ul>
+<li><strong>Resultado Esperado</strong>: O endereço IP exibido e a localização devem corresponder ao <strong>servidor VPN</strong> ao qual você está conectado, e não ao seu IP real ou localização.</li>
+<li><strong>Verificação de IPv6</strong>: Se o seu ISP usa IPv6, alguns destes sites também mostrarão o seu endereço IPv6. Certifique-se de que ele não é o seu IPv6 real. Se a sua VPN não suporta IPv6, ela deve bloqueá-lo completamente ou fornecer um IPv6 do túnel VPN.</li>
+<li><strong>Se o seu IP real for exibido</strong>: Você tem uma fuga de IP.</li>
+</ul>
+</li>
+</ol>
+<h3>Teste 2: Fuga de DNS (Domain Name System)</h3>
+<p>Este teste verifica se as suas consultas DNS estão a ser resolvidas pelos servidores DNS do seu ISP, em vez dos servidores DNS da VPN.</p>
+<ol>
+<li><strong>Conecte a Sua VPN</strong>: Certifique-se de que a sua VPN está ativa.</li>
+<li><strong>Vá a <code>dnsleaktest.com</code></strong>:<ul>
+<li>Clique em <code>Standard Test</code>.</li>
+<li><strong>Resultado Esperado</strong>: Todos os servidores DNS listados devem pertencer ao seu provedor de VPN (ex: Cloudflare, Google, ou servidores específicos da sua VPN).</li>
+<li><strong>Fuga de DNS</strong>: Se você vir servidores DNS que pertencem ao seu ISP (o nome do seu ISP ou uma empresa local de telecomunicações), você tem uma fuga de DNS.</li>
+<li><strong>Teste Estendido</strong>: Para uma verificação mais aprofundada, use o <code>Extended Test</code>.</li>
+</ul>
+</li>
+<li><strong>Teste em <code>1.1.1.1/help</code> (Cloudflare)</strong>: Se você configurou o DNS Seguro (DoH/DoT), este site da Cloudflare pode confirmar se a sua conexão está a usar os seus servidores DNS.</li>
+</ol>
+<h3>Teste 3: Fuga de WebRTC (Web Real-Time Communication)</h3>
+<p>WebRTC é uma tecnologia que permite a comunicação em tempo real (como videochamadas) diretamente entre navegadores. No entanto, pode expor o seu endereço IP real.</p>
+<ol>
+<li><strong>Conecte a Sua VPN</strong>: Certifique-se de que a sua VPN está ativa.</li>
+<li><strong>Vá a <code>browserleaks.com/webrtc</code> ou <code>ipleak.net</code></strong>:<ul>
+<li>Procure pela secção "WebRTC IP Address Detection" ou "Local IP Address".</li>
+<li><strong>Resultado Esperado</strong>: Apenas o endereço IP interno da sua VPN (geralmente um IP privado como <code>10.x.x.x</code> ou <code>172.x.x.x</code>) ou o IP público da VPN deve ser exibido. <strong>Nunca</strong> o seu endereço IP público real.</li>
+<li><strong>Fuga de WebRTC</strong>: Se o seu endereço IP público real for listado como um IP local ou público, você tem uma fuga de WebRTC.</li>
+</ul>
+</li>
+</ol>
+<h2>Como Corrigir Fugas na Sua VPN</h2>
+<p>Se você detetou uma fuga, siga estas soluções.</p>
+<h3>1. Fuga de Endereço IP (IPv4/IPv6)</h3>
+<ul>
+<li><strong>Ative o Kill Switch</strong>: A solução mais comum para este problema. Vá às configurações da sua aplicação VPN e certifique-se de que o <strong>Kill Switch está ativado e configurado para bloquear todo o tráfego</strong>. Para mais detalhes, consulte o_essencial_sobre_o_kill_switch.html.</li>
+<li><strong>Reinicie a Aplicação VPN e o Sistema</strong>: Um simples reinício pode resolver problemas temporários.</li>
+<li><strong>Experimente Outro Servidor VPN</strong>: O servidor atual pode estar com problemas.</li>
+<li><strong>Mude o Protocolo VPN</strong>: Tente mudar o protocolo na sua aplicação VPN (ex: de OpenVPN UDP para OpenVPN TCP, ou para WireGuard).</li>
+<li><strong>Desative IPv6 no Sistema (Temporário)</strong>: Se a sua VPN não suporta IPv6 e você tem uma fuga de IPv6, pode desativar o IPv6 nas configurações do adaptador de rede do seu sistema operativo (Windows, macOS, Linux). Isto é uma medida paliativa e pode não ser o ideal.</li>
+</ul>
+<h3>2. Fuga de DNS</h3>
+<ul>
+<li><strong>Use os Servidores DNS da VPN</strong>: A maioria das VPNs premium configura os seus próprios servidores DNS por padrão. Verifique se essa opção está ativa nas configurações da sua VPN.</li>
+<li><strong>DNS sobre HTTPS (DoH) / DNS sobre TLS (DoT)</strong>: Configure o DoH/DoT no seu navegador (Firefox é excelente para isso) e/ou no seu sistema operativo. Isso criptografa as suas consultas DNS, mesmo antes de chegarem à VPN (ou se a VPN falhar em redirecioná-las). Para um guia detalhado, consulte aumentar_privacidade_com_dns_seguro.html.</li>
+<li><strong>Limpar Cache DNS</strong>: Por vezes, o seu sistema armazena em cache resultados DNS antigos.<ul>
+<li><strong>Windows</strong>: Abra o <code>Prompt de Comando</code> (como administrador) e digite <code>ipconfig /flushdns</code>.</li>
+<li><strong>macOS</strong>: Abra o Terminal e digite <code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code>.</li>
+<li><strong>Linux</strong>: Depende da sua distribuição (ex: <code>sudo systemctl restart systemd-resolved</code>).</li>
+</ul>
+</li>
+</ul>
+<h3>3. Fuga de WebRTC</h3>
+<ul>
+<li><strong>Desativar WebRTC no Navegador</strong>:<ul>
+<li><strong>Firefox</strong>: Digite <code>about:config</code> na barra de endereços, procure por <code>media.peerconnection.enabled</code> e defina para <code>false</code>.</li>
+<li><strong>Chrome/Chromium-based</strong>: Não há uma configuração nativa fácil. Use extensões.</li>
+</ul>
+</li>
+<li><strong>Extensões de Navegador</strong>: Instale extensões como:<ul>
+<li><strong>WebRTC Network Limiter (Chrome)</strong></li>
+<li><strong>WebRTC Leak Shield (Firefox)</strong></li>
+<li>Estas extensões tentam evitar que o WebRTC revele o seu IP.</li>
+</ul>
+</li>
+<li><strong>Considerar Navegadores Focados em Privacidade</strong>: Navegadores como Brave ou o Firefox configurado para privacidade (como no guia comparativo_de_navegadores_privados_firefox.html) têm medidas integradas contra fugas de WebRTC.</li>
+</ul>
+<h2>Prevenção de Fugas e Melhores Práticas</h2>
+<p>Uma boa prevenção é a melhor cura.</p>
+<ul>
+<li><strong>Escolha uma VPN de Reputação</strong>: Provedores de VPN premium investem em tecnologia para prevenir fugas. Evite VPNs gratuitas ou desconhecidas.</li>
+<li><strong>Mantenha o Software Atualizado</strong>: Tanto a sua aplicação VPN quanto o seu sistema operativo e navegador devem estar sempre com as últimas atualizações.</li>
+<li><strong>Use o Kill Switch Sempre</strong>: Mantenha-o ativado. É a sua linha de defesa final.</li>
+<li><strong>Bind Clientes Torrent à VPN</strong>: Para utilizadores de torrents, bindar o cliente BitTorrent à interface da VPN é a forma mais eficaz de prevenir vazamentos de IP, mesmo em caso de falha do Kill Switch. Consulte forcar_apps_a_usar_a_vpn_binding.html.</li>
+<li><strong>Teste Regularmente</strong>: Faça testes de fuga periodicamente, especialmente após atualizações de software ou mudanças na sua rede.</li>
+<li><strong>Evite o IPv6 (Se a VPN Não Suporta)</strong>: Se a sua VPN não tem suporte adequado a IPv6, desativá-lo temporariamente no seu sistema pode ser uma solução.</li>
+</ul>
+<h2>Conclusão: VPN com Confiança e Segurança Total</h2>
+<p>Testar a sua VPN para fugas não é um luxo, mas uma <strong>necessidade</strong> para qualquer pessoa que leve a sério a sua privacidade online. Endereços IP, consultas DNS e dados de WebRTC são informações sensíveis que, se expostas, podem comprometer a sua anonimidade. Ao usar as ferramentas e seguir os passos descritos neste guia, você pode identificar e corrigir as fugas mais comuns, garantindo que a sua VPN esteja a fornecer a proteção <strong>completa e ininterrupta</strong> que você espera. A sua privacidade digital vale cada teste.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Testar Fugas na Sua VPN</h1>
+<blockquote>
+<p>Você confia na sua VPN para proteger a sua privacidade online, mas como pode ter <strong>certeza</strong> de que ela está realmente a funcionar? As "fugas" (leaks) podem expor o seu endereço IP real, as suas consultas DNS ou outras informações sensíveis, mesmo quando pensa que está protegido. Este guia detalhado irá mostrar-lhe como identificar e corrigir os tipos mais comuns de fugas da VPN – <strong>fugas de IP (IPv4/IPv6), fugas de DNS e fugas de WebRTC</strong> – garantindo que a sua conexão VPN é realmente segura e anónima.</p>
+</blockquote>
+<h2>Por Que Testar a Sua VPN é Crucial?</h2>
+<p>A principal função de uma VPN é criar um <strong>túnel criptografado</strong> para o seu tráfego de internet e mascarar o seu endereço IP real. No entanto, devido a falhas de software, configurações incorretas, ou limitações do sistema operativo, a sua VPN pode não estar a fornecer a proteção completa que promete.</p>
+<h3>Cenários de Fuga Comuns:</h3>
+<ul>
+<li><strong>Queda da Conexão VPN</strong>: A VPN desconecta-se, e o tráfego volta para a sua conexão não criptografada. (O Kill Switch previne isso, mas precisa de ser testado!)</li>
+<li><strong>Vazamento de DNS</strong>: As suas consultas DNS (pedidos para traduzir nomes de sites em endereços IP) são enviadas para os servidores DNS do seu ISP em vez de irem através do túnel VPN.</li>
+<li><strong>Vazamento de IPv6</strong>: Se o seu ISP usa IPv6 e a sua VPN não o suporta ou não o configura corretamente, o seu endereço IPv6 real pode ser exposto.</li>
+<li><strong>Vazamento de WebRTC</strong>: Protocolos de comunicação em tempo real (como os usados em videochamadas) podem revelar o seu IP real.</li>
+</ul>
+<blockquote>
+<p><strong>O Risco</strong>: Uma fuga significa que, apesar de usar uma VPN, a sua identidade ou os seus hábitos de navegação podem ser expostos a terceiros (ISP, sites, anunciantes, agências de monitorização).</p>
+</blockquote>
+<h2>Ferramentas Essenciais para Testes de Fuga</h2>
+<p>Existem vários websites e ferramentas dedicadas a testar a sua conexão VPN. É recomendado usar uma combinação deles para uma verificação completa.</p>
+<ul>
+<li><strong><code>whatismyip.com</code> / <code>ipinfo.io</code></strong>: Para verificar o seu endereço IP público e localização geográfica.</li>
+<li><strong><code>dnsleaktest.com</code></strong>: O padrão da indústria para testes de fugas de DNS.</li>
+<li><strong><code>browserleaks.com/webrtc</code></strong>: Para testar fugas de WebRTC.</li>
+<li><strong><code>ipleak.net</code></strong>: Uma ferramenta abrangente que testa IP, DNS, WebRTC e outros.</li>
+<li><strong><code>1.1.1.1/help</code> (Cloudflare)</strong>: Uma ferramenta simples para verificar o seu resolver DNS.</li>
+</ul>
+<h2>Passo a Passo: Como Testar a Sua VPN</h2>
+<p>Siga estes passos para uma verificação completa da sua VPN. <strong>Certifique-se de que a sua VPN está conectada antes de iniciar os testes.</strong></p>
+<h3>Teste 1: Fuga de Endereço IP (IPv4 e IPv6)</h3>
+<p>Este teste verifica se o seu endereço IP real (o que o seu ISP lhe atribuiu) está a ser exposto.</p>
+<ol>
+<li><strong>Desconecte a Sua VPN</strong>: Primeiro, visite <code>whatismyip.com</code> ou <code>ipinfo.io</code> para anotar o seu <strong>endereço IP real</strong> e a sua localização. Isso servirá como referência.</li>
+<li><strong>Conecte a Sua VPN</strong>: Ative a sua VPN e conecte-se a um servidor (de preferência, num país diferente do seu).</li>
+<li><strong>Verifique o Endereço IP Oculto</strong>: Volte a <code>whatismyip.com</code> ou <code>ipinfo.io</code>.<ul>
+<li><strong>Resultado Esperado</strong>: O endereço IP exibido e a localização devem corresponder ao <strong>servidor VPN</strong> ao qual você está conectado, e não ao seu IP real ou localização.</li>
+<li><strong>Verificação de IPv6</strong>: Se o seu ISP usa IPv6, alguns destes sites também mostrarão o seu endereço IPv6. Certifique-se de que ele não é o seu IPv6 real. Se a sua VPN não suporta IPv6, ela deve bloqueá-lo completamente ou fornecer um IPv6 do túnel VPN.</li>
+<li><strong>Se o seu IP real for exibido</strong>: Você tem uma fuga de IP.</li>
+</ul>
+</li>
+</ol>
+<h3>Teste 2: Fuga de DNS (Domain Name System)</h3>
+<p>Este teste verifica se as suas consultas DNS estão a ser resolvidas pelos servidores DNS do seu ISP, em vez dos servidores DNS da VPN.</p>
+<ol>
+<li><strong>Conecte a Sua VPN</strong>: Certifique-se de que a sua VPN está ativa.</li>
+<li><strong>Vá a <code>dnsleaktest.com</code></strong>:<ul>
+<li>Clique em <code>Standard Test</code>.</li>
+<li><strong>Resultado Esperado</strong>: Todos os servidores DNS listados devem pertencer ao seu provedor de VPN (ex: Cloudflare, Google, ou servidores específicos da sua VPN).</li>
+<li><strong>Fuga de DNS</strong>: Se você vir servidores DNS que pertencem ao seu ISP (o nome do seu ISP ou uma empresa local de telecomunicações), você tem uma fuga de DNS.</li>
+<li><strong>Teste Estendido</strong>: Para uma verificação mais aprofundada, use o <code>Extended Test</code>.</li>
+</ul>
+</li>
+<li><strong>Teste em <code>1.1.1.1/help</code> (Cloudflare)</strong>: Se você configurou o DNS Seguro (DoH/DoT), este site da Cloudflare pode confirmar se a sua conexão está a usar os seus servidores DNS.</li>
+</ol>
+<h3>Teste 3: Fuga de WebRTC (Web Real-Time Communication)</h3>
+<p>WebRTC é uma tecnologia que permite a comunicação em tempo real (como videochamadas) diretamente entre navegadores. No entanto, pode expor o seu endereço IP real.</p>
+<ol>
+<li><strong>Conecte a Sua VPN</strong>: Certifique-se de que a sua VPN está ativa.</li>
+<li><strong>Vá a <code>browserleaks.com/webrtc</code> ou <code>ipleak.net</code></strong>:<ul>
+<li>Procure pela secção "WebRTC IP Address Detection" ou "Local IP Address".</li>
+<li><strong>Resultado Esperado</strong>: Apenas o endereço IP interno da sua VPN (geralmente um IP privado como <code>10.x.x.x</code> ou <code>172.x.x.x</code>) ou o IP público da VPN deve ser exibido. <strong>Nunca</strong> o seu endereço IP público real.</li>
+<li><strong>Fuga de WebRTC</strong>: Se o seu endereço IP público real for listado como um IP local ou público, você tem uma fuga de WebRTC.</li>
+</ul>
+</li>
+</ol>
+<h2>Como Corrigir Fugas na Sua VPN</h2>
+<p>Se você detetou uma fuga, siga estas soluções.</p>
+<h3>1. Fuga de Endereço IP (IPv4/IPv6)</h3>
+<ul>
+<li><strong>Ative o Kill Switch</strong>: A solução mais comum para este problema. Vá às configurações da sua aplicação VPN e certifique-se de que o <strong>Kill Switch está ativado e configurado para bloquear todo o tráfego</strong>. Para mais detalhes, consulte o_essencial_sobre_o_kill_switch.html.</li>
+<li><strong>Reinicie a Aplicação VPN e o Sistema</strong>: Um simples reinício pode resolver problemas temporários.</li>
+<li><strong>Experimente Outro Servidor VPN</strong>: O servidor atual pode estar com problemas.</li>
+<li><strong>Mude o Protocolo VPN</strong>: Tente mudar o protocolo na sua aplicação VPN (ex: de OpenVPN UDP para OpenVPN TCP, ou para WireGuard).</li>
+<li><strong>Desative IPv6 no Sistema (Temporário)</strong>: Se a sua VPN não suporta IPv6 e você tem uma fuga de IPv6, pode desativar o IPv6 nas configurações do adaptador de rede do seu sistema operativo (Windows, macOS, Linux). Isto é uma medida paliativa e pode não ser o ideal.</li>
+</ul>
+<h3>2. Fuga de DNS</h3>
+<ul>
+<li><strong>Use os Servidores DNS da VPN</strong>: A maioria das VPNs premium configura os seus próprios servidores DNS por padrão. Verifique se essa opção está ativa nas configurações da sua VPN.</li>
+<li><strong>DNS sobre HTTPS (DoH) / DNS sobre TLS (DoT)</strong>: Configure o DoH/DoT no seu navegador (Firefox é excelente para isso) e/ou no seu sistema operativo. Isso criptografa as suas consultas DNS, mesmo antes de chegarem à VPN (ou se a VPN falhar em redirecioná-las). Para um guia detalhado, consulte aumentar_privacidade_com_dns_seguro.html.</li>
+<li><strong>Limpar Cache DNS</strong>: Por vezes, o seu sistema armazena em cache resultados DNS antigos.<ul>
+<li><strong>Windows</strong>: Abra o <code>Prompt de Comando</code> (como administrador) e digite <code>ipconfig /flushdns</code>.</li>
+<li><strong>macOS</strong>: Abra o Terminal e digite <code>sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder</code>.</li>
+<li><strong>Linux</strong>: Depende da sua distribuição (ex: <code>sudo systemctl restart systemd-resolved</code>).</li>
+</ul>
+</li>
+</ul>
+<h3>3. Fuga de WebRTC</h3>
+<ul>
+<li><strong>Desativar WebRTC no Navegador</strong>:<ul>
+<li><strong>Firefox</strong>: Digite <code>about:config</code> na barra de endereços, procure por <code>media.peerconnection.enabled</code> e defina para <code>false</code>.</li>
+<li><strong>Chrome/Chromium-based</strong>: Não há uma configuração nativa fácil. Use extensões.</li>
+</ul>
+</li>
+<li><strong>Extensões de Navegador</strong>: Instale extensões como:<ul>
+<li><strong>WebRTC Network Limiter (Chrome)</strong></li>
+<li><strong>WebRTC Leak Shield (Firefox)</strong></li>
+<li>Estas extensões tentam evitar que o WebRTC revele o seu IP.</li>
+</ul>
+</li>
+<li><strong>Considerar Navegadores Focados em Privacidade</strong>: Navegadores como Brave ou o Firefox configurado para privacidade (como no guia comparativo_de_navegadores_privados_firefox.html) têm medidas integradas contra fugas de WebRTC.</li>
+</ul>
+<h2>Prevenção de Fugas e Melhores Práticas</h2>
+<p>Uma boa prevenção é a melhor cura.</p>
+<ul>
+<li><strong>Escolha uma VPN de Reputação</strong>: Provedores de VPN premium investem em tecnologia para prevenir fugas. Evite VPNs gratuitas ou desconhecidas.</li>
+<li><strong>Mantenha o Software Atualizado</strong>: Tanto a sua aplicação VPN quanto o seu sistema operativo e navegador devem estar sempre com as últimas atualizações.</li>
+<li><strong>Use o Kill Switch Sempre</strong>: Mantenha-o ativado. É a sua linha de defesa final.</li>
+<li><strong>Bind Clientes Torrent à VPN</strong>: Para utilizadores de torrents, bindar o cliente BitTorrent à interface da VPN é a forma mais eficaz de prevenir vazamentos de IP, mesmo em caso de falha do Kill Switch. Consulte forcar_apps_a_usar_a_vpn_binding.html.</li>
+<li><strong>Teste Regularmente</strong>: Faça testes de fuga periodicamente, especialmente após atualizações de software ou mudanças na sua rede.</li>
+<li><strong>Evite o IPv6 (Se a VPN Não Suporta)</strong>: Se a sua VPN não tem suporte adequado a IPv6, desativá-lo temporariamente no seu sistema pode ser uma solução.</li>
+</ul>
+<h2>Conclusão: VPN com Confiança e Segurança Total</h2>
+<p>Testar a sua VPN para fugas não é um luxo, mas uma <strong>necessidade</strong> para qualquer pessoa que leve a sério a sua privacidade online. Endereços IP, consultas DNS e dados de WebRTC são informações sensíveis que, se expostas, podem comprometer a sua anonimidade. Ao usar as ferramentas e seguir os passos descritos neste guia, você pode identificar e corrigir as fugas mais comuns, garantindo que a sua VPN esteja a fornecer a proteção <strong>completa e ininterrupta</strong> que você espera. A sua privacidade digital vale cada teste.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Testar Fugas na Sua VPN';
+  const enTitle = 'Guia Completo: Testar Fugas na Sua VPN';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

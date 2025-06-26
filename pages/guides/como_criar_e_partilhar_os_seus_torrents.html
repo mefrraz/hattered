@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Como Criar e Partilhar os Seus Torrents</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Como Criar e Partilhar os Seus Torrents</h1>
+<blockquote>
+<p>Partilhar conteúdo via BitTorrent é um pilar da internet descentralizada. Se você tem ficheiros grandes que deseja partilhar com amigos, família ou uma comunidade, criar o seu próprio torrent é a forma mais eficiente. Este guia detalhado irá mostrar-lhe, passo a passo, como criar ficheiros <code>.torrent</code> de forma eficaz, como partilhá-los e as melhores práticas para garantir que os seus torrents sejam bem-sucedidos e populares na rede.</p>
+</blockquote>
+<h2>Por Que Criar os Seus Próprios Torrents?</h2>
+<p>Criar um torrent não é apenas para grandes <em>uploaders</em> em trackers privados. É uma habilidade útil que permite:</p>
+<ul>
+<li><strong>Partilha de Ficheiros Grandes</strong>: Enviar ficheiros muito grandes (vídeos, coleções de fotos, backups) para várias pessoas sem precisar de serviços de armazenamento em nuvem que impõem limites de tamanho ou largura de banda.</li>
+<li><strong>Distribuição Eficiente</strong>: Permite que múltiplos utilizadores descarreguem de si (e uns dos outros) simultaneamente, aliviando a carga no seu servidor ou conexão.</li>
+<li><strong>Controlo Total</strong>: Você decide o que partilhar, quando e com quem.</li>
+<li><strong>Contribuição para a Comunidade</strong>: Em trackers privados, partilhar o seu próprio conteúdo (seja exclusivo ou de nicho) é a melhor forma de construir o seu <em>ratio</em> e reputação.</li>
+</ul>
+<blockquote>
+<p><strong>Conceito Chave</strong>: Um ficheiro <code>.torrent</code> (ou um link <code>magnet</code>) não contém o conteúdo real. Ele contém <em>metadados</em> sobre os ficheiros a serem partilhados (nomes, tamanhos, hashes para verificação de integridade) e informações sobre como encontrar os <em>peers</em> (rastreadores ou nós DHT) que têm as partes desses ficheiros.</p>
+</blockquote>
+<h2>Preparando os Ficheiros para a Criação do Torrent</h2>
+<p>Antes de criar o seu ficheiro <code>.torrent</code>, uma boa preparação é essencial para evitar problemas futuros.</p>
+<h3>1. Organize e Limpe os Seus Ficheiros</h3>
+<ul>
+<li><strong>Estrutura de Pastas</strong>: Coloque todos os ficheiros que você deseja incluir no torrent dentro de uma <strong>única pasta raiz</strong>. Por exemplo, para um álbum de música, crie <code>Nome_do_Artista_-_Nome_do_Album_Ano/</code> e coloque todas as músicas e a capa dentro dessa pasta. Para filmes, <code>Nome_do_Filme_(Ano)/Nome_do_Filme_(Ano).mkv</code>. Para séries, <code>Nome_da_Serie/Season XX/Nome_da_Serie - SXXEYY.mkv</code>.</li>
+<li><strong>Nomes Limpos</strong>: Use nomes de ficheiro e pasta claros e consistentes.<ul>
+<li>Evite caracteres especiais (<code>&lt;&gt;:"/\|?*</code>).</li>
+<li>Use <code>.</code> ou <code>_</code> para separar palavras.</li>
+<li>Inclua informações relevantes como ano, resolução, grupo de lançamento (se aplicável, para ser consistente com outros torrents).</li>
+</ul>
+</li>
+<li><strong>Remova Lixo</strong>: Certifique-se de que não há ficheiros indesejados (ex: <code>.DS_Store</code>, <code>Thumbs.db</code>, ficheiros de registo, subpastas vazias) dentro da pasta que você vai partilhar. Eles aumentam o tamanho do torrent desnecessariamente e podem ser irritantes para os descarregadores.</li>
+</ul>
+<h3>2. Verificação da Integridade (Opcional, mas Recomendado)</h3>
+<p>Se você está a partilhar ficheiros importantes, pode gerar um hash (MD5, SHA1, SHA256) do conteúdo para que outros possam verificar a integridade do download. Embora o BitTorrent faça a verificação de hash automaticamente, fornecer um hash externo pode dar confiança extra.</p>
+<h2>Criando o Ficheiro .torrent com qBittorrent</h2>
+<p>O qBittorrent, sendo um dos clientes mais populares, oferece uma ferramenta robusta e fácil de usar para criar torrents.</p>
+<h3>1. Abra a Ferramenta de Criação de Torrent</h3>
+<ul>
+<li>No qBittorrent, vá em <code>Ferramentas</code> &gt; <code>Criador de Torrents...</code> (ou <code>Ctrl+N</code>).</li>
+</ul>
+<h3>2. Selecione os Ficheiros/Pastas</h3>
+<ul>
+<li>No <code>Criador de Torrents</code>:<ul>
+<li><code>Caminho da fonte</code>: Clique em <code>Selecionar Ficheiro</code> se for um único ficheiro, ou <code>Selecionar Pasta</code> se for uma coleção de ficheiros dentro de uma pasta (que é o mais comum e recomendado).</li>
+<li>Navegue e selecione o ficheiro ou a pasta que você preparou.</li>
+</ul>
+</li>
+</ul>
+<h3>3. Adicione Rastreadores (Trackers)</h3>
+<p>Os rastreadores são servidores que ajudam os <em>peers</em> a encontrar uns aos outros.</p>
+<ul>
+<li><strong>Para Trackers Públicos (Ex: OpenTrackr, nyaa.si, etc.)</strong>:<ul>
+<li>Na secção <code>Rastreadores</code>, adicione URLs de rastreadores públicos populares (um por linha). Você pode pesquisar por "lista de rastreadores públicos" para obter os mais recentes.</li>
+<li>Exemplos de URLs de rastreadores públicos (apenas para demonstração, as URLs podem mudar e devem ser obtidas de fontes atualizadas):
+    <code>udp://tracker.opentrackr.org:1337/announce
+    udp://tracker.torrent.eu.org:451/announce
+    udp://[tracker.openbittorrent.com:6969/announce](https://tracker.openbittorrent.com:6969/announce)</code></li>
+</ul>
+</li>
+<li><strong>Para Trackers Privados</strong>:<ul>
+<li>Se você está a criar um torrent para um tracker privado, ele fornecerá um URL de rastreador <strong>específico e único</strong> para aquele torrent. <strong>Use apenas o rastreador fornecido pelo tracker privado</strong> e certifique-se de que a opção <code>Privado</code> (veja o próximo passo) está marcada. <strong>Nunca</strong> adicione rastreadores públicos a um torrent de tracker privado, pois isso pode levar ao seu banimento!</li>
+</ul>
+</li>
+</ul>
+<h3>4. Configurações Essenciais de Criação</h3>
+<ul>
+<li><strong><code>Privado</code></strong>:<ul>
+<li><strong>Marque esta caixa</strong> se o torrent for para um tracker privado. Isso impede o uso de DHT e PEX, forçando os utilizadores a conectar-se apenas através do rastreador, o que é um requisito para a maioria dos trackers privados.</li>
+<li><strong>Deixe desmarcado</strong> se o torrent for para uso público. Isso permite que DHT e PEX ajudem a encontrar <em>peers</em> mesmo se o rastreador estiver offline.</li>
+</ul>
+</li>
+<li><strong><code>Semear imediatamente</code></strong>: Marque esta caixa. Isso fará com que o qBittorrent comece a semear o torrent assim que ele for criado e adicionado, garantindo que haja <em>seeders</em> disponíveis desde o início.</li>
+<li><strong><code>Incluir ficheiros de magnet links</code></strong>: Deixe esta opção marcada. Isso permite que o torrent seja partilhado via links <code>magnet</code>, que são mais flexíveis que os ficheiros <code>.torrent</code>.</li>
+<li><strong><code>Comentário</code> (Opcional)</strong>: Adicione uma breve descrição sobre o conteúdo do torrent.</li>
+<li><strong><code>Nome do criador</code> (Opcional)</strong>: Seu nome ou apelido.</li>
+</ul>
+<h3>5. Salvar e Distribuir o Ficheiro .torrent</h3>
+<ul>
+<li>Clique em <code>Criar Torrent</code>.</li>
+<li>Escolha onde salvar o ficheiro <code>.torrent</code> no seu computador.</li>
+<li>Após a criação, o torrent será automaticamente adicionado ao seu qBittorrent e começará a <strong>semear</strong>.</li>
+</ul>
+<h3>6. Partilhando o Seu Torrent</h3>
+<p>Agora que o ficheiro <code>.torrent</code> foi criado e você está a semeá-lo, você pode partilhá-lo:</p>
+<ul>
+<li><strong>Em Sites de Torrents Públicos</strong>: Carregue o ficheiro <code>.torrent</code> para sites como o The Pirate Bay, 1337x, Nyaa.si (para anime/mangá), ou outros. Eles fornecerão um link <code>magnet</code> ou um link direto para o ficheiro <code>.torrent</code>.</li>
+<li><strong>Em Trackers Privados</strong>: Siga as instruções específicas do tracker para carregar o seu torrent. Eles geralmente têm um formulário onde você anexa o ficheiro <code>.torrent</code> e adiciona detalhes.</li>
+<li><strong>Partilha Direta</strong>: Envie o ficheiro <code>.torrent</code> por e-mail, aplicações de mensagens ou serviços de armazenamento em nuvem para quem você deseja partilhar. Ou, mais convenientemente, partilhe o <strong>link <code>magnet</code></strong> (clique com o botão direito no torrent no qBittorrent, selecione <code>Copiar Link Magnet</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Seja o Seeder Inicial (Initial Seeder)</strong>: É crucial que você permaneça online e semeeie o torrent por um tempo após a sua criação, especialmente no início. Isso garante que outros utilizadores consigam descarregar o torrent e que ele ganhe popularidade na rede. Sem <em>seeders</em> iniciais, o torrent "morre".</p>
+</blockquote>
+<h2>Melhores Práticas para um Uploader de Sucesso</h2>
+<p>Criar um torrent é o primeiro passo. Ser um bom <em>uploader</em> envolve mais do que isso.</p>
+<h3>1. Seja um Bom Seeder</h3>
+<ul>
+<li><strong>Rácio Elevado</strong>: Em trackers privados, seu <em>ratio</em> (upload/download) é tudo. Mantenha seu cliente BitTorrent a correr e os torrents a semear o máximo possível.</li>
+<li><strong>Tempo de Semeadura (Seeding Time)</strong>: Tente seedear por um longo período (ex: dias, semanas ou até meses), mesmo após o rácio mínimo ter sido atingido. Isso ajuda a manter a saúde do torrent e beneficia a comunidade.</li>
+<li><strong>Seedbox (Recomendado para Grandes Uploaders)</strong>: Se você planeia ser um <em>seeder</em> consistente ou carregar muitos torrents grandes, um <em>seedbox</em> é <strong>indispensável</strong>. É um servidor remoto de alta velocidade que faz o download e o upload 24/7, garantindo que você tenha um ótimo <em>ratio</em> sem afetar sua conexão doméstica.</li>
+</ul>
+<h3>2. Crie Torrents de Alta Qualidade</h3>
+<ul>
+<li><strong>Ficheiros Precisos</strong>: Certifique-se de que os ficheiros no seu torrent correspondem exatamente ao que você descreve.</li>
+<li><strong>Informações Claras</strong>: Forneça uma descrição detalhada do conteúdo, incluindo resolução (para vídeo), formato de áudio (para música), idioma, tamanho, etc.</li>
+<li><strong>Capturas de Ecrã (Screenshots)</strong>: Para filmes/séries, inclua screenshots para que os descarregadores possam ver a qualidade visual.</li>
+<li><strong>NFO Files</strong>: Para lançamentos de software ou mídia, inclua um ficheiro NFO que contenha todas as informações relevantes sobre o lançamento.</li>
+</ul>
+<h3>3. Gerenciamento e Manutenção</h3>
+<ul>
+<li><strong>Mantenha o qBittorrent Atualizado</strong>: Versões mais recentes trazem melhorias de desempenho e segurança.</li>
+<li><strong>Verifique a Conectividade</strong>: Certifique-se de que o seu <em>port forwarding</em> está configurado corretamente (ícone verde no qBittorrent) para garantir que você é conectável.</li>
+<li><strong>Organização da Pasta de Downloads</strong>: Use as funcionalidades de <em>hard-linking</em> do seu cliente BitTorrent (como explicado no guia <a href="poupar_espaco_com_hard_linking.html">poupar espaco com hard linking.html</a>) para mover/organizar os ficheiros para a sua biblioteca de multimédia sem parar de seedear.</li>
+<li><strong>Acompanhe o Seu Torrent</strong>: Se você carrega para um site público ou privado, acompanhe os comentários e o feedback. Esteja preparado para responder a perguntas ou corrigir problemas, se houver.</li>
+</ul>
+<h3>4. Segurança e Privacidade (Especialmente para Uploads Públicos)</h3>
+<ul>
+<li><strong>VPN Essencial</strong>: Se você está a partilhar conteúdo que possa ter implicações legais ou de direitos autorais, o uso de uma <strong>VPN confiável</strong> é <em>absolutamente crucial</em>. Ela mascarará o seu endereço IP real.</li>
+<li><strong>Kill Switch Ativado</strong>: Certifique-se de que o Kill Switch da sua VPN está ativado e a funcionar corretamente. Isso impedirá que o seu IP vaze se a conexão VPN cair.<ul>
+<li>Para mais informações, consulte <a href="o_essencial_sobre_o_kill_switch.html">o essencial sobre o kill switch.html</a>.</li>
+</ul>
+</li>
+<li><strong>Binding do Cliente Torrent à VPN</strong>: O qBittorrent permite "bindar" a sua conexão à interface da VPN. Isso garante que o cliente BitTorrent só funcione quando a VPN estiver ativa, evitando vazamentos de IP.<ul>
+<li>Para um guia detalhado, consulte <a href="forcar_apps_a_usar_a_vpn_binding.html">forcar_apps a usar a vpn binding.html</a>.</li>
+</ul>
+</li>
+</ul>
+<h2>Conclusão: De Consumidor a Contribuinte da Rede P2P</h2>
+<p>Criar e partilhar os seus próprios torrents é uma forma poderosa de se tornar um <strong>contribuinte ativo</strong> para a rede BitTorrent. Com as ferramentas certas como o qBittorrent, uma organização cuidadosa dos seus ficheiros e a adesão às melhores práticas de <em>seeding</em> e segurança, você pode garantir que os seus torrents sejam descarregados com eficiência, amplamente distribuídos e apreciados pela comunidade. Lembre-se, a qualidade do seu upload e a sua dedicação ao <em>seeding</em> são os pilares para construir uma reputação sólida e ajudar a manter a vitalidade deste método de partilha de ficheiros sem precedentes.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Como Criar e Partilhar os Seus Torrents</h1>
+<blockquote>
+<p>Partilhar conteúdo via BitTorrent é um pilar da internet descentralizada. Se você tem ficheiros grandes que deseja partilhar com amigos, família ou uma comunidade, criar o seu próprio torrent é a forma mais eficiente. Este guia detalhado irá mostrar-lhe, passo a passo, como criar ficheiros <code>.torrent</code> de forma eficaz, como partilhá-los e as melhores práticas para garantir que os seus torrents sejam bem-sucedidos e populares na rede.</p>
+</blockquote>
+<h2>Por Que Criar os Seus Próprios Torrents?</h2>
+<p>Criar um torrent não é apenas para grandes <em>uploaders</em> em trackers privados. É uma habilidade útil que permite:</p>
+<ul>
+<li><strong>Partilha de Ficheiros Grandes</strong>: Enviar ficheiros muito grandes (vídeos, coleções de fotos, backups) para várias pessoas sem precisar de serviços de armazenamento em nuvem que impõem limites de tamanho ou largura de banda.</li>
+<li><strong>Distribuição Eficiente</strong>: Permite que múltiplos utilizadores descarreguem de si (e uns dos outros) simultaneamente, aliviando a carga no seu servidor ou conexão.</li>
+<li><strong>Controlo Total</strong>: Você decide o que partilhar, quando e com quem.</li>
+<li><strong>Contribuição para a Comunidade</strong>: Em trackers privados, partilhar o seu próprio conteúdo (seja exclusivo ou de nicho) é a melhor forma de construir o seu <em>ratio</em> e reputação.</li>
+</ul>
+<blockquote>
+<p><strong>Conceito Chave</strong>: Um ficheiro <code>.torrent</code> (ou um link <code>magnet</code>) não contém o conteúdo real. Ele contém <em>metadados</em> sobre os ficheiros a serem partilhados (nomes, tamanhos, hashes para verificação de integridade) e informações sobre como encontrar os <em>peers</em> (rastreadores ou nós DHT) que têm as partes desses ficheiros.</p>
+</blockquote>
+<h2>Preparando os Ficheiros para a Criação do Torrent</h2>
+<p>Antes de criar o seu ficheiro <code>.torrent</code>, uma boa preparação é essencial para evitar problemas futuros.</p>
+<h3>1. Organize e Limpe os Seus Ficheiros</h3>
+<ul>
+<li><strong>Estrutura de Pastas</strong>: Coloque todos os ficheiros que você deseja incluir no torrent dentro de uma <strong>única pasta raiz</strong>. Por exemplo, para um álbum de música, crie <code>Nome_do_Artista_-_Nome_do_Album_Ano/</code> e coloque todas as músicas e a capa dentro dessa pasta. Para filmes, <code>Nome_do_Filme_(Ano)/Nome_do_Filme_(Ano).mkv</code>. Para séries, <code>Nome_da_Serie/Season XX/Nome_da_Serie - SXXEYY.mkv</code>.</li>
+<li><strong>Nomes Limpos</strong>: Use nomes de ficheiro e pasta claros e consistentes.<ul>
+<li>Evite caracteres especiais (<code>&lt;&gt;:"/\|?*</code>).</li>
+<li>Use <code>.</code> ou <code>_</code> para separar palavras.</li>
+<li>Inclua informações relevantes como ano, resolução, grupo de lançamento (se aplicável, para ser consistente com outros torrents).</li>
+</ul>
+</li>
+<li><strong>Remova Lixo</strong>: Certifique-se de que não há ficheiros indesejados (ex: <code>.DS_Store</code>, <code>Thumbs.db</code>, ficheiros de registo, subpastas vazias) dentro da pasta que você vai partilhar. Eles aumentam o tamanho do torrent desnecessariamente e podem ser irritantes para os descarregadores.</li>
+</ul>
+<h3>2. Verificação da Integridade (Opcional, mas Recomendado)</h3>
+<p>Se você está a partilhar ficheiros importantes, pode gerar um hash (MD5, SHA1, SHA256) do conteúdo para que outros possam verificar a integridade do download. Embora o BitTorrent faça a verificação de hash automaticamente, fornecer um hash externo pode dar confiança extra.</p>
+<h2>Criando o Ficheiro .torrent com qBittorrent</h2>
+<p>O qBittorrent, sendo um dos clientes mais populares, oferece uma ferramenta robusta e fácil de usar para criar torrents.</p>
+<h3>1. Abra a Ferramenta de Criação de Torrent</h3>
+<ul>
+<li>No qBittorrent, vá em <code>Ferramentas</code> &gt; <code>Criador de Torrents...</code> (ou <code>Ctrl+N</code>).</li>
+</ul>
+<h3>2. Selecione os Ficheiros/Pastas</h3>
+<ul>
+<li>No <code>Criador de Torrents</code>:<ul>
+<li><code>Caminho da fonte</code>: Clique em <code>Selecionar Ficheiro</code> se for um único ficheiro, ou <code>Selecionar Pasta</code> se for uma coleção de ficheiros dentro de uma pasta (que é o mais comum e recomendado).</li>
+<li>Navegue e selecione o ficheiro ou a pasta que você preparou.</li>
+</ul>
+</li>
+</ul>
+<h3>3. Adicione Rastreadores (Trackers)</h3>
+<p>Os rastreadores são servidores que ajudam os <em>peers</em> a encontrar uns aos outros.</p>
+<ul>
+<li><strong>Para Trackers Públicos (Ex: OpenTrackr, nyaa.si, etc.)</strong>:<ul>
+<li>Na secção <code>Rastreadores</code>, adicione URLs de rastreadores públicos populares (um por linha). Você pode pesquisar por "lista de rastreadores públicos" para obter os mais recentes.</li>
+<li>Exemplos de URLs de rastreadores públicos (apenas para demonstração, as URLs podem mudar e devem ser obtidas de fontes atualizadas):
+    <code>udp://tracker.opentrackr.org:1337/announce
+    udp://tracker.torrent.eu.org:451/announce
+    udp://[tracker.openbittorrent.com:6969/announce](https://tracker.openbittorrent.com:6969/announce)</code></li>
+</ul>
+</li>
+<li><strong>Para Trackers Privados</strong>:<ul>
+<li>Se você está a criar um torrent para um tracker privado, ele fornecerá um URL de rastreador <strong>específico e único</strong> para aquele torrent. <strong>Use apenas o rastreador fornecido pelo tracker privado</strong> e certifique-se de que a opção <code>Privado</code> (veja o próximo passo) está marcada. <strong>Nunca</strong> adicione rastreadores públicos a um torrent de tracker privado, pois isso pode levar ao seu banimento!</li>
+</ul>
+</li>
+</ul>
+<h3>4. Configurações Essenciais de Criação</h3>
+<ul>
+<li><strong><code>Privado</code></strong>:<ul>
+<li><strong>Marque esta caixa</strong> se o torrent for para um tracker privado. Isso impede o uso de DHT e PEX, forçando os utilizadores a conectar-se apenas através do rastreador, o que é um requisito para a maioria dos trackers privados.</li>
+<li><strong>Deixe desmarcado</strong> se o torrent for para uso público. Isso permite que DHT e PEX ajudem a encontrar <em>peers</em> mesmo se o rastreador estiver offline.</li>
+</ul>
+</li>
+<li><strong><code>Semear imediatamente</code></strong>: Marque esta caixa. Isso fará com que o qBittorrent comece a semear o torrent assim que ele for criado e adicionado, garantindo que haja <em>seeders</em> disponíveis desde o início.</li>
+<li><strong><code>Incluir ficheiros de magnet links</code></strong>: Deixe esta opção marcada. Isso permite que o torrent seja partilhado via links <code>magnet</code>, que são mais flexíveis que os ficheiros <code>.torrent</code>.</li>
+<li><strong><code>Comentário</code> (Opcional)</strong>: Adicione uma breve descrição sobre o conteúdo do torrent.</li>
+<li><strong><code>Nome do criador</code> (Opcional)</strong>: Seu nome ou apelido.</li>
+</ul>
+<h3>5. Salvar e Distribuir o Ficheiro .torrent</h3>
+<ul>
+<li>Clique em <code>Criar Torrent</code>.</li>
+<li>Escolha onde salvar o ficheiro <code>.torrent</code> no seu computador.</li>
+<li>Após a criação, o torrent será automaticamente adicionado ao seu qBittorrent e começará a <strong>semear</strong>.</li>
+</ul>
+<h3>6. Partilhando o Seu Torrent</h3>
+<p>Agora que o ficheiro <code>.torrent</code> foi criado e você está a semeá-lo, você pode partilhá-lo:</p>
+<ul>
+<li><strong>Em Sites de Torrents Públicos</strong>: Carregue o ficheiro <code>.torrent</code> para sites como o The Pirate Bay, 1337x, Nyaa.si (para anime/mangá), ou outros. Eles fornecerão um link <code>magnet</code> ou um link direto para o ficheiro <code>.torrent</code>.</li>
+<li><strong>Em Trackers Privados</strong>: Siga as instruções específicas do tracker para carregar o seu torrent. Eles geralmente têm um formulário onde você anexa o ficheiro <code>.torrent</code> e adiciona detalhes.</li>
+<li><strong>Partilha Direta</strong>: Envie o ficheiro <code>.torrent</code> por e-mail, aplicações de mensagens ou serviços de armazenamento em nuvem para quem você deseja partilhar. Ou, mais convenientemente, partilhe o <strong>link <code>magnet</code></strong> (clique com o botão direito no torrent no qBittorrent, selecione <code>Copiar Link Magnet</code>).</li>
+</ul>
+<blockquote>
+<p><strong>Seja o Seeder Inicial (Initial Seeder)</strong>: É crucial que você permaneça online e semeeie o torrent por um tempo após a sua criação, especialmente no início. Isso garante que outros utilizadores consigam descarregar o torrent e que ele ganhe popularidade na rede. Sem <em>seeders</em> iniciais, o torrent "morre".</p>
+</blockquote>
+<h2>Melhores Práticas para um Uploader de Sucesso</h2>
+<p>Criar um torrent é o primeiro passo. Ser um bom <em>uploader</em> envolve mais do que isso.</p>
+<h3>1. Seja um Bom Seeder</h3>
+<ul>
+<li><strong>Rácio Elevado</strong>: Em trackers privados, seu <em>ratio</em> (upload/download) é tudo. Mantenha seu cliente BitTorrent a correr e os torrents a semear o máximo possível.</li>
+<li><strong>Tempo de Semeadura (Seeding Time)</strong>: Tente seedear por um longo período (ex: dias, semanas ou até meses), mesmo após o rácio mínimo ter sido atingido. Isso ajuda a manter a saúde do torrent e beneficia a comunidade.</li>
+<li><strong>Seedbox (Recomendado para Grandes Uploaders)</strong>: Se você planeia ser um <em>seeder</em> consistente ou carregar muitos torrents grandes, um <em>seedbox</em> é <strong>indispensável</strong>. É um servidor remoto de alta velocidade que faz o download e o upload 24/7, garantindo que você tenha um ótimo <em>ratio</em> sem afetar sua conexão doméstica.</li>
+</ul>
+<h3>2. Crie Torrents de Alta Qualidade</h3>
+<ul>
+<li><strong>Ficheiros Precisos</strong>: Certifique-se de que os ficheiros no seu torrent correspondem exatamente ao que você descreve.</li>
+<li><strong>Informações Claras</strong>: Forneça uma descrição detalhada do conteúdo, incluindo resolução (para vídeo), formato de áudio (para música), idioma, tamanho, etc.</li>
+<li><strong>Capturas de Ecrã (Screenshots)</strong>: Para filmes/séries, inclua screenshots para que os descarregadores possam ver a qualidade visual.</li>
+<li><strong>NFO Files</strong>: Para lançamentos de software ou mídia, inclua um ficheiro NFO que contenha todas as informações relevantes sobre o lançamento.</li>
+</ul>
+<h3>3. Gerenciamento e Manutenção</h3>
+<ul>
+<li><strong>Mantenha o qBittorrent Atualizado</strong>: Versões mais recentes trazem melhorias de desempenho e segurança.</li>
+<li><strong>Verifique a Conectividade</strong>: Certifique-se de que o seu <em>port forwarding</em> está configurado corretamente (ícone verde no qBittorrent) para garantir que você é conectável.</li>
+<li><strong>Organização da Pasta de Downloads</strong>: Use as funcionalidades de <em>hard-linking</em> do seu cliente BitTorrent (como explicado no guia <a href="poupar_espaco_com_hard_linking.html">poupar espaco com hard linking.html</a>) para mover/organizar os ficheiros para a sua biblioteca de multimédia sem parar de seedear.</li>
+<li><strong>Acompanhe o Seu Torrent</strong>: Se você carrega para um site público ou privado, acompanhe os comentários e o feedback. Esteja preparado para responder a perguntas ou corrigir problemas, se houver.</li>
+</ul>
+<h3>4. Segurança e Privacidade (Especialmente para Uploads Públicos)</h3>
+<ul>
+<li><strong>VPN Essencial</strong>: Se você está a partilhar conteúdo que possa ter implicações legais ou de direitos autorais, o uso de uma <strong>VPN confiável</strong> é <em>absolutamente crucial</em>. Ela mascarará o seu endereço IP real.</li>
+<li><strong>Kill Switch Ativado</strong>: Certifique-se de que o Kill Switch da sua VPN está ativado e a funcionar corretamente. Isso impedirá que o seu IP vaze se a conexão VPN cair.<ul>
+<li>Para mais informações, consulte <a href="o_essencial_sobre_o_kill_switch.html">o essencial sobre o kill switch.html</a>.</li>
+</ul>
+</li>
+<li><strong>Binding do Cliente Torrent à VPN</strong>: O qBittorrent permite "bindar" a sua conexão à interface da VPN. Isso garante que o cliente BitTorrent só funcione quando a VPN estiver ativa, evitando vazamentos de IP.<ul>
+<li>Para um guia detalhado, consulte <a href="forcar_apps_a_usar_a_vpn_binding.html">forcar_apps a usar a vpn binding.html</a>.</li>
+</ul>
+</li>
+</ul>
+<h2>Conclusão: De Consumidor a Contribuinte da Rede P2P</h2>
+<p>Criar e partilhar os seus próprios torrents é uma forma poderosa de se tornar um <strong>contribuinte ativo</strong> para a rede BitTorrent. Com as ferramentas certas como o qBittorrent, uma organização cuidadosa dos seus ficheiros e a adesão às melhores práticas de <em>seeding</em> e segurança, você pode garantir que os seus torrents sejam descarregados com eficiência, amplamente distribuídos e apreciados pela comunidade. Lembre-se, a qualidade do seu upload e a sua dedicação ao <em>seeding</em> são os pilares para construir uma reputação sólida e ajudar a manter a vitalidade deste método de partilha de ficheiros sem precedentes.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Como Criar e Partilhar os Seus Torrents';
+  const enTitle = 'Guia Completo: Como Criar e Partilhar os Seus Torrents';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

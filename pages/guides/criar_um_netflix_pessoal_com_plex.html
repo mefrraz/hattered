@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Criar um "Netflix" Pessoal com Plex</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Criar um "Netflix" Pessoal com Plex</h1>
+<blockquote>
+<p>Cansado de depender de serviços de streaming e das suas bibliotecas em constante mudança? O <strong>Plex</strong> oferece a solução perfeita: transforme a sua vasta coleção de filmes, séries, músicas e fotos num serviço de streaming pessoal, acessível em praticamente qualquer dispositivo, em qualquer lugar do mundo. Este guia detalhado vai levá-lo passo a passo desde a configuração inicial do Plex Media Server até à otimização da sua biblioteca para uma experiência de "Netflix" verdadeiramente personalizada e poderosa.</p>
+</blockquote>
+<h2>O Que é o Plex e Por Que Ele é o Seu Cinema Particular?</h2>
+<p>O Plex é um sistema de media center que organiza as suas coleções de multimédia e as torna acessíveis através de uma interface elegante e intuitiva. Ele opera com dois componentes principais:</p>
+<ul>
+<li><strong>Plex Media Server (Servidor Plex)</strong>: O "cérebro" do sistema. É um software que você instala num computador (ou NAS) onde a sua coleção de multimédia está armazenada. Ele digitaliza os seus ficheiros, descarrega metadados (capas, sinopses, elenco, legendas) e transcodifica o conteúdo em tempo real se necessário.</li>
+<li><strong>Plex Client (Cliente Plex)</strong>: As aplicações (apps) que você usa para aceder ao seu conteúdo. Existem clientes Plex para quase todos os dispositivos imagináveis: smart TVs, smartphones (iOS/Android), tablets, consolas de jogos (PlayStation, Xbox), dispositivos de streaming (Chromecast, Apple TV, Roku, Fire TV), navegadores web e computadores desktop.</li>
+</ul>
+<h3>Vantagens de um "Netflix" Pessoal com Plex:</h3>
+<ul>
+<li><strong>Controlo Total</strong>: Você decide qual conteúdo está disponível. Ninguém remove os seus filmes favoritos da biblioteca.</li>
+<li><strong>Qualidade Máxima</strong>: Transmita os seus ficheiros na sua qualidade original (4K, áudio sem perdas), sem compressão de streaming.</li>
+<li><strong>Sem Subscrições Mensais</strong>: Uma vez configurado, o custo é o do seu hardware e armazenamento.</li>
+<li><strong>Acesso em Qualquer Lugar</strong>: Aceda à sua biblioteca de multimédia a partir de qualquer dispositivo com conexão à internet.</li>
+<li><strong>Partilha com Amigos e Família</strong>: Você pode convidar outros utilizadores para aceder à sua biblioteca.</li>
+<li><strong>Organização Impecável</strong>: O Plex organiza automaticamente os seus filmes e séries, adicionando arte, sinopses e detalhes.</li>
+</ul>
+<blockquote>
+<p><strong>Requisito Fundamental</strong>: Uma conexão de internet estável e com boa velocidade de <em>upload</em> é crucial para transmitir o seu conteúdo para fora da sua rede doméstica. Para transmitir 4K, velocidades de upload de 25-50 Mbps são recomendadas.</p>
+</blockquote>
+<h2>Passo 1: Preparar a Sua Coleção de Multimédia</h2>
+<p>A chave para o sucesso do Plex é uma <strong>organização impecável</strong> dos seus ficheiros. O Plex depende de uma boa estrutura de pastas e nomenclatura para identificar corretamente os seus filmes e séries.</p>
+<h3>Estrutura de Pastas Recomendada:</h3>
+<ul>
+<li>Crie uma pasta principal para a sua multimédia (ex: <code>D:\Media</code> no Windows, <code>/mnt/data/media</code> no Linux).</li>
+<li>Dentro desta pasta, crie subpastas para cada tipo de conteúdo:<ul>
+<li><code>\Media\Filmes\</code></li>
+<li><code>\Media\Series\</code></li>
+<li><code>\Media\Música\</code></li>
+<li><code>\Media\Fotos\</code></li>
+<li><code>\Media\Outros Videos\</code> (para vídeos pessoais, documentários, etc.)</li>
+</ul>
+</li>
+</ul>
+<h3>Nomenclatura dos Ficheiros (Essencial!):</h3>
+<ul>
+<li><strong>Filmes</strong>: <code>Nome do Filme (Ano de Lançamento)/Nome do Filme (Ano de Lançamento).extensão</code><ul>
+<li>Exemplo: <code>\Media\Filmes\Vingadores Endgame (2019)\Vingadores Endgame (2019).mkv</code></li>
+</ul>
+</li>
+<li><strong>Séries</strong>: <code>Nome da Série/Season XX/Nome da Série - SXXEYY - Título do Episódio.extensão</code><ul>
+<li><code>XX</code> é o número da temporada (sempre dois dígitos, ex: <code>01</code>, <code>02</code>).</li>
+<li><code>YY</code> é o número do episódio (sempre dois dígitos, ex: <code>01</code>, <code>05</code>, <code>10</code>).</li>
+<li>Exemplo: <code>\Media\Series\The Mandalorian\Season 01\The Mandalorian - S01E01 - Chapter 1.mkv</code></li>
+</ul>
+</li>
+<li><strong>Música</strong>: <code>Artista/Álbum/Faixa - Título.extensão</code><ul>
+<li>Exemplo: <code>\Media\Música\Pink Floyd\The Dark Side of the Moon\01 - Speak to Me.flac</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Ferramenta de Ouro</strong>: Use o <strong>FileBot</strong> para automatizar esta organização e renomeação. Ele integra-se com bases de dados online e aplica os formatos de nomeação recomendados pelo Plex. Consulte <a href="organizar_ficheiros_com_filebot.html">organizar ficheiros com filebot</a> para um guia detalhado sobre como usar o FileBot, incluindo a funcionalidade de hard-linking para otimizar o espaço em disco.</p>
+</blockquote>
+<h2>Passo 2: Instalar o Plex Media Server</h2>
+<p>O Plex Media Server precisa de ser instalado num computador que estará ligado e acessível sempre que você quiser transmitir o seu conteúdo.</p>
+<h3>1. Requisitos do Sistema</h3>
+<ul>
+<li><strong>Hardware</strong>:<ul>
+<li><strong>CPU</strong>: Mais importante para <em>transcodificação</em> (converter vídeos em tempo real para compatibilidade com dispositivos cliente). Para 1-2 streams 1080p, um CPU i3/Ryzen 3 moderno ou equivalente é suficiente. Para 4K, um CPU i5/Ryzen 5 ou i7/Ryzen 7 (com suporte a <em>hardware transcoding</em> como Intel Quick Sync ou NVIDIA NVENC) é altamente recomendado.</li>
+<li><strong>RAM</strong>: 4GB a 8GB é geralmente suficiente.</li>
+<li><strong>Armazenamento</strong>: Espaço suficiente para a sua coleção de multimédia. Discos rígidos (HDDs) são ideais para grandes volumes de armazenamento.</li>
+</ul>
+</li>
+<li><strong>Sistema Operativo</strong>: Windows, macOS, Linux (várias distros), NVIDIA SHIELD, ou um NAS (Network Attached Storage) compatível.</li>
+</ul>
+<h3>2. Download e Instalação</h3>
+<ul>
+<li>Visite o site oficial do Plex: <a href="https://www.plex.tv/media-server-downloads/">plex.tv/media-server-downloads/</a>.</li>
+<li>Baixe o instalador para o seu sistema operativo.</li>
+<li>Execute o instalador e siga as instruções. Geralmente, é um processo "próximo, próximo, concluir".</li>
+</ul>
+<h3>3. Configuração Inicial do Servidor Plex</h3>
+<p>Após a instalação, o Plex Media Server será aberto no seu navegador web (geralmente <code>http://localhost:32400/web</code>).</p>
+<ol>
+<li><strong>Crie uma Conta Plex</strong>: Se você ainda não tem uma, crie uma conta gratuita. Isso é necessário para aceder ao seu servidor remotamente e usar as funcionalidades da conta.</li>
+<li><strong>Dê um Nome ao Seu Servidor</strong>: Escolha um nome fácil de identificar.</li>
+<li><strong>Adicionar Bibliotecas</strong>: Este é o passo mais importante:<ul>
+<li>Clique em <code>Add Library</code> (Adicionar Biblioteca).</li>
+<li>Escolha o tipo de multimédia (ex: <code>Movies</code>, <code>TV Shows</code>, <code>Music</code>).</li>
+<li>Dê um nome à sua biblioteca (ex: "Meus Filmes 4K", "Séries Completas").</li>
+<li>Clique em <code>Browse for media folder</code> (Navegar para pasta de multimédia) e selecione a pasta raiz para esse tipo de conteúdo que você organizou no Passo 1 (ex: <code>D:\Media\Filmes</code>).</li>
+<li>Repita o processo para todas as suas categorias de multimédia (Séries, Música, Fotos, etc.).</li>
+<li>O Plex começará a digitalizar as suas pastas e a descarregar os metadados.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Adicionar Biblioteca no Plex" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgur.com%2FwRivFXz.jpg&f=1&nofb=1&ipt=4536e15dbd36b274bafd5ee86c5a7c5b7b5d472773d5cae172bd77db75364d7c" />
+<em>Exemplo visual da tela da biblioteca no Plex Media Server. (r/Plex)</em></p>
+<h2>Passo 3: Otimização para Desempenho e Acesso Remoto</h2>
+<p>Para uma experiência de streaming suave e acesso de qualquer lugar, algumas otimizações são cruciais.</p>
+<h3>1. Transcodificação (Transcoding)</h3>
+<p>A transcodificação é o processo de converter um ficheiro de vídeo em tempo real para um formato ou resolução que o seu dispositivo cliente possa reproduzir sem problemas. É vital para a compatibilidade e streaming remoto.</p>
+<ul>
+<li><strong>Hardware Transcoding</strong>: Acelere a transcodificação usando o hardware do seu CPU (Intel Quick Sync) ou GPU (NVIDIA NVENC/AMD VCE). Isso reduz drasticamente o uso da CPU do seu servidor.<ul>
+<li><strong>Plex Pass Necessário</strong>: A transcodificação por hardware requer uma subscrição Plex Pass (a versão paga). Se você planeia ter vários utilizadores ou transmitir em 4K, é um investimento que vale a pena.</li>
+<li><strong>Ativar</strong>: Vá em <code>Settings</code> (Configurações) &gt; <code>Transcoder</code>. Marque <code>Use hardware acceleration when available</code> (Usar aceleração de hardware quando disponível).</li>
+</ul>
+</li>
+<li><strong>Pasta de Transcodificação (Transcoder temporary directory)</strong>:<ul>
+<li>Defina uma pasta dedicada para a transcodificação temporária. Use um <strong>SSD</strong> para esta pasta, se possível, para o melhor desempenho, pois a transcodificação envolve muita leitura/escrita rápida.</li>
+<li>Vá em <code>Settings</code> &gt; <code>Transcoder</code> e defina <code>Transcoder temporary directory</code>.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Acesso Remoto (Remote Access)</h3>
+<p>Para aceder ao seu Plex de fora da sua rede doméstica.</p>
+<ul>
+<li><strong>Ativar Acesso Remoto</strong>: Vá em <code>Settings</code> &gt; <code>Remote Access</code>.</li>
+<li>Clique em <code>Enable Remote Access</code> (Ativar Acesso Remoto).</li>
+<li>O Plex tentará configurar automaticamente o <em>port forwarding</em> (porta padrão: <code>32400</code>) no seu router via UPnP.</li>
+<li><strong>Configuração Manual de Port Forwarding</strong>: Se o Plex não conseguir configurar automaticamente, você terá de fazer o <em>port forwarding</em> manualmente no seu router.<ul>
+<li>Encaminhe a porta <code>32400</code> (TCP) do seu router para o endereço IP local do seu servidor Plex.</li>
+<li>Consulte <a href="acelerar_torrents_com_port_forwarding.html">acelerar torrents com port forwarding</a> para um guia detalhado sobre port forwarding (a lógica é a mesma, apenas a porta e o IP de destino mudam).</li>
+</ul>
+</li>
+<li><strong>Verificação</strong>: Após a configuração, o status do <code>Remote Access</code> no Plex deve mostrar <code>Fully accessible outside your network</code> (Totalmente acessível fora da sua rede).</li>
+</ul>
+<blockquote>
+<p><strong>VPN e Acesso Remoto</strong>: Se o seu servidor Plex usa uma VPN, o acesso remoto pode ser complicado, pois a VPN altera o seu endereço IP público. Alguns provedores de VPN oferecem port forwarding dedicado ou IPs estáticos que podem ser usados para o Plex. Alternativamente, considere usar uma <strong>VPN com Split Tunneling</strong> (onde o tráfego do Plex Server ignora a VPN) ou configure o Plex para ignorar a VPN.</p>
+</blockquote>
+<h3>3. Otimização da Rede e Largura de Banda</h3>
+<ul>
+<li><strong>Largura de Banda de Upload</strong>: Em <code>Settings</code> &gt; <code>Remote Access</code>, defina um limite para <code>Internet upload speed</code> (Velocidade de upload da internet) se a sua internet for lenta, para evitar que o Plex consuma toda a sua largura de banda ao transmitir remotamente.</li>
+<li><strong>Qualidade Remota (Remote Quality)</strong>: Configure a qualidade de streaming padrão para utilizadores remotos em <code>Settings</code> &gt; <code>Remote Access</code>.</li>
+</ul>
+<h2>Passo 4: Convidar Utilizadores e Gerir a Sua Biblioteca</h2>
+<h3>1. Partilhar com Amigos e Família</h3>
+<ul>
+<li>Vá em <code>Settings</code> &gt; <code>Users &amp; Sharing</code> (Utilizadores e Partilha).</li>
+<li>Clique em <code>Manage Library Access</code> (Gerir Acesso à Biblioteca) e convide utilizadores usando os seus endereços de e-mail (eles precisarão de uma conta Plex gratuita).</li>
+<li>Você pode conceder acesso a bibliotecas específicas e até mesmo limitar a largura de banda para cada utilizador.</li>
+</ul>
+<h3>2. Manutenção da Biblioteca</h3>
+<ul>
+<li><strong>Scanner Agendado</strong>: Em <code>Settings</code> &gt; <code>Library</code>, defina a frequência com que o Plex deve procurar por novos ficheiros na sua biblioteca (ex: <code>scan my library periodically</code>).</li>
+<li><strong>Escanear Manualmente</strong>: Após adicionar novos ficheiros, clique no ícone de atualização ao lado do nome da sua biblioteca para forçar uma nova varredura.</li>
+<li><strong>Organização Contínua</strong>: Continue a usar o FileBot para garantir que todos os novos ficheiros estejam com a nomenclatura correta antes de adicioná-los à sua biblioteca.</li>
+</ul>
+<h2>Passo 5: Desfrutar da Sua Coleção em Qualquer Dispositivo</h2>
+<p>Com o servidor configurado e a biblioteca pronta, é hora de desfrutar!</p>
+<h3>1. Descarregar os Clientes Plex</h3>
+<ul>
+<li>Visite <a href="https://www.plex.tv/apps-devices/">plex.tv/apps-devices/</a> para descarregar o cliente Plex para os seus dispositivos favoritos.</li>
+<li>Abra a aplicação e inicie sessão com a sua conta Plex. O seu servidor deve aparecer automaticamente.</li>
+</ul>
+<h3>2. Streaming e Recursos do Cliente</h3>
+<ul>
+<li>Navegue pela sua biblioteca com capas, sinopses e trailers.</li>
+<li>O Plex rastreia o seu progresso de visualização, para que você possa continuar de onde parou em qualquer dispositivo.</li>
+<li><strong>Plex Pass (Recursos Premium)</strong>: Além da transcodificação por hardware, o Plex Pass oferece:<ul>
+<li>Downloads offline para dispositivos móveis.</li>
+<li>Recursos avançados de música (letras, metadados aprimorados).</li>
+<li>Controlo Parental (Plex Home).</li>
+<li>Visualização de TV ao vivo e gravação de DVR.</li>
+</ul>
+</li>
+</ul>
+<h2>Dicas Avançadas para um Plex Power User</h2>
+<ul>
+<li><strong>Coleções e Tags</strong>: Use as ferramentas de <code>Collections</code> e <code>Tags</code> no Plex para organizar ainda mais seus filmes e séries (ex: "Universo Marvel", "Filmes de Natal", "Melhores de 2024").</li>
+<li><strong>Qualidade Otimizada</strong>: Para ficheiros muito grandes (ex: 4K), crie versões otimizadas (<code>Optimized Versions</code>) dentro do Plex. Isso pré-transcodifica o ficheiro para um formato mais compatível, reduzindo a carga do servidor durante o streaming e melhorando a compatibilidade com dispositivos móveis.</li>
+<li><strong>Gerenciamento de Armazenamento</strong>: Monitore o espaço em disco do seu servidor Plex. Considere adicionar mais armazenamento ou usar uma solução NAS à medida que sua biblioteca cresce. Consulte <a href="manter_a_saude_dos_seus_discos.html">manter a saude dos seus discos</a> para dicas sobre saúde do disco.</li>
+<li><strong>Backups da Base de Dados Plex</strong>: Faça backups regulares da base de dados do seu Plex Server (onde os metadados são armazenados). Se o disco do servidor falhar, você não perderá toda a sua organização e progresso de visualização.</li>
+</ul>
+<h2>Conclusão: O Seu Centro de Entretenimento Definitivo</h2>
+<p>Criar e gerir um "Netflix" pessoal com o Plex é um projeto <strong>gratificante</strong> que lhe dá o controlo total sobre a sua experiência de entretenimento. Desde a organização meticulosa dos seus ficheiros com o FileBot, à configuração robusta do Plex Media Server e à otimização para acesso remoto, cada passo contribui para uma biblioteca de multimédia que é não só acessível em qualquer lugar, mas também personalizada para os seus gostos. Diga adeus às restrições dos serviços de streaming e abrace a liberdade de ter a sua própria plataforma, um verdadeiro cinema particular na palma da sua mão.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Criar um "Netflix" Pessoal com Plex</h1>
+<blockquote>
+<p>Cansado de depender de serviços de streaming e das suas bibliotecas em constante mudança? O <strong>Plex</strong> oferece a solução perfeita: transforme a sua vasta coleção de filmes, séries, músicas e fotos num serviço de streaming pessoal, acessível em praticamente qualquer dispositivo, em qualquer lugar do mundo. Este guia detalhado vai levá-lo passo a passo desde a configuração inicial do Plex Media Server até à otimização da sua biblioteca para uma experiência de "Netflix" verdadeiramente personalizada e poderosa.</p>
+</blockquote>
+<h2>O Que é o Plex e Por Que Ele é o Seu Cinema Particular?</h2>
+<p>O Plex é um sistema de media center que organiza as suas coleções de multimédia e as torna acessíveis através de uma interface elegante e intuitiva. Ele opera com dois componentes principais:</p>
+<ul>
+<li><strong>Plex Media Server (Servidor Plex)</strong>: O "cérebro" do sistema. É um software que você instala num computador (ou NAS) onde a sua coleção de multimédia está armazenada. Ele digitaliza os seus ficheiros, descarrega metadados (capas, sinopses, elenco, legendas) e transcodifica o conteúdo em tempo real se necessário.</li>
+<li><strong>Plex Client (Cliente Plex)</strong>: As aplicações (apps) que você usa para aceder ao seu conteúdo. Existem clientes Plex para quase todos os dispositivos imagináveis: smart TVs, smartphones (iOS/Android), tablets, consolas de jogos (PlayStation, Xbox), dispositivos de streaming (Chromecast, Apple TV, Roku, Fire TV), navegadores web e computadores desktop.</li>
+</ul>
+<h3>Vantagens de um "Netflix" Pessoal com Plex:</h3>
+<ul>
+<li><strong>Controlo Total</strong>: Você decide qual conteúdo está disponível. Ninguém remove os seus filmes favoritos da biblioteca.</li>
+<li><strong>Qualidade Máxima</strong>: Transmita os seus ficheiros na sua qualidade original (4K, áudio sem perdas), sem compressão de streaming.</li>
+<li><strong>Sem Subscrições Mensais</strong>: Uma vez configurado, o custo é o do seu hardware e armazenamento.</li>
+<li><strong>Acesso em Qualquer Lugar</strong>: Aceda à sua biblioteca de multimédia a partir de qualquer dispositivo com conexão à internet.</li>
+<li><strong>Partilha com Amigos e Família</strong>: Você pode convidar outros utilizadores para aceder à sua biblioteca.</li>
+<li><strong>Organização Impecável</strong>: O Plex organiza automaticamente os seus filmes e séries, adicionando arte, sinopses e detalhes.</li>
+</ul>
+<blockquote>
+<p><strong>Requisito Fundamental</strong>: Uma conexão de internet estável e com boa velocidade de <em>upload</em> é crucial para transmitir o seu conteúdo para fora da sua rede doméstica. Para transmitir 4K, velocidades de upload de 25-50 Mbps são recomendadas.</p>
+</blockquote>
+<h2>Passo 1: Preparar a Sua Coleção de Multimédia</h2>
+<p>A chave para o sucesso do Plex é uma <strong>organização impecável</strong> dos seus ficheiros. O Plex depende de uma boa estrutura de pastas e nomenclatura para identificar corretamente os seus filmes e séries.</p>
+<h3>Estrutura de Pastas Recomendada:</h3>
+<ul>
+<li>Crie uma pasta principal para a sua multimédia (ex: <code>D:\Media</code> no Windows, <code>/mnt/data/media</code> no Linux).</li>
+<li>Dentro desta pasta, crie subpastas para cada tipo de conteúdo:<ul>
+<li><code>\Media\Filmes\</code></li>
+<li><code>\Media\Series\</code></li>
+<li><code>\Media\Música\</code></li>
+<li><code>\Media\Fotos\</code></li>
+<li><code>\Media\Outros Videos\</code> (para vídeos pessoais, documentários, etc.)</li>
+</ul>
+</li>
+</ul>
+<h3>Nomenclatura dos Ficheiros (Essencial!):</h3>
+<ul>
+<li><strong>Filmes</strong>: <code>Nome do Filme (Ano de Lançamento)/Nome do Filme (Ano de Lançamento).extensão</code><ul>
+<li>Exemplo: <code>\Media\Filmes\Vingadores Endgame (2019)\Vingadores Endgame (2019).mkv</code></li>
+</ul>
+</li>
+<li><strong>Séries</strong>: <code>Nome da Série/Season XX/Nome da Série - SXXEYY - Título do Episódio.extensão</code><ul>
+<li><code>XX</code> é o número da temporada (sempre dois dígitos, ex: <code>01</code>, <code>02</code>).</li>
+<li><code>YY</code> é o número do episódio (sempre dois dígitos, ex: <code>01</code>, <code>05</code>, <code>10</code>).</li>
+<li>Exemplo: <code>\Media\Series\The Mandalorian\Season 01\The Mandalorian - S01E01 - Chapter 1.mkv</code></li>
+</ul>
+</li>
+<li><strong>Música</strong>: <code>Artista/Álbum/Faixa - Título.extensão</code><ul>
+<li>Exemplo: <code>\Media\Música\Pink Floyd\The Dark Side of the Moon\01 - Speak to Me.flac</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>Ferramenta de Ouro</strong>: Use o <strong>FileBot</strong> para automatizar esta organização e renomeação. Ele integra-se com bases de dados online e aplica os formatos de nomeação recomendados pelo Plex. Consulte <a href="organizar_ficheiros_com_filebot.html">organizar ficheiros com filebot</a> para um guia detalhado sobre como usar o FileBot, incluindo a funcionalidade de hard-linking para otimizar o espaço em disco.</p>
+</blockquote>
+<h2>Passo 2: Instalar o Plex Media Server</h2>
+<p>O Plex Media Server precisa de ser instalado num computador que estará ligado e acessível sempre que você quiser transmitir o seu conteúdo.</p>
+<h3>1. Requisitos do Sistema</h3>
+<ul>
+<li><strong>Hardware</strong>:<ul>
+<li><strong>CPU</strong>: Mais importante para <em>transcodificação</em> (converter vídeos em tempo real para compatibilidade com dispositivos cliente). Para 1-2 streams 1080p, um CPU i3/Ryzen 3 moderno ou equivalente é suficiente. Para 4K, um CPU i5/Ryzen 5 ou i7/Ryzen 7 (com suporte a <em>hardware transcoding</em> como Intel Quick Sync ou NVIDIA NVENC) é altamente recomendado.</li>
+<li><strong>RAM</strong>: 4GB a 8GB é geralmente suficiente.</li>
+<li><strong>Armazenamento</strong>: Espaço suficiente para a sua coleção de multimédia. Discos rígidos (HDDs) são ideais para grandes volumes de armazenamento.</li>
+</ul>
+</li>
+<li><strong>Sistema Operativo</strong>: Windows, macOS, Linux (várias distros), NVIDIA SHIELD, ou um NAS (Network Attached Storage) compatível.</li>
+</ul>
+<h3>2. Download e Instalação</h3>
+<ul>
+<li>Visite o site oficial do Plex: <a href="https://www.plex.tv/media-server-downloads/">plex.tv/media-server-downloads/</a>.</li>
+<li>Baixe o instalador para o seu sistema operativo.</li>
+<li>Execute o instalador e siga as instruções. Geralmente, é um processo "próximo, próximo, concluir".</li>
+</ul>
+<h3>3. Configuração Inicial do Servidor Plex</h3>
+<p>Após a instalação, o Plex Media Server será aberto no seu navegador web (geralmente <code>http://localhost:32400/web</code>).</p>
+<ol>
+<li><strong>Crie uma Conta Plex</strong>: Se você ainda não tem uma, crie uma conta gratuita. Isso é necessário para aceder ao seu servidor remotamente e usar as funcionalidades da conta.</li>
+<li><strong>Dê um Nome ao Seu Servidor</strong>: Escolha um nome fácil de identificar.</li>
+<li><strong>Adicionar Bibliotecas</strong>: Este é o passo mais importante:<ul>
+<li>Clique em <code>Add Library</code> (Adicionar Biblioteca).</li>
+<li>Escolha o tipo de multimédia (ex: <code>Movies</code>, <code>TV Shows</code>, <code>Music</code>).</li>
+<li>Dê um nome à sua biblioteca (ex: "Meus Filmes 4K", "Séries Completas").</li>
+<li>Clique em <code>Browse for media folder</code> (Navegar para pasta de multimédia) e selecione a pasta raiz para esse tipo de conteúdo que você organizou no Passo 1 (ex: <code>D:\Media\Filmes</code>).</li>
+<li>Repita o processo para todas as suas categorias de multimédia (Séries, Música, Fotos, etc.).</li>
+<li>O Plex começará a digitalizar as suas pastas e a descarregar os metadados.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="Adicionar Biblioteca no Plex" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.imgur.com%2FwRivFXz.jpg&f=1&nofb=1&ipt=4536e15dbd36b274bafd5ee86c5a7c5b7b5d472773d5cae172bd77db75364d7c" />
+<em>Exemplo visual da tela da biblioteca no Plex Media Server. (r/Plex)</em></p>
+<h2>Passo 3: Otimização para Desempenho e Acesso Remoto</h2>
+<p>Para uma experiência de streaming suave e acesso de qualquer lugar, algumas otimizações são cruciais.</p>
+<h3>1. Transcodificação (Transcoding)</h3>
+<p>A transcodificação é o processo de converter um ficheiro de vídeo em tempo real para um formato ou resolução que o seu dispositivo cliente possa reproduzir sem problemas. É vital para a compatibilidade e streaming remoto.</p>
+<ul>
+<li><strong>Hardware Transcoding</strong>: Acelere a transcodificação usando o hardware do seu CPU (Intel Quick Sync) ou GPU (NVIDIA NVENC/AMD VCE). Isso reduz drasticamente o uso da CPU do seu servidor.<ul>
+<li><strong>Plex Pass Necessário</strong>: A transcodificação por hardware requer uma subscrição Plex Pass (a versão paga). Se você planeia ter vários utilizadores ou transmitir em 4K, é um investimento que vale a pena.</li>
+<li><strong>Ativar</strong>: Vá em <code>Settings</code> (Configurações) &gt; <code>Transcoder</code>. Marque <code>Use hardware acceleration when available</code> (Usar aceleração de hardware quando disponível).</li>
+</ul>
+</li>
+<li><strong>Pasta de Transcodificação (Transcoder temporary directory)</strong>:<ul>
+<li>Defina uma pasta dedicada para a transcodificação temporária. Use um <strong>SSD</strong> para esta pasta, se possível, para o melhor desempenho, pois a transcodificação envolve muita leitura/escrita rápida.</li>
+<li>Vá em <code>Settings</code> &gt; <code>Transcoder</code> e defina <code>Transcoder temporary directory</code>.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Acesso Remoto (Remote Access)</h3>
+<p>Para aceder ao seu Plex de fora da sua rede doméstica.</p>
+<ul>
+<li><strong>Ativar Acesso Remoto</strong>: Vá em <code>Settings</code> &gt; <code>Remote Access</code>.</li>
+<li>Clique em <code>Enable Remote Access</code> (Ativar Acesso Remoto).</li>
+<li>O Plex tentará configurar automaticamente o <em>port forwarding</em> (porta padrão: <code>32400</code>) no seu router via UPnP.</li>
+<li><strong>Configuração Manual de Port Forwarding</strong>: Se o Plex não conseguir configurar automaticamente, você terá de fazer o <em>port forwarding</em> manualmente no seu router.<ul>
+<li>Encaminhe a porta <code>32400</code> (TCP) do seu router para o endereço IP local do seu servidor Plex.</li>
+<li>Consulte <a href="acelerar_torrents_com_port_forwarding.html">acelerar torrents com port forwarding</a> para um guia detalhado sobre port forwarding (a lógica é a mesma, apenas a porta e o IP de destino mudam).</li>
+</ul>
+</li>
+<li><strong>Verificação</strong>: Após a configuração, o status do <code>Remote Access</code> no Plex deve mostrar <code>Fully accessible outside your network</code> (Totalmente acessível fora da sua rede).</li>
+</ul>
+<blockquote>
+<p><strong>VPN e Acesso Remoto</strong>: Se o seu servidor Plex usa uma VPN, o acesso remoto pode ser complicado, pois a VPN altera o seu endereço IP público. Alguns provedores de VPN oferecem port forwarding dedicado ou IPs estáticos que podem ser usados para o Plex. Alternativamente, considere usar uma <strong>VPN com Split Tunneling</strong> (onde o tráfego do Plex Server ignora a VPN) ou configure o Plex para ignorar a VPN.</p>
+</blockquote>
+<h3>3. Otimização da Rede e Largura de Banda</h3>
+<ul>
+<li><strong>Largura de Banda de Upload</strong>: Em <code>Settings</code> &gt; <code>Remote Access</code>, defina um limite para <code>Internet upload speed</code> (Velocidade de upload da internet) se a sua internet for lenta, para evitar que o Plex consuma toda a sua largura de banda ao transmitir remotamente.</li>
+<li><strong>Qualidade Remota (Remote Quality)</strong>: Configure a qualidade de streaming padrão para utilizadores remotos em <code>Settings</code> &gt; <code>Remote Access</code>.</li>
+</ul>
+<h2>Passo 4: Convidar Utilizadores e Gerir a Sua Biblioteca</h2>
+<h3>1. Partilhar com Amigos e Família</h3>
+<ul>
+<li>Vá em <code>Settings</code> &gt; <code>Users &amp; Sharing</code> (Utilizadores e Partilha).</li>
+<li>Clique em <code>Manage Library Access</code> (Gerir Acesso à Biblioteca) e convide utilizadores usando os seus endereços de e-mail (eles precisarão de uma conta Plex gratuita).</li>
+<li>Você pode conceder acesso a bibliotecas específicas e até mesmo limitar a largura de banda para cada utilizador.</li>
+</ul>
+<h3>2. Manutenção da Biblioteca</h3>
+<ul>
+<li><strong>Scanner Agendado</strong>: Em <code>Settings</code> &gt; <code>Library</code>, defina a frequência com que o Plex deve procurar por novos ficheiros na sua biblioteca (ex: <code>scan my library periodically</code>).</li>
+<li><strong>Escanear Manualmente</strong>: Após adicionar novos ficheiros, clique no ícone de atualização ao lado do nome da sua biblioteca para forçar uma nova varredura.</li>
+<li><strong>Organização Contínua</strong>: Continue a usar o FileBot para garantir que todos os novos ficheiros estejam com a nomenclatura correta antes de adicioná-los à sua biblioteca.</li>
+</ul>
+<h2>Passo 5: Desfrutar da Sua Coleção em Qualquer Dispositivo</h2>
+<p>Com o servidor configurado e a biblioteca pronta, é hora de desfrutar!</p>
+<h3>1. Descarregar os Clientes Plex</h3>
+<ul>
+<li>Visite <a href="https://www.plex.tv/apps-devices/">plex.tv/apps-devices/</a> para descarregar o cliente Plex para os seus dispositivos favoritos.</li>
+<li>Abra a aplicação e inicie sessão com a sua conta Plex. O seu servidor deve aparecer automaticamente.</li>
+</ul>
+<h3>2. Streaming e Recursos do Cliente</h3>
+<ul>
+<li>Navegue pela sua biblioteca com capas, sinopses e trailers.</li>
+<li>O Plex rastreia o seu progresso de visualização, para que você possa continuar de onde parou em qualquer dispositivo.</li>
+<li><strong>Plex Pass (Recursos Premium)</strong>: Além da transcodificação por hardware, o Plex Pass oferece:<ul>
+<li>Downloads offline para dispositivos móveis.</li>
+<li>Recursos avançados de música (letras, metadados aprimorados).</li>
+<li>Controlo Parental (Plex Home).</li>
+<li>Visualização de TV ao vivo e gravação de DVR.</li>
+</ul>
+</li>
+</ul>
+<h2>Dicas Avançadas para um Plex Power User</h2>
+<ul>
+<li><strong>Coleções e Tags</strong>: Use as ferramentas de <code>Collections</code> e <code>Tags</code> no Plex para organizar ainda mais seus filmes e séries (ex: "Universo Marvel", "Filmes de Natal", "Melhores de 2024").</li>
+<li><strong>Qualidade Otimizada</strong>: Para ficheiros muito grandes (ex: 4K), crie versões otimizadas (<code>Optimized Versions</code>) dentro do Plex. Isso pré-transcodifica o ficheiro para um formato mais compatível, reduzindo a carga do servidor durante o streaming e melhorando a compatibilidade com dispositivos móveis.</li>
+<li><strong>Gerenciamento de Armazenamento</strong>: Monitore o espaço em disco do seu servidor Plex. Considere adicionar mais armazenamento ou usar uma solução NAS à medida que sua biblioteca cresce. Consulte <a href="manter_a_saude_dos_seus_discos.html">manter a saude dos seus discos</a> para dicas sobre saúde do disco.</li>
+<li><strong>Backups da Base de Dados Plex</strong>: Faça backups regulares da base de dados do seu Plex Server (onde os metadados são armazenados). Se o disco do servidor falhar, você não perderá toda a sua organização e progresso de visualização.</li>
+</ul>
+<h2>Conclusão: O Seu Centro de Entretenimento Definitivo</h2>
+<p>Criar e gerir um "Netflix" pessoal com o Plex é um projeto <strong>gratificante</strong> que lhe dá o controlo total sobre a sua experiência de entretenimento. Desde a organização meticulosa dos seus ficheiros com o FileBot, à configuração robusta do Plex Media Server e à otimização para acesso remoto, cada passo contribui para uma biblioteca de multimédia que é não só acessível em qualquer lugar, mas também personalizada para os seus gostos. Diga adeus às restrições dos serviços de streaming e abrace a liberdade de ter a sua própria plataforma, um verdadeiro cinema particular na palma da sua mão.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Criar um \"Netflix\" Pessoal com Plex';
+  const enTitle = 'Guia Completo: Criar um \"Netflix\" Pessoal com Plex';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

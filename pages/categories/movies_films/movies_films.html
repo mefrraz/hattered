@@ -2,198 +2,277 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Hattered</title>
+  <title>🎬 Filmes & Séries | Hattered</title>
   <link rel="icon" href="../../hattered_logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../categorie.css">
+  <link rel="stylesheet" href="../../assets/global.css">
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <header class="header">
       <div class="logo">
         <img src="../../hattered_logo1.svg" alt="Hattered Logo" />
         <span>Hattered</span>
       </div>
-      <div class="counter"></div>
-    </div>
+    </header>
 
-    <div class="nav">
-      <a href="../../home.html">Home</a>
-      <a href="../../guides/guides.html">Guides</a> 
-      <a href="../../../index.html">Welcome Page</a>
-    </div>
-
-    <div class="content">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="sidebar-box">
-          <div class="sidebar-title">
-            Emoji Guide <span style="font-style: italic; font-weight: normal; font-size: 0.9em;">Guia</span>
-          </div>
-          <div class="sidebar-content">
-            <div style="font-weight: bold;">❤️ Most Recommended</div>
-            <div style="font-style: italic; font-size: 0.85em;">Site mais recomendado</div>
-            <div style="margin-top: 10px; font-weight: bold;">🌐 Well Known</div>
-            <div style="font-style: italic; font-size: 0.85em;">Site bem conhecido</div>
-            <div style="margin-top: 10px; font-weight: bold;">📱 Mobile Friendly</div>
-            <div style="font-style: italic; font-size: 0.85em;">Compatível com telemóvel</div>
-          </div>
-        </div>
-
-        <div class="sidebar-box">
-          <div class="sidebar-title">Categories</div>
-          <div class="ms-sidebar-content">
-<a href="../music/music.html" class="ms-link">🎵 Music</a>
-<a href="../games/games.html" class="ms-link">🎮 Games</a>
-<a href="../education/education.html" class="ms-link">📚 Education</a>
-<a href="../software/software.html" class="ms-link">💻 Software</a>
-<a href="../graphics/graphic.html" class="ms-link">🎨 Graphics</a>
-<a href="../livetv/livetv.html" class="ms-link">📡 Live TV</a>
-<a href="../animes/animes.html" class="ms-link">🍥 Animes</a>
-<a href="../activation/activation.html" class="ms-link">🔐 Activation</a>
-          </div>
-        </div>
+    <nav class="nav">
+      <div class="desktop-nav">
+        <a href="../../home.html">🏠 Home</a>
+        <a href="../../guides/guides.html">📖 Guias</a> 
+        <a href="../../../index.html">🚀 Portal</a>
+        <a href="../../glossary.html">📚 Glossário</a>
+        <a href="../../blacklist.html">🛡️ Blacklist Checker</a>
       </div>
+      <a href="./movies_films.html" class="mobile-nav-title">🎬 Filmes & Séries</a>
+      <div id="hamburger-icon" class="hamburger-icon">
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </nav>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <h2>🎬 Movies & Series</h2>
+    <main class="content">
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Guia de Emojis</div>
+          <div class="sidebar-content">
+            <div style="font-weight: bold;">❤️ Mais Recomendado</div>
+            <div style="margin-top: 10px; font-weight: bold;">🌐 Bem Conhecido</div>
+            <div style="margin-top: 10px; font-weight: bold;">📱 Otimizado para Móvel</div>
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Categorias</div>
+          <div class="ms-sidebar-content">
+            <a href="./movies_films.html" class="ms-link active">🎬 Filmes & Séries</a>
+            <a href="../music/music.html" class="ms-link">🎵 Música</a>
+            <a href="../games/games.html" class="ms-link">🎮 Jogos</a>
+            <a href="../education/education.html" class="ms-link">📚 Educação</a>
+            <a href="../software/software.html" class="ms-link">💻 Software</a>
+            <a href="../graphics/graphic.html" class="ms-link">🎨 Gráficos</a>
+            <a href="../livetv/livetv.html" class="ms-link">📡 TV ao Vivo</a>
+            <a href="../animes/animes.html" class="ms-link">🍥 Animes</a>
+            <a href="../activation/activation.html" class="ms-link">🔐 Ativação</a>
+          </div>
+        </div>
+      </aside>
 
-        <!-- Download Section -->
-        <h3 class="category-title toggle-header" onclick="toggleTable(this)">
-          Download
-          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5H7z" />
-          </svg>
+      <!-- ======================================================= -->
+      <!-- CONTEÚDO DA PÁGINA DE FILMES & SÉRIES -->
+      <!-- ======================================================= -->
+      <section class="main-content">
+        <h2 class="page-title">🎬 Filmes & Séries</h2>
+        <p class="page-description description-desktop">
+          Encontre os melhores sites para download e streaming de filmes e séries em alta qualidade.
+        </p>
+        <p class="page-description description-mobile">
+          Sites para download e streaming.
+        </p>
+        
+        <h3 class="category-title toggle-header" onclick="toggleContent(this)">
+          <span>Download</span>
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z" /></svg>
         </h3>
         <div class="toggle-content">
           <table class="site-table">
             <thead>
               <tr>
-                <th width="50%">Site</th>
-                <th>Status</th>
-                <th>Blocked</th>
-                <th>Action</th>
+                <th width="25%">Nome</th>
+                <th width="35%">Palavras-chave</th>
+                <th width="40%">Ação</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a href="https://yts.mx/" class="site-name" target="_blank">❤️ 🌐 📱 YTS</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://yts.mx/" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://yts.mx/">
+                <td><span class="site-name">❤️ 🌐 📱 YTS</span></td>
+                <td><span class="keywords">Filmes, Torrents, HD</span></td>
+                <td class="action-cell">
+                  <a href="https://yts.mx/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/yts.mx" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=YTS.mx+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://eztv.re/" class="site-name" target="_blank">❤️ 🌐 EZTV</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://eztv.re/" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://eztv.re/">
+                <td><span class="site-name">❤️ 🌐 EZTV</span></td>
+                <td><span class="keywords">Séries, TV, Torrents</span></td>
+                <td class="action-cell">
+                  <a href="https://eztv.re/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/eztv.re" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=EZTV+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://watchsomuch.to/" class="site-name" target="_blank">❤️ 📱 WatchSoMuch</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://watchsomuch.to/" class="btn-main" target="_blank">Main</a></td>
+               <tr data-link="https://watchsomuch.to/">
+                <td><span class="site-name">❤️ 📱 WatchSoMuch</span></td>
+                <td><span class="keywords">Filmes, Séries, DDL</span></td>
+                <td class="action-cell">
+                  <a href="https://watchsomuch.to/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/watchsomuch.to" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=WatchSoMuch+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://rarbg.unblockninja.com/" class="site-name" target="_blank">RARBG</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://rarbg.unblockninja.com/" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://rarbg.unblockninja.com/">
+                <td><span class="site-name">RARBG</span></td>
+                <td><span class="keywords">Torrent, Filmes, Séries</span></td>
+                <td class="action-cell">
+                  <a href="https://rarbg.unblockninja.com/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/rarbg.unblockninja.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=RARBG+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://www.speedtorrent.com/" class="site-name" target="_blank">SpeedTorrent</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://www.speedtorrent.com/" class="btn-main" target="_blank">Main</a></td>
-              </tr>
-              <tr>
-                <td><a href="https://btdig.com/" class="site-name" target="_blank">BTDigg</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://btdig.com/" class="btn-main" target="_blank">Main</a></td>
-              </tr>
-              <tr>
-                <td><a href="https://olamovies.help/" class="site-name" target="_blank">Ola Movies</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://olamovies.help/" class="btn-main" target="_blank">Main</a></td>
-              </tr>
-              <tr>
-                <td><a href="https://ddlbase.com/" class="site-name" target="_blank">DDL Base</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://ddlbase.com/" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://olamovies.homes/">
+                <td><span class="site-name">Ola Movies</span></td>
+                <td><span class="keywords">DDL, Bollywood, Hollywood</span></td>
+                <td class="action-cell">
+                  <a href="https://olamovies.homes/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/olamovies.homes" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=Ola+Movies+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <!-- Streaming Section -->
-        <h3 class="category-title toggle-header" onclick="toggleTable(this)">
-          Streaming
-          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5H7z" />
-          </svg>
+        <h3 class="category-title toggle-header" onclick="toggleContent(this)">
+          <span>Streaming</span>
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z" /></svg>
         </h3>
         <div class="toggle-content">
           <table class="site-table">
             <thead>
               <tr>
-                <th width="50%">Site</th>
-                <th>Status</th>
-                <th>Blocked</th>
-                <th>Action</th>
+                <th width="25%">Nome</th>
+                <th width="35%">Palavras-chave</th>
+                <th width="40%">Ação</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><a href="https://tv.cross.moe/" class="site-name" target="_blank">❤️ crosstv</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://tv.cross.moe/" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://tv.cross.moe/">
+                <td><span class="site-name">❤️ crosstv</span></td>
+                <td><span class="keywords">Streaming, Anime, Filmes</span></td>
+                <td class="action-cell">
+                  <a href="https://tv.cross.moe/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/tv.cross.moe" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=crosstv+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://nunflix.org/" class="site-name" target="_blank">❤️ Nunflix</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://nunflix.org/" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://nunflix.org/">
+                <td><span class="site-name">❤️ Nunflix</span></td>
+                <td><span class="keywords">PT-BR, Filmes, Séries</span></td>
+                <td class="action-cell">
+                  <a href="https://nunflix.org/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/nunflix.org" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=Nunflix+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://bingewatch.to/home" class="site-name" target="_blank">Binge Watch</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://bingewatch.to/home" class="btn-main" target="_blank">Main</a></td>
+              <tr data-link="https://bingewatch.to/home">
+                <td><span class="site-name">Binge Watch</span></td>
+                <td><span class="keywords">Streaming, Grátis, Filmes</span></td>
+                <td class="action-cell">
+                  <a href="https://bingewatch.to/home" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/bingewatch.to" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=Binge+Watch+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
-              <tr>
-                <td><a href="https://catflix.su/home/" class="site-name" target="_blank">catflix</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://catflix.su/home/" class="btn-main" target="_blank">Main</a></td>
-              </tr>
-              <tr>
-                <td><a href="https://nepu.to/" class="site-name" target="_blank">NEPU Stream</a></td>
-                <td>Online</td>
-                <td class="visits">Unlocked</td>
-                <td><a href="https://nepu.to/" class="btn-main" target="_blank">Main</a></td>
+               <tr data-link="https://nepu.to/">
+                <td><span class="site-name">NEPU Stream</span></td>
+                <td><span class="keywords">Streaming, Filmes, Séries</span></td>
+                <td class="action-cell">
+                  <a href="https://nepu.to/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/nepu.to" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=NEPU+Stream+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div> <!-- Fecha main-content -->
-    </div> <!-- Fecha content -->
+      </section>
+      <!-- ======================================================= -->
+      <!-- FIM DO CONTEÚDO ESPECÍFICO -->
+      <!-- ======================================================= -->
+    </main>
 
-    <div class="footer">
-      &copy; 2025 Hattered. Todos os direitos reservados.
-    </div>
-  </div> <!-- Fecha container -->
+    <footer class="footer">
+        Hattered | made by frraz    </footer>
+  </div>
+
+  <div id="overlay"></div>
+  <div id="mobile-sidebar" class="mobile-sidebar">
+      <button id="close-btn">&times;</button>
+      <h4>Páginas</h4>
+      <a href="../../home.html">🏠 Home</a>
+      <a href="../../guides/guides.html">📖 Guias</a>
+      <a href="../../../index.html">🚀 Portal</a>
+      <a href="../../glossary.html">📚 Glossário</a>
+      <a href="../../blacklist.html">🛡️ Blacklist Checker</a>
+
+      <h4>Categorias</h4>
+      <a href="./movies_films.html">🎬 Filmes & Séries</a>
+      <a href="../music/music.html">🎵 Música</a>
+      <a href="../games/games.html">🎮 Jogos</a>
+      <a href="../education/education.html">📚 Educação</a>
+      <a href="../software/software.html">💻 Software</a>
+      <a href="../graphics/graphic.html">🎨 Gráficos</a>
+      <a href="../livetv/livetv.html">📡 TV ao Vivo</a>
+      <a href="../animes/animes.html">🍥 Animes</a>
+      <a href="../activation/activation.html">🔐 Ativação</a>
+  </div>
+
+  <div id="orientation-warning">
+      <div class="warning-content">
+          <p>Para a melhor experiência, recomendamos que utilize este site com o dispositivo na horizontal.</p>
+          <button id="dismiss-warning-btn">Eu entendo</button>
+      </div>
+  </div>
 
   <script>
-    function toggleTable(header) {
+    // Função para expandir/recolher secções
+    function toggleContent(header) {
       const icon = header.querySelector(".toggle-icon");
       const content = header.nextElementSibling;
       content.classList.toggle("open");
       icon.classList.toggle("rotate");
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('close-btn');
+        const body = document.body;
+        
+        // Funções para abrir/fechar a barra lateral móvel
+        const openSidebar = () => { mobileSidebar.classList.add('open'); overlay.classList.add('open'); body.classList.add('sidebar-open'); };
+        const closeSidebar = () => { mobileSidebar.classList.remove('open'); overlay.classList.remove('open'); body.classList.remove('sidebar-open'); };
+        
+        if (hamburgerIcon) hamburgerIcon.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+        
+        // Adiciona funcionalidade de clique às linhas da tabela em ecrãs pequenos
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.site-table tr[data-link]').forEach(row => {
+                row.addEventListener('click', (e) => {
+                    // Impede a navegação se o clique for num botão dentro da linha
+                    if (e.target.closest('a') === null) {
+                        const link = row.getAttribute('data-link');
+                        if (link) {
+                            window.open(link, '_blank');
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Aviso de orientação do dispositivo
+        if(document.getElementById('dismiss-warning-btn')) {
+            document.getElementById('dismiss-warning-btn').addEventListener('click', function() {
+                document.getElementById('orientation-warning').style.display = 'none';
+            });
+        }
+    });
   </script>
+
+  <script src="../../assets/emogi.js" defer></script>
+
 </body>
 </html>

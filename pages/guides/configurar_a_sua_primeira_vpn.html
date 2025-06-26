@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt"> <head>
+<meta charset="utf-8"/>
+<link rel="icon" href="../hattered_logo.svg" type="image/svg+xml" />
+<title>Guia Completo: Configurar a Sua Primeira VPN</title>
+
+<link rel="stylesheet" href="../assets/global.css">
+<style>
+    /* O seu CSS de base para os guias */
+    body, html {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333333;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* ======================================================= */
+    /* OPÇÃO PARA ESCONDER OS BOTÕES DE TRADUÇÃO */
+    /* Este bloco de estilo não é mais estritamente necessário se os botões forem removidos */
+    /* Mas é mantido para consistência e caso se queira reativar a funcionalidade via CSS */
+    /* ======================================================= */
+    .language-switcher.hidden {
+        display: none;
+    }
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .language-switcher button {
+      background-color: #c33;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-switcher button:hover {
+      background-color: #a02828;
+    }
+    .language-switcher button.active {
+        background-color: #a02828;
+    }
+
+    .content {
+      display: block;
+      margin-top: 20px;
+    }
+    .main-content {
+      width: 100%;
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: #333333;
+    }
+
+    .main-content h1 {
+      font-size: 28px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      /* Removida a borda inferior do H1 para eliminar a "barra cinza" */
+      /* border-bottom: 2px solid #c33; */
+      padding-bottom: 10px;
+      color: #c33;
+      font-weight: bold;
+    }
+    .main-content h2 {
+      font-size: 24px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #333333;
+    }
+    .main-content h3 {
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 8px;
+      color: #333333;
+    }
+
+    .main-content p {
+      line-height: 1.7;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 16px;
+      word-spacing: 0.05em;
+    }
+
+    .main-content strong {
+        font-weight: bold;
+    }
+    .main-content em {
+        font-style: italic;
+    }
+
+    .main-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .main-content ul, .main-content ol {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding-left: 25px;
+    }
+    .main-content ul li, .main-content ol li {
+      margin-bottom: 5px;
+      line-height: 1.6;
+      word-spacing: 0.05em;
+    }
+
+    /* Estilos básicos para tabelas */
+    .main-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .main-content th, .main-content td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+    .main-content th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+        color: #555;
+    }
+    .main-content tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+    .main-content a {
+      color: #c33;
+      text-decoration: none;
+    }
+    .main-content a:not(.back-button):hover {
+      text-decoration: underline;
+    }
+
+    .main-content blockquote {
+        border-left: 4px solid #c33;
+        margin: 20px 0;
+        padding: 10px 20px;
+        background-color: #f9f9f9;
+        font-style: italic;
+        line-height: 1.7;
+        word-spacing: 0.02em;
+    }
+    .main-content blockquote p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .main-content em p {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 8px 15px;
+      border: 1.5px solid #c33;
+      border-radius: 5px;
+      color: #c33;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .back-button:hover {
+      background-color: #c33;
+      color: white;
+      text-decoration: none;
+    }
+
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <div class="content">
+    <div class="main-content">
+      <a class="back-button" href="guides.html" id="back-button">← Voltar para Guias</a> <div id="content-en" class="lang-content">
+        <h1>Guia Completo: Configurar a Sua Primeira VPN</h1>
+<blockquote>
+<p>Uma <strong>VPN (Virtual Private Network)</strong> é a sua ferramenta mais poderosa para garantir privacidade e segurança online, mascarando o seu endereço IP e criptografando todo o seu tráfego de internet. Se é novo no mundo das VPNs, este guia detalhado irá levá-lo passo a passo através da escolha do provedor certo, instalação, configuração inicial e otimização para que possa navegar, fazer streaming e partilhar ficheiros com total tranquilidade.</p>
+</blockquote>
+<hr />
+<h2>O Que é Uma VPN e Por Que Precisa Dela?</h2>
+<p>Imagine a internet como uma estrada pública. Sem uma VPN, o seu ISP (Provedor de Serviços de Internet) e outros observadores podem ver o "carro" (o seu dispositivo), o "condutor" (você), o "destino" (os sites que visita) e o "conteúdo" (os seus dados não criptografados).</p>
+<p>Uma VPN cria um <strong>túnel seguro e criptografado</strong> entre o seu dispositivo e um servidor remoto operado pelo provedor da VPN. Todo o seu tráfego de internet passa por este túnel. Para o resto do mundo online, o seu tráfego parece vir do endereço IP do servidor VPN, não do seu.</p>
+<h3>Benefícios Essenciais de Usar uma VPN:</h3>
+<ul>
+<li><strong>Privacidade Aprimorada</strong>: Oculta o seu endereço IP real de sites, serviços e, crucialmente, do seu ISP.</li>
+<li><strong>Segurança Reforçada</strong>: Criptografa os seus dados, protegendo-os de interceções, especialmente em redes Wi-Fi públicas.</li>
+<li><strong>Acesso a Conteúdo Restrito</strong>: Contorna bloqueios geográficos para aceder a serviços de streaming, sites ou aplicações que não estão disponíveis na sua região.</li>
+<li><strong>Evitar a Limitação de Tráfego (Throttling)</strong>: ISPs não conseguem ver o tipo de tráfego (ex: torrents, streaming) e, portanto, não podem limitar a sua velocidade se virem atividades específicas.</li>
+<li><strong>Segurança em Redes Públicas</strong>: Protege os seus dados em hotspots Wi-Fi inseguros.</li>
+</ul>
+<blockquote>
+<p><strong>Importante</strong>: Nem todas as VPNs são criadas iguais. Uma VPN gratuita pode comprometer a sua privacidade, vender os seus dados ou ter velocidades lentas. Para segurança e privacidade reais, invista numa <strong>VPN paga e de confiança</strong>.</p>
+</blockquote>
+<h2>Passo 1: Escolher o Provedor de VPN Certo</h2>
+<p>Esta é a decisão mais importante. A sua VPN é a sua linha de defesa.</p>
+<h3>Fatores a Considerar ao Escolher uma VPN:</h3>
+<ol>
+<li><strong>Política de Não Registos (No-Logs Policy)</strong>: O provedor promete não registar a sua atividade online (histórico de navegação, endereços IP). Procure por empresas que tenham as suas políticas auditadas por terceiros independentes. Este é um aspeto <strong>crítico</strong> para a privacidade.</li>
+<li><strong>Recursos Essenciais</strong>:<ul>
+<li><strong>Kill Switch</strong>: <strong>Absolutamente essencial.</strong> Bloqueia o tráfego de internet se a VPN cair, prevenindo vazamentos de IP.</li>
+<li><strong>Proteção contra Vazamento de DNS/IPv6</strong>: Garante que o seu IP real e as suas consultas DNS não vazem.</li>
+<li><strong>Suporte a P2P/Torrents</strong>: Se você planeia usar torrents, certifique-se de que a VPN permite (e, idealmente, otimiza) o tráfego P2P.</li>
+<li><strong>Split Tunneling (Opcional)</strong>: Permite que algumas aplicações usem a VPN enquanto outras acedem à internet diretamente.</li>
+</ul>
+</li>
+<li><strong>Localização e Número de Servidores</strong>: Uma vasta rede de servidores em várias localizações significa mais opções para contornar restrições e, potencialmente, melhores velocidades.</li>
+<li><strong>Velocidade e Desempenho</strong>: VPNs premium oferecem altas velocidades, mas sempre haverá uma ligeira queda devido à criptografia. Leia análises e, se possível, teste o serviço.</li>
+<li><strong>Custo e Garantia de Reembolso</strong>: Compare os preços e procure provedores que ofereçam uma garantia de reembolso (geralmente 30 dias) para que possa testar sem risco.</li>
+<li><strong>Compatibilidade e Facilidade de Uso</strong>: Verifique se a VPN oferece aplicações para todos os seus dispositivos (Windows, macOS, Linux, Android, iOS, routers). As aplicações devem ser intuitivas.</li>
+<li><strong>Reputação e Suporte ao Cliente</strong>: Pesquise avaliações independentes e a qualidade do suporte.</li>
+</ol>
+<blockquote>
+<p><strong>Recomendação Genérica</strong>: Provedores como NordVPN, ExpressVPN, Surfshark, Private Internet Access (PIA) são consistentemente bem avaliados na comunidade por suas políticas de privacidade e recursos.</p>
+</blockquote>
+<h2>Passo 2: Instalação da Aplicação VPN</h2>
+<p>Uma vez escolhido o provedor, a instalação é o próximo passo.</p>
+<ol>
+<li><strong>Descarregue a Aplicação</strong>: Vá ao site oficial do provedor de VPN e descarregue a aplicação para o seu sistema operativo (Windows, macOS, Linux, Android, iOS).</li>
+<li><strong>Instale a Aplicação</strong>: Siga as instruções do instalador. Geralmente, é um processo simples de "próximo, próximo, concluir".</li>
+<li><strong>Inicie Sessão</strong>: Abra a aplicação VPN e inicie sessão com as credenciais que você criou ao se registar.</li>
+</ol>
+<h2>Passo 3: Configuração Inicial Essencial</h2>
+<p>Agora que a aplicação está instalada, vamos configurar as definições mais importantes.</p>
+<h3>1. Seleção de Servidor</h3>
+<ul>
+<li>A maioria das aplicações VPN tem um botão "Conectar" que o conecta automaticamente ao servidor mais rápido ou mais próximo.</li>
+<li>Para contornar restrições geográficas, você precisará selecionar um servidor na localização desejada (ex: para aceder a um serviço de streaming dos EUA, escolha um servidor nos EUA).</li>
+<li><strong>Dica de Velocidade</strong>: Geralmente, servidores fisicamente mais próximos de você (ou menos congestionados) oferecerão as melhores velocidades. Experimente diferentes servidores.</li>
+</ul>
+<h3>2. Ativar o Kill Switch</h3>
+<p>Esta é uma configuração <strong>crítica</strong> para a sua privacidade.</p>
+<ul>
+<li><strong>Localização</strong>: Dentro das <code>Configurações</code> da aplicação VPN, procure por <code>Kill Switch</code>, <code>Network Lock</code> ou <code>Parar Rede se VPN Cair</code>.</li>
+<li><strong>Ativar</strong>: Marque a caixa para ativá-lo.</li>
+<li><strong>Modo</strong>: Se houver opções, escolha o modo mais restritivo, que bloqueia todo o tráfego de internet se a VPN cair.</li>
+<li>Para um guia detalhado sobre o Kill Switch, consulte <a href="o_essencial_sobre_o_kill_switch.html">o essencial sobre o kill switch</a>.</li>
+</ul>
+<h3>3. Verificar Proteção contra Vazamento de DNS/IPv6</h3>
+<p>A maioria das VPNs premium ativa a proteção contra vazamentos de DNS e IPv6 por padrão.</p>
+<ul>
+<li><strong>Verificação</strong>: Em <code>Configurações</code>, procure por <code>DNS Leak Protection</code> ou <code>IPv6 Leak Protection</code>. Certifique-se de que estão ativados.</li>
+<li>Para uma camada extra de DNS seguro, pode configurar DNS-over-HTTPS (DoH) ou DNS-over-TLS (DoT) no seu sistema operativo ou navegador. Consulte <a href="aumentar_privacidade_com_dns_seguro.html">aumentar privacidade com dns seguro.html</a>.</li>
+</ul>
+<h3>4. Protocolo VPN</h3>
+<p>A maioria dos utilizadores pode deixar a seleção do protocolo em "Automático", mas é bom conhecer as opções:</p>
+<ul>
+<li><strong>WireGuard</strong>: O protocolo mais recente e geralmente o mais rápido e seguro.</li>
+<li><strong>OpenVPN (TCP/UDP)</strong>: Um protocolo robusto e de código aberto, amplamente utilizado. UDP é geralmente mais rápido que TCP.</li>
+<li><strong>IKEv2/IPSec</strong>: Rápido e bom para dispositivos móveis, pois lida bem com mudanças de rede.</li>
+<li><strong>PPTP/L2TP/SSTP</strong>: Mais antigos e menos seguros. Evite-os se a privacidade for uma preocupação.</li>
+</ul>
+<h2>Passo 4: Testar a Sua VPN e Garantir a Segurança</h2>
+<p>Depois de configurar, teste a sua VPN para garantir que está a funcionar corretamente.</p>
+<h3>1. Teste de Endereço IP</h3>
+<ul>
+<li>Conecte-se à sua VPN.</li>
+<li>Abra o seu navegador e visite um site como <a href="https://www.whatismyip.com/">whatismyip.com</a>.</li>
+<li>O endereço IP exibido deve ser o do servidor VPN que você selecionou, e não o seu IP real. A localização geográfica também deve corresponder ao servidor VPN.</li>
+</ul>
+<h3>2. Teste de Vazamento de DNS (DNS Leak Test)</h3>
+<ul>
+<li>Vá a um site como <a href="https://www.dnsleaktest.com/">dnsleaktest.com</a> e execute um <code>Standard Test</code> ou <code>Extended Test</code>.</li>
+<li>Os servidores DNS que aparecem devem pertencer ao seu provedor de VPN (ou ao seu provedor de DNS seguro, como Cloudflare, se configurado separadamente). Se você vir os servidores DNS do seu ISP, você tem um vazamento de DNS.</li>
+</ul>
+<h3>3. Teste do Kill Switch</h3>
+<ul>
+<li>Conecte-se à sua VPN.</li>
+<li>Verifique o seu IP em <a href="https://www.whatismyip.com/">whatismyip.com</a>.</li>
+<li>Desconecte <em>fisicamente</em> a sua conexão de internet (desligue o Wi-Fi ou remova o cabo Ethernet).</li>
+<li>Tente aceder a um site. Se o Kill Switch estiver a funcionar, você não deve conseguir aceder à internet. Reconecte-se à internet.</li>
+</ul>
+<h2>Passo 5: Otimização para Uso Específico (Torrents e Plex)</h2>
+<h3>1. Configuração para Torrents</h3>
+<p>Se você planeia usar torrents, esta etapa é <strong>crucial</strong>.</p>
+<ul>
+<li><strong>Kill Switch Ativado</strong>: Já mencionado, mas vital.</li>
+<li><strong>Binding do Cliente BitTorrent</strong>: Para a máxima segurança, configure o seu cliente BitTorrent (ex: qBittorrent) para "bindar" à interface da sua VPN. Isso garante que o cliente só opera quando a VPN está ativa.<ul>
+<li>Para um guia detalhado, consulte <a href="forcar_apps_a_usar_a_vpn_binding.html">forcar apps a usar a vpn binding.html</a>.</li>
+</ul>
+</li>
+<li><strong>Port Forwarding na VPN (Se Necessário)</strong>: Alguns provedores de VPN oferecem port forwarding dedicado ou permitem que você abra portas para melhorar as velocidades de torrent. Consulte o suporte do seu provedor.</li>
+</ul>
+<h3>2. Configuração para Plex ou Acesso Remoto</h3>
+<p>Se você usa um servidor de mídia (como Plex) no mesmo computador que a VPN, pode haver conflitos com o acesso remoto.</p>
+<ul>
+<li><strong>Split Tunneling</strong>: Se sua VPN oferece <em>split tunneling</em>, você pode configurar o Plex Media Server (o executável) para <strong>ignorar a VPN</strong> e aceder à internet diretamente, permitindo o acesso remoto sem problemas.</li>
+<li><strong>Port Forwarding da VPN</strong>: Se a sua VPN não oferece split tunneling, você precisará de um provedor que suporte port forwarding para a porta do Plex (geralmente <code>32400</code>).</li>
+<li>Para detalhes sobre como configurar o Plex, consulte <a href="criar_um_netflix_pessoal_com_plex.html">criar um netflix pessoal com plex.html</a>.</li>
+</ul>
+<h2>Manutenção e Melhores Práticas</h2>
+<ul>
+<li><strong>Mantenha a Aplicação VPN Atualizada</strong>: Sempre instale as últimas atualizações da sua aplicação VPN para garantir a segurança e as melhores funcionalidades.</li>
+<li><strong>Atualize o Sistema Operativo e o Navegador</strong>: Software desatualizado pode conter vulnerabilidades que uma VPN não pode cobrir.</li>
+<li><strong>Use Senhas Fortes</strong>: A VPN protege a sua conexão, mas não as suas contas. Use senhas fortes e 2FA.</li>
+<li><strong>Esteja Atento</strong>: Se notar uma queda de velocidade significativa, ou comportamento estranho, verifique o status da sua VPN e faça os testes novamente.</li>
+</ul>
+<h2>Conclusão: A Sua Porta de Entrada para a Internet Segura e Privada</h2>
+<p>Configurar a sua primeira VPN é um passo <strong>transformador</strong> para qualquer pessoa que valorize a sua privacidade e segurança online. Ao escolher um provedor de renome, ativar o Kill Switch, testar as suas configurações e integrar a VPN nas suas atividades de alto risco (como torrents), você estará a construir uma base sólida para uma experiência de internet mais <strong>livre, segura e anónima</strong>. Invista nesse conhecimento e desfrute da tranquilidade que uma VPN bem configurada pode oferecer.</p>
+      </div>
+
+      <div id="content-pt" class="lang-content">
+        <h1>Guia Completo: Configurar a Sua Primeira VPN</h1>
+<blockquote>
+<p>Uma <strong>VPN (Virtual Private Network)</strong> é a sua ferramenta mais poderosa para garantir privacidade e segurança online, mascarando o seu endereço IP e criptografando todo o seu tráfego de internet. Se é novo no mundo das VPNs, este guia detalhado irá levá-lo passo a passo através da escolha do provedor certo, instalação, configuração inicial e otimização para que possa navegar, fazer streaming e partilhar ficheiros com total tranquilidade.</p>
+</blockquote>
+<h2>O Que é Uma VPN e Por Que Precisa Dela?</h2>
+<p>Imagine a internet como uma estrada pública. Sem uma VPN, o seu ISP (Provedor de Serviços de Internet) e outros observadores podem ver o "carro" (o seu dispositivo), o "condutor" (você), o "destino" (os sites que visita) e o "conteúdo" (os seus dados não criptografados).</p>
+<p>Uma VPN cria um <strong>túnel seguro e criptografado</strong> entre o seu dispositivo e um servidor remoto operado pelo provedor da VPN. Todo o seu tráfego de internet passa por este túnel. Para o resto do mundo online, o seu tráfego parece vir do endereço IP do servidor VPN, não do seu.</p>
+<h3>Benefícios Essenciais de Usar uma VPN:</h3>
+<ul>
+<li><strong>Privacidade Aprimorada</strong>: Oculta o seu endereço IP real de sites, serviços e, crucialmente, do seu ISP.</li>
+<li><strong>Segurança Reforçada</strong>: Criptografa os seus dados, protegendo-os de interceções, especialmente em redes Wi-Fi públicas.</li>
+<li><strong>Acesso a Conteúdo Restrito</strong>: Contorna bloqueios geográficos para aceder a serviços de streaming, sites ou aplicações que não estão disponíveis na sua região.</li>
+<li><strong>Evitar a Limitação de Tráfego (Throttling)</strong>: ISPs não conseguem ver o tipo de tráfego (ex: torrents, streaming) e, portanto, não podem limitar a sua velocidade se virem atividades específicas.</li>
+<li><strong>Segurança em Redes Públicas</strong>: Protege os seus dados em hotspots Wi-Fi inseguros.</li>
+</ul>
+<blockquote>
+<p><strong>Importante</strong>: Nem todas as VPNs são criadas iguais. Uma VPN gratuita pode comprometer a sua privacidade, vender os seus dados ou ter velocidades lentas. Para segurança e privacidade reais, invista numa <strong>VPN paga e de confiança</strong>.</p>
+</blockquote>
+<h2>Passo 1: Escolher o Provedor de VPN Certo</h2>
+<p>Esta é a decisão mais importante. A sua VPN é a sua linha de defesa.</p>
+<h3>Fatores a Considerar ao Escolher uma VPN:</h3>
+<ol>
+<li><strong>Política de Não Registos (No-Logs Policy)</strong>: O provedor promete não registar a sua atividade online (histórico de navegação, endereços IP). Procure por empresas que tenham as suas políticas auditadas por terceiros independentes. Este é um aspeto <strong>crítico</strong> para a privacidade.</li>
+<li><strong>Recursos Essenciais</strong>:<ul>
+<li><strong>Kill Switch</strong>: <strong>Absolutamente essencial.</strong> Bloqueia o tráfego de internet se a VPN cair, prevenindo vazamentos de IP.</li>
+<li><strong>Proteção contra Vazamento de DNS/IPv6</strong>: Garante que o seu IP real e as suas consultas DNS não vazem.</li>
+<li><strong>Suporte a P2P/Torrents</strong>: Se você planeia usar torrents, certifique-se de que a VPN permite (e, idealmente, otimiza) o tráfego P2P.</li>
+<li><strong>Split Tunneling (Opcional)</strong>: Permite que algumas aplicações usem a VPN enquanto outras acedem à internet diretamente.</li>
+</ul>
+</li>
+<li><strong>Localização e Número de Servidores</strong>: Uma vasta rede de servidores em várias localizações significa mais opções para contornar restrições e, potencialmente, melhores velocidades.</li>
+<li><strong>Velocidade e Desempenho</strong>: VPNs premium oferecem altas velocidades, mas sempre haverá uma ligeira queda devido à criptografia. Leia análises e, se possível, teste o serviço.</li>
+<li><strong>Custo e Garantia de Reembolso</strong>: Compare os preços e procure provedores que ofereçam uma garantia de reembolso (geralmente 30 dias) para que possa testar sem risco.</li>
+<li><strong>Compatibilidade e Facilidade de Uso</strong>: Verifique se a VPN oferece aplicações para todos os seus dispositivos (Windows, macOS, Linux, Android, iOS, routers). As aplicações devem ser intuitivas.</li>
+<li><strong>Reputação e Suporte ao Cliente</strong>: Pesquise avaliações independentes e a qualidade do suporte.</li>
+</ol>
+<blockquote>
+<p><strong>Recomendação Genérica</strong>: Provedores como Mullvad e Proton VPN são consistentemente bem avaliados na comunidade por suas políticas de privacidade e recursos.</p>
+</blockquote>
+<h2>Passo 2: Instalação da Aplicação VPN</h2>
+<p>Uma vez escolhido o provedor, a instalação é o próximo passo.</p>
+<ol>
+<li><strong>Descarregue a Aplicação</strong>: Vá ao site oficial do provedor de VPN e descarregue a aplicação para o seu sistema operativo (Windows, macOS, Linux, Android, iOS).</li>
+<li><strong>Instale a Aplicação</strong>: Siga as instruções do instalador. Geralmente, é um processo simples de "próximo, próximo, concluir".</li>
+<li><strong>Inicie Sessão</strong>: Abra a aplicação VPN e inicie sessão com as credenciais que você criou ao se registar.</li>
+</ol>
+<h2>Passo 3: Configuração Inicial Essencial</h2>
+<p>Agora que a aplicação está instalada, vamos configurar as definições mais importantes.</p>
+<h3>1. Seleção de Servidor</h3>
+<ul>
+<li>A maioria das aplicações VPN tem um botão "Conectar" que o conecta automaticamente ao servidor mais rápido ou mais próximo.</li>
+<li>Para contornar restrições geográficas, você precisará selecionar um servidor na localização desejada (ex: para aceder a um serviço de streaming dos EUA, escolha um servidor nos EUA).</li>
+<li><strong>Dica de Velocidade</strong>: Geralmente, servidores fisicamente mais próximos de você (ou menos congestionados) oferecerão as melhores velocidades. Experimente diferentes servidores.</li>
+</ul>
+<h3>2. Ativar o Kill Switch</h3>
+<p>Esta é uma configuração <strong>crítica</strong> para a sua privacidade.</p>
+<ul>
+<li><strong>Localização</strong>: Dentro das <code>Configurações</code> da aplicação VPN, procure por <code>Kill Switch</code>, <code>Network Lock</code> ou <code>Parar Rede se VPN Cair</code>.</li>
+<li><strong>Ativar</strong>: Marque a caixa para ativá-lo.</li>
+<li><strong>Modo</strong>: Se houver opções, escolha o modo mais restritivo, que bloqueia todo o tráfego de internet se a VPN cair.</li>
+<li>Para um guia detalhado sobre o Kill Switch, consulte <a href="o_essencial_sobre_o_kill_switch.html">o essencial sobre o kill switch</a>.</li>
+</ul>
+<h3>3. Verificar Proteção contra Vazamento de DNS/IPv6</h3>
+<p>A maioria das VPNs premium ativa a proteção contra vazamentos de DNS e IPv6 por padrão.</p>
+<ul>
+<li><strong>Verificação</strong>: Em <code>Configurações</code>, procure por <code>DNS Leak Protection</code> ou <code>IPv6 Leak Protection</code>. Certifique-se de que estão ativados.</li>
+<li>Para uma camada extra de DNS seguro, pode configurar DNS-over-HTTPS (DoH) ou DNS-over-TLS (DoT) no seu sistema operativo ou navegador. Consulte <a href="aumentar_privacidade_com_dns_seguro.html">aumentar privacidade com dns seguro.html</a>.</li>
+</ul>
+<h3>4. Protocolo VPN</h3>
+<p>A maioria dos utilizadores pode deixar a seleção do protocolo em "Automático", mas é bom conhecer as opções:</p>
+<ul>
+<li><strong>WireGuard</strong>: O protocolo mais recente e geralmente o mais rápido e seguro.</li>
+<li><strong>OpenVPN (TCP/UDP)</strong>: Um protocolo robusto e de código aberto, amplamente utilizado. UDP é geralmente mais rápido que TCP.</li>
+<li><strong>IKEv2/IPSec</strong>: Rápido e bom para dispositivos móveis, pois lida bem com mudanças de rede.</li>
+<li><strong>PPTP/L2TP/SSTP</strong>: Mais antigos e menos seguros. Evite-os se a privacidade for uma preocupação.</li>
+</ul>
+<h2>Passo 4: Testar a Sua VPN e Garantir a Segurança</h2>
+<p>Depois de configurar, teste a sua VPN para garantir que está a funcionar corretamente.</p>
+<h3>1. Teste de Endereço IP</h3>
+<ul>
+<li>Conecte-se à sua VPN.</li>
+<li>Abra o seu navegador e visite um site como <a href="https://www.whatismyip.com/">whatismyip.com</a>.</li>
+<li>O endereço IP exibido deve ser o do servidor VPN que você selecionou, e não o seu IP real. A localização geográfica também deve corresponder ao servidor VPN.</li>
+</ul>
+<h3>2. Teste de Vazamento de DNS (DNS Leak Test)</h3>
+<ul>
+<li>Vá a um site como <a href="https://www.dnsleaktest.com/">dnsleaktest.com</a> e execute um <code>Standard Test</code> ou <code>Extended Test</code>.</li>
+<li>Os servidores DNS que aparecem devem pertencer ao seu provedor de VPN (ou ao seu provedor de DNS seguro, como Cloudflare, se configurado separadamente). Se você vir os servidores DNS do seu ISP, você tem um vazamento de DNS.</li>
+</ul>
+<h3>3. Teste do Kill Switch</h3>
+<ul>
+<li>Conecte-se à sua VPN.</li>
+<li>Verifique o seu IP em <a href="https://www.whatismyip.com/">whatismyip.com</a>.</li>
+<li>Desconecte <em>fisicamente</em> a sua conexão de internet (desligue o Wi-Fi ou remova o cabo Ethernet).</li>
+<li>Tente aceder a um site. Se o Kill Switch estiver a funcionar, você não deve conseguir aceder à internet. Reconecte-se à internet.</li>
+</ul>
+<h2>Passo 5: Otimização para Uso Específico (Torrents e Plex)</h2>
+<h3>1. Configuração para Torrents</h3>
+<p>Se você planeia usar torrents, esta etapa é <strong>crucial</strong>.</p>
+<ul>
+<li><strong>Kill Switch Ativado</strong>: Já mencionado, mas vital.</li>
+<li><strong>Binding do Cliente BitTorrent</strong>: Para a máxima segurança, configure o seu cliente BitTorrent (ex: qBittorrent) para "bindar" à interface da sua VPN. Isso garante que o cliente só opera quando a VPN está ativa.<ul>
+<li>Para um guia detalhado, consulte <a href="forcar_apps_a_usar_a_vpn_binding.html">forcar apps a usar a vpn binding.html</a>.</li>
+</ul>
+</li>
+<li><strong>Port Forwarding na VPN (Se Necessário)</strong>: Alguns provedores de VPN oferecem port forwarding dedicado ou permitem que você abra portas para melhorar as velocidades de torrent. Consulte o suporte do seu provedor.</li>
+</ul>
+<h3>2. Configuração para Plex ou Acesso Remoto</h3>
+<p>Se você usa um servidor de mídia (como Plex) no mesmo computador que a VPN, pode haver conflitos com o acesso remoto.</p>
+<ul>
+<li><strong>Split Tunneling</strong>: Se sua VPN oferece <em>split tunneling</em>, você pode configurar o Plex Media Server (o executável) para <strong>ignorar a VPN</strong> e aceder à internet diretamente, permitindo o acesso remoto sem problemas.</li>
+<li><strong>Port Forwarding da VPN</strong>: Se a sua VPN não oferece split tunneling, você precisará de um provedor que suporte port forwarding para a porta do Plex (geralmente <code>32400</code>).</li>
+<li>Para detalhes sobre como configurar o Plex, consulte <a href="criar_um_netflix_pessoal_com_plex.html">criar um netflix pessoal com plex.html</a>.</li>
+</ul>
+<h2>Manutenção e Melhores Práticas</h2>
+<ul>
+<li><strong>Mantenha a Aplicação VPN Atualizada</strong>: Sempre instale as últimas atualizações da sua aplicação VPN para garantir a segurança e as melhores funcionalidades.</li>
+<li><strong>Atualize o Sistema Operativo e o Navegador</strong>: Software desatualizado pode conter vulnerabilidades que uma VPN não pode cobrir.</li>
+<li><strong>Use Senhas Fortes</strong>: A VPN protege a sua conexão, mas não as suas contas. Use senhas fortes e 2FA.</li>
+<li><strong>Esteja Atento</strong>: Se notar uma queda de velocidade significativa, ou comportamento estranho, verifique o status da sua VPN e faça os testes novamente.</li>
+</ul>
+<h2>Conclusão: A Sua Porta de Entrada para a Internet Segura e Privada</h2>
+<p>Configurar a sua primeira VPN é um passo <strong>transformador</strong> para qualquer pessoa que valorize a sua privacidade e segurança online. Ao escolher um provedor de renome, ativar o Kill Switch, testar as suas configurações e integrar a VPN nas suas atividades de alto risco (como torrents), você estará a construir uma base sólida para uma experiência de internet mais <strong>livre, segura e anónima</strong>. Invista nesse conhecimento e desfrute da tranquilidade que uma VPN bem configurada pode oferecer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const contentPt = document.getElementById('content-pt');
+  const contentEn = document.getElementById('content-en');
+  const backButton = document.getElementById('back-button');
+
+  const ptContentExists = true;
+  const enContentExists = true;
+
+  const ptTitle = 'Guia Completo: Configurar a Sua Primeira VPN';
+  const enTitle = 'Guia Completo: Configurar a Sua Primeira VPN';
+
+  // Define a linguagem inicial para Português se existir, senão Inglês.
+  let initialLang = 'pt';
+  if (!ptContentExists && enContentExists) {
+      initialLang = 'en';
+  }
+
+  if (!ptContentExists && !enContentExists) {
+      // Se nenhum conteúdo existir, esconder tudo e mostrar mensagem.
+      console.warn("Nenhum conteúdo disponível para exibir.");
+      if (document.querySelector('.main-content')) {
+          document.querySelector('.main-content').innerHTML = "<p>Nenhum conteúdo de guia disponível.</p>";
+      }
+  }
+
+  // Função simplificada para ativar a linguagem sem botões
+  function activateLanguageContent(lang) {
+      if (contentPt) contentPt.classList.remove('active');
+      if (contentEn) contentEn.classList.remove('active');
+
+      if (lang === 'pt') {
+          if (contentPt) contentPt.classList.add('active');
+          if (backButton) backButton.textContent = "← Voltar para Guias";
+          document.title = ptTitle;
+      } else { // Default to English if no PT or initialLang is 'en'
+          if (contentEn) contentEn.classList.add('active');
+          if (backButton) backButton.textContent = "← Back to Guides";
+          document.title = enTitle;
+      }
+  }
+  
+  // Ativa o conteúdo da linguagem inicial ao carregar a página
+  activateLanguageContent(initialLang);
+
+  // Botões de idioma (btnPt, btnEn) e seus event listeners foram removidos/comentados do HTML e JS.
+  // A lógica de desabilitar botões também foi removida pois os botões não existem.
+
+</script>
+
+<script src="../assets/emoji.js" defer></script>
+
+</body>
+</html>

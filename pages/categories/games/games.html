@@ -2,460 +2,430 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Hattered</title>
+  <title>🎮 Games | Hattered</title>
   <link rel="icon" href="../../hattered_logo.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../categorie.css">
+  <link rel="stylesheet" href="../../assets/global.css">
 </head>
 <body>
   <div class="container">
-    <div class="header">
+    <header class="header">
       <div class="logo">
         <img src="../../hattered_logo1.svg" alt="Hattered Logo" />
         <span>Hattered</span>
       </div>
-      <div class="counter"></div>
-    </div>
+    </header>
 
-    <div class="nav">
-      <a href="../../home.html">Home</a>
-      <a href="../../guides/guides.html">Guides</a> 
-      <a href="../../../index.html">Welcome Page</a>
-    </div>
-
-    <div class="content">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="sidebar-box">
-          <div class="sidebar-title">
-            Emoji Guide <span style="font-style: italic; font-weight: normal; font-size: 0.9em;">Guia</span>
-          </div>
-          <div class="sidebar-content">
-            <div style="font-weight: bold;">❤️ Most Recommended</div>
-            <div style="font-style: italic; font-size: 0.85em;">Site mais recomendado</div>
-            <div style="margin-top: 10px; font-weight: bold;">🌐 Well Known</div>
-            <div style="font-style: italic; font-size: 0.85em;">Site bem conhecido</div>
-            <div style="margin-top: 10px; font-weight: bold;">📱 Mobile Friendly</div>
-            <div style="font-style: italic; font-size: 0.85em;">Compatível com telemóvel</div>
-          </div>
-        </div>
-
-        <div class="sidebar-box">
-          <div class="sidebar-title">Categories</div>
-          <div class="ms-sidebar-content">
-<a href="../movies_films/movies_films.html" class="ms-link">🎬 Movies & Series</a>
-<a href="../music/music.html" class="ms-link">🎵 Music</a>
-<a href="../education/education.html" class="ms-link">📚 Education</a>
-<a href="../software/software.html" class="ms-link">💻 Software</a>
-<a href="../graphics/graphic.html" class="ms-link">🎨 Graphics</a>
-<a href="../livetv/livetv.html" class="ms-link">📡 Live TV</a>
-<a href="../activation/activation.html" class="ms-link">🔐 Activation</a>
-          </div>
-        </div>
+    <nav class="nav">
+      <div class="desktop-nav">
+        <a href="../../home.html">🏠 Home</a>
+        <a href="../../guides/guides.html">📖 Guias</a> 
+        <a href="../../../index.html">🚀 Portal</a>
+        <a href="../../glossary.html">📚 Glossário</a>
+        <a href="../../blacklist.html">🛡️ Blacklist Checker</a>
       </div>
+      <a href="./games.html" class="mobile-nav-title">🎮 Games</a>
+      <div id="hamburger-icon" class="hamburger-icon">
+        <div class="line"></div><div class="line"></div><div class="line"></div>
+      </div>
+    </nav>
 
-      <!-- Main Content -->
-      <div class="main-content">
-        <h2>🎮 Games</h2>
-
-        <!-- Download Section -->
-        <h3 class="category-title toggle-header" onclick="toggleTable(this)">
-          Repacks (Compressed Installers)
-          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5H7z" />
-          </svg>
-        </h3>
-        <div class="toggle-content">
-                    <table class="site-table">
-                        <thead>
-                            <tr>
-                                <th width="50%">Site</th>
-                                <th>Status</th>
-                                <th>Blocked</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="https://fitgirl-repacks.site/" class="site-name" target="_blank"> ❤️ 🌐 📱 FitFirl Repacks</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://fitgirl-repacks.site/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://elamigos.site/" class="site-name" target="_blank"> ❤️ 🌐 📱 ElAmigos</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://elamigos.site/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://rentry.co/FMHYBase64#dodi" class="site-name" target="_blank">DODI Repacks (Info)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://rentry.co/FMHYBase64#dodi" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://rentry.co/FMHYBase64#gnarly_repacks" class="site-name" target="_blank">Gnarly Repacks</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://rentry.co/FMHYBase64#gnarly_repacks" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://byxatab.com/" class="site-name" target="_blank">Xatab Repacks</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://byxatab.com/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://www.tiny-repacks.win/" class="site-name" target="_blank">Tiny-Repacks</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://www.tiny-repacks.win/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://m4ckd0ge-repacks.site/" class="site-name" target="_blank">M4CKD0GE Repacks</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://m4ckd0ge-repacks.site/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://www.kaoskrew.org/" class="site-name" target="_blank">KaOsKrew Repacks</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://www.kaoskrew.org/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://discord.com/invite/HP5sQ6c" class="site-name" target="_blank">Masquerade Repacks (Discord)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://discord.com/invite/HP5sQ6c" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://discord.gg/xe3Fys8Upy" class="site-name" target="_blank">ScOOt3r Repacks (Discord)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://discord.gg/xe3Fys8Upy" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <main class="content">
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Guia de Emojis</div>
+          <div class="sidebar-content">
+            <div style="font-weight: bold;">❤️ Mais Recomendado</div>
+            <div style="margin-top: 10px; font-weight: bold;">🌐 Bem Conhecido</div>
+            <div style="margin-top: 10px; font-weight: bold;">📱 Otimizado para Móvel</div>
+          </div>
         </div>
-
-        <h3 class="category-title toggle-header" onclick="toggleTable(this)">
-          Game Download Sites (with or without DRM)
-          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5H7z" />
-          </svg>
-        </h3>
-        <div class="toggle-content">
-                    <table class="site-table">
-                        <thead>
-                            <tr>
-                                <th width="50%">Site</th>
-                                <th>Status</th>
-                                <th>Blocked</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="https://gog-games.to/" class="site-name" target="_blank"> ❤️ 🌐 📱 GOG Games</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://gog-games.to/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://online-fix.me/" class="site-name" target="_blank"> ❤️ 🌐 📱 Online Fix</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://online-fix.me/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://www.ovagames.com/" class="site-name" target="_blank">Ova Games</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://www.ovagames.com/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://gamebounty.world/" class="site-name" target="_blank">GameBounty</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://gamebounty.world/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://freegogpcgames.com/" class="site-name" target="_blank">FreeGOGPCGames</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://freegogpcgames.com/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="http://www.leechinghell.pw/" class="site-name" target="_blank">Leeching Hell</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="http://www.leechinghell.pw/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://getfreegames.net/" class="site-name" target="_blank">GetFreeGames</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://getfreegames.net/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://atopgames.com/" class="site-name" target="_blank">AtopGames</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://atopgames.com/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Categorias</div>
+          <div class="ms-sidebar-content">
+            <a href="../movies_films/movies_films.html" class="ms-link">🎬 Filmes & Séries</a>
+            <a href="../music/music.html" class="ms-link">🎵 Música</a>
+            <a href="./games.html" class="ms-link active">🎮 Jogos</a>
+            <a href="../education/education.html" class="ms-link">📚 Educação</a>
+            <a href="../software/software.html" class="ms-link">💻 Software</a>
+            <a href="../graphics/graphic.html" class="ms-link">🎨 Gráficos</a>
+            <a href="../livetv/livetv.html" class="ms-link">📡 TV ao Vivo</a>
+            <a href="../animes/animes.html" class="ms-link">🍥 Animes</a>
+            <a href="../activation/activation.html" class="ms-link">🔐 Ativação</a>
+          </div>
         </div>
+      </aside>
 
-        <h3 class="category-title toggle-header" onclick="toggleTable(this)">
-          Game Search Engines
-          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5H7z" />
-          </svg>
-        </h3>
-        <div class="toggle-content">
-                    <table class="site-table">
-                        <thead>
-                            <tr>
-                                <th width="50%">Site</th>
-                                <th>Status</th>
-                                <th>Blocked</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="https://cse.google.com/cse?cx=006516753008110874046:cbjowp5sdqg" class="site-name" target="_blank">Game Download CSE</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://cse.google.com/cse?cx=006516753008110874046:cbjowp5sdqg" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://cse.google.com/cse?cx=006516753008110874046:pobnsujblyx" class="site-name" target="_blank">Game Torrent CSE</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://cse.google.com/cse?cx=006516753008110874046:pobnsujblyx" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://cse.google.com/cse?cx=20c2a3e5f702049aa" class="site-name" target="_blank">/r/PiratedGames CSE</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://cse.google.com/cse?cx=20c2a3e5f702049aa" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://rezi.one/" class="site-name" target="_blank">Rezi Search</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://rezi.one/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://idleendeavor.github.io/gamesearch/" class="site-name" target="_blank">Rave Search (GitHub)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://idleendeavor.github.io/gamesearch/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://ravegamesearch.pages.dev/" class="site-name" target="_blank">Rave Search (Pages)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://ravegamesearch.pages.dev/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-        </div>
-
+      <!-- ======================================================= -->
+      <!-- CONTEÚDO DA PÁGINA DE JOGOS (VERSÃO COMPLETA) -->
+      <!-- ======================================================= -->
+      <section class="main-content">
+        <h2 class="page-title">🎮 Games</h2>
+        <p class="page-description description-desktop">
+            Explore sites para download de jogos, incluindo repacks (instaladores comprimidos) e sites de download direto (DDL).
+        </p>
+        <p class="page-description description-mobile">
+            Sites para download de jogos, repacks e DDL.
+        </p>
         
-        <!-- Streaming Section -->
-        <h3 class="category-title toggle-header" onclick="toggleTable(this)">
-          Tools and Resources
-          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-            <path d="M7 10l5 5 5-5H7z" />
-          </svg>
+        <h3 class="category-title toggle-header" onclick="toggleContent(this)">
+          <span>Repacks (Instaladores Comprimidos)</span>
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z" /></svg>
         </h3>
         <div class="toggle-content">
-                    <table class="site-table">
-                        <thead>
-                            <tr>
-                                <th width="50%">Site</th>
-                                <th>Status</th>
-                                <th>Blocked</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="https://fmhy.net/internet-tools#redirect-bypass" class="site-name" target="_blank">Redirect Bypass (FMHY)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://fmhy.net/internet-tools#redirect-bypass" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://rentry.co/lootlink" class="site-name" target="_blank">Lootlink Bypass</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://rentry.co/lootlink" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://rentry.co/FMHYBase64#csf" class="site-name" target="_blank">ROM Heaven CSF (em FMHY)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://rentry.co/FMHYBase64#csf" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://fmhy.net/miscguide#free-stuff" class="site-name" target="_blank">FMHY Misc Free Stuff (Trackers)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://fmhy.net/miscguide#free-stuff" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://csrinstaff.writeas.com/" class="site-name" target="_blank">CS.RIN Status Page</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://csrinstaff.writeas.com/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod" class="site-name" target="_blank">CS.RIN Enhanced Mod</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://github.com/Altansar69/CS.RIN.RU-Enhanced-external" class="site-name" target="_blank">CS.RIN Steam Buttons Mod</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://github.com/Altansar69/CS.RIN.RU-Enhanced-external" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://github.com/CarrotRub/Fit-Launcher/" class="site-name" target="_blank">FitGirl Launcher (GitHub)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://github.com/CarrotRub/Fit-Launcher/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://github.com/KaladinDMP/AGBrowser" class="site-name" target="_blank">ARMGDDN Browser</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://github.com/KaladinDMP/AGBrowser" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://websites.umich.edu/~archive/" class="site-name" target="_blank">U-M Software Archives</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://websites.umich.edu/~archive/" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://redd.it/x804wg" class="site-name" target="_blank">IRC Games Post</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://redd.it/x804wg" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://rentry.org/ikc3x8bt" class="site-name" target="_blank">Site Info (FMHY Link)</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://rentry.org/ikc3x8bt" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593" class="site-name" target="_blank">CS.RIN Steam Fix Tutorial</a></td>
-                                <td>Online</td>
-                                <td class="visits">Unlocked</td>
-                                <td>
-                                    <a href="https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593" class="btn-main" target="_blank">Main</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+          <table class="site-table">
+            <thead>
+              <tr>
+                <th width="25%">Nome</th>
+                <th width="35%">Palavras-chave</th>
+                <th width="40%">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-link="https://fitgirl-repacks.site/">
+                <td><span class="site-name">❤️ 🌐 📱 FitGirl Repacks</span></td>
+                <td><span class="keywords">Repack, Instalador, PC</span></td>
+                <td class="action-cell">
+                  <a href="https://fitgirl-repacks.site/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/fitgirl-repacks.site" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=FitGirl+Repacks+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+              <tr data-link="https://elamigos.site/">
+                <td><span class="site-name">❤️ 🌐 📱 ElAmigos</span></td>
+                <td><span class="keywords">Repack, Jogos, PC</span></td>
+                <td class="action-cell">
+                  <a href="https://elamigos.site/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/elamigos.site" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=ElAmigos+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+              <tr data-link="https://dodi-repacks.site/">
+                <td><span class="site-name">DODI Repacks</span></td>
+                <td><span class="keywords">Repack, PC, Comprimido</span></td>
+                <td class="action-cell">
+                  <a href="https://dodi-repacks.site/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                  <a href="https://www.virustotal.com/gui/domain/dodi-repacks.site" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                  <a href="https://www.google.com/search?q=DODI+Repacks+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+              <tr data-link="https://www.gnarly-repacks.site/">
+                <td><span class="site-name">Gnarly Repacks</span></td>
+                <td><span class="keywords">Repack, PC, Jogos</span></td>
+                <td class="action-cell">
+                    <a href="https://www.gnarly-repacks.site/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/gnarly-repacks.site" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=Gnarly+Repacks+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+               <tr data-link="https://byxatab.com/">
+                <td><span class="site-name">Xatab Repacks</span></td>
+                <td><span class="keywords">Repack, Russo, PC</span></td>
+                <td class="action-cell">
+                    <a href="https://byxatab.com/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/byxatab.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=Xatab+Repacks+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+               <tr data-link="https://www.tiny-repacks.win/">
+                <td><span class="site-name">Tiny-Repacks</span></td>
+                <td><span class="keywords">Repack, Leve, PC</span></td>
+                <td class="action-cell">
+                    <a href="https://www.tiny-repacks.win/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/tiny-repacks.win" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=Tiny-Repacks+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+               <tr data-link="https://www.kaoskrew.org/">
+                <td><span class="site-name">KaOsKrew Repacks</span></td>
+                <td><span class="keywords">Repack, PC, Jogos</span></td>
+                <td class="action-cell">
+                    <a href="https://www.kaoskrew.org/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/kaoskrew.org" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=KaOsKrew+Repacks+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        
-      </div> <!-- Fecha main-content -->
-    </div> <!-- Fecha content -->
 
-    <div class="footer">
-      &copy; 2025 Hattered. Todos os direitos reservados.
-    </div>
-  </div> <!-- Fecha container -->
+        <h3 class="category-title toggle-header" onclick="toggleContent(this)">
+          <span>Sites de Download de Jogos (DDL)</span>
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z" /></svg>
+        </h3>
+        <div class="toggle-content">
+          <table class="site-table">
+            <thead>
+              <tr>
+                <th width="25%">Nome</th>
+                <th width="35%">Palavras-chave</th>
+                <th width="40%">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr data-link="https://gog-games.to/">
+                    <td><span class="site-name">❤️ 🌐 📱 GOG Games</span></td>
+                    <td><span class="keywords">DRM-Free, Download, PC</span></td>
+                    <td class="action-cell">
+                      <a href="https://gog-games.to/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/gog-games.to" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=GOG+Games+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                <tr data-link="https://online-fix.me/">
+                    <td><span class="site-name">❤️ 🌐 📱 Online Fix</span></td>
+                    <td><span class="keywords">Multiplayer, Online, Fix</span></td>
+                    <td class="action-cell">
+                      <a href="https://online-fix.me/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/online-fix.me" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Online-Fix.me+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                <tr data-link="https://www.ovagames.com/">
+                    <td><span class="site-name">Ova Games</span></td>
+                    <td><span class="keywords">DDL, PC, Download</span></td>
+                    <td class="action-cell">
+                      <a href="https://www.ovagames.com/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/ovagames.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Ova+Games+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                <tr data-link="https://gamebounty.world/">
+                    <td><span class="site-name">GameBounty</span></td>
+                    <td><span class="keywords">DDL, Jogos, PC</span></td>
+                    <td class="action-cell">
+                      <a href="https://gamebounty.world/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/gamebounty.world" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=GameBounty+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="https://freegogpcgames.com/">
+                    <td><span class="site-name">FreeGOGPCGames</span></td>
+                    <td><span class="keywords">GOG, PC, DRM-Free</span></td>
+                    <td class="action-cell">
+                      <a href="https://freegogpcgames.com/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/freegogpcgames.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=FreeGOGPCGames+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="http://www.leechinghell.pw/">
+                    <td><span class="site-name">Leeching Hell</span></td>
+                    <td><span class="keywords">Fórum, DDL, PC</span></td>
+                    <td class="action-cell">
+                      <a href="http://www.leechinghell.pw/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/leechinghell.pw" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Leeching+Hell+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="https://getfreegames.net/">
+                    <td><span class="site-name">GetFreeGames</span></td>
+                    <td><span class="keywords">DDL, PC, Download</span></td>
+                    <td class="action-cell">
+                      <a href="https://getfreegames.net/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/getfreegames.net" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=GetFreeGames+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="https://atopgames.com/">
+                    <td><span class="site-name">AtopGames</span></td>
+                    <td><span class="keywords">DDL, PC, DRM-Free</span></td>
+                    <td class="action-cell">
+                      <a href="https://atopgames.com/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/atopgames.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=AtopGames+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="category-title toggle-header" onclick="toggleContent(this)">
+          <span>Motores de Busca de Jogos</span>
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z" /></svg>
+        </h3>
+        <div class="toggle-content">
+          <table class="site-table">
+            <thead>
+              <tr>
+                <th width="25%">Nome</th>
+                <th width="35%">Palavras-chave</th>
+                <th width="40%">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr data-link="https://cse.google.com/cse?cx=006516753008110874046:cbjowp5sdqg">
+                    <td><span class="site-name">Game Download CSE</span></td>
+                    <td><span class="keywords">Busca, Google, DDL</span></td>
+                    <td class="action-cell">
+                      <a href="https://cse.google.com/cse?cx=006516753008110874046:cbjowp5sdqg" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/cse.google.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Game+Download+CSE+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="https://cse.google.com/cse?cx=006516753008110874046:pobnsujblyx">
+                    <td><span class="site-name">Game Torrent CSE</span></td>
+                    <td><span class="keywords">Busca, Google, Torrent</span></td>
+                    <td class="action-cell">
+                      <a href="https://cse.google.com/cse?cx=006516753008110874046:pobnsujblyx" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/cse.google.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Game+Torrent+CSE+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="https://rezi.one/">
+                    <td><span class="site-name">Rezi Search</span></td>
+                    <td><span class="keywords">Busca, Jogos, Vários</span></td>
+                    <td class="action-cell">
+                      <a href="https://rezi.one/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/rezi.one" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Rezi+Search+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+                 <tr data-link="https://ravegamesearch.pages.dev/">
+                    <td><span class="site-name">Rave Search</span></td>
+                    <td><span class="keywords">Busca, Jogos, DDL</span></td>
+                    <td class="action-cell">
+                      <a href="https://ravegamesearch.pages.dev/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                      <a href="https://www.virustotal.com/gui/domain/ravegamesearch.pages.dev" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                      <a href="https://www.google.com/search?q=Rave+Search+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="category-title toggle-header" onclick="toggleContent(this)">
+          <span>Ferramentas e Recursos</span>
+          <svg class="toggle-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z" /></svg>
+        </h3>
+        <div class="toggle-content">
+          <table class="site-table">
+            <thead>
+              <tr>
+                <th width="25%">Nome</th>
+                <th width="35%">Palavras-chave</th>
+                <th width="40%">Ação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-link="https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod">
+                  <td><span class="site-name">CS.RIN Enhanced Mod</span></td>
+                  <td><span class="keywords">Script, Fórum, Steam</span></td>
+                  <td class="action-cell">
+                    <a href="https://github.com/SubZeroPL/cs-rin-ru-enhanced-mod" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/github.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=CS.RIN.RU+Enhanced+Mod+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                  </td>
+              </tr>
+              <tr data-link="https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593">
+                  <td><span class="site-name">CS.RIN Steam Fix</span></td>
+                  <td><span class="keywords">Tutorial, Steam, Fix</span></td>
+                  <td class="action-cell">
+                    <a href="https://cs.rin.ru/forum/viewtopic.php?f=14&t=140593" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/cs.rin.ru" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=CS.RIN+Steam+Fix+Tutorial+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                  </td>
+              </tr>
+              <tr data-link="https://github.com/CarrotRub/Fit-Launcher/">
+                  <td><span class="site-name">FitGirl Launcher</span></td>
+                  <td><span class="keywords">Launcher, Repacks, PC</span></td>
+                  <td class="action-cell">
+                    <a href="https://github.com/CarrotRub/Fit-Launcher/" class="btn-action btn-visitar" target="_blank" rel="noopener noreferrer">Visitar</a>
+                    <a href="https://www.virustotal.com/gui/domain/github.com" class="btn-action btn-virustotal" title="Verificar no VirusTotal" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V13H5V6.3l7-3.11v9.8z"/></svg><span>VirusTotal</span></a>
+                    <a href="https://www.google.com/search?q=FitGirl+Launcher+reviews" class="btn-action btn-search" title="Pesquisar análises" target="_blank" rel="noopener noreferrer"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></a>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- ======================================================= -->
+      <!-- FIM DO CONTEÚDO ESPECÍFICO -->
+      <!-- ======================================================= -->
+    </main>
+
+    <footer class="footer">
+        Hattered | made by frraz    </footer>
+  </div>
+
+  <div id="overlay"></div>
+  <div id="mobile-sidebar" class="mobile-sidebar">
+      <button id="close-btn">&times;</button>
+      <h4>Páginas</h4>
+      <a href="../../home.html">🏠 Home</a>
+      <a href="../../guides/guides.html">📖 Guias</a>
+      <a href="../../../index.html">🚀 Portal</a>
+      <a href="../../glossary.html">📚 Glossário</a>
+      <a href="../../blacklist.html">🛡️ Blacklist Checker</a>
+
+      <h4>Categorias</h4>
+      <a href="../movies_films/movies_films.html">🎬 Filmes & Séries</a>
+      <a href="../music/music.html">🎵 Música</a>
+      <a href="./games.html">🎮 Jogos</a>
+      <a href="../education/education.html">📚 Educação</a>
+      <a href="../software/software.html">💻 Software</a>
+      <a href="../graphics/graphic.html">🎨 Gráficos</a>
+      <a href="../livetv/livetv.html">📡 TV ao Vivo</a>
+      <a href="../animes/animes.html">🍥 Animes</a>
+      <a href="../activation/activation.html">🔐 Ativação</a>
+  </div>
+
+  <div id="orientation-warning">
+      <div class="warning-content">
+          <p>Para a melhor experiência, recomendamos que utilize este site com o dispositivo na horizontal.</p>
+          <button id="dismiss-warning-btn">Eu entendo</button>
+      </div>
+  </div>
 
   <script>
-    function toggleTable(header) {
+    // Função para expandir/recolher secções
+    function toggleContent(header) {
       const icon = header.querySelector(".toggle-icon");
       const content = header.nextElementSibling;
       content.classList.toggle("open");
       icon.classList.toggle("rotate");
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('close-btn');
+        const body = document.body;
+        
+        // Funções para abrir/fechar a barra lateral móvel
+        const openSidebar = () => { mobileSidebar.classList.add('open'); overlay.classList.add('open'); body.classList.add('sidebar-open'); };
+        const closeSidebar = () => { mobileSidebar.classList.remove('open'); overlay.classList.remove('open'); body.classList.remove('sidebar-open'); };
+        
+        if (hamburgerIcon) hamburgerIcon.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+        
+        // Adiciona funcionalidade de clique às linhas da tabela em ecrãs pequenos
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.site-table tr[data-link]').forEach(row => {
+                row.addEventListener('click', (e) => {
+                    // Impede a navegação se o clique for num botão dentro da linha
+                    if (e.target.closest('a') === null) {
+                        const link = row.getAttribute('data-link');
+                        if (link) {
+                            window.open(link, '_blank');
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Aviso de orientação do dispositivo
+        if(document.getElementById('dismiss-warning-btn')) {
+            document.getElementById('dismiss-warning-btn').addEventListener('click', function() {
+                document.getElementById('orientation-warning').style.display = 'none';
+            });
+        }
+    });
   </script>
+
+    <script src="../../assets/emogi.js" defer></script>
+
 </body>
 </html>
